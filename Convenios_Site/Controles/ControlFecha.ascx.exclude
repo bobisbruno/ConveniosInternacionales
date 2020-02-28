@@ -1,0 +1,17 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="controlFecha.ascx.cs"
+    Inherits="controlFecha" %>
+<div id="divFecha" onpaste="separaDatosOnPaste(event,this);return false;" runat="server">
+    <asp:TextBox ID="txtDia" onkeyup="return autoTabControl(this, 2, event)" onkeypress="return 
+	(event)"
+        runat="server" MaxLength="2" Style="text-align: center" Width="14px"></asp:TextBox>
+    <span id="spanBar1" runat="server" style="margin-left:-3px; margin-right:-3px " >/</span>
+    <asp:TextBox ID="txtMes" onkeyup="return autoTabControl(this, 2, event)" onkeypress="return validarNumeroControl(event)"
+        runat="server" MaxLength="2" Style="text-align: center" Width="14px"></asp:TextBox>
+    <span id="spanBar2" runat="server" style="margin-left:-3px; margin-right:-3px ">/</span>
+    <asp:TextBox ID="txtAnio" onkeyup="return autoTabControl(this, 4, event)" onkeypress="return validarNumeroControl(event)"
+        runat="server" MaxLength="4" Style="text-align: center" Width="32px"></asp:TextBox>
+    <asp:Label ID="lbl_Obligatorio" CssClass="CajaTextoError" runat="server" Text="*"
+        Style="margin-left: 0px" Visible="false">
+    </asp:Label>
+</div>
+<asp:Label ID="lbl_ErrorFecha" CssClass="CajaTextoError" runat="server" Style="position: absolute" Visible="false"></asp:Label>

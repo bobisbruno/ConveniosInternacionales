@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar">
+      <s:element name="AMBanco">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBanco" nillable="true" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="frecuente" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="webSite" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMBancoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraerBancos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="frecuentes" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerBancosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerBancosResult" type="tns:ArrayOfBanco" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBanco">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Banco" nillable="true" type="tns:Banco" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Banco">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Banco" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Frecuente" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebSite" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Disposed" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AMBancoSoapIn">
+    <wsdl:part name="parameters" element="tns:AMBanco" />
+  </wsdl:message>
+  <wsdl:message name="AMBancoSoapOut">
+    <wsdl:part name="parameters" element="tns:AMBancoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerBancosSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerBancos" />
+  </wsdl:message>
+  <wsdl:message name="TraerBancosSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerBancosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BancoWSSoap">
+    <wsdl:operation name="AMBanco">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alta y Modificacion de Banco</wsdl:documentation>
+      <wsdl:input message="tns:AMBancoSoapIn" />
+      <wsdl:output message="tns:AMBancoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerBancos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Traer Bancos</wsdl:documentation>
+      <wsdl:input message="tns:TraerBancosSoapIn" />
+      <wsdl:output message="tns:TraerBancosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BancoWSSoap" type="tns:BancoWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AMBanco">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBanco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerBancos">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraerBancos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BancoWSSoap12" type="tns:BancoWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AMBanco">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBanco" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerBancos">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraerBancos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BancoWS">
+    <wsdl:port name="BancoWSSoap" binding="tns:BancoWSSoap">
+      <soap:address location="http://10.86.30.215/Convenios_WS/BancoWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BancoWSSoap12" binding="tns:BancoWSSoap12">
+      <soap12:address location="http://10.86.30.215/Convenios_WS/BancoWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

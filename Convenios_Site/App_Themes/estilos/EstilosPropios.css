@@ -1,0 +1,258 @@
+﻿
+
+textarea
+{
+	background-image: none;
+}
+
+textarea.areaTexto
+{
+	background-image: none;
+}
+
+.areaTexto
+{
+	background-image: none;
+	background-color: White;
+}
+
+
+.grillaAbm 
+{
+    width: 98%;
+    height: auto;
+    overflow: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;    
+}
+
+.grillaAdmin_MP
+{
+    width: 100%;
+}
+
+.panelgrilla 
+{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.tblMasterPage
+{
+	width: 100%;
+	background-color: #fff;
+}
+.TituloServicio
+{
+	margin: 10px 0px 0px 10px;
+}
+
+#msgPageRequestManagerHandler
+{
+	margin: auto;
+	display: none;
+	vertical-align: middle;
+	width: 210px;
+	float: none;
+	text-align: left;
+	padding: 10px 10px 10px 50px;
+	background: url('Imagenes/LOGO-ANSES-carga2.gif') no-repeat 10px 50%;
+	font-size: x-small;
+	background-color: #D9E6F4;
+}
+
+.FlotanteDerecha
+{
+	float:left;	
+}
+
+.FlotanteIzquierda
+{
+	float:right;	
+}
+
+#toolTipBox
+{
+	display: none;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 7px;
+	padding-top: 5px; /*position: absolute;*/ /*position:fixed;*/
+	position: absolute;
+	text-align: left;
+	font-size: 8pt;
+}
+
+.CajaMensajeToolTip
+{
+	/*POSITION: absolute;*/
+	position: absolute;
+}
+
+
+#draggables
+{
+	/*POSITION: relative;  z-index: 0;*/
+}
+#draggables DIV
+{
+	left: 10px;
+	width: 50px;
+	position: absolute;
+	top: 10px;
+	height: 50px;
+	z-index: 0;
+}
+.dynamicPopulate_Updating
+{
+	background-image: url(~/App_Themes/skin/imagenes/procesando.gif);
+	background-repeat: no-repeat;
+	text-align: center;
+	width: 69%;
+}
+
+.modalBackground
+{
+	background-color: Gray;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+
+.modalPopup
+{
+	width: 250px;
+}
+.cbtn img
+{
+	width:20px; 
+	height:19px; 
+	vertical-align:middle		
+}
+
+.solapa
+{
+	text-align: center;
+	text-decoration: none;
+	margin: 1;
+	float: left;
+	display: block;
+	background: url(  "Estilos/Imagenes/tabright5.gif" ) right top;
+	padding: 6px 6px 4px 6px;
+	color: #3D7EC7;
+	height: 20px;
+	font-weight: bold;
+	font-size: 8pt;
+	width: 85px;
+	font-family: Verdana, 'Microsoft Sans Serif';
+	
+}
+      
+.solapa:hover
+{
+	font-family: Verdana, 'Microsoft Sans Serif';
+	background-position: 100% -49px;
+	font-size: 8pt;
+	width: 85px;
+	color: #0B3D91;
+}
+
+
+.solapa_activo 
+{
+	background: url(  "Estilos/Imagenes/tabright5.gif" ) right top;
+	background-position: 100% -49px; 
+	color: #0b3d91; 
+	text-align: center;
+	text-decoration: none;
+	margin: 1;
+	float: left;
+	display: block;
+	padding: 6px 6px 4px 6px;
+	height: 20px;
+	font-weight: bold;
+	font-size: 8pt;
+	width: 85px;
+	font-family: Verdana, 'Microsoft Sans Serif';
+}
+
+/**
+Accordion
+*/
+/* Accordion */
+.accordionHeader
+{
+    border: 1px solid #2F4F4F;
+    color: white;
+    background-color: #2E4d7B;
+	font-family: Arial, Sans-Serif;
+	font-size: 12px;
+	font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#master_content .accordionHeader a
+{
+	color: #FFFFFF;
+	background: none;
+	text-decoration: none;
+}
+
+#master_content .accordionHeader a:hover
+{
+	background: none;
+	text-decoration: underline;
+}
+
+.accordionHeaderSelected
+{
+    border: 1px solid #2F4F4F;
+    color: white;
+    background-color: #5078B3;
+	font-family: Arial, Sans-Serif;
+	font-size: 12px;
+	font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#master_content .accordionHeaderSelected a
+{
+	color: #FFFFFF;
+	background: none;
+	text-decoration: none;
+}
+
+#master_content .accordionHeaderSelected a:hover
+{
+	background: none;
+	text-decoration: underline;
+}
+
+.accordionContent
+{
+    background-color: #D3DEEF;
+    border: 1px dashed #2F4F4F;
+    border-top: none;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.watermarked 
+{
+    font-family: Verdana, 'Microsoft Sans Serif';
+    font-style: normal;
+	font-size: 8pt;
+    color:Silver;
+}
+
+.paddingCell {
+    padding: 5px;
+}

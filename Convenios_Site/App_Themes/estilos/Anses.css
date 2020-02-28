@@ -1,0 +1,597 @@
+﻿
+html {height:100%}
+body
+{
+	margin-left: 0;
+	margin-top: 0;
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	color: #000000;
+	text-align: left;
+	height: 100%;
+	scrollbar-face-color:#d2def2;
+	scrollbar-highlight-color: #7297D6;
+	scrollbar-shadow-color: #25477E;
+	scrollbar-3dlight-color: #D2DEF2;
+	scrollbar-arrow-color: white;
+	scrollbar-track-color: #e9eef8;
+	scrollbar-darkshadow-color: #25477E;
+	scrollbar-base-color: #3566B7;
+	
+
+}
+table
+{
+	
+	font-family: Verdana, Arial;
+	font-size: 9pt;
+	color: #000000;
+	text-align: left;
+	height: 70%;
+}
+tablejava
+{
+	
+	font-family: Verdana, Arial;
+	font-size: 9pt;
+	color: #000000;
+	text-align: left;
+	
+}
+
+a
+{
+	font-family: Verdana, Arial;
+	font-size: 9pt;
+	color: #214874;
+	text-align: left;
+	text-decoration:underline;
+
+}
+
+A:visited
+{
+  COLOR: #333333;
+}
+
+A:over
+{
+  COLOR: #333333;
+}
+
+hr
+{
+  COLOR: #ffffff;
+  height:1px;
+}
+
+
+/*------------------------------
+	     Tabla MasterPage
+--------------------------------*/
+
+
+.tblMasterPage
+{
+                
+                width: 98%;
+                height:100%;
+                background-color: #ffffff;
+                text-align:center;
+                font-size: 9pt;
+                font-family: Verdana;
+}
+
+
+.CajaTexto
+{
+	font-family: Arial, helvetica;
+	color: #000;
+	font-size: 12px;
+	background-image: url('../imagenes/back_campo.gif');
+	
+	background-position: 50% bottom;
+	border: 1px solid #DEDAD3;
+	padding-left: 5px;
+}
+.CajaTextoError
+{
+	font-family: tahoma, Arial, helvetica;
+	color: #ff0000;
+	font-size: 11px;
+	background-position: 50% bottom;
+	padding-left: 5px;
+}
+
+
+
+/*------------------------------
+	         Botones
+--------------------------------*/
+
+.Botones
+{
+	
+	border-style: none;
+	border-color: inherit;
+	border-width: 0px;
+	color: #FFFFFF;
+		font-family: Arial, tahoma, helvetica;
+		font-weight: bold;
+		font-size: 11px;
+		background-image: url('../imagenes/fondo_boton.gif');
+		background-color: #2B63A2;
+		background-repeat: repeat;
+		background-position: center 50%;
+	}
+.Botones:hover
+{
+	border: 0px;
+	color: #FFFFFF;
+	font-family: Arial, tahoma, helvetica;
+	font-weight: bold;
+	font-size: 11px;
+	background-image: url('../imagenes/back_selec.gif');
+	background-color: #25568B;
+	background-repeat: repeat;
+	background-position: center 50%;
+	height: 22px;
+}
+
+
+
+/*------------------------------
+             Titulos
+--------------------------------*/
+
+.TituloServicio
+{
+	font-weight: bold;
+	font-size: 14pt;
+	color: #25568B;
+	text-align:left;
+	font-family: 'Arial Narrow';
+	
+}
+.TituloBold
+{
+	font-family: Verdana, Arial;
+	font-size: 10pt;
+	color: #25568B;
+	font-weight: bold;
+	text-align:left;
+}
+
+
+
+.Titulo
+{
+	font-family: Verdana, Arial;
+	font-size: 10pt;
+	color: #25568B;
+	text-align: center;
+	font-weight:normal;
+	
+}
+.Titulo1
+{
+	font-weight: bold;
+	font-size: 18pt;
+	margin-left: 20px;
+	color: #2B63A2;
+	font-family: 'Arial Narrow';
+}
+
+.Titulo2
+{
+	font-weight: bold;
+	font-size: 14pt;
+	color: #25568B;
+	font-family: 'Arial Narrow';
+	
+}
+.Titulo3
+{
+	vertical-align: text-top;
+	font-size: 9pt;
+	color: #3375BD;
+	font-family: 'Arial Narrow';
+	
+}
+
+
+
+
+/*--------------------------------
+              Textos
+---------------------------------*/
+
+.TextoBlanco
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	color: #ffffff;
+}
+.TextoBlancoBold
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	color: #ffffff;
+	font-weight: bold;	
+}
+.Texto
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	color: #25568B;
+}
+.TextoNegroBold
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	color: #000000;
+	font-weight: bold;	
+}
+
+.TextoNegroBoldCENTER
+{
+	font-family: Verdana, Arial;
+	font-size: 11pt;
+	color: #000000;
+	font-weight: bold;
+	text-align:center;	
+}
+
+.TextoNegroCENTER
+{
+	font-family: Verdana, Arial;
+	font-size: 9pt;
+	color: #000000;
+	text-align:center;
+}
+
+.TextoNegro
+{
+	font-family: Verdana, Arial;
+	font-size: 9pt;
+	color: #000000;
+	text-align:left;
+	margin-left:5px;
+}
+
+/*----------------------------------
+            Solapas
+-----------------------------------*/
+
+
+#menu {
+  margin-left: 0px;
+  margin-top:10px;
+} 
+
+#menu div {
+  float:left;
+  background:url("../imagenes/menu_izq.gif") no-repeat left top;
+  padding:0 0 0 10px;
+} 
+
+#menu a {
+  display:block;
+  background:url("../imagenes/menu_der.gif") no-repeat right top;
+  padding:7px 15px 4px 4px;
+  text-decoration:none;
+  font-weight:bold;
+  font-family: Arial;
+  font-size: 11px;
+  text-align:left;
+  vertical-align: middle;
+  color:#000;
+  cursor:none;
+}
+
+#menu a:hover {
+  color:#333;
+  cursor:none;
+} 
+
+#menu .activo {
+  background-position:0 -150px;
+  border-width:0;
+  cursor:none;
+  
+} 
+
+#menu .activo a {
+  background-position:100% -150px;
+  padding-bottom:5px;
+  color:#333;
+  text-decoration:none;
+  font-weight:bold;
+  font-family: Arial;
+  font-size: 11px;
+  text-align:left;
+  vertical-align: middle;
+  color:#ffffff;
+  cursor:none;
+} 
+
+#menu div:hover, #menu div:hover a {
+  background-position:0% -150px;
+  color:#333;
+  cursor:none;
+} 
+
+#menu div:hover a {
+  background-position:100% -150px;
+  cursor:none;
+}
+
+
+
+
+
+
+/*----------------------------------
+   Solapas internas (aplicacion)
+-----------------------------------*/
+
+
+.solapa
+{
+      text-align: center;
+      text-decoration: none;
+      margin: 1;
+      float: left;
+      display: block;
+      background: url("../Imagenes/tabright5.gif") right top;
+      padding: 6px 6px 4px 6px;
+      color: #3D7EC7;
+      height: 20px;
+      font-weight: bold;
+      font-size: 8pt;
+      width: 85px;
+      font-family: Verdana, 'Microsoft Sans Serif';
+      
+}
+      
+.solapa:hover
+{
+      font-family: Verdana, 'Microsoft Sans Serif';
+      background-position: 100% -49px;
+      font-size: 8pt;
+      width: 85px;
+      color: #0B3D91;
+}
+
+
+.solapa_activo 
+{
+      background: url("../Imagenes/tabright5.gif") right top;
+      background-position: 100% -49px; 
+      color: #0b3d91; 
+      text-align: center;
+      text-decoration: none;
+      margin: 1;
+      float: left;
+      display: block;
+      padding: 6px 6px 4px 6px;
+      height: 20px;
+      font-weight: bold;
+      font-size: 8pt;
+      width: 85px;
+      font-family: Verdana, 'Microsoft Sans Serif';
+}
+
+/*-----------------------------
+            Fondos
+------------------------------*/
+
+.FondoClaro
+{
+	background-color: #D9E6F4;
+	/*width:100%;*/
+	border-right: #3D7EC7 1px solid;
+	border-top: #3D7EC7 1px solid;
+	border-left: #3D7EC7 1px solid;
+	border-bottom:#3D7EC7 1px solid;
+    
+	
+}
+.FondoOscuro
+{
+	background-color: #5993D2;
+	width:100%
+}
+.FondoBlanco
+{
+	background-color: #FFFFFF;
+	/*width:100%;*/
+	border-right: #3D7EC7 1px solid;
+	border-top: #3D7EC7 1px solid;
+	border-left: #3D7EC7 1px solid;
+	border-bottom:#3D7EC7 1px solid;
+	
+}
+.CajaMensaje
+{
+	background-color: #B9D1EC;
+	border-right: #2B63A2 1px double;
+	border-top: #2B63A2 1px double;
+	border-left: #2B63A2 1px double;
+	border-bottom:#2B63A2 1px double;
+}
+
+
+
+/*--------------------------------------
+            Div Redondeados
+----------------------------------------*/
+
+.fdo_constancia{
+	margin-top:30px;
+	text-align:center;
+	
+}
+
+.a1, .a2, .a3, .a4{font-size:1px; overflow:hidden; display:block; background-color:#74A5DA;}
+.a1 {height:1px; background:#ddd; margin:0 5px;background-color:#74A5DA;}
+.a2 {height:1px; background:#ddd; margin:0 3px;background-color:#74A5DA;}
+.a3 {height:1px; background:#ddd; margin:0 2px;background-color:#74A5DA;}
+.a4 {height:2px; background:#ddd; margin:0 1px;background-color:#74A5DA;}
+
+.acontent {
+	background:#74A5DA;
+	padding-left:5px; 
+	padding-right:5px; 
+	padding-top:5px; 
+	text-align:center;
+
+}
+
+
+
+
+/*---------------------------------
+               Grillas 
+----------------------------------*/
+
+.Grilla
+{
+	
+	border-right: #ffffff 1px solid;
+	border-top: #ffffff 1px solid;
+	border-left: #ffffff 1px solid;
+	border-bottom: #ffffff 1px solid;
+	
+	font-size: 8pt;
+	font-family:Arial, tahoma, helvetica;
+	
+	text-decoration: none;
+	color: #000000;
+	background-color: #EFF4FA;
+}
+.GrillaHead
+{
+	font-family:Arial, tahoma, helvetica;
+	color:#ffffff;
+	font-size: 8pt;
+	font-weight:bold;
+	background-color:#95B0DF;
+}
+.GrillaHead a
+{
+	font-family:Arial, tahoma, helvetica;
+	color:#fff;
+	font-size: 8pt;
+	text-decoration:none;
+}
+
+.GrillaHeadPanel
+{
+	border-style: none;
+    font-family: Arial, tahoma, helvetica;
+	    color: #ffffff;
+	    font-size: 8pt;
+	    background-color: #397BC4;
+	    font-weight: bold;
+	    text-decoration: none;
+	    vertical-align: middle;
+    margin-left: 0px;
+}
+.GrillaHeadPanel a
+{
+	font-family:Arial, tahoma, helvetica;
+	color:#fff;
+	font-size: 8pt;
+	text-decoration:none;
+}
+
+
+.GrillaBody
+{
+	color: #000000;
+	font-size:  8pt;
+	text-decoration: none;
+	background-color: #D9E6F4;
+	
+}
+
+.GrillaAternateItem
+{
+	background-color: #9FBFE3;
+	font-size: 8pt;
+		
+}
+.GrillaPiePagina
+{
+	font-family: Arial, tahoma, helvetica;
+	color: black;
+	vertical-align: middle;
+	font-size: 10px;
+	height: 18px;
+	background-color: #E9EEF8;
+	border: 1px solid #95B0DF;
+	padding: 2px 4px 2px 4px;
+	text-align: right;
+	margin-top: 2px;
+	margin-bottom: 3px;
+}
+
+
+/*---------------------------------
+         Mensajes 
+----------------------------------*/
+
+.lblMensajeConfirma
+{
+      padding-right: 2px;
+      padding-left: 2px;
+      font-size: 8pt;
+      color: green;
+      font-family: Arial;
+}
+
+
+
+
+/*---------------------------------
+         Paleta de Colores
+       (de claros a oscuros) 
+----------------------------------*/
+
+.color1
+{
+	color: #E9EEF8;
+}
+.color2
+{
+	color: #D2DEF2;
+}
+.color3
+{
+	color: #95B0DF;
+}
+.color4
+{
+	color: #7297D6;
+}
+.color5
+{
+	color: #4E7CCB;
+}
+.color6
+{
+	color: #3566B7;
+}
+.color7
+{
+	color: #2E579C;
+}
+.color8
+{
+	color: #25477E;
+}
+.color9
+{
+	color: #1E3966;
+}

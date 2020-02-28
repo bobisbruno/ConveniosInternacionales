@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar">
+      <s:element name="ModificaPais">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codPais" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="conConvenio" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificaPaisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraePaises">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="conConvenio" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraePaisesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraePaisesResult" type="tns:ArrayOfPais" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPais">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Pais" nillable="true" type="tns:Pais" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Pais">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Pais_PK" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Gentilicio" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ConConvenio" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Mercosur" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Disposed" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ModificaPaisSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificaPais" />
+  </wsdl:message>
+  <wsdl:message name="ModificaPaisSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificaPaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraePaisesSoapIn">
+    <wsdl:part name="parameters" element="tns:TraePaises" />
+  </wsdl:message>
+  <wsdl:message name="TraePaisesSoapOut">
+    <wsdl:part name="parameters" element="tns:TraePaisesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PaisWSSoap">
+    <wsdl:operation name="ModificaPais">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modifica pais (solo si tiene convenio o no)</wsdl:documentation>
+      <wsdl:input message="tns:ModificaPaisSoapIn" />
+      <wsdl:output message="tns:ModificaPaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraePaises">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de Pais</wsdl:documentation>
+      <wsdl:input message="tns:TraePaisesSoapIn" />
+      <wsdl:output message="tns:TraePaisesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaisWSSoap" type="tns:PaisWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ModificaPais">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ModificaPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePaises">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePaises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaisWSSoap12" type="tns:PaisWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ModificaPais">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ModificaPais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePaises">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePaises" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaisWS">
+    <wsdl:port name="PaisWSSoap" binding="tns:PaisWSSoap">
+      <soap:address location="http://10.86.30.215/Convenios_WS/PaisWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PaisWSSoap12" binding="tns:PaisWSSoap12">
+      <soap12:address location="http://10.86.30.215/Convenios_WS/PaisWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

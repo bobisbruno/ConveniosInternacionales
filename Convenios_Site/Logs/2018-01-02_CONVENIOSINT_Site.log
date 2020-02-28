@@ -1,0 +1,731 @@
+2018-01-02 09:45:42,133 [ID (null)] [23] ERROR global_asax - ID Error       : -1108230197
+Mensaje Error : La cadena de entrada no tiene el formato correcto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 729
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 09:54:23,082 [ID (null)] [32] ERROR global_asax - ID Error       : 1110467680
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 852
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 09:56:06,644 [ID (null)] [38] ERROR global_asax - ID Error       : -307220165
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 846
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 10:00:44,437 [ID (null)] [41] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (AI000001, 1, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:01:43,576 [ID (null)] [11] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:04:36,756 [ID (null)] [5] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:04:38,723 [ID (null)] [5] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:04:39,364 [ID (null)] [50] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:04:40,018 [ID (null)] [55] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:05:14,010 [ID (null)] [55] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:05:14,812 [ID (null)] [45] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:07:24,281 [ID (null)] [55] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 10:12:07,769 [ID (null)] [53] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+2018-01-02 10:19:51,256 [ID (null)] [79] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+2018-01-02 11:02:41,481 [ID (null)] [55] ERROR AltaProvisoria - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-02 11:02:55,228 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,295 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,360 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,597 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,666 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,738 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,804 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:55,868 [ID (null)] [55] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:02:56,900 [ID (null)] [55] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000007, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:03:43,521 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:43,616 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:43,735 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:43,975 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:44,076 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:44,212 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:44,343 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:03:44,439 [ID (null)] [47] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:04:07,903 [ID (null)] [47] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000008, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:05:41,880 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,035 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,304 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,506 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,661 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,784 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,882 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:05:42,989 [ID (null)] [49] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:06:53,018 [ID (null)] [49] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000009, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:08:36,782 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:36,839 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:36,893 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,033 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,093 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,151 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,199 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,252 [ID (null)] [61] ERROR InvocaArchivosWS - Void GrabarArchivoHost(System.String, System.String, System.String) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Data.SqlClient.SqlException: Procedure or function 'ActualizarEDocumento' expects parameter '@PreCuil', which was not supplied.
+   at DigitalizacionServicio.ActualizarEDocumentoV2(EDocumentoOriginal documento)
+   --- End of inner exception stack trace ---
+2018-01-02 11:08:37,258 [ID (null)] [61] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000010, 4, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:09:26,170 [ID (null)] [58] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000011, 4, 3).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:09:32,394 [ID (null)] [53] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000012, 4, 3).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:10:39,224 [ID (null)] [57] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000013, 3, 3).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:16:40,366 [ID (null)] [61] ERROR AltaProvisoria - Void SolicitudesProvisoriaMovimiento_Alta(System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoriaMovimiento], System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (JO000014, 3, 3).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 664
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudesProvisoriaMovimiento_Alta(List`1 iMovimientosSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-01-02 11:42:11,341 [ID (null)] [9] ERROR InvocaArchivosWS - Boolean ObtenerRutaArchivo(System.String, System.String, System.String ByRef) - Error:Documento no hallado en digiweb->DI000001610
+2018-01-02 12:20:43,621 [ID (null)] [9] ERROR ComprobanteTramite - ActoresWS.SolicitudProvisoria TraeSolicitudProvisoriaXNroSolicitudProvisoria(System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-02 12:20:47,692 [ID (null)] [6] ERROR global_asax - ID Error       : -1592765815
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1874
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 301
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:20:50,866 [ID (null)] [7] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-02 12:20:51,044 [ID (null)] [7] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-02 12:20:51,096 [ID (null)] [7] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2018-01-02 12:24:16,466 [ID (null)] [23] ERROR AltaProvisoria - Error : No se puede convertir un objeto de tipo 'System.Web.UI.WebControls.Image' al tipo 'System.Web.UI.WebControls.ImageButton'.
+2018-01-02 12:24:16,469 [ID (null)] [23] ERROR global_asax - ID Error       : -1505367100
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 688
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:25:45,070 [ID (null)] [29] ERROR AltaProvisoria - Error : Tipo no es DataColumn ni DataRelation para la tabla .
+2018-01-02 12:25:45,074 [ID (null)] [29] ERROR global_asax - ID Error       : 1029021703
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 688
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:25:48,986 [ID (null)] [22] ERROR AltaProvisoria - Error : Tipo no es DataColumn ni DataRelation para la tabla .
+2018-01-02 12:25:48,988 [ID (null)] [22] ERROR global_asax - ID Error       : 174030481
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 688
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:25:52,570 [ID (null)] [29] ERROR AltaProvisoria - Error : Tipo no es DataColumn ni DataRelation para la tabla .
+2018-01-02 12:25:52,570 [ID (null)] [29] ERROR global_asax - ID Error       : 479479725
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 688
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:25:53,554 [ID (null)] [21] ERROR AltaProvisoria - Error : Tipo no es DataColumn ni DataRelation para la tabla .
+2018-01-02 12:25:53,555 [ID (null)] [21] ERROR global_asax - ID Error       : -621073450
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 688
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:37:09,272 [ID (null)] [37] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 12:37:09,295 [ID (null)] [37] ERROR global_asax - ID Error       : -641781862
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 12:57:30,350 [ID (null)] [67] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 12:57:30,383 [ID (null)] [67] ERROR global_asax - ID Error       : -977029494
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 13:04:04,690 [ID (null)] [62] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 13:04:04,693 [ID (null)] [62] ERROR global_asax - ID Error       : -1720804458
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 13:04:11,951 [ID (null)] [67] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 13:04:11,952 [ID (null)] [67] ERROR global_asax - ID Error       : 1505205152
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 13:04:21,500 [ID (null)] [61] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 13:04:21,502 [ID (null)] [61] ERROR global_asax - ID Error       : 1475869989
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 13:05:00,774 [ID (null)] [68] ERROR Paginas_ConsultaTProvisorios - Error : El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+2018-01-02 13:05:00,776 [ID (null)] [68] ERROR global_asax - ID Error       : 481313013
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en Paginas_ConsultaTProvisorios.dgMovimientos_RowDataBound(Object sender, GridViewRowEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 441
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en Paginas_ConsultaTProvisorios.RowCommand(Object sender, GridViewCommandEventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 378
+   en System.Web.UI.WebControls.GridView.OnRowCommand(GridViewCommandEventArgs e)
+   en System.Web.UI.WebControls.GridView.HandleEvent(EventArgs e, Boolean causesValidation, String validationGroup)
+   en System.Web.UI.WebControls.GridView.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.GridViewRow.OnBubbleEvent(Object source, EventArgs e)
+   en System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   en System.Web.UI.WebControls.ImageButton.OnCommand(CommandEventArgs e)
+   en System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.ImageButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-02 13:12:00,193 [ID (null)] [70] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-02 13:12:00,335 [ID (null)] [70] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-02 13:39:27,155 [ID (null)] [60] ERROR global_asax - ID Error       : 1289624813
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx(10): error CS0433: El tipo 'ASP.controles_barranav_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_sgdhbhud.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_kopimj44.dll'
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2018-01-02 13:39:34,980 [ID (null)] [47] ERROR global_asax - ID Error       : 1005476347
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx(10): error CS0433: El tipo 'ASP.controles_barranav_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_sgdhbhud.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_kopimj44.dll'
+Stack     :    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2018-01-02 13:42:56,383 [ID (null)] [62] ERROR global_asax - ID Error       : -2085531248
+Mensaje Error : El archivo '/Convenios_Site/Paginas/AMBeneficiario.aspx' no existe.
+Stack     :    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

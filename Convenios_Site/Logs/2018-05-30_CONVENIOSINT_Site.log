@@ -1,0 +1,70 @@
+2018-05-30 12:25:42,061 [ID (null)] [12] ERROR MasterPage - No se pudo encontrar el archivo 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'.
+System.IO.FileNotFoundException: No se pudo encontrar el archivo 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'.
+Nombre de archivo: 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'
+   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   en System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   en System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   en System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   en System.Xml.XmlTextReaderImpl..ctor(String uriStr, XmlReaderSettings settings, XmlParserContext context, XmlResolver uriResolver)
+   en System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   en System.Xml.XmlReader.Create(String inputUri, XmlReaderSettings settings, XmlParserContext inputContext)
+   en System.Xml.Linq.XElement.Load(String uri, LoadOptions options)
+   en System.Xml.Linq.XElement.Load(String uri)
+   en MasterPageBase.LeerWebSiteMap() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\Menu\MasterPageBase.cs:línea 162
+   en MasterPageBase.ObtenerMenu() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\Menu\MasterPageBase.cs:línea 259
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 130
+2018-05-30 12:25:59,908 [ID (null)] [12] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, Int32) ---> System.Data.SqlClient.SqlException: Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: Named Pipes Provider, error: 40 - No se pudo abrir una conexión con SQL Server) ---> System.ComponentModel.Win32Exception: No se ha encontrado la ruta de acceso de la red
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   en System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.GetNewOpenConnection()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.GetOpenConnection(Boolean disposeInnerConnection)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteReader(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, Int32 plazoDiasCaducidad) en C:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 881
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, Int32 diasPlazoCaducidad)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2018-05-30 12:26:20,096 [ID (null)] [11] ERROR global_asax - ID Error       : -529603063
+Mensaje Error : El servidor no puede eliminar encabezados después de enviar los encabezados HTTP.
+Stack     :    en System.Web.HttpResponse.ClearHeaders()
+   en System.Web.Handlers.ScriptModule.HttpResponse_Redirecting(Object sender, EventArgs e)
+   en System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   en System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   en Paginas_Main.verProvisorios_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 290
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-05-30 12:26:20,623 [ID (null)] [10] ERROR MasterPage - No se pudo encontrar el archivo 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'.
+System.IO.FileNotFoundException: No se pudo encontrar el archivo 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'.
+Nombre de archivo: 'C:\Desarrollos\ConveniosInternacionales\Convenios_Site\Web.sitemap'
+   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   en System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   en System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   en System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   en System.Xml.XmlTextReaderImpl..ctor(String uriStr, XmlReaderSettings settings, XmlParserContext context, XmlResolver uriResolver)
+   en System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   en System.Xml.XmlReader.Create(String inputUri, XmlReaderSettings settings, XmlParserContext inputContext)
+   en System.Xml.Linq.XElement.Load(String uri, LoadOptions options)
+   en System.Xml.Linq.XElement.Load(String uri)
+   en MasterPageBase.LeerWebSiteMap() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\Menu\MasterPageBase.cs:línea 162
+   en MasterPageBase.ObtenerMenu() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\Menu\MasterPageBase.cs:línea 259
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 130

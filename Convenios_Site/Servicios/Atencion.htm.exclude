@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tablero PIP ULADE Puntos de Control</title>
+    <link href="../App_Themes/Estilos/Anses.css" type="text/css" rel="Stylesheet" />
+</head>
+<body>
+  <center>
+    <div  style="width:95%; height:95%; margin-top:20px" class="FondoClaro"  >
+        <h4 class="TituloServicio">
+            &nbsp;Tablero PIP ULADE Puntos de Control</h4>
+        <div style="margin-bottom: 0px; width: 100%; text-align: center; padding: 20px 10px 10px 10px">
+            <p style="text-align: center">
+                <img src="../App_Themes/Imagenes/atencion_gde.gif" alt="En mantenimiento" width="40"
+                    height="40" class="TextoNegroBoldCENTER" /></p>
+            <p style="text-align: center" class="TextoNegroBoldCENTER">
+                <span>ATENCION</span><br />
+            </p>
+            <p style="text-align: center">
+                <span class="TextoNegroCENTER">En este momento nos encontramos realizando tareas&nbsp;de
+                    mantenimiento.</span> <span></span>
+            </p>
+            <p style="text-align: center">
+                <span class="TextoNegroCENTER">Por favor, cierre su navegador,&nbsp;aguarde algunos minutos y reingrese
+                    al sistema.</span> <span></span>
+            </p>
+            <div style="text-align: center">
+                <input class="Botones" id="ctl00_cphMaster_btnBorrar" style="width: 100px" type="button"
+                    value="Inicio" onclick="location.href = '../TCIndex.aspx'" />
+            </div>
+        </div>
+    </div>
+    </center>
+</body>
+</html>

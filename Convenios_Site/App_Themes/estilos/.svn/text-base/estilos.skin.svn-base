@@ -1,0 +1,66 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<%-- Label --%>
+<asp:Label CssClass="TextoBold"  runat="server"></asp:Label> 
+<asp:Label CssClass="Titulos" SkinID="Titulos" runat="server"></asp:Label> 
+<%-- CheckBox --%>
+<asp:CheckBox CssClass="textbox" runat="server"></asp:CheckBox>
+<%-- DropDownList --%>
+<asp:DropDownList CssClass="comboBox" runat="server"></asp:DropDownList>
+<%-- TextBox --%>
+<asp:TextBox CssClass="textbox" runat="server"></asp:TextBox> 
+<asp:TextBox SkinID="dia" CssClass="textbox" runat="server" Width="40px"></asp:TextBox>
+<asp:TextBox SkinID="mes" CssClass="textbox" runat="server" Width="40px"></asp:TextBox>
+<asp:TextBox SkinID="ano" CssClass="textbox" runat="server" Width="73px"></asp:TextBox>
+<asp:TextBox SkinID="pre" CssClass="textbox" runat="server" Width="32px" ></asp:TextBox>
+<asp:TextBox SkinID="dni" CssClass="textbox" runat="server" Width="90px"></asp:TextBox>
+<asp:TextBox SkinID="dig" CssClass="textbox" runat="server" Width="32px"></asp:TextBox>
+<%-- Menu --%>
+<%--  <asp:Menu runat="server" Orientation="Horizontal" BackColor="#C8E0A1" 
+    DynamicHorizontalOffset="2" 
+    Font-Names="Verdana" 
+    Font-Size="13px" 
+    ForeColor="#284E98" 
+    StaticSubMenuIndent="10px" >
+    <StaticSelectedStyle BackColor="#bfe2f3" />
+    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+    <StaticHoverStyle BackColor="#bfe2f3" />        
+    <StaticMenuStyle />        
+    <DynamicHoverStyle BackColor="#bfe2f3" ForeColor="#034769" />
+    <DynamicMenuStyle BackColor="#aad5ee" />
+    <DynamicSelectedStyle BackColor="#bfe2f3" />
+    <DynamicMenuItemStyle  HorizontalPadding="5px" VerticalPadding="2px">
+    </DynamicMenuItemStyle>
+ </asp:Menu>--%>
+ <asp:Menu  runat="server"  Orientation="Horizontal" CssClass="MenuNet" 
+    DynamicHorizontalOffset="2" 
+    StaticSubMenuIndent="10px">
+        <StaticSelectedStyle CssClass="MenufondoDesplegable"/>
+        <StaticMenuItemStyle CssClass="MenuEspacios"/>
+        <DynamicHoverStyle CssClass="MenufondoDesplegable" ForeColor="#034769" />
+        <DynamicMenuStyle BackColor="#aad5ee" />
+        <DynamicSelectedStyle CssClass="MenufondoDesplegable"/>
+        <DynamicMenuItemStyle CssClass="MenuEspacios"></DynamicMenuItemStyle>
+        </asp:Menu>
+    
+
+<%-- grilla Estatica --%>
+<asp:GridView runat="server" AutoGenerateColumns="False" 
+    ToolTip="Selecciona uno al hacer click en la flecha."
+    CssClass="Grilla" >    
+    <AlternatingRowStyle CssClass="GrillaAternateItem" />
+    <HeaderStyle CssClass="GrillaHead" />
+</asp:GridView>

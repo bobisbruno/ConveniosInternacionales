@@ -1,0 +1,13 @@
+2018-01-10 14:57:59,407 [ID (null)] [9] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:00:15,932 [ID (null)] [14] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:02:27,396 [ID (null)] [19] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:04:01,318 [ID (null)] [25] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:06:41,561 [ID (null)] [9] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:07:00,251 [ID (null)] [8] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:12:51,004 [ID (null)] [7] ERROR AltaRapida - La cadena de entrada no tiene el formato correcto.
+2018-01-10 15:38:55,850 [ID (null)] [49] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-10 15:38:56,722 [ID (null)] [49] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-10 15:38:56,790 [ID (null)] [49] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.

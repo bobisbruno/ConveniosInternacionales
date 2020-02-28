@@ -1,0 +1,444 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="true" CodeFile="AltaRapida.aspx.cs" Inherits="AltaRapida" Title="Alta trámite por convenio"   Culture="Auto" UICulture="Auto"%>
+<%@ Register Src="~/Controles/Mensaje.ascx" TagName="Mensaje" TagPrefix="uc1" %>
+<%@ Register Src="~/Controles/MValidacion.ascx" TagName="MensajeCons" TagPrefix="uc" %>
+<%@ Register Src="../Controles/MensajeError2.ascx" TagName="MError2" TagPrefix="uc3" %>
+<%@ Register Src="~/Controles/barraNav.ascx" TagName="BNav" TagPrefix="uc4" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ MasterType VirtualPath="~/MasterPage/MasterPage.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <meta http-equiv="Pragma" content="no-clase">
+    <meta http-equiv="Expires" content="-1">
+ </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <uc4:BNav id="BNav" runat="Server"/>
+    <uc3:MError2 ID="MError" runat="server" />
+    <asp:HiddenField ID="HFidBeneficiario" Value="" runat="server" />
+                <div class="FondoBlanco">
+    <div style="margin: 10px">
+    <h1>
+        <asp:Label ID="LblTituloPagina" runat="server" Text=""></asp:Label>
+        </h1>
+        <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; align-content:center">
+            <table width="90%">
+                <tr><td align="center">
+                    <table width="400px">
+                <tr>
+                    <td style=" width:30%; text-align:right; vertical-align:middle; height:30px; color:gray; padding-right:20px">
+                        <asp:DropDownList runat="server" ID="ddlSelectorBusqueda" RepeatDirection="Vertical"
+                            Font-Size="10" ForeColor="Gray" Width="160px"  CssClass="CajaTexto" TabIndex="1" AutoPostBack="true" OnSelectedIndexChanged="ddlSelectorBusqueda_SelectedIndexChanged">
+                            <asp:ListItem Text="CUIT - CUIL" Value="0" Selected="True"/>
+                            <asp:ListItem Text="Documento" Value="1"/>
+                            <asp:ListItem Text="Nombre y Apellido" Value="2" />
+                        </asp:DropDownList>
+                    </td>
+                    <td style=" width:50%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <div id="dvBuscaCuip" runat="server">
+                        <asp:TextBox ID="txtCuilADP" runat="server"   Width="100px" CssClass="CajaTexto" MaxLength="11" TabIndex="2"/>
+                        <cc1:TextBoxWatermarkExtender ID="twetxtCuilADP" WatermarkText="CUIL-T" runat="server" TargetControlID="txtCuilADP" WatermarkCssClass="watermarked" ></cc1:TextBoxWatermarkExtender>
+                        <asp:RequiredFieldValidator ID="rfvtxtCuilADP" Display="None" ValidationGroup="buscaDocADP" ControlToValidate="txtCuilADP" runat="server" ErrorMessage="Debe ingresar un CUIT/CUIL válido."></asp:RequiredFieldValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtCuilADP" runat="server" TargetControlID="rfvtxtCuilADP"></cc1:ValidatorCalloutExtender>
+                        <asp:RegularExpressionValidator ID="revtxtCuilADP" runat="server" ControlToValidate="txtCuilADP" Display="None" ValidationExpression="^[0-9]{1,11}?$" ErrorMessage="Solo ingresar 11 dígitos enteros" ValidationGroup="buscaDocADP"></asp:RegularExpressionValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerevtxtCuilADP" runat="server" TargetControlID="revtxtCuilADP"></cc1:ValidatorCalloutExtender>
+                        </div>
+                    <div id="dvBuscaDoc" runat="server">
+                        <asp:TextBox ID="txtDocADP" runat="server"   Width="100px" CssClass="CajaTexto" MaxLength="8" TabIndex="3"/>
+                        <cc1:TextBoxWatermarkExtender ID="twetxtDocADP" WatermarkText="Documento" runat="server" TargetControlID="txtDocADP" WatermarkCssClass="watermarked" ></cc1:TextBoxWatermarkExtender>
+                        <asp:RequiredFieldValidator ID="rfvtxtDocADP" Display="None" ValidationGroup="buscaDocADP" ControlToValidate="txtDocADP" runat="server" ErrorMessage="Debe ingresar documento válido."></asp:RequiredFieldValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtDocADP" runat="server" TargetControlID="rfvtxtDocADP"></cc1:ValidatorCalloutExtender>
+                        <asp:RegularExpressionValidator ID="revtxtDocADP" runat="server" ControlToValidate="txtDocADP" Display="None" ValidationExpression="^[0-9]{1,8}?$" ErrorMessage="Solo ingresar 8 dígitos enteros" ValidationGroup="buscaDocADP"></asp:RegularExpressionValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerevtxtDocADP" runat="server" TargetControlID="revtxtDocADP"></cc1:ValidatorCalloutExtender>
+                    </div>
+                    <div id="dvBuscaApeYNom" runat="server">
+                        <asp:TextBox ID="txtApellidoyNombreAdp" runat="server"   Width="200px" CssClass="CajaTexto" MaxLength="20" TabIndex="4"/>
+                        <cc1:TextBoxWatermarkExtender ID="twetxtApellidoyNombre" WatermarkText="Apellido y Nombre" runat="server" TargetControlID="txtApellidoyNombreAdp" WatermarkCssClass="watermarked" ></cc1:TextBoxWatermarkExtender>
+                        <asp:RequiredFieldValidator ID="rfvtxtApellidoyNombreAdp" Display="None" ValidationGroup="buscaDocADP" ControlToValidate="txtApellidoyNombreAdp" runat="server" ErrorMessage="Debe ingresar Nombre y Apellido."></asp:RequiredFieldValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtApellidoyNombreAdp" runat="server" TargetControlID="rfvtxtApellidoyNombre"></cc1:ValidatorCalloutExtender>
+                    </div>
+                </td>
+                    <td style=" width:20%; text-align:left; vertical-align:middle; color:gray; padding-left:20px">
+                        <asp:Button ID="iBtnBusqADP" runat="server" TabIndex="5" CausesValidation="true" ValidationGroup="buscaDocADP" OnClick="btnIngDocCuip_Click" Text="Buscar persona" CssClass="Botones" AlternateText="Busqueda de persona."  Width="110px" Height="21px" />
+                    </td>
+                </tr>
+                </table>
+                    </td></tr>
+            </table>
+            
+            </div>
+        <br />
+        <div id="dvDatosSolicitante" runat="server">
+            <h4>Datos personales</h4>
+            <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px">
+            <div style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <table>
+                <tr>
+                <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Apellido y Nombre:</td>
+                <td style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:Label ID="lbApeNomB" runat="server"   Width="200px"/>
+                </td>
+                        <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Documento:
+                </td>
+                <td style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:HiddenField ID="hfCodCocumento" runat="server" />
+                    <asp:HiddenField ID="hfCodPaisDoc" runat="server" />
+                    <asp:Label ID="lbDocB" runat="server" Width="150px"></asp:Label>
+                    </td>
+                </tr>
+                    <tr>
+                    <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                CUIT/CUIL:
+                </td>
+                <td style=" text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbCuitCuilB" runat="server" Width="200px"></asp:Label>
+                    </td>
+                    <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Fecha nacimiento:
+                </td>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbFnacimientoB" runat="server" Width="120px"></asp:Label>
+                    </td>
+                </tr>
+                    <tr>
+                    <td style=" text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Nacionalidad:
+                </td>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbNacionalidad" runat="server" Width="200px"></asp:Label>
+                    </td>
+                
+                    <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Sexo:
+                </td>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbSexoB" runat="server" Width="200px"></asp:Label>
+                    </td>
+                </tr>
+                    <tr>
+                    <td style=" width:30%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Domicilio:
+                </td>
+                <td colspan="3" style=" width:70%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbDomicilioB" runat="server" Width="400px"></asp:Label>
+                    </td>
+                </tr>
+                    
+                    <tr>
+                    <td style=" width:30%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Domicilio extranjero:
+                </td>
+                <td colspan="3" style=" width:70%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:Label ID="lbDomicilioExtB" runat="server" Width="400px"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                <td style=" width:30%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Código SIACI :</td>
+                <td style=" width:30%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:TextBox ID="txtCodigoSiaciB" runat="server"   Width="100px" CssClass="CajaTexto" TabIndex="3"/></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+            <h4>Datos del convenio</h4>
+            <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px">
+            <div style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <table width="98%">
+                <tr>
+                <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Prestación:</td>
+                <td  style="  width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:DropDownList ID="ddlPrestacionesS" runat="server" AutoPostBack="True" TabIndex="8" DataTextField="Descripcion"  DataValueField="Cod_Prestacion" Width="200px" OnSelectedIndexChanged="ddlPrestacionesS_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:RequiredFieldValidator id="rfvddlPrestacionesS" InitialValue="0" ControlToValidate="ddlPrestacionesS" ErrorMessage="Seleccione prestación." Display="None" runat="server" ValidationGroup="vgdatos"/>
+                    <cc1:ValidatorCalloutExtender ID="vcerfvddlPrestacionesS" runat="server" TargetControlID="rfvddlPrestacionesS"></cc1:ValidatorCalloutExtender>
+                </td>
+                <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">País de convenio:</td>
+                <td style="  width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:DropDownList ID="ddlPaisS" runat="server" AutoPostBack="True" TabIndex="9" DataTextField="Descripcion"  DataValueField="Pais_PK" Width="150px" OnSelectedIndexChanged="ddlPaisS_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:RequiredFieldValidator id="rfvddlPaisS" InitialValue="0" ControlToValidate="ddlPaisS" ErrorMessage="Seleccione pais." Display="None" runat="server" ValidationGroup="vgdatos"/>
+                    <cc1:ValidatorCalloutExtender ID="vcerfvddlPaisS" runat="server" TargetControlID="rfvddlPaisS"></cc1:ValidatorCalloutExtender>
+                </td>
+                </tr>
+                    <tr>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Ubicación de referencia:</td>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:TextBox ID="txtUbicFisicaS" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="200px" CssClass="CajaTexto" TabIndex="10" MaxLength="50" ></asp:TextBox></td>
+                 <td colspan="2" style=" text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:CheckBox ID="chkMercosurS" runat="server" AutoPostBack="false" Checked="false" TabIndex="11" Text="Mercosur" TextAlign="Left"/>
+                </td>
+                </tr>
+                <tr>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Fecha de ingreso petición:
+                </td>
+                <td colspan="3" style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:TextBox ID="txtFechaIngSolicitud" runat="server"   width="100px" CssClass="CajaTexto" TabIndex="12" MaxLength="12" ></asp:TextBox>
+                    &nbsp;<small style=" color:Red">(DD/MM/AAAA)</small>
+                        <asp:RequiredFieldValidator ID="rfvtxtFechaIngSolicitud" InitialValue="0" ControlToValidate="txtFechaIngSolicitud" ErrorMessage="Ingresar fecha de solicitud" Display="None" runat="server" ValidationGroup="vgdatos"/>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtFechaIngSolicitud" runat="server" TargetControlID="rfvtxtFechaIngSolicitud"></cc1:ValidatorCalloutExtender>
+                        <asp:RangeValidator ID="rvtxtFechaIngSolicitud" runat="server" Type="Date" ControlToValidate="txtFechaIngSolicitud" ErrorMessage="Fecha no válida. (ingresar desde un año a la fecha)" Display="None" ValidationGroup="vgdatos"/>
+                        <cc1:ValidatorCalloutExtender ID="vcervtxtFechaIngSolicitud" runat="server" TargetControlID="rvtxtFechaIngSolicitud"></cc1:ValidatorCalloutExtender>
+                </td>
+                </tr>
+                <tr>
+                <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Referencia:
+                </td>
+                <td colspan="3" style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:TextBox ID="txtRefExteriorS" runat="server"  TextMode="MultiLine" Height="25px" Width="98%" CssClass="CajaTexto" TabIndex="13" MaxLength="500" ></asp:TextBox>
+                </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                Observaciónes:</td>
+                <td colspan="3" style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                <asp:TextBox ID="txtObservacionS" runat="server" TextMode="MultiLine" Height="25px" Width="98%" CssClass="CajaTexto" TabIndex="14" MaxLength="500"></asp:TextBox></td></tr>
+                </table>
+                <!--Datos Movimiento-->
+            <table width="98%">
+                <tr>
+                <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                                Estado:</td>
+                    <td  style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                    <asp:DropDownList ID="ddlEstado" runat="server" AutoPostBack="true" TabIndex="16" Width="200px" OnSelectedIndexChanged="ddlEstadoSelectedIndexCh"></asp:DropDownList>
+                                </td>
+                    <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                        Sector:</td>
+                    <td  style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                        <asp:DropDownList ID="ddlSector" runat="server" AutoPostBack="true" TabIndex="17" Width="200px" OnSelectedIndexChanged="ddlSectorSelectedIndexCh"></asp:DropDownList>            
+                </td>
+                </tr></table>
+            <!--FIN Datos Movimiento-->
+            </div></div>
+            <!--OtrosDatos-->
+            <div id="dvOtrosDatos" runat="server" visible="false">
+            <h4>Documentación</h4>            
+            <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px">
+            <div  style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <table width="98%">
+                    <tr>
+                        <td  style=" width:100%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">            
+                        <asp:DropDownList ID="ddlTipoMovimiento" runat="server" TabIndex="9" Width="300px" OnSelectedIndexChanged="ddlTipoMovimiento_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:ListItem Value="0" Text="[Seleccionar tipo de Movimiento]" Selected="True"> </asp:ListItem>
+                            <asp:ListItem Value="1" Text="Ingreso de documentacion"> </asp:ListItem>
+                            <asp:ListItem Value="2" Text="Devolucion de documentacion"> </asp:ListItem>
+                        </asp:DropDownList>
+                    <asp:RequiredFieldValidator id="rfvddlTipoMovimiento" InitialValue="0" ControlToValidate="ddlTipoMovimiento" ErrorMessage="Seleccionar tipo de movimiento." Display="None" runat="server" ValidationGroup="vgdatos"/>
+                    <cc1:ValidatorCalloutExtender ID="vcerfvddlTipoMovimiento" runat="server" TargetControlID="rfvddlTipoMovimiento"></cc1:ValidatorCalloutExtender>
+                        </td></tr></table></div>
+            <div id="dvParametrosDocumentacion" runat="server" visible="false" style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <div id="dvParametrosIngreso" runat="server">
+                <table width="98%">
+                <tr>
+                <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Ingreso vía:</td>
+                    <td  style=" width:85%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">            
+                    <asp:DropDownList ID="ddlTipoIngreso" runat="server" AutoPostBack="true" TabIndex="20" Width="150px"></asp:DropDownList></td></tr>
+                    </table>
+                    </div>
+                <div id="dvParametrosDevolucion" runat="server">
+                                <table width="98%">
+                                                    <tr>
+                                                        <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Destino:</td>
+                                                    <td  style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:TextBox ID="txtDestino" MaxLength="100"  runat="server"   Width="150px" CssClass="CajaTexto" TabIndex="25"/></td>
+                                                    <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Certificado:</td>
+                                                    <td  style=" width:35%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:TextBox ID="txtCertificado" MaxLength="50"  runat="server"   Width="150px" CssClass="CajaTexto" TabIndex="26"/></td>
+                                                    </tr>
+                                                    </table>
+                                </div>
+                
+                <table width="98%">
+                    <tr>
+                        <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                            1.Selección de documentación
+                            </td>
+                        <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px" colspan="2">
+                            <asp:DropDownList ID="ddlTipoDocumentacion" runat="server" TabIndex="10" Width="300px" DataValueField="CodTipoDocumentacion" DataTextField="Descripcion">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator id="rfvddlTipoDocumentacion" InitialValue="0" ControlToValidate="ddlTipoDocumentacion" ErrorMessage="Seleccionar documentación de ingreso o egreso." Display="None" runat="server" ValidationGroup="valAddDocumento"/>
+                            <cc1:ValidatorCalloutExtender ID="vcerfvddlTipoDocumentacion" runat="server" TargetControlID="rfvddlTipoDocumentacion"></cc1:ValidatorCalloutExtender>&nbsp;<small style=" color:Red">(*)</small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                            2.Observaciónes</td>
+                        <td style="text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px" colspan="2">
+                            <asp:TextBox ID="txtDatosDocumentacion" runat="server"  TextMode="SingleLine" Width="98%" CssClass="CajaTexto" MaxLength="20" TabIndex="11"></asp:TextBox>
+                            </td></tr>
+                    <tr>
+                        <td style=" width:15%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                            3.Archivo-s</td>
+                        <td style=" width:55%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                        <asp:FileUpload ID="IpFile" runat="server"  AllowMultiple="true"  TabIndex="12"/>
+                            <b style=" color:gray;font-size:smaller">Válidos:PDF - GIF - JPEG - BMP - TIFF - PNG</b>
+                                    </td>
+                        <td style=" width:30%; text-align:right; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                            <asp:Button ID="btnAdd"  runat="server" Text="Agregar documentación" Width="120px" OnClick="btnAdd_Click" CssClass="Botones" Height="18px" TabIndex="13" CausesValidation ="true" ValidationGroup="valAddDocumento" />
+                            &nbsp;&nbsp;<asp:Button runat="server" id="btnClear" style="width: 100px" CssClass="Botones" Text="Quitar todos" Height="18px" OnClick="btnClear_Click" TabIndex="16"  />
+                            </td>
+                    </tr>
+                    </table>
+                
+                <table width="98%">
+                    <tr>
+                        <td style="text-align:center; vertical-align:top; padding-top:5px;padding-bottom:5px">
+                                <asp:TextBox ID="txtValidaDxocumentacion" runat="server" BackColor="Transparent" Enabled="false" BorderColor="Transparent" Text="" Width="0px" Height="0px"></asp:TextBox>
+                                <asp:CustomValidator ID="cvValidaDocumentacion" ControlToValidate="txtValidaDxocumentacion" runat="server" OnServerValidate="validaDocumentacion" Display="None" ErrorMessage = "De debe registrar documentación de ingreso para el trámite." ValidationGroup="vgdatos"  SetFocusOnError="true"  ValidateEmptyText="true" ></asp:CustomValidator>
+                                <cc1:ValidatorCalloutExtender id="vcecvValidaDocumentacion" runat="server" TargetControlID="cvValidaDocumentacion" Width="400px"></cc1:ValidatorCalloutExtender>
+                            <asp:Gridview ID="dgArchivos" runat="server" AutoGenerateColumns="False" EmptyDataText="No se registra documentación para este trámite."  EmptyDataRowStyle-CssClass="GrillaAternateItem"
+                            Width="98%" Height="50px" Visible="true" CssClass="GrillaAternateItem" HorizontalAlign="Center" OnRowCommand="RowCommand" TabIndex="14"  >
+                                                <Columns>
+                                                    <asp:BoundField  HeaderText="Documentación" DataField="TipoDocumentacion" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                                                    <asp:BoundField HeaderText="Archivo-s" DataField="ArchivosDigitalizados" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                                                    <asp:BoundField HeaderText="Tamaño" DataField="Tamano" ItemStyle-Width="20%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                                                    <asp:BoundField HeaderText="Descripción" DataField="Comentario" ItemStyle-Width="30%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                                                    <asp:TemplateField HeaderText="Quitar documentación" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="imgbtnQuitar" runat="server"  Height="15px" Width="15px" CommandName="QuitarDoc"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" AlternateText="Quitar documentacion de la lista" ImageUrl="~/App_Themes/Imagenes/Borrar.gif" TabIndex="15"></asp:ImageButton>
+                                                        </ItemTemplate>
+                                                        <HeaderStyle HorizontalAlign="Center" Width="10%"></HeaderStyle>
+                                                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                    </asp:Gridview>   
+                            </td></tr></table>
+            </div></div>
+            <h4>Presentaciónes previas</h4>
+            <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px">
+            <div style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <table width="98%">
+                <tr>
+                    <td style=" width:20%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">Nro. trámite provisorio:</td>
+                    <td  style=" width:30%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                        <asp:TextBox ID="txtTrProvisorio" MaxLength="8"  runat="server"   Width="100px" CssClass="CajaTexto" TabIndex="25"/>
+                        <asp:RequiredFieldValidator ID="rfvtxtTrProvisorio" ControlToValidate="txtTrProvisorio" ErrorMessage="Ingresar nro. de trámite previo" Display="None" runat="server" ValidationGroup="vgtrProvisorio"/>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtTrProvisorio" runat="server" TargetControlID="rfvtxtTrProvisorio"></cc1:ValidatorCalloutExtender>
+                    </td>
+                    <td  style=" width:50%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:Button  ID="btnIngresoProvisorio" Text="Ingresar" runat="server" CssClass="Botones" Width="100px" Height="21px" onclick="btnIngresoProvisorio_Click" TabIndex="31" /></td>
+                    </tr>
+                    <tr><td colspan="3" style=" text-align:center; vertical-align:top; padding-top:5px;padding-bottom:5px">
+                                        <asp:GridView runat = "server" ID="dvTramProvisorios" EmptyDataText="No se registra documentación para este trámite."  EmptyDataRowStyle-CssClass="GrillaAternateItem"
+                            Width="98%" Height="50px" Visible="true" CssClass="GrillaAternateItem" HorizontalAlign="Center" OnRowCommand="RowCommand">                                                <Columns>
+                                                    <asp:BoundField DataField = "Nro_SolicitudProvisoria" HeaderText = "Nro trámite"  SortExpression="Nro_SolicitudProvisoria">
+                                                        <ItemStyle HorizontalAlign="Center" Width="5%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField = "Desc_Prestacion" HeaderText = "Trámite" SortExpression="Desc_Prestacion">
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField = "Desc_Pais" HeaderText = "País"   SortExpression="Desc_Pais">
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                        <asp:BoundField DataField = "FAltaProvisoria" HeaderText = "Alta" >
+                                                        <ItemStyle HorizontalAlign="Center" Width="5%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField = "Referencia_Provisoria"  HeaderText = "Referencia" >
+                                                        <ItemStyle HorizontalAlign="Left" Width="28%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField = "IngresaDevuelve" HeaderText = "Ingresa / Devuelve" >
+                                                        <ItemStyle HorizontalAlign="Center" Width="7%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField = "DocumentosIngresados"  HeaderText = "Documentos" >
+                                                        <ItemStyle HorizontalAlign="Center" Width="6%"></ItemStyle>
+                                                    </asp:BoundField>
+                                                        <asp:TemplateField HeaderText="Quitar trámite" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="imgbtnQuitartr" runat="server"  Height="15px" Width="15px" CommandName="QuitarTramite"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" AlternateText="Quitar trámite provisorio de la lista" ImageUrl="~/App_Themes/Imagenes/Borrar.gif" TabIndex="15"></asp:ImageButton>
+                                                        </ItemTemplate>
+                                                        <HeaderStyle HorizontalAlign="Center" Width="10%"></HeaderStyle>
+                                                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                </asp:GridView>
+                                    </td>
+                                </tr>
+                </table>
+            </div></div>
+                </div>
+            <!--FIN OtrosDatos-->
+            </div>
+            </div></div>
+    <!-- Botones-->
+    <div style="margin-bottom:5px; width:95%; padding-top:5px">
+    <table width="100%">
+    <tr>
+    <td align="center">
+    <asp:Button   ID="btnGuardar" Text="Guardar" runat="server" CssClass="Botones" Width="100px" Height="21px" onclick="btnGuardar_Click" TabIndex="30" CausesValidation="true" ValidationGroup="vgdatos"/>&nbsp;
+    <asp:Button  ID="btnAnular" Text="Anular" runat="server" CssClass="Botones" Width="100px" Height="21px" onclick="btnAnular_Click" TabIndex="31" />&nbsp;
+    <asp:Button   ID="btnRegresar" Text="Regresar" runat="server" CssClass="Botones" Width="100px" Height="21px" onclick="btnRegresar_Click" TabIndex="32"/>&nbsp;
+    </td>
+    </tr>
+    </table>
+    </div>
+    <!-- FIN Botones-->
+    <uc1:Mensaje ID="mensaje" runat="server" /> 
+    <!-- Pop up personas adp -->
+     <cc1:ModalPopupExtender ID="mpeSelPersona" runat="server" PopupDragHandleControlID="divDetalleTabla" DropShadow="true" BackgroundCssClass="modalBackground" TargetControlID="btnShowPopupSelPersona"
+                        PopupControlID="divSelPersona" CancelControlID="imgCerrarDatosSelPersona">
+                    </cc1:ModalPopupExtender>
+     <asp:Button ID="btnShowPopupSelPersona" runat="server" Style="display: none" />
+     <div style="position: relative">
+                        <div style="position: fixed; top: 0px; left: 0px;">
+                            <div id="divSelPersona" class="FondoClaro" style="width: 1000px; display:none" align="center">
+                                <div class="FondoOscuro" style="float: left; padding: 5px 0px 5px 0px; text-align: left; width:100%"title="titulo">
+                                    <span class="TextoBlancoBold" style="float: left; margin-left: 10px">Selección de persona</span>
+                                    <img id="imgCerrarDatosSelPersona" alt="Cerrar ventana" src="../App_Themes/Imagenes/Error_chico.gif"
+                                        style="cursor: hand; border: none; float: right; vertical-align: middle; margin-right: 10px; display:none" />
+                                </div>
+                                <asp:UpdatePanel runat="server" UpdateMode="Always" ID="udpDocumentos">
+                                <ContentTemplate>
+                                <table border="0" style="text-align: left; margin: 10px auto 0px auto;" cellpadding="1" cellspacing="2" width="99%">
+                                    <tr>
+                                        <td align="center">
+                                            <div class="fdo_constancia" style="width: 99%; margin-top: 5px">
+                                                <div class="FondoBlanco" style="width: 99%; padding-bottom:5px">
+                                                    <h4>Datos de persona obtenidos por&nbsp;<asp:Label ID="lbCriterioConsultaAdp" runat="server"/></h4>
+                                                    <br />
+                                                        <table cellpadding="1" cellspacing="1">
+                                                            <tr>
+                                                            <td style=" width:15%; text-align:right; vertical-align:middle; height:30px; color:gray; padding-right:20px">Total de casos:</td>
+                                                            <td style=" width:20%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px"><asp:Label ID="lbTotalCasosADP" runat="server"   Width="50px"/>
+                                                            </td>
+                                                                    <td style=" width:15%; text-align:right; vertical-align:middle; height:30px; color:gray; padding-right:20px">
+                                                            Total parcial:
+                                                            </td>
+                                                            <td style=" width:20%; text-align:left; vertical-align:middle; height:30px; color:gray; padding-left:20px">
+                                                                <asp:Label ID="lbTotalParcial" runat="server" Width="150px"></asp:Label>
+                                                                </td>
+                                                            <td style=" width:30%; text-align:right; vertical-align:middle; height:30px; color:gray; padding-right:20px">
+                                                                <asp:DropDownList ID="ddlPaginasConsulta" runat="server" RepeatDirection="Vertical" DataValueField="Valor" DataTextField="Texto"
+                            Font-Size="10" ForeColor="Gray" Width="160px"  CssClass="CajaTexto" AutoPostBack="true" OnSelectedIndexChanged="ddlPaginasConsulta_SelectedIndexChanged"></asp:DropDownList>
+                                                            </td>
+                                                                
+                                                            </table>
+                                                        <div style="height:400px; overflow:auto; width:100%; padding-left:10px">
+                                                        <asp:GridView runat = "server" ID="gvPersonasADP" GridLines="None" Width="98%" AutoGenerateColumns="False"
+                                                        TabIndex="500" Visible="true"  OnRowCommand="RowCommand" EmptyDataText =" No se registran personas.">
+                                                            <Columns>
+                                                                <asp:TemplateField HeaderText="Selección" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                                                    <HeaderStyle HorizontalAlign="Center" Width="10%" CssClass="GrillaHead"></HeaderStyle>
+                                                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                                    <ItemTemplate>
+                                                                          <asp:ImageButton ID="btnSeleccionPersona" runat="server" TabIndex="501"  CommandName="SeleccionPersona" ImageUrl="~/App_Themes/Imagenes/seleccion.gif" Width="20px" Height="20px" AlternateText="Selección de solicitante." CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:BoundField DataField="Apellidoynombre" HeaderText="Apellido y Nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="35%"/>
+                                                                <asp:BoundField DataField="CUIP" HeaderText="CUIL/CUIT"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="15%"/>
+                                                                <asp:BoundField DataField="Documento" HeaderText="Documento"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%"/>
+                                                                <asp:BoundField DataField="FNacimiento" HeaderText="Fecha Nacimiento"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%"/>
+                                                                <asp:BoundField DataField="Estado" HeaderText="Estado"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="20%"/>
+                                                            </Columns></asp:GridView>
+                                                            </div>
+                                                    
+                                                    </div>
+                                                
+                                                
+                                            <div style="text-align: center; width: 99%; margin-top: 10px; margin-bottom: 10px">
+                                                <asp:Button   ID="btn_cerrarPopSelPersona" runat="server" Text="Cerrar" Width="80px"  OnClick="btn_cerrarPopSelPersona_Click" Height="22px" TabIndex="502"/></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                    </ContentTemplate></asp:UpdatePanel>
+                        </div>
+         </div>
+     <!--Fin Pop up expediente -->
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
+</asp:Content>

@@ -1,0 +1,170 @@
+2018-01-12 09:44:38,046 [ID (null)] [17] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 09:44:58,120 [ID (null)] [7] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 09:45:28,754 [ID (null)] [17] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 09:48:36,710 [ID (null)] [21] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 09:51:43,996 [ID (null)] [7] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 10:22:34,697 [ID (null)] [9] ERROR InvocaWSExternos - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef)-7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:22:34,914 [ID (null)] [9] ERROR AltaRapida - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:22:46,699 [ID (null)] [9] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-12 10:22:46,839 [ID (null)] [9] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:31:06,463 [ID (null)] [16] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 10:36:49,119 [ID (null)] [33] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 10:37:03,184 [ID (null)] [25] ERROR AltaRapida - No se puede reconocer la cadena como valor DateTime válido.
+2018-01-12 10:39:27,293 [ID (null)] [25] ERROR AltaRapida - No se puede reconocer la cadena como valor DateTime válido.
+2018-01-12 10:46:03,936 [ID (null)] [10] ERROR global_asax - ID Error       : 447537409
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:05,882 [ID (null)] [9] ERROR global_asax - ID Error       : -499479154
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:18,218 [ID (null)] [44] ERROR global_asax - ID Error       : 1223661186
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:21,648 [ID (null)] [44] ERROR global_asax - ID Error       : 1387713035
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:31,121 [ID (null)] [44] ERROR global_asax - ID Error       : 1332899141
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:32,542 [ID (null)] [44] ERROR global_asax - ID Error       : 115038328
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:33,526 [ID (null)] [43] ERROR global_asax - ID Error       : -1286712323
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:46:34,259 [ID (null)] [22] ERROR global_asax - ID Error       : 1005927518
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.qjrbtf12, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-12 10:49:08,156 [ID (null)] [43] ERROR InvocaWSExternos - ObtenerDatosxDocumento.ListaPw02 TraerDatosPersonaADPXDoc(System.String, Int16, System.String ByRef)-7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:49:08,173 [ID (null)] [43] ERROR AltaRapida - ObtenerDatosxDocumento.ListaPw02 TraerDatosPersonaADPXDoc(System.String, Int16, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:49:16,387 [ID (null)] [22] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-12 10:49:16,427 [ID (null)] [22] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-12 10:50:27,273 [ID (null)] [9] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 10:52:27,853 [ID (null)] [7] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-12 10:57:33,134 [ID (null)] [17] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.

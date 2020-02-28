@@ -1,0 +1,378 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
+
+public partial class Controlexpediente : System.Web.UI.UserControl
+{
+    private string _org;
+    private string _pre;
+    private string _doc;
+    private string _dig;
+    private string _trm;
+    private string _sec;
+    //private bool _Enabled;
+
+    private bool _MostrarError;
+    private string _MensajeError;
+    private bool _Obligatorio;
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro del Organismo")]
+    public string Org
+    {
+        get { return _org; }
+        set
+        {
+            _org = value;
+            //txtorg.Text = _org;
+            _org = txtorg.Text;
+        }
+    }
+
+    public string AnchoOrg
+    {
+        set
+        {
+            txtorg.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro del Pre Cuil")]
+    public string Pre
+    {
+        get { return _pre; }
+        set
+        {
+            _pre = value;
+            txtpre.Text = _pre;
+        }
+    }
+
+    public string AnchoPre
+    {
+        set
+        {
+            txtpre.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro del Documento")]
+    public string Doc
+    {
+        get { return _doc; }
+        set
+        {
+            _doc = value;
+            txtddoc.Text = _doc;
+        }
+    }
+
+    public string AnchoDoc
+    {
+        set
+        {
+            txtddoc.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro del Digito Verificador")]
+    public string Dig
+    {
+        get { return _dig; }
+        set
+        {
+            _dig = value;
+            txtdig.Text = _dig;
+        }
+    }
+
+    public string AnchoDig
+    {
+        set
+        {
+            txtdig.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro de tramite")]
+    public string Trm
+    {
+        get { return _trm; }
+        set
+        {
+            _trm = value;
+            txttram.Text = _trm;
+        }
+    }
+
+    public string AnchoTrm
+    {
+        set
+        {
+            txttram.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+    
+
+    [Browsable(false)]
+    [Description("Asigna el nuemro de la Secuencia")]
+    public string Sec
+    {
+        get { return _sec; }
+        set
+        {
+            _sec = value;
+            txtsec.Text = _sec;
+        }
+    }
+
+    public string AnchoSec
+    {
+        set
+        {
+            txtsec.Width = Unit.Pixel(int.Parse(value));
+        }
+    }
+    
+
+    [Description("Asignar el número de expediente completo sin giones")]
+    public string Text
+    {
+        get
+        {
+            return txtorg.Text + txtpre.Text + txtddoc.Text + txtdig.Text + txttram.Text + txtsec.Text;
+        }
+        set
+        {
+            try
+            {
+                if (value.Trim().Length == 22 || value.Trim().Length == 27)
+                {
+                    value = value.Replace("-", "");
+
+                    txtorg.Text = value.Substring(0, 3);
+                    txtpre.Text = value.Substring(3, 2);
+                    txtddoc.Text = value.Substring(5, 8);
+                    txtdig.Text = value.Substring(13, 1);
+                    txttram.Text = value.Substring(14, 3);
+                    txtsec.Text = value.Substring(17, 5);
+                }
+                else
+                {
+                    Limpiar();
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+    }
+
+    [Browsable(false)]
+    [Description("Retorna un expediente sin formato")]
+    public string ValueSinFormato
+    {
+        get
+        {
+            return txtorg.Text + txtpre.Text + txtddoc.Text + txtdig.Text + txttram.Text + txtsec.Text;
+        }
+    }
+
+    [Browsable(false)]
+    [Description("Retorna un expediente con formato")]
+    public string ValueConFormato
+    {
+        get
+        {
+            return txtorg.Text + "-" + txtpre.Text + "-" + txtddoc.Text + "-" + txtdig.Text + "-" + txttram.Text + "-" + txtsec.Text;
+        }
+    }
+
+    public bool Enabled
+    {
+        //get { return _Enabled; }
+        set
+        {
+            //_Enabled = value;
+            txtorg.ReadOnly = !value;
+            txtpre.ReadOnly = !value;
+            txtddoc.ReadOnly = !value;
+            txtdig.ReadOnly = !value;
+            txttram.ReadOnly = !value;
+            txtsec.ReadOnly = !value;
+        }
+    }
+
+    public void Limpiar()
+    {
+        txtorg.Text = string.Empty;
+        txtpre.Text = string.Empty;
+        txtddoc.Text = string.Empty;
+        txtdig.Text = string.Empty;
+        txttram.Text = string.Empty;
+        txtsec.Text = string.Empty;
+        lbl_Error.Visible = false;
+    }
+
+    public string ValidarExpediente()
+    {
+        string expediente = ValueSinFormato;
+        string error = string.Empty;
+
+        string cuil = _pre + _doc + _dig;
+            
+        if(_doc.Equals(string.Empty))
+            error = "El documento es obligatorio.";
+        if (!_pre.Equals(string.Empty) && !_dig.Equals(string.Empty))
+        {
+            if (cuil.Length < 11)
+            {
+                error = "El CUIL/T ingresado está incompleto.";
+            }
+            else if (!ValidaCUIL(cuil))
+            {
+                error = "El CUIL/T ingresado no es válido.";
+            }
+        }
+        return error;
+    }
+
+    private bool ValidaCUIL(string CUIL)
+    {
+
+        string patron = @"^\d{11}$";
+        Regex re = new Regex(patron);
+        bool resp = re.IsMatch(CUIL);
+
+        if (resp)
+        {
+            string FACTORES = "54327654321";
+            double dblSuma = 0;
+
+            //if (!(CUIL.Substring(0, 1).ToString() != "3" && CUIL.Substring(0, 1).ToString() != "2"))
+            if (long.Parse(CUIL) != 0)
+            {
+                for (int i = 0; i < 11; i++)
+                    dblSuma = dblSuma + int.Parse(CUIL.Substring(i, 1).ToString()) * int.Parse(FACTORES.Substring(i, 1).ToString());
+
+                resp = Math.IEEERemainder(dblSuma, 11) == 0;
+            }
+            else
+            {
+                resp = false;
+            }
+        }
+
+        return resp;
+    }
+
+    public static bool esNumerico(string Valor)
+    {
+        bool ValidoDatos = false;
+
+        Regex numeros = new Regex(@"^\d{1,}$");
+
+        if (Valor.Length != 0)
+        {
+            ValidoDatos = numeros.IsMatch(Valor);
+        }
+        return ValidoDatos;
+    }
+
+    public bool Obligatorio
+    {
+        set
+        {
+            _Obligatorio = value;
+            lbl_Obligatorio.Visible = value;
+        }
+    }
+    public string Mensaje_Error
+    {
+        set
+        {
+            _MensajeError = value;
+            lbl_Error.Text = value;
+
+        }
+        get
+        {
+            return lbl_Error.Text = _MensajeError;
+        }
+    }
+
+    public bool HayErrores
+    {
+        get
+        {
+            if (_Obligatorio && Text.Length == 0)
+            {
+                lbl_Error.Text = "Campo Obligatorio";
+                _MensajeError = "Campo Obligatorio";
+                lbl_Error.Visible = true;
+                return true;
+            }
+            else if (ValidarExpediente().Length != 0)
+            {
+                _MensajeError = ValidarExpediente();
+                lbl_Error.Text = _MensajeError;
+                lbl_Error.Visible = true;
+                return true;
+            }
+            else
+            {
+                lbl_Error.Visible = false;
+                return false;
+            }
+        }
+    }
+
+    public bool MostrarError
+    {
+        set
+        {
+            if (_Obligatorio && Text.Length == 0)
+            {
+                lbl_Error.Text = "Campo Obligatorio";
+            }
+            else
+            {
+                lbl_Error.Text = _MensajeError;
+            }
+
+            _MostrarError = value;
+            lbl_Error.Visible = value;
+
+        }
+        get
+        {
+            return lbl_Error.Visible = _MostrarError;
+        }
+    }
+
+    public void SetFocus()
+    {
+        txtorg.Focus();
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        lbl_Error.Visible = false;
+    }
+}

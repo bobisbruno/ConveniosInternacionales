@@ -1,0 +1,96 @@
+2018-01-16 10:31:39,882 [ID (null)] [7] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPageNOMnu.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPageNOMnu.master.cs:línea 132
+2018-01-16 10:31:39,986 [ID (null)] [7] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-16 10:31:39,987 [ID (null)] [7] ERROR Paginas_ProvisoriasAVencer - Se generó una excepción : Subproceso anulado.
+2018-01-16 10:36:46,216 [ID (null)] [14] ERROR global_asax - ID Error       : 518676639
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1699
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 286
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-16 10:36:48,949 [ID (null)] [18] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-16 10:36:48,982 [ID (null)] [18] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-16 10:36:48,983 [ID (null)] [18] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2018-01-16 10:39:11,551 [ID (null)] [15] ERROR global_asax - ID Error       : 515442589
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1699
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 286
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-16 10:39:23,311 [ID (null)] [11] ERROR global_asax - ID Error       : 1722934564
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1699
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 286
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-16 10:39:27,640 [ID (null)] [15] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-16 10:39:27,655 [ID (null)] [15] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-16 10:39:27,655 [ID (null)] [15] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2018-01-16 10:53:35,494 [ID (null)] [22] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-16 14:56:02,532 [ID (null)] [7] ERROR ComprobanteTramite - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-16 15:04:47,488 [ID (null)] [24] ERROR ComprobanteTramite - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-16 15:06:50,782 [ID (null)] [7] ERROR ComprobanteTramite - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-16 15:11:32,060 [ID (null)] [22] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-16 15:11:32,295 [ID (null)] [22] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-16 15:20:44,640 [ID (null)] [31] ERROR global_asax - ID Error       : -504530376
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.ws51fvzz, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+
+2018-01-16 15:27:25,503 [ID (null)] [43] ERROR global_asax - ID Error       : 1147030771
+Mensaje Error : No se puede encontrar el ensamblado 'App_WebReferences.ziqsidfa, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.
+Stack     :    en System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   en System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   en System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   en System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   en System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.DeserializeValue(SerializerBinaryReader reader)
+   en System.Web.UI.ObjectStateFormatter.Deserialize(Stream inputStream)
+

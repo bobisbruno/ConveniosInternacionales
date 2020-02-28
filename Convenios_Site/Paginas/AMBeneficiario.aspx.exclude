@@ -1,0 +1,519 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="true" CodeFile="AMBeneficiario.aspx.cs" Inherits="AMBeneficiario" Title="Alta y modificacion de beneficiario"   Culture="Auto" UICulture="Auto"%>
+<%@ Register Src="~/Controles/Mensaje.ascx" TagName="Mensaje" TagPrefix="uc1" %>
+<%@ Register Src="~/Controles/MValidacion.ascx" TagName="MensajeCons" TagPrefix="uc" %>
+<%@ Register Src="../Controles/MensajeError2.ascx" TagName="MError2" TagPrefix="uc3" %>
+<%@ Register Src="~/Controles/barraNav.ascx" TagName="BNav" TagPrefix="uc4" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    0<meta http-equiv="Pragma" content="no-clase"><meta http-equiv="Expires" content="-1"></asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <uc4:BNav id="BNav" runat="Server"/>
+    <uc3:MError2 ID="MError" runat="server" />
+    <asp:HiddenField ID="HFidBeneficiario" Value="" runat="server" />
+                <div class="FondoBlanco">
+    <div style="margin: 10px">
+    <h1>
+        <asp:Label ID="LblTituloPagina" runat="server" Text="Titulo Pagina"></asp:Label>
+        </h1>
+    <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; height:420px; overflow:auto">
+            <div style="text-align :left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <h5 >Obtener datos por CUIL</h5>
+                <table>
+                <tr><td style=" width:20%; padding-left:5px"><font size="1"><strong>CUIL/T</strong></font></td>
+                <td align="left"><asp:TextBox ID="txtCuilADP" runat="server"   Width="100px" CssClass="CajaTexto" MaxLength="11" TabIndex="1"/>
+                <asp:RegularExpressionValidator ID="revtxtCuilADP" runat="server" ControlToValidate="txtCuilADP" Display="None" ValidationExpression="^[0-9]{1,11}?$" ErrorMessage="Solo ingresar 11 dígitos enteros" ValidationGroup="buscaDocADP"></asp:RegularExpressionValidator>
+                <cc1:ValidatorCalloutExtender ID="vcerevtxtCuilADP" runat="server" TargetControlID="revtxtCuilADP"></cc1:ValidatorCalloutExtender>
+                &nbsp;<asp:ImageButton ID="iBtnBusqADPCuip" runat="server" TabIndex="2" ImageUrl="~/App_Themes/Imagenes/icon_lupe2.gif" ValidationGroup="buscaDocADP" OnClick="btnIngDocCuip_Click" AlternateText="Buscar en base de personas."/>
+                </td></tr>
+                </table>
+                <div id="DatosPersona" runat="server" >
+                <h5>Datos personales</h5>
+                <table>
+                <tr>
+                <td style="padding-left:5px"><font size="1"><strong>Apellido y Nombre</strong></font></td>
+                <td style="padding-left:5px"><asp:TextBox ID="txtApeNomB" runat="server"   Width="200px" CssClass="CajaTexto" MaxLength="100" TabIndex="3"/>&nbsp;<small style=" color:Red">(*)</small>
+                <asp:RequiredFieldValidator ID="rfvtxtApeNomB" runat="server" ControlToValidate="txtApeNomB" Display="None" ErrorMessage="Debe ingresar nombre y apellido" ValidationGroup="datosBeneficiario"></asp:RequiredFieldValidator>
+                <cc1:ValidatorCalloutExtender ID="vcerfvtxtApeNomB" runat="server" TargetControlID="rfvtxtApeNomB"></cc1:ValidatorCalloutExtender>                                                                 
+                </td>
+                <td style="padding-left:5px">                    
+                <font size="1"><strong>Apellido materno</strong></font>
+                </td><td style="padding-left:5px" colspan="1"><asp:TextBox ID="txtApellidoMatB" runat="server"   Width="150px" CssClass="CajaTexto" TabIndex="4"></asp:TextBox>
+                        </td>
+                <td  style="padding-left:5px"><font size="1"><strong>Código SIACI</strong></font></td>
+                <td  style="padding-left:5px"><asp:TextBox ID="txtCodigoSiaciB" runat="server"   Width="100px" CssClass="CajaTexto" TabIndex="5"/></td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px">                    
+                <font size="1"><strong>Fecha nacimiento</strong></font></td>
+                <td colspan="3" style="padding-left:5px">                    
+                <asp:TextBox ID="txtFechaNacB" runat="server"  Width="100px" CssClass="CajaTexto" MaxLength="11" TabIndex="6"/>&nbsp;<small style=" color:Red">(DD/MM/AAAA)</small>
+                <asp:RangeValidator ID="rvtxtFechaNacB" runat="server" Type="Date" ControlToValidate="txtFechaNacB" ErrorMessage="Fecha no válida. (ingresar desde 100 años a la fecha)" Display="None" ValidationGroup="datosBeneficiario"/>
+                <cc1:ValidatorCalloutExtender ID="vcervtxtFechaNacB" runat="server" TargetControlID="rvtxtFechaNacB"></cc1:ValidatorCalloutExtender>
+                </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                    <td style="vertical-align:top">
+                    <asp:UpdatePanel ID="udpdocb" runat="server" UpdateMode="Always"><ContentTemplate>
+                    <table >
+                    <tr>
+                    <td style="vertical-align:top">
+                        <asp:GridView ID="gv_GrillaDoc" CssClass="grillaAdmin_MP" runat="server" CellPadding="4" Width="70%"
+              ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
+              ShowFooter="True" OnRowCommand="gv_Grilla_RowCommand" OnRowDeleting="gv_Grilla_RowDeleting" EmptyDataText="Sin documentos ingresados"
+              OnDataBound="gv_Grilla_DataBound" OnRowDataBound="gv_GrillaDoc_RowDataBound" TabIndex="7">
+              <HeaderStyle></HeaderStyle>
+              <AlternatingRowStyle BackColor="#E5E5E5" ForeColor="#000" />
+              <Columns>
+                <asp:TemplateField HeaderText="Documento">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Ndoc" runat="server" Text='<%# Bind("NumDoc") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:TextBox ID="Ndoc" runat="server" ValidationGroup="InsertVal"
+                                            Width="60px" Text="" MaxLength="8" TabIndex="8"></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ID="rfvNdoc" ValidationGroup="InsertVal"
+                                            ControlToValidate="Ndoc" SetFocusOnError="True" Display="Dynamic"
+                                            ErrorMessage="<b>*</b>" />
+                                        <cc1:FilteredTextBoxExtender ID="FTENdoc" runat="server"
+                                            FilterType="Numbers" TargetControlID="Ndoc" />
+                                    </FooterTemplate>
+                  <FooterStyle HorizontalAlign="Left" Width="20%" />
+                  <HeaderStyle HorizontalAlign="Center" Width="20%" />
+                  <ItemStyle HorizontalAlign="Left" Width="20%" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Tipo de documento">
+                  <ItemTemplate>
+                    <asp:Label ID="Tdoc" runat="server" Text='<%# Bind("AbrevDocumento") %>'></asp:Label>
+                  </ItemTemplate>
+                  <FooterTemplate>
+                    <asp:DropDownList ID="Tdoc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddltDocB_SelectedIndexChanged" TabIndex="9">
+                    </asp:DropDownList>
+                  </FooterTemplate>
+                  <FooterStyle HorizontalAlign="Center" Width="30%" />
+                  <HeaderStyle HorizontalAlign="Center" Width="30%" />
+                  <ItemStyle HorizontalAlign="Center" Width="30%" />
+                </asp:TemplateField>
+                   <asp:TemplateField HeaderText="País de origen">
+                  <ItemTemplate>
+                    <asp:Label ID="PaisDoc" runat="server" Text='<%# Bind("CodAbrevPais") %>'></asp:Label>
+                  </ItemTemplate>
+                  <FooterTemplate>
+                      <asp:DropDownList ID="PaisDoc" runat="server" Enabled="false" TabIndex="10">
+                    </asp:DropDownList>
+                  </FooterTemplate>
+                  <FooterStyle HorizontalAlign="Center" Width="30%" />
+                  <HeaderStyle HorizontalAlign="Center" Width="30%" />
+                  <ItemStyle HorizontalAlign="Center" Width="30%" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Acciones" ShowHeader="False">
+                  <ItemTemplate>
+                  <asp:ImageButton ID="IMGBDelete" runat="server" CausesValidation="False" CommandName="Delete"
+                      ImageUrl="~/App_Themes/Imagenes/Borrar.gif" Text="Eliminar" ToolTip="Eliminar" TabIndex="11" />
+                  </ItemTemplate>
+                  <FooterTemplate>
+                    <asp:ImageButton ID="IMGBInsert" runat="server" CommandName="Insert" ValidationGroup="InsertVal"
+                      ImageUrl="~/App_Themes/Imagenes/Agregar.gif" Text="Insertar" ToolTip="Insertar" TabIndex="12" />
+                  </FooterTemplate>
+                  <FooterStyle HorizontalAlign="Center" Width="20%" />
+                  <HeaderStyle HorizontalAlign="Center" Width="20%" />
+                  <ItemStyle HorizontalAlign="Center" Width="20%" />
+                </asp:TemplateField>
+              </Columns>
+              <EditRowStyle BackColor="#BBBBBB" />
+              <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+              <HeaderStyle BackColor="#397bc4" Font-Bold="True" ForeColor="White" />
+              <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+              <RowStyle BackColor="#EFF4FA" ForeColor="#333333" />
+              <EmptyDataTemplate>
+                    <asp:Label ID="lblShowEmpty" runat="server"></asp:Label>
+               </EmptyDataTemplate>
+              <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#000" />
+            </asp:GridView>
+                    </tr>
+                    </table></ContentTemplate></asp:UpdatePanel>
+                    </td>
+                </tr>
+                </table>
+                <table>
+                <tr><td style="padding-left:5px">                    
+                <font size="1"><strong>Nacionalidad</strong></font>&nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="ddlPaisNacB" runat="server" AutoPostBack="true" TabIndex="13" DataTextField="Gentilicio"  DataValueField="Pais_PK" Width="250px" OnSelectedIndexChanged="ddlPaisNacB_SelectedIndexChanged">
+                </asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="1"><strong>Sexo</strong></font>&nbsp;<asp:DropDownList ID="ddlSexoB" AutoPostBack="true" runat="server"  TabIndex="14" Width="100px" OnSelectedIndexChanged="ddlSexoB_SelectedIndexChanged">
+                <asp:ListItem Selected="True" Text="Masculino" Value="M"/>
+                <asp:ListItem Text="Femenino" Value="F"/></asp:DropDownList></td>
+                </tr>
+                </table>
+                <h5>Datos del domicilio</h5>
+                <table>
+                <tr>
+                <td style="padding-left:5px; padding-top:5px">
+                <font size="1"><strong>Dirección</strong></font></td></tr>
+                <tr>
+                <td style="padding-left:5px"><font size="1"><strong>Calle</strong></font>
+                &nbsp;&nbsp;<asp:TextBox ID="txtDirCalleB" runat="server" MaxLength="100" Width="250px" CssClass="CajaTexto" TabIndex="15"></asp:TextBox>
+                &nbsp;&nbsp;<font size="1"><strong>nro</strong></font>&nbsp;<asp:TextBox ID="txtDirNumB" runat="server" MaxLength="5" Width="40px" CssClass="CajaTexto" TabIndex="16"></asp:TextBox>
+                &nbsp;&nbsp;<font size="1"><strong>piso / depto</strong></font>&nbsp;<asp:TextBox ID="txtDirPisoB" runat="server" MaxLength="2" Width="15px" CssClass="CajaTexto" TabIndex="17"></asp:TextBox>
+                &nbsp;<asp:TextBox ID="txtDirdeptoB" runat="server" MaxLength="2" Width="15px" CssClass="CajaTexto" TabIndex="18"></asp:TextBox>
+                &nbsp;&nbsp;<font size="1"><strong>Prov / Loc</strong></font>&nbsp;<asp:DropDownList ID="ddlProvinciaDirB" runat="server" AutoPostBack="true" TabIndex="19" DataTextField="Descripcion"  DataValueField="CodProvincia" Width="180px" OnSelectedIndexChanged="TraeLocalidadesXProvBen_SelectedIndexChanged"></asp:DropDownList>
+                &nbsp;&nbsp;<asp:DropDownList ID="ddlLocalidadDirB" runat="server" AutoPostBack="true" TabIndex="20" DataTextField="DescripcionLocalidad"  DataValueField="Cod_Localidad" Width="350px" OnSelectedIndexChanged="ddlLocalidadDirB_SelectedIndexChanged"></asp:DropDownList>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px">
+                <font size="1"><strong>Entre calles</strong></font>
+                &nbsp;&nbsp;<asp:TextBox ID="txtCalle1DirB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="21"></asp:TextBox>
+                &nbsp;<font size="1"><strong>y</strong></font>&nbsp;<asp:TextBox ID="txtCalle2DirB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="22"></asp:TextBox>
+                &nbsp;<font size="1"><strong>código postal</strong></font>&nbsp;<asp:TextBox ID="txtcodPostalDirB" runat="server" MaxLength="5" Width="50px" CssClass="CajaTexto" TabIndex="23"></asp:TextBox>
+                </td></tr>
+                <tr>
+                <td colspan="6" style="padding-left:5px">
+                <font size="1"><strong>Ciudad</strong></font>
+                &nbsp;&nbsp;<asp:TextBox ID="txtCiudadDirB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="24"></asp:TextBox>
+                </td></tr>
+                </table>
+                    <hr />
+                <h5>Domicilio extranjero</h5>
+                <table>
+                <tr>
+                <td style="padding-left:5px">
+                <font size="1"><strong>Calle</strong></font>&nbsp;&nbsp;<asp:TextBox ID="txtCalleDomExtrB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="25"></asp:TextBox>
+                <font size="1"><strong>Número</strong></font>&nbsp;&nbsp;<asp:TextBox ID="txtNumDomExtrB" runat="server" MaxLength="5" Width="50px" CssClass="CajaTexto" TabIndex="26"></asp:TextBox>
+                <font size="1"><strong>Piso / Depto</strong></font>&nbsp;&nbsp;<asp:TextBox ID="txtPisoDomExtrB" runat="server" MaxLength="2" Width="15px" CssClass="CajaTexto" TabIndex="27"></asp:TextBox>
+                &nbsp;<asp:TextBox ID="txtDeptoDomExtrB" runat="server" MaxLength="2" Width="15px" CssClass="CajaTexto" TabIndex="28"></asp:TextBox>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px">
+                <font size="1"><strong>Entre calles</strong></font>
+                &nbsp;&nbsp;<asp:TextBox ID="txtEC1DomExtrB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="29"></asp:TextBox>
+                &nbsp;<font size="1"><strong>y</strong></font>&nbsp;<asp:TextBox ID="txtEC2DomExtrB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="30"></asp:TextBox>
+                &nbsp;<font size="1"><strong>cód postal</strong></font>&nbsp;<asp:TextBox ID="txtCodPostalDomExtrB" runat="server" MaxLength="5" Width="50px" CssClass="CajaTexto" TabIndex="31"></asp:TextBox>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px">
+                <font size="1"><strong>País</strong></font>&nbsp;&nbsp;<asp:DropDownList ID="ddlPaisDomExtr" runat="server"  Width="250px" TabIndex="32" DataTextField="Nombre" DataValueField="Codigo3C" AutoPostBack="true" OnSelectedIndexChanged="TraerCiudatesExtrXPais2_SelectedIndexChanged"></asp:DropDownList>
+                &nbsp;&nbsp;<font size="1"><strong>Estado / Ciudad</strong></font>&nbsp;&nbsp;<asp:DropDownList ID="ddlCiudadesExtr" runat="server"  Width="300px" TabIndex="33" DataTextField="estadoCiudad" DataValueField="Id" AutoPostBack="true" OnSelectedIndexChanged="ddlCiudadesExtr_SelectedIndexChanged"></asp:DropDownList>
+                &nbsp;<asp:TextBox ID="txtEstadoDomExtrB" runat="server" MaxLength="100" Width="250px" CssClass="CajaTexto" TabIndex="34"></asp:TextBox>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px"><font size="1"><strong>Ciudad</strong></font>
+                &nbsp;&nbsp;<asp:TextBox ID="txtCiudadDomExtrB" runat="server" MaxLength="100" Width="300px" CssClass="CajaTexto" TabIndex="35"></asp:TextBox>
+                </td>
+                </tr>
+                </table>                <hr />
+                <br />
+                <h5>Datos del Causante</h5>
+                <table>
+                <tr>
+                <td style="padding-left:5px"><font size="1"><strong>CUIL/T</strong></font></td>
+                <td style="padding-left:5px"><asp:TextBox ID="txtCuipC" MaxLength="11"  runat="server"   Width="100px" CssClass="CajaTexto" TabIndex="36"/>
+                <asp:RegularExpressionValidator ID="revtxtCuipC" runat="server" ControlToValidate="txtCuipC" Display="None" ValidationExpression="^[0-9]{1,11}?$" ErrorMessage="Solo ingresar dígitos enteros" ValidationGroup="buscaADPCau"></asp:RegularExpressionValidator>
+                <cc1:ValidatorCalloutExtender ID="vcerevtxtCuipC" runat="server" TargetControlID="revtxtCuipC"></cc1:ValidatorCalloutExtender>
+                &nbsp;<asp:ImageButton ID="iBtnBusqADPCuipCau" runat="server" TabIndex="37" ImageUrl="~/App_Themes/Imagenes/icon_lupe2.gif" ValidationGroup="buscaADPCau" OnClick="btnIngDocCuipCau_Click" AlternateText="Buscar en base de personas."/>
+                </td>
+                <td  style="padding-left:5px"><font size="1"><strong>Apellido y Nombre</strong></font></td>
+                <td style="padding-left:5px"><asp:TextBox ID="txtApeNomC" runat="server"   Width="200px" CssClass="CajaTexto" MaxLength="100" TabIndex="38"/>
+                &nbsp;<small style=" color:Red">(*)</small>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:5px">                    
+                <font size="1"><strong>Fecha nacimiento</strong></font>
+                </td><td style="padding-left:5px">                    
+                <asp:TextBox ID="txtFechaNacC" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="100px" CssClass="CajaTexto" TabIndex="39" MaxLength="11"></asp:TextBox>
+                <asp:RangeValidator ID="rvtxtFechaNacC" runat="server" Type="Date" ControlToValidate="txtFechaNacC" ErrorMessage="Fecha de nacimiento no válida. (ingresar desde 100 años a la fecha)" Display="None" ValidationGroup="datosBeneficiario"/>
+                <cc1:ValidatorCalloutExtender ID="vcervtxtFechaNacC" runat="server" TargetControlID="rvtxtFechaNacC"></cc1:ValidatorCalloutExtender> 
+                &nbsp;<small style=" color:Red">(DD/MM/AAAA)</small>
+                </td>
+                <td style="padding-left:5px">                    
+                <font size="1"><strong>Fecha defunción</strong></font>
+                </td><td style="padding-left:5px">                    
+                <asp:TextBox ID="txtFechaDefC" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="100px" CssClass="CajaTexto" TabIndex="40" MaxLength="11"></asp:TextBox>&nbsp;<small style=" color:Red">(*)</small>
+                <asp:RangeValidator ID="rvtxtFechaDefC" runat="server" Type="Date" ControlToValidate="txtFechaDefC" ErrorMessage="Fecha de defunción no válida. (ingresar desde 70 años a la fecha)" Display="None" ValidationGroup="datosBeneficiario"/>
+                <cc1:ValidatorCalloutExtender ID="vcervtxtFechaDefC" runat="server" TargetControlID="rvtxtFechaDefC"></cc1:ValidatorCalloutExtender> 
+                &nbsp;<small style=" color:Red">(DD/MM/AAAA)</small>
+                </td>
+                </tr>
+                <tr>
+                    <td colspan="4"  style="vertical-align:top">
+                    <asp:UpdatePanel ID="udpdocc" runat="server" UpdateMode="Always"><ContentTemplate>
+                    <table>
+                    <tr>
+                    <td style="vertical-align:top">
+                      <asp:GridView ID="gv_GrillaDocC" CssClass="grillaAdmin_MP" runat="server" CellPadding="4" Width="70%"
+                          ForeColor="#333333" GridLines="None" AutoGenerateColumns="False"
+                          ShowFooter="True" OnRowCommand="gv_GrillaCau_RowCommand" OnRowDeleting="gv_GrillaCau_RowDeleting"  EmptyDataText="Sin documentos ingresados"
+                          OnDataBound="gv_GrillaCau_DataBound"  OnRowDataBound="gv_GrillaDocC_RowDataBound" TabIndex="41">
+                          <HeaderStyle></HeaderStyle>
+                          <AlternatingRowStyle BackColor="#E5E5E5" ForeColor="#000" />
+                          <Columns>
+                            <asp:TemplateField HeaderText="Documento">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Ndoc" runat="server" Text='<%# Bind("NumDoc") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:TextBox ID="Ndoc" runat="server" ValidationGroup="InsertVal"
+                                                        Width="60px" Text="" MaxLength="8" TabIndex="42"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator runat="server" ID="rfvNdoc" ValidationGroup="InsertValC"
+                                                        ControlToValidate="Ndoc" SetFocusOnError="True" Display="Dynamic"
+                                                        ErrorMessage="<b>*</b>" />
+                                                    <cc1:FilteredTextBoxExtender ID="FTENdoc" runat="server"
+                                                        FilterType="Numbers" TargetControlID="Ndoc" />
+                                                </FooterTemplate>
+                              <FooterStyle HorizontalAlign="Left" Width="20%" />
+                              <HeaderStyle HorizontalAlign="Center" Width="20%" />
+                              <ItemStyle HorizontalAlign="Left" Width="20%" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Tipo de documento">
+                              <ItemTemplate>
+                                <asp:Label ID="Tdoc" runat="server" Text='<%# Bind("AbrevDocumento") %>'></asp:Label>
+                              </ItemTemplate>
+                              <FooterTemplate>
+                                <asp:DropDownList ID="Tdoc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddltDocC_SelectedIndexChanged" TabIndex="43">
+                                </asp:DropDownList>
+                              </FooterTemplate>
+                              <FooterStyle HorizontalAlign="Center" Width="30%" />
+                              <HeaderStyle HorizontalAlign="Center" Width="30%" />
+                              <ItemStyle HorizontalAlign="Center" Width="30%" />
+                            </asp:TemplateField>
+                               <asp:TemplateField HeaderText="País de origen">
+                              <ItemTemplate>
+                                <asp:Label ID="PaisDoc" runat="server" Text='<%# Bind("CodAbrevPais") %>'></asp:Label>
+                              </ItemTemplate>
+                              <FooterTemplate>
+                                  <asp:DropDownList ID="PaisDoc" runat="server" Enabled="false" TabIndex="44">
+                                </asp:DropDownList>
+                              </FooterTemplate>
+                              <FooterStyle HorizontalAlign="Center" Width="30%" />
+                              <HeaderStyle HorizontalAlign="Center" Width="30%" />
+                              <ItemStyle HorizontalAlign="Center" Width="30%" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Acciones" ShowHeader="False">
+                              <ItemTemplate>
+                              <asp:ImageButton ID="IMGBDelete" runat="server" CausesValidation="False" CommandName="Delete" TabIndex="45"
+                                  ImageUrl="~/App_Themes/Imagenes/Borrar.gif" Text="Eliminar" ToolTip="Eliminar" />
+                              </ItemTemplate>
+                              <FooterTemplate>
+                                <asp:ImageButton ID="IMGBInsert" runat="server" CommandName="Insert" ValidationGroup="InsertValC"
+                                  ImageUrl="~/App_Themes/Imagenes/Agregar.gif" Text="Insertar" ToolTip="Insertar" TabIndex="46" />
+                              </FooterTemplate>
+                              <FooterStyle HorizontalAlign="Center" Width="20%" />
+                              <HeaderStyle HorizontalAlign="Center" Width="20%" />
+                              <ItemStyle HorizontalAlign="Center" Width="20%" />
+                            </asp:TemplateField>
+                          </Columns>
+                          <EditRowStyle BackColor="#BBBBBB" />
+                          <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                          <HeaderStyle BackColor="#397bc4" Font-Bold="True" ForeColor="White" />
+                          <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                          <RowStyle BackColor="#EFF4FA" ForeColor="#333333" />
+                          <EmptyDataTemplate>
+                            <asp:Label ID="lblShowEmpty" runat="server"></asp:Label>
+                            </EmptyDataTemplate>
+                          <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#000" />
+                        </asp:GridView>
+                        </td>
+                    </tr></table></ContentTemplate></asp:UpdatePanel>
+                        </td></tr>
+                    <tr>
+                <td align="left" style="padding-left:5px">
+                <font size="1"><strong>Sexo</strong></font>&nbsp;<asp:DropDownList ID="ddlSexoC" runat="server" TextAlign="Left" RepeatDirection="Horizontal" TabIndex="47" AutoPostBack="true" OnSelectedIndexChanged="ddlSexoC_SelectedIndexChanged">
+                <asp:ListItem Value="M" Text="Masculino" Selected="True"></asp:ListItem>
+                <asp:ListItem Value="F" Text="Femenino"></asp:ListItem></asp:DropDownList>
+                </td>
+                </tr>
+                </table>
+                <hr />
+                <h5>Apoderado-s</h5>
+                <div style="text-align: left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                    <asp:Button ID="btnAgregarApoderado" AlternateText="Agregar apoderado" Text="Ingresar" runat="server" CssClass="Botones" onclick="btnIngresarApoderado_Click" TabIndex="48" CausesValidation="true" ImageUrl="~/App_Themes/Imagenes/Agregar.gif" Width="60px" Height="21px"/>
+                        </div>
+                <div style="text-align: left; width:95%; padding-top:5px; margin-bottom:5px; padding-left:10px">
+                <asp:GridView runat="server" ID="gridListadoApoderados" DataKeyNames="numDoc, codDocumento , TipoApoderado, fAlta"  PageSize="15" GridLines="None" Width="99%" Visible="false" AutoGenerateColumns="False" OnRowCommand="RowCommand" TabIndex="49">
+                <Columns>
+                    <asp:BoundField DataField="numDoc" Visible="false"/>
+                    <asp:BoundField DataField="codDocumento" Visible="false"/>
+                    <asp:BoundField DataField="docCompleto" HeaderText="Documento"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="15%"/>
+                    <asp:BoundField DataField="TipoApoderado" HeaderText="Apoderado"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="15%"/>
+                    <asp:BoundField DataField="TipoPoder" HeaderText="Poder"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="15%" Visible="false"/>
+                    <asp:BoundField DataField="ApeNom" HeaderText="Ape y nom / Razón Social"  ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="25%"/>
+                    <asp:BoundField DataField="fAlta" HeaderText="Fecha alta"  ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%"/>
+                    <asp:TemplateField HeaderText="Mofificar" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle HorizontalAlign="Center" Width="10%"></HeaderStyle>
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btnModificar" runat="server" CommandName="ModificarA" ImageUrl="~/App_Themes/Imagenes/Edicion.gif"  CommandArgument='<%# ((GridViewRow) Container).RowIndex %>' TabIndex="50"></asp:ImageButton>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Baja" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle HorizontalAlign="Center" Width="10%"></HeaderStyle>
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btnDarBajaApod" runat="server" CommandName="BajaA" ImageUrl="~/App_Themes/Imagenes/Borrar.gif"  CommandArgument='<%# ((GridViewRow) Container).RowIndex %>' TabIndex="46" ></asp:ImageButton>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    </asp:TemplateField>
+                </Columns></asp:GridView>
+                <div id="dvNoApoderados" runat="server" class="TextoNegroCENTER" style=" width:95%; text-align:center; padding-top:10px; padding-bottom:10px">No registra
+                </div>
+                </div>
+                    </div>
+                </div>
+    </div>
+    <!-- Botones-->
+    <div style="margin-bottom:5px; width:95%; padding-top:5px">
+    <table width="100%">
+    <tr>
+    <td align="center">
+    <asp:Button   ID="btnGuardar" Text="Guardar todo" runat="server" CssClass="Botones" Width="120px" Height="21px" onclick="btnGuardar_Click" TabIndex="51" CausesValidation="true" ValidationGroup="datosBeneficiario"/>&nbsp;
+    <asp:Button  ID="btnAnular" Text="Nuevo Solicitante" runat="server" CssClass="Botones" Width="140px" Height="21px" onclick="btnAnular_Click" TabIndex="52" />&nbsp;
+    <asp:Button   ID="btnRegresar" Text="Regresar" runat="server" CssClass="Botones" Width="100px" Height="21px" onclick="btnRegresar_Click" TabIndex="53"/>&nbsp;
+    <asp:Button   ID="btnNewSol" Text="Nueva solicitud" runat="server" CssClass="Botones" Width="140px" Height="21px" onclick="btnNewSol_Click" TabIndex="54"/>&nbsp;
+    <asp:Button   ID="btnImprimir" Text="Imprimir" runat="server" CssClass="Botones" Width="100px" Height="21px"  OnClientClick="abrirArchivo();return false;" TabIndex="55"/> </td>
+    </tr>
+    </table>
+    </div></div></div>
+    <!-- FIN Botones-->
+    
+     <!-- Pop up Apoderado -->
+     <cc1:ModalPopupExtender ID="mpeApoderado" runat="server" PopupDragHandleControlID="divDetalleTabla" DropShadow="true" BackgroundCssClass="modalBackground" TargetControlID="btnShowPopupSelApoderado"
+                        PopupControlID="divSelApoderado" CancelControlID="imgCerrarDatosSelApoderado">
+                    </cc1:ModalPopupExtender>
+     <asp:Button ID="btnShowPopupSelApoderado" runat="server" Style="display: none" />
+     <div style="position: relative">
+                        <div style="position: fixed; top: 0px; left: 0px;">
+                            <div id="divSelApoderado" class="FondoOscuro" style="width: 800px; display:none" align="center">
+                                <div class="FondoOscuro" style="float: left; padding: 5px 0px 5px 0px; text-align: left;"title="titulo">
+                                    <span class="TextoBlancoBold" style="float: left; margin-left: 10px">Ingreso de datos del apoderado</span>
+                                    <img id="imgCerrarDatosSelApoderado" alt="Cerrar ventana" src="../App_Themes/Imagenes/Error_chico.gif"
+                                        style="cursor: hand; border: none; float: right; vertical-align: middle; margin-right: 10px; display:none" />
+                                </div>
+                                <asp:UpdatePanel runat="server" UpdateMode="Always" ID="udpApoderados">
+                                                    <ContentTemplate>
+                                <table border="0" style="text-align: left; margin: 10px auto 0px auto;" cellpadding="1"
+                                    cellspacing="2" width="96%">
+                                    <tr>
+                                        <td align="center">
+                                            <div class="fdo_constancia" style="width: 98%; margin-top: 5px">
+                                                <b class="a1"></b><b class="a2"></b><b class="a3"></b><b class="a4"></b>
+                                                <div class="acontent">
+                                                    <div class="fdo_constancia" style="width: 98%">
+                                                        <table width="99%">
+                                                            <tr><td style="padding-left:5px; width:30%"><font size="1"><strong>Apellido y Nombre o Razón Social</strong></font></td>
+                                                            <td  style="padding-left:5px"><asp:TextBox ID="txtApeNomA" runat="server"   Width="300px" CssClass="CajaTexto" MaxLength="100" TabIndex="100"/>&nbsp;<small style=" color:Red">(*)</small></td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td  style="padding-left:5px">
+                                                            <font size="1"><strong>Teléfono</strong></font></td>
+                                                            <td  style="padding-left:5px">                    
+                                                            <asp:TextBox ID="txtTelefonoA" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="70px" CssClass="CajaTexto" MaxLength="50" TabIndex="101"></asp:TextBox></td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td style="padding-left:5px">                    
+                                                            <font size="1"><strong>Dir E Mail</strong></font>
+                                                            </td><td colspan="2" style="padding-left:5px"><asp:TextBox ID="txtEmailA" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="450px" CssClass="CajaTexto" TabIndex="102" MaxLength="100"></asp:TextBox></td>
+                                                            </tr>                    
+                                                            <tr>
+                                                            <td style="padding-left:5px">
+                                                            <font size="1"><strong>Documento</strong></font>
+                                                            </td>
+                                                            <td style="padding-left:5px">
+                                                                <asp:TextBox ID="txtDocA" runat="server" MaxLength="8" onkeyup="this.value=this.value.toUpperCase()"  Width="80px" CssClass="CajaTexto" TabIndex="103"></asp:TextBox>&nbsp;<small style=" color:Red">(*)</small>
+                                                                &nbsp;<asp:DropDownList ID="ddltDocA" runat="server"  AutoPostBack="false" DataTextField="Descripcion" DataValueField="CodigoDocumento" Width="120px" TabIndex="104">
+                                                                </asp:DropDownList>&nbsp;<small style=" color:Red">(*)</small>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td style="padding-left:5px">
+                                                            <font size="1"><strong>Dirección</strong></font></td>
+                                                            <td style="padding-left:5px">
+                                                            <asp:TextBox ID="txtDirCalleA" runat="server" MaxLength="100" Width="200px" CssClass="CajaTexto" TabIndex="105"></asp:TextBox>
+                                                            &nbsp;&nbsp;<asp:TextBox ID="txtDirNumA" runat="server" MaxLength="5" Width="20px" CssClass="CajaTexto" TabIndex="106"></asp:TextBox>
+                                                            &nbsp;&nbsp;<font size="1"><strong>piso / depto</strong></font>&nbsp;<asp:TextBox ID="txtDirPisoA" runat="server" MaxLength="2" Width="10px" CssClass="CajaTexto" TabIndex="107"></asp:TextBox>
+                                                            &nbsp;<asp:TextBox ID="txtDirDeptoA" runat="server" MaxLength="2" Width="10px" CssClass="CajaTexto" TabIndex="108"></asp:TextBox>
+                                                            </td></tr>
+                                                            <tr><td style="padding-left:5px">
+                                                            <font size="1"><strong>Entre calles</strong></font></td>
+                                                            <td style="padding-left:5px">
+                                                            <asp:TextBox ID="txtCalle1DirA" runat="server" MaxLength="100" Width="200px" CssClass="CajaTexto" TabIndex="109"></asp:TextBox>
+                                                            &nbsp;<font size="1"><strong>y</strong></font>&nbsp;<asp:TextBox ID="txtCalle2DirA" runat="server" MaxLength="100" Width="200px" CssClass="CajaTexto" TabIndex="110"></asp:TextBox>
+                                                            &nbsp;<font size="1"><strong>cód postal</strong></font>&nbsp;<asp:TextBox ID="txtCodPostalDirA" runat="server" MaxLength="5" Width="30px" CssClass="CajaTexto" TabIndex="111"></asp:TextBox>
+                                                            </td></tr>
+                                                            <tr>
+                                                            <td style="padding-left:5px">
+                                                            <font size="1"><strong>Ciudad</strong></font></td>
+                                                            <td style="padding-left:5px"><asp:TextBox ID="txtCiudadDirA" runat="server" MaxLength="100" Width="200px" CssClass="CajaTexto" TabIndex="112"></asp:TextBox>
+                                                            </td></tr>
+                                                            <tr><td style="padding-left:5px"><font size="1"><strong>Prov / Localidad</strong></font></td>
+                                                            <td><asp:DropDownList ID="ddlProvinciaA" runat="server" AutoPostBack="true" TabIndex="113" DataTextField="Descripcion"  DataValueField="CodProvincia" Width="180px" OnSelectedIndexChanged="TraeLocalidadesXProvApod_SelectedIndexChanged">
+                                                            </asp:DropDownList>
+                                                            &nbsp;&nbsp;
+                                                            <asp:DropDownList ID="ddlLocalidadA" runat="server" AutoPostBack="false" TabIndex="114" DataTextField="DescripcionLocalidad"  DataValueField="Cod_Localidad" Width="300px">
+                                                            </asp:DropDownList>
+                                                            </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td style="padding-left:5px">
+                                                            <font size="1"><strong>Apoderado</strong></font></td>
+                                                            <td>
+                                                            <asp:DropDownList ID="ddlSubTipoApoderadoA" runat="server" TabIndex="115" DataTextField="Descripcion"  DataValueField="Id_STipodeApoderado" Width="100px">
+                                                            </asp:DropDownList>&nbsp;<small style=" color:Red">(*)</small>&nbsp;
+                                                            <asp:DropDownList ID="ddlTipoApoderadoA" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoApoderadoA_SelectedIndexChanged" runat="server" TabIndex="116" DataTextField="Descripcion"  DataValueField="Id_TipodeApoderado" Width="200px">
+                                                            </asp:DropDownList>&nbsp;<small style=" color:Red">(*)</small></td></tr>
+                                                            <tr>
+                                                            <td colspan="2">
+                                                            <asp:Panel ID="pnlBcoAge" runat="server">
+                                                            <table width="100%">
+                                                            <tr><td><font size="1"><strong>Bco / Age</strong></font></td>
+                                                            <td><asp:DropDownList ID="ddlBancoA" runat="server" AutoPostBack="false" TabIndex="117" DataTextField="Descripcion"  DataValueField="Id_Banco" Width="300px"></asp:DropDownList>
+                                                            </td></tr>
+                                                            </table>
+                                                            </asp:Panel>
+                                                            </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td style="padding-left:5px">
+                                                            <font size="1"><strong>Comentarios</strong></font></td>
+                                                            <td>
+                                                                <asp:TextBox ID="txtComentariosA" runat="server"   Width="600px" CssClass="CajaTexto" TabIndex="118"  TextMode="MultiLine" Height="30px" MaxLength="500" ></asp:TextBox>
+                                                            </td></tr>
+                                                            <tr>
+                                                            <td colspan="2">                    
+                                                                <uc:MensajeCons ID="mensajeValidoApoderado" runat="server" Text = "" />
+                                                            </td></tr>
+                                                            </table>
+                                                            <asp:HiddenField ID="HFIdApoderado" runat="server" />
+                                                            <asp:HiddenField ID="HFtipoTxApod" runat="server" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b class="a4"></b><b class="a3"></b><b class="a2"></b><b class="a1"></b>
+                                            <div style="text-align: right; width: 98%; margin-top: 10px; margin-bottom: 5px">
+                                                <asp:Button   ID="btnGuardarApoderado" Text="Guardar" runat="server" CssClass="Botones" Width="100px" Height="20px" onclick="btnGuardarApoderado_Click" TabIndex="119" CausesValidation="true"/>
+                                                <asp:Button   ID="btnCancelarAMApoderado" Text="Cancelar" runat="server" CssClass="Botones" Width="100px" Height="20px" onclick="btnCancelarApoderado_Click" TabIndex="120"/></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </ContentTemplate></asp:UpdatePanel>
+                            </div>
+                        </div>
+         </div>
+     <!--Fin Pop up apoderado -->
+    <uc1:Mensaje ID="mensaje" runat="server" /> 
+    <uc1:Mensaje ID="mensaje2" runat="server" /> 
+    <script language="javascript" type="text/javascript">
+        function abrirArchivo() {
+            window.open('../Impresiones/InformacionCompletaBeneficioPrint.aspx');
+            return false;
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
+</asp:Content>

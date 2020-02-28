@@ -1,0 +1,6 @@
+2017-09-20 09:51:25,893 [ID (null)] [6] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-09-20 09:51:30,751 [ID (null)] [6] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-09-20 09:51:30,894 [ID (null)] [6] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.

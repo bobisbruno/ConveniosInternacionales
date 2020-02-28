@@ -1,0 +1,32 @@
+2017-12-05 15:38:42,912 [ID (null)] [8] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Data.SqlClient.SqlException: Procedure or function SolicitudProvisoria_Alta has too many arguments specified.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 708
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 1042
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-12-05 15:42:47,188 [ID (null)] [28] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'nro_SolicitudProvisoria', table 'ConveniosInt_V02.dbo.SolicitudesProvisorias'; column does not allow nulls. INSERT fails.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 708
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 1042
+   --- Fin del seguimiento de la pila de la excepción interna ---

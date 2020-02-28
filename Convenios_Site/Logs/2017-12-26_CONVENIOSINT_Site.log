@@ -1,0 +1,461 @@
+2017-12-26 11:13:48,491 [ID (null)] [9] ERROR global_asax - ID Error       : -1916442510
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:14:03,662 [ID (null)] [8] ERROR global_asax - ID Error       : -183386045
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:14:05,531 [ID (null)] [9] ERROR global_asax - ID Error       : 137051333
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:14:07,149 [ID (null)] [12] ERROR global_asax - ID Error       : 1436669303
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:14:12,185 [ID (null)] [9] ERROR global_asax - ID Error       : -969247141
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:14:51,919 [ID (null)] [9] ERROR global_asax - ID Error       : -1320355039
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:16:15,695 [ID (null)] [7] ERROR global_asax - ID Error       : 165593700
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:20:27,959 [ID (null)] [27] ERROR global_asax - ID Error       : 639306268
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:24:01,857 [ID (null)] [12] ERROR global_asax - ID Error       : -169829188
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:24:02,010 [ID (null)] [34] ERROR global_asax - ID Error       : 1547426006
+Mensaje Error : Un extensor no puede estar en un UpdatePanel diferente del control que lo extiende.
+Stack     :    en System.Web.UI.ExtenderControl.RegisterWithScriptManager()
+   en AjaxControlToolkit.ExtenderControlBase.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ExtenderBase\ExtenderControlBase.cs:línea 365
+   en AjaxControlToolkit.ValidatorCalloutExtender.OnPreRender(EventArgs e) en C:\Users\Stephen\Documents\Repos\Superexpert\AjaxControlToolkit\Server\AjaxControlToolkit\ValidatorCallout\ValidatorCalloutExtender.cs:línea 142
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:25:57,027 [ID (null)] [30] ERROR global_asax - ID Error       : 914183124
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:03,112 [ID (null)] [33] ERROR global_asax - ID Error       : -611474177
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:03,772 [ID (null)] [32] ERROR global_asax - ID Error       : -623708722
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:04,190 [ID (null)] [30] ERROR global_asax - ID Error       : -1708450677
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:04,422 [ID (null)] [13] ERROR global_asax - ID Error       : 852341801
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:04,621 [ID (null)] [34] ERROR global_asax - ID Error       : 1008694860
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:04,876 [ID (null)] [31] ERROR global_asax - ID Error       : 247272670
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:04,986 [ID (null)] [23] ERROR global_asax - ID Error       : -1902988281
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:05,486 [ID (null)] [13] ERROR global_asax - ID Error       : -1956000689
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 11:26:05,924 [ID (null)] [32] ERROR global_asax - ID Error       : -1897772070
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:00:13,153 [ID (null)] [7] ERROR global_asax - ID Error       : 349660895
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:03:26,231 [ID (null)] [8] ERROR global_asax - ID Error       : 221450908
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 653
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:06:59,334 [ID (null)] [13] ERROR global_asax - ID Error       : 721769698
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:07:02,939 [ID (null)] [15] ERROR global_asax - ID Error       : -316062015
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:07:08,273 [ID (null)] [8] ERROR global_asax - ID Error       : -544186756
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:09:24,354 [ID (null)] [5] ERROR global_asax - ID Error       : -34989698
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:09:46,867 [ID (null)] [14] ERROR global_asax - ID Error       : -1649284327
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:11:24,326 [ID (null)] [25] ERROR global_asax - ID Error       : 1718406937
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:11:36,229 [ID (null)] [28] ERROR global_asax - ID Error       : -73458129
+Mensaje Error : Duplicado no es DataColumn ni DataRelation para la tabla .
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:12:32,446 [ID (null)] [29] ERROR global_asax - ID Error       : 112519180
+Mensaje Error : Duplicado no es DataColumn ni DataRelation para la tabla .
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:12:52,827 [ID (null)] [26] ERROR global_asax - ID Error       : -860709810
+Mensaje Error : Duplicado no es DataColumn ni DataRelation para la tabla .
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:12:59,364 [ID (null)] [5] ERROR global_asax - ID Error       : -130149004
+Mensaje Error : Duplicado no es DataColumn ni DataRelation para la tabla .
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:15:26,797 [ID (null)] [30] ERROR global_asax - ID Error       : -1528277162
+Mensaje Error : Duplicado no es DataColumn ni DataRelation para la tabla .
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 655
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:30:58,081 [ID (null)] [18] ERROR global_asax - ID Error       : -1729858684
+Mensaje Error : La secuencia no contiene elementos
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 660
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 12:36:17,431 [ID (null)] [10] ERROR global_asax - ID Error       : -323204217
+Mensaje Error : La secuencia no contiene elementos
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 660
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 14:41:42,628 [ID (null)] [9] ERROR AltaProvisoria - No se puede obtener acceso a un archivo cerrado.
+2017-12-26 14:47:21,858 [ID (null)] [27] ERROR AltaProvisoria - No se puede obtener acceso a un archivo cerrado.
+2017-12-26 14:54:14,481 [ID (null)] [53] ERROR global_asax - ID Error       : -748136219
+Mensaje Error : La secuencia no contiene elementos
+Stack     :    en AltaProvisoria.btnAdd_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaProvisoria.aspx.cs:línea 720
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-26 14:59:41,154 [ID (null)] [45] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (AI000001, 1, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---

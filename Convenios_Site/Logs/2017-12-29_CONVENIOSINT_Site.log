@@ -1,0 +1,45 @@
+2017-12-29 07:50:48,783 [ID (null)] [12] ERROR InvocaArchivosWS - Boolean ObtenerRutaArchivo(System.String, System.String, System.String ByRef) - Error:Documento no hallado en digiweb->JO00000332
+2017-12-29 08:03:48,098 [ID (null)] [35] ERROR InvocaArchivosWS - Boolean ObtenerRutaArchivo(System.String, System.String, System.String ByRef) - Error:Documento no hallado en digiweb->DE00000421
+2017-12-29 08:09:44,188 [ID (null)] [13] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2017-12-29 08:09:45,857 [ID (null)] [13] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-12-29 15:15:48,603 [ID (null)] [8] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (EA000002, 2, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-12-29 15:16:43,627 [ID (null)] [14] ERROR AltaProvisoria - Void SolicitudProvisoria_Alta(ActoresWS.SolicitudProvisoria, System.String ByRef, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoria_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria, System.String ByRef) ---> System.Exception: Error en Solicitudes.Datos Void SolicitudProvisoriaMovimiento_Alta(Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento) ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK_SolicitudesProvisoriasMovimientos'. Cannot insert duplicate key in object 'dbo.SolicitudesProvisoriasMovimientos'. The duplicate key value is (DI000001, 2, 0).
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   en Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 662
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_Alta(SolicitudProvisoriaMovimiento iSolicitudProvisoriaMovimiento) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 666
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria, String& newNroSolicitud) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 725
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.SolicitudProvisoria_Alta(SolicitudProvisoria iSolicitudProvisoria)
+   --- Fin del seguimiento de la pila de la excepción interna ---

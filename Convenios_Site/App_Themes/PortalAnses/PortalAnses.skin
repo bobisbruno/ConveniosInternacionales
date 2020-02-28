@@ -1,0 +1,51 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:TextBox CssClass="CajaTexto" runat="server" />
+
+<asp:Button runat="server" CssClass="Botones" />
+
+<asp:Label CssClass="TextoAzul TextoBold" SkinID="DatoBold" runat="server" />
+<asp:Label CssClass="TextoError" SkinID="Error" runat="server" />
+<asp:Label SkinID="none" runat="server" />
+
+
+ <asp:DropDownList CssClass="BordeGris" runat="server" />
+ 
+ <asp:HyperLink runat="server" SkinID="AzulBold" CssClass="TextoAzul TextoBold" />
+
+<asp:Image runat="server" ImageAlign="Middle" />
+
+ <asp:DataGrid runat="server" AutoGenerateColumns="False" 
+   
+    CssClass="Grilla"
+    GridLines="Both" >
+    <FooterStyle CssClass="GrillaPiePagina" />
+    <SelectedItemStyle CssClass="GrillaSeleccion" />
+    <AlternatingItemStyle CssClass="GrillaAternateItem"/>
+    <ItemStyle CssClass="Grilla" HorizontalAlign="Center" />
+    <HeaderStyle CssClass="GrillaHead" HorizontalAlign="Center" Height="20px" />
+</asp:DataGrid>
+                
+<asp:GridView CssClass="Grilla" runat="server" AutoGenerateColumns="False" HeaderStyle-Height="20" CellPadding = "1" >
+    <HeaderStyle CssClass="GrillaHead" Height="20px" />
+    <RowStyle CssClass="Grilla" Height="20px" />
+    <AlternatingRowStyle CssClass="GrillaAternateItem" /> 
+    <FooterStyle CssClass="GrillaPiePagina" />
+    <SelectedRowStyle CssClass="GrillaSeleccion" />
+</asp:GridView>
+                                                                      
+

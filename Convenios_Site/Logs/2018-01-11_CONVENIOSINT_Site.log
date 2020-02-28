@@ -1,0 +1,108 @@
+2018-01-11 10:53:47,656 [ID (null)] [7] ERROR global_asax - ID Error       : -872888367
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx(10): error CS0433: El tipo 'ASP.controles_barranav_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_l4xupylx.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_teeu4r5g.dll'
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2018-01-11 10:54:53,486 [ID (null)] [6] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-11 10:54:53,663 [ID (null)] [6] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 10:54:53,674 [ID (null)] [6] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2018-01-11 10:55:14,836 [ID (null)] [7] ERROR global_asax - ID Error       : -1062999341
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaRapida.Page_Load(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaRapida.aspx.cs:línea 90
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-11 10:56:22,661 [ID (null)] [7] ERROR global_asax - ID Error       : -772886004
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaRapida.blanquearPantalla() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaRapida.aspx.cs:línea 365
+   en AltaRapida.Page_Load(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaRapida.aspx.cs:línea 89
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-11 10:59:55,807 [ID (null)] [17] ERROR global_asax - ID Error       : -1379102907
+Mensaje Error : Referencia a objeto no establecida como instancia de un objeto.
+Stack     :    en AltaRapida.blanquearPantalla() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaRapida.aspx.cs:línea 368
+   en AltaRapida.Page_Load(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AltaRapida.aspx.cs:línea 89
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-11 11:02:01,065 [ID (null)] [15] ERROR global_asax - ID Error       : 151804007
+Mensaje Error : No se puede encontrar el identificador de control 'txt  CuilADP' al que hace referencia la propiedad 'ControlToValidate' de 'rfvtxtCuilADP'.
+Stack     :    en System.Web.UI.WebControls.BaseValidator.CheckControlValidationProperty(String name, String propertyName)
+   en System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-11 11:02:46,824 [ID (null)] [7] ERROR global_asax - ID Error       : 702272095
+Mensaje Error : No se puede validar el control 'twetxtDocADP' al que hace referencia la propiedad ControlToValidate de 'rfvtxtDocADP'.
+Stack     :    en System.Web.UI.WebControls.BaseValidator.CheckControlValidationProperty(String name, String propertyName)
+   en System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2018-01-11 12:28:29,462 [ID (null)] [6] ERROR AltaRapida - El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2018-01-11 12:29:19,922 [ID (null)] [9] ERROR AltaRapida - El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2018-01-11 12:29:24,429 [ID (null)] [13] ERROR AltaRapida - El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2018-01-11 12:31:15,279 [ID (null)] [13] ERROR AltaRapida - El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2018-01-11 12:32:24,915 [ID (null)] [9] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 12:41:45,442 [ID (null)] [45] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 12:49:09,483 [ID (null)] [41] ERROR InvocaWSExternos - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef)-7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 12:49:09,620 [ID (null)] [41] ERROR AltaRapida - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 12:50:13,986 [ID (null)] [42] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:44:50,388 [ID (null)] [5] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:47:19,487 [ID (null)] [17] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:47:32,065 [ID (null)] [8] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:47:39,837 [ID (null)] [18] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:47:40,633 [ID (null)] [18] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:48:03,558 [ID (null)] [17] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:49:17,369 [ID (null)] [16] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:49:36,258 [ID (null)] [16] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:54:34,791 [ID (null)] [18] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:56:36,067 [ID (null)] [18] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 13:58:34,027 [ID (null)] [18] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.
+2018-01-11 14:07:00,388 [ID (null)] [27] ERROR InvocaWSExternos - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef)-7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 14:07:00,519 [ID (null)] [27] ERROR AltaRapida - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 14:07:21,277 [ID (null)] [29] ERROR InvocaWSExternos - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef)-7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 14:07:21,278 [ID (null)] [29] ERROR AltaRapida - ObtenerDatosxApeyNom.ListaPw03 ObtenerDatosxApeyNom(System.String, Int16, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 14:07:40,053 [ID (null)] [32] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 144
+2018-01-11 14:07:40,087 [ID (null)] [32] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2018-01-11 14:08:26,929 [ID (null)] [32] ERROR AltaRapida - Referencia a objeto no establecida como instancia de un objeto.

@@ -1,0 +1,151 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="true" CodeFile="AMNotas.aspx.cs" Inherits="Paginas_AMNotas" Title="Ingreso de notas"   Culture="Auto" UICulture="Auto"%>
+<%@ Register Src="../Controles/Busquedabeneficiario.ascx" TagName="BBeneficiario" TagPrefix="uc2" %>
+<%@ Register Src="~/Controles/Mensaje.ascx" TagName="Mensaje" TagPrefix="uc1" %>
+<%@ Register Src="../Controles/MensajeError2.ascx" TagName="MError2" TagPrefix="uc3" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Src="~/Controles/barraNav.ascx" TagName="BNav" TagPrefix="uc4" %>
+<%@ MasterType VirtualPath="~/MasterPage/MasterPage.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <meta http-equiv="Pragma" content="no-clase">
+    <meta http-equiv="Expires" content="-1">
+ </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <uc4:BNav id="BNav" runat="Server"/>
+    <uc3:MError2 ID="MError" runat="server" />
+    <div class="FondoBlanco">
+    <div style="margin: 10px">
+    <h1>
+        <asp:Label ID="LblTituloPagina" runat="server" Text="Titulo Pagina"></asp:Label>
+        </h1>
+    <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; margin-top:10px; padding-bottom:10px; padding-top:10px">        
+    <asp:HiddenField ID="HFIdBeneficiario" runat="server" Value="" />
+    <div style=" width:98%">
+    <table width="100%">
+    <tr><td style=" width:85%; text-align:right">
+    <!--Control busqueda beneficiario-->
+    <uc2:BBeneficiario ID="busben" runat="server" /></td>
+    <td style=" width:15%; text-align:right"><asp:Button   ID="btnBuscar" runat="server" CssClass="Botones" Text="Buscar" Width="110" Height="21" onclick="btnBuscar_Click"  TabIndex="9"/></td>
+    </tr></table>
+    <div id="dvBenefConNota" runat="server" style="overflow:auto; height:150px; width:98%; margin-top:10px; margin-bottom:10px" visible="false">
+    <asp:GridView runat = "server" ID="gridListadoBenefCNota" GridLines="None" Width="98%" AutoGenerateColumns="False" Height="5px" OnRowCommand="RowCommand">
+                        <Columns>
+                            <asp:BoundField DataField="Id_Beneficiario" Visible="false"/>
+                            <asp:BoundField DataField = "apeNom" HeaderText = "Apellido y Nombre" >
+                                <ItemStyle HorizontalAlign="Left" Width="35%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField = "Documento" HeaderText = "Documento" >
+                                <ItemStyle HorizontalAlign="Center" Width="15%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField = "ExpedienteExt" HeaderText = "C CIACI" >
+                                <ItemStyle HorizontalAlign="Center" Width="25%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField = "Fecha_nac" HeaderText = "Fecha Nac." >
+                                <ItemStyle HorizontalAlign="Center" Width="10%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Ingresar nota" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle HorizontalAlign="Center" Width="15%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="imgAddNota" runat="server" CommandName="AddNota" AlternateText="Ingresar una nota" CommandArgument='<%#Eval("Id_Beneficiario")+ ";" + Eval("apeNom")  + ";" + Eval("Documento") + ";" + Eval("ExpedienteExt")%>'   ImageUrl="~/App_Themes/Imagenes/Agregar.gif"/>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:TemplateField>
+                         </Columns>
+                    </asp:GridView></div>
+    </div></div>
+    <h3>
+    <asp:Label ID="lbldatosBenef" runat="server"></asp:Label></h3>
+    <div id="dvShowNotasOld" runat="server" class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; margin-top:10px; padding-bottom:10px; padding-top:10px; height:150px; overflow:auto">
+    <h5 >Notas ingresadas</h5>
+    <asp:repeater id="rptNotas" runat="server"  OnItemDataBound="rptNotas_ItemDataBound">
+                                    <headertemplate>
+                                        <table cellpadding="1" cellspacing="2" width="95%">
+                                    </headertemplate>
+                                    <itemtemplate>
+                                        <tr>
+                                        <td style=" width:50%"><font size="1">Nro. Nota:</font>&nbsp;<asp:Label runat="server" ID="lblNNota"/>
+                                        </td>
+                                        <td><font size="1">Fecha:</font>&nbsp;<asp:Label runat="server" ID="lbFecha"/>
+                                        </td>
+                                        <td align="right"><asp:Button   ID="btnImprimirNota" Text="Imprimir nota" runat="server" CssClass="Botones" Width="100px" Height="21px" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Asunto") + ";" + DataBinder.Eval(Container.DataItem, "Descripcion")  + ";" + DataBinder.Eval(Container.DataItem, "FRecepcion") + ";" + DataBinder.Eval(Container.DataItem, "NroNota")%>' OnCommand="PrintCommand" CommandName = "Imprimir"/></td>
+                                        </tr>
+                                        <tr><td colspan="2">
+                                        <font size="1">Asunto:</font>&nbsp;<asp:Label runat="server" ID="lblAsunto"/></td></tr>
+                                        <tr>
+                                        <td colspan="3"><font size="1">Descripción</font></td>
+                                        </tr>
+                                        <tr><td colspan="3" style=" overflow:scroll">
+                                        <asp:Label runat="server" ID="lbDescripcion" Width="600px"/>
+                                        </td></tr>
+                                        <tr>
+                                        <td colspan="3"><hr /></td>
+                                        </tr>
+                                    </itemtemplate>
+                                    <footertemplate>
+                                      </table>
+                                    </footertemplate>
+                                  </asp:repeater>
+    </div>
+    <div id="dvAddNota" runat="server" class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; margin-top:10px; padding-bottom:10px; padding-top:10px">
+    <h5 >Ingreso de nota</h5>
+    <div style=" width:98%">
+    <table width="98%">
+                    <tr>
+                        <td style="vertical-align:top; text-align:left">
+                            <font size="1">Fecha de Recepción</font></td>
+                        <td style="vertical-align:top; text-align:left">
+                            <asp:TextBox ID="txtFechaRec" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="100px" CssClass="CajaTexto" TabIndex="1" MaxLength="11"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvtxtFechaRec" Display="None" ValidationGroup="datosNota" ErrorMessage="Debe ingresar una fecha de recepción" ControlToValidate="txtFechaRec" runat="server"></asp:RequiredFieldValidator>
+                            <cc1:ValidatorCalloutExtender ID="vcerfvtxtFechaRec" runat="server" TargetControlID="rfvtxtFechaRec"></cc1:ValidatorCalloutExtender>
+                            <asp:RangeValidator ID="rvtxtFechaRec" runat="server" Type="Date" ControlToValidate="txtFechaRec" ErrorMessage="Fecha de no valida. Debe se no inferior a un año, hasta hoy." Display="None" ValidationGroup="datosNota"/>
+                            <cc1:ValidatorCalloutExtender ID="vcervtxtFechaRec" runat="server" TargetControlID="rvtxtFechaRec"></cc1:ValidatorCalloutExtender> 
+                            <cc1:TextBoxWatermarkExtender ID="twetxtFechaRec" runat="server" TargetControlID="txtFechaRec" WatermarkText="Fecha de recepción" WatermarkCssClass="watermarked" />
+                            <cc1:FilteredTextBoxExtender ID="ftetxtFechaRec" runat="server" FilterType="Numbers, Custom" TargetControlID="txtFechaRec" ValidChars="/" />
+                        </td>
+                        <td style="vertical-align:top; text-align:left">
+                        <font size="1">Número nota</font></td>
+                        <td style="vertical-align:top; text-align:left">
+                        <asp:TextBox ID="txtNumNota" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="50px" CssClass="CajaTexto" TabIndex="12" MaxLength="5"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtNumNota" Display="None" ValidationGroup="datosNota" ErrorMessage="Debe ingresar un número de nota" ControlToValidate="txtNumNota" runat="server"></asp:RequiredFieldValidator>
+                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtNumNota" runat="server" TargetControlID="rfvtxtNumNota"></cc1:ValidatorCalloutExtender>
+                        <cc1:TextBoxWatermarkExtender ID="twetxtNumNota" runat="server" TargetControlID="txtNumNota" WatermarkText="Nota nro." WatermarkCssClass="watermarked" />
+                        <cc1:FilteredTextBoxExtender ID="ftetxtNumNota" runat="server" FilterType="Numbers, LowercaseLetters, UppercaseLetters" TargetControlID="txtNumNota"/>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td style="vertical-align:top; text-align:left">
+                        <font size="1">Asunto</font></td>
+                        <td colspan="3" style="vertical-align:top; text-align:left">
+                            <asp:TextBox ID="txtAsunto" runat="server" Width="700px" CssClass="CajaTexto" TabIndex="13" MaxLength="100"></asp:TextBox>
+                            <cc1:TextBoxWatermarkExtender ID="twetxtAsunto" runat="server" TargetControlID="txtAsunto" WatermarkText="Asunto" WatermarkCssClass="watermarked" />
+                            <cc1:FilteredTextBoxExtender ID="ftetxtAsunto" runat="server" FilterType="Numbers, LowercaseLetters, UppercaseLetters, Custom" ValidChars=" ,-,_" TargetControlID="txtAsunto"/>
+                        </td></tr>
+                        <tr>
+                        <td style="vertical-align:top; text-align:left">
+                        <font size="1">Descripción</font></td>
+                        <td colspan="3" style="vertical-align:top; text-align:left">
+                            <asp:TextBox ID="txtDescripcion" runat="server" Width="700px" CssClass="CajaTexto" TabIndex="14" MaxLength="500" TextMode="MultiLine" Height="50px" AutoCompleteType="Notes"></asp:TextBox>
+                            <cc1:TextBoxWatermarkExtender ID="twetxtDescripcion" runat="server" TargetControlID="txtDescripcion" WatermarkText="Ingresar descripción" WatermarkCssClass="watermarked" />
+                            <%--<cc1:FilteredTextBoxExtender ID="ftetxtDescripcion" runat="server" FilterType="Numbers, LowercaseLetters, UppercaseLetters, Custom" ValidChars=" ,-,_"  TargetControlID="txtDescripcion"/>--%>
+                            </td></tr>
+                        </table>
+    </div></div>
+    
+  
+    <div align="right" style="margin-top: 10px;padding-right:10px ">
+        <asp:Button   ID="btnGuardar" Text="Guardar nota" runat="server" CssClass="Botones" Enabled="false" Width="150px" Height="21px"  OnClick="btnGuardar_Click" CausesValidation="true" ValidationGroup="datosNota" TabIndex="20"/>&nbsp;
+        <asp:Button   ID="btnLimpiar" Text="Limpiar" runat="server" CssClass="Botones" Width="150px" Height="21px"  OnClick="btnLimpiar_Click" TabIndex="21"/>&nbsp;
+        <asp:Button   ID="btnRegresar" Text="Regresar" runat="server" CssClass="Botones" Width="130px" Height="21px" onclick="btnRegresar_Click" TabIndex="22"/>
+     </div>
+     </div></div>
+    <uc1:Mensaje ID="mensaje" runat="server" /> 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
+</asp:Content>
+

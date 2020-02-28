@@ -1,0 +1,428 @@
+﻿/*--IMPORT PARA PAGINA MAESTRA
+
+@import url("http://ansesarqserver.anses.gov.ar:8080/css/css1/estilos/layout.css");
+@import url("http://ansesarqserver.anses.gov.ar:8080/css/css1/estilos/tonos.css");
+--*/
+
+
+/*ENCABEZADO LOGO FONDO LOGO DE APLICACION Y TITULO DE LA APLICACION*/
+
+.page
+{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	position: static;
+}
+
+#header
+{
+	position: relative;
+	margin-bottom: 0px;
+	padding: 0 0px 0 0;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+#logo
+{
+	background-image: url('../imagenes/logoanses.jpg'); /*Logo de Anses*/
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-top: 8px;
+	float: left;
+	width: 20%;
+	height: 70px;
+}
+
+#fondoHeader
+{
+	background-image: url('../imagenes/Encabezado_Fondo.jpg'); /*Imagen del mundo*/
+	background-repeat: no-repeat;
+	float: right;
+	width: 70%;
+}
+
+#fondoHeader h3
+{
+	color: #fff;
+	text-align: right;
+	font-size: 13pt;
+	font-family: Arial;
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+#fondoHeader span
+{
+	color: #8BBF4C;
+	font-size: 18pt;
+	word-spacing: 100em;
+	white-space: 12pt;
+}
+
+#logoApli
+{
+	background-image: url('../imagenes/logoprissaweb.png'); /*Logo de la Aplicacion*/
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	margin-top: -28px;
+	float: right;
+	width: 20%;
+	margin-right: 10px;
+	height: 30px;
+}
+#identificacion /*solo si se muestra identidad del usuario*/
+{
+	float: right;
+	color: Red;
+	height: 20px;
+	margin-top: 3px;
+	padding: 5px 10px 0px 0px;
+}
+
+/* FIN  ENCABEZADO LOGO FONDO LOGO DE APLICACION Y TITULO DE LA APLICACION*/
+
+/*---------------------------------------------------------------------------*/
+
+/*Menu que contiene los iconos de acceso directo Home - Ayuda -  FAC
+ e informacion necesaria tal como Usuario Activo*/
+#encab_Menu
+{
+	clear: both;
+	background-color: #e7e8e9;
+	padding: 0px 0px 0px 0px;
+	margin-top: 0px;
+	height: 30px;
+	width: 100%;
+}
+
+#icono_FAC
+{
+	float: right;
+	width: 3%;
+	background-image: url('../imagenes/bt_help.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	cursor: hand;
+	margin-top: 3px;
+}
+#icono_Home
+{
+	float: right;
+	width: 3%;
+	background-image: url('../imagenes/bt_home.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	cursor: hand;
+	margin-top: 3px;
+}
+#icono_Exit
+{
+	float: right;
+	width: 3%;
+	background-image: url('../imagenes/bt_exit.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	cursor: hand;
+	margin-top: 3px;
+}
+#identificacion /*solo si se muestra identidad del usuario*/
+{
+	float: left;
+	color: #888889;
+	height: 20px;
+	cursor: hand;
+	margin-top: 3px;
+	margin-left: 8px;
+}
+/* FIN Menu que contiene los iconos de acceso directo*/
+
+/*--------------------------------------------------------------------------------*/
+
+/* capa CONTENEDORA */
+
+#contenido
+{
+	background-color: #fff; /*Fondo Blanco*/
+	padding: 5px;
+	position: relative;
+	top: 0;
+	z-index: 0;
+}
+*:first-child + html #contenido /*permite que la capa de contenido sea visible en IE*/
+{
+	height: 100%;
+}
+.corte /*Permite que la capa de Areatrabajo al crecer tb lo haga contenido y pueda ser  visualizada por firefox*/
+{
+	clear: both;
+}
+
+#areatrabajo /*en esta capa se solicita o informa al Usuario lo que la Aplicacion  Requiere, sea formulario sea contenido, sea Resultados*/
+{
+	float: left;
+	width: 80%;
+	margin-top: 15px; /*background-color:#fff;*/
+}
+#barraNavegacion
+{
+	position: relative;
+	right: 0;
+	margin-bottom: 40px;
+	bottom: 0;
+	clear: both;
+}
+
+
+#area /*Capa donde se muestra los pasos a seguir por el Usuario cuando la aplicacion  requiere de varias peticiones*/
+{
+	background-color: #909fa6;
+	float: left;
+	width: 18.3%;
+	padding: 9px;
+	text-align: left;
+}
+
+#pendiente /*Pasos pendientes de concretar por el Usuario*/
+{
+	color: #034769;
+}
+#cumplido /*Pasos cumplidos por el Usuario*/
+{
+	color: #fff;
+}
+
+
+/**************************************************************************************/
+/*Panel mensaje error */
+
+.tableCabeceraPanelMessages
+{
+	width:99%;
+	border:1px;
+	margin:0px;	
+	border: 1px solid #CFC5AF;
+/*	border-left: 1px solid #CFC5AF;
+	border-right: 1px solid #CFC5AF;	
+	border-top: 1px solid #CFC5AF;	*/
+	text-align:left;
+	background-color: #f4f6e1;
+}
+.cabeceraPanelMensajes
+{
+	font-family: Arial, tahoma, helvetica;
+	font-weight: normal;
+	font-size: 11px;
+	color: #4a4a4a;
+}
+.labelOcultarMostrarPanel {
+	font-family:Arial, tahoma, helvetica;
+	cursor: hand;
+	font-size:11px;
+	color:#0B3D91;
+}
+.cajaIconMessages {
+	background-color:#FFFFFF;
+}
+.tableMessages
+{
+	width:97%;
+	border:1px;
+	margin:0px;	
+	border: 1px solid #CFC5AF;
+/*	border-left: 1px solid #CFC5AF;
+	border-right: 1px solid #CFC5AF;	
+	border-bottom: 1px solid #CFC5AF;		
+	border-top: 1px solid #CFC5AF;			*/
+	text-align:left;
+	margin-top: 5px;
+	
+}
+.textError
+{	
+	font-family:Arial, tahoma, helvetica;
+	color:red;
+	font-size:11px;
+}
+.imageOcultarMostrar {
+	cursor: hand;
+	
+	VERTICAL-ALIGN: middle;
+	
+}
+
+.Lista {
+	font-family: Courier New, tahoma, Arial, helvetica;
+	color: #000;
+	font-size: 11px;
+	background-position: 50% bottom;
+	border: 1px solid #DEDAD3;
+	padding-left: 5px;
+	
+}
+
+
+
+/**************************************************************************************/
+/*caja de formulario */
+
+#cajaformulario /*Capa contenedora de los formularios */
+{
+	background-color: #cde7f3; /*fondo celeste*/
+	font-size: 9pt;
+	padding: 20px 10px 20px 10px;
+	margin: 40px 10px 40px 10px; /*float:left;*/
+	width: 95%;
+	z-index: 1; /*position:relative;*/
+}
+
+#cajaformulario table
+{
+}
+
+.etiquetas /*Capa que va en el interior del Formularios y contiene los titulos de los combos que debe llenar el usuario, se usa para simular una tabla*/
+{
+	color: Black;
+	float: left;
+	margin-left: 10px;
+}
+
+.datos /*Capa que va en el interior del Formularios y contiene los combos  que debe llenar el usuario, se usa para simular una tabla*/
+{
+	float: left;
+	margin-left: 10px;
+}
+.etiquetas p /*esto permite que los textos del parrafo tengan un interlineados*/
+{
+	line-height: 28px;
+	margin: 0 0 0 0;
+}
+
+.comboBox
+{
+	height: 23px;
+	width: 175px;
+	margin-left: 11px;
+	border-style: none none solid solid;
+	font-size: 9pt;
+	border-bottom: #C7C8CA 4px;
+	border-left: #C7C8CA 1px;
+	margin-bottom: 8px;
+}
+
+/*Fin caja de formulario */
+
+/*------------------------------------------------------------------------------*/
+/* Pie de pagina*/
+#footer /*Esta area esta diseÃ±ada para mostrar informacion del Organismo*/
+{
+	color: #fff;
+	font-size: 7pt;
+	padding: 0 0 0 0;
+	text-align: center;
+	line-height: normal; /*position:relative;*/
+	clear: both;
+	z-index: -2;
+}
+
+
+body
+{
+	background-color: #20438D; /*Azul de fondo*/
+	margin: 0;
+	padding: 0;
+	color: #58595b; /*Gris de la letra*/
+	font-family: verdana;
+	font-size: 9pt;
+}
+
+h1
+{
+	font-family: verdana;
+	font-size: 16pt;
+	margin: 0;
+	color: #034769; /*Azul*/
+	line-height: 45px;
+}
+
+h2
+{
+	font-family: verdana;
+	font-size: 15pt;
+	margin: 0;
+	color: #3ca0d0; /*Celeste*/
+	line-height: 35px;
+}
+
+h4
+{
+	font-family: verdana;
+	font-size: 14pt;
+	margin: 0;
+	color: #034769; /*Azul*/
+	line-height: 35px;
+}
+
+br
+{
+	line-height: 20px;
+}
+
+/******************************************************************/
+
+
+.botonnavegacion /*son los botones que sirven para que el Usuario pueda enviar la informacion o cancelar la solicitud*/
+{
+	background-color: #91ce44;
+	float: right;
+	height: 20px;
+	text-align: center;
+	cursor: hand;
+	font-family: Arial;
+	font-size: 9pt;
+	padding: 2px;
+	width: 10%;
+	margin: 0px 10px 0px 10px;
+	font-weight: bold; /*filter: progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#365913,strength=8);*/
+}
+
+
+.botonnavegacion a:link /*link que sirve para la llamada a la accion indicada por el boton*/
+{
+	text-decoration: none;
+	color: #034769;
+}
+
+.botonnavegacion a:visited /*link que sirve para la llamada a la accion indicada por el boton*/
+{
+	text-decoration: none;
+	color: #034769;
+}
+
+/****************************************************************************************/
+
+.textbox
+{
+	border-style: none none solid solid;
+	padding: 1px 2px 0px 0px;
+	border-bottom: #C7C8CA 1px;
+	border-left: #C7C8CA 1px;
+	height: 18px;
+	font-size: 9pt;
+	margin-top: 6px;
+	margin-bottom: 5px;
+}
+
+.comboBox
+{
+	padding: 1px 2px 0px 0px;
+	border-bottom: #C7C8CA 1px;
+	border-left: #C7C8CA 1px;
+	height: 18px;
+	font-size: 9pt;
+	margin-top: 6px;
+	margin-bottom: 5px;
+}
+

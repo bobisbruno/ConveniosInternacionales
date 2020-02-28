@@ -1,0 +1,31 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ControlExpediente.ascx.cs" Inherits="Controlexpediente" %>
+<div id="divExpediente" onpaste="separaDatosOnPaste(event,this);return false;" runat="server"
+    style="white-space: nowrap; width: 130px; vertical-align:top; text-align: left">
+    <asp:TextBox ID="txtorg" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="3" Style="text-align: center;
+        width: 22px">
+    </asp:TextBox>-<asp:TextBox ID="txtpre" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="2" Style="text-align: center"
+        Width="18px">
+    </asp:TextBox>-<asp:TextBox ID="txtddoc" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="8" Style="text-align: center"
+        Width="65px">
+    </asp:TextBox>
+    -<asp:TextBox ID="txtdig" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="1" Style="text-align: center"
+        Width="5px">
+    </asp:TextBox>
+    -<asp:TextBox ID="txttram" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="3" Style="text-align: center"
+        Width="35px">
+    </asp:TextBox>
+    -<asp:TextBox ID="txtsec" runat="server" onkeypress="return validarNumeroControl(event)"
+        onkeyup="return autoTabControl(this, event);" MaxLength="5" Style="text-align: center"
+        Width="45px">
+    </asp:TextBox>
+    <asp:Label ID="lbl_Obligatorio" CssClass="CajaTextoError" runat="server" Text="*"
+        Style="margin-left: 0px" Visible="false">
+    </asp:Label>
+</div>
+<asp:Label ID="lbl_Error" CssClass="CajaTextoError" runat="server" Style="position: absolute"
+    Visible="false"></asp:Label>

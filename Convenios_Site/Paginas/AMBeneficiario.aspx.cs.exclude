@@ -1,0 +1,2301 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.IO;
+using log4net;
+using System.Threading;
+using ActoresWS;
+using AuxiliaresWS;
+
+
+public partial class AMBeneficiario : System.Web.UI.Page
+{
+    private static readonly ILog log = LogManager.GetLogger(typeof(AMBeneficiario).Name);
+
+    #region Sesiones - Viewstate
+
+
+    //public ObtenerRelacionesxCuil.DatosPw04[] sesRelacionesCuilADP
+    //{
+    //    get { return Session["_RelacCuilAdp"] == null ? null : (ObtenerRelacionesxCuil.DatosPw04[])Session["_RelacCuilAdp"]; }
+    //    set { Session["_RelacCuilAdp"] = value; }
+    //}
+
+    public Beneficiario BeneficiarioActual
+    {
+        get { return Session["_BenefActual"] == null ? null : (Beneficiario)Session["_BenefActual"]; }
+        set { Session["_BenefActual"] = value; }
+    }
+        
+    private List<Documento_Beneficiario> sesDocumentosB
+    {
+        get { return (List<Documento_Beneficiario>)ViewState["_dtDocB"]; }
+        set { ViewState["_dtDocB"] = value; }
+    }
+
+    private List<Documento_Causante> sesDocumentosC
+    {
+        get { return (List<Documento_Causante>)ViewState["_dtDocC"]; }
+        set { ViewState["_dtDocC"] = value; }
+    }
+
+    private List<Apoderado> sesApoderados
+    {
+        get { return (List<Apoderado>)ViewState["_dtApod"]; }
+        set { ViewState["_dtApod"] = value; }
+    }
+
+    protected int IndexGrilla
+    {
+        get { return (int)ViewState["indexGrilla"]; }
+        set { ViewState["indexGrilla"] = value; }
+    }
+
+    private DropDownList DdlTipoDoc
+    {
+        get { return (DropDownList)Session["ddlTdoc"]; }
+        set { Session["ddlTdoc"] = value; }
+    }
+
+    private DropDownList DdlPaisDoc
+    {
+        get { return (DropDownList)Session["ddlPres"]; }
+        set { Session["ddlPres"] = value; }
+    }
+
+
+    #endregion Sesiones
+
+    private bool TienePermiso(string Valor)
+    {
+        return DirectorManager.traerPermiso(Valor, Page.Request.FilePath.Substring(Page.Request.FilePath.LastIndexOf("/") + 1).ToLower()).Value.accion != null;
+    }
+
+    #region APlica Seguridad Pagina
+    private bool AplicarSeguridad()
+    {
+        bool permiso = false;
+        try
+        {
+            permiso = TienePermiso("accesoPagina");
+
+        }
+        catch (ThreadAbortException)
+        { }
+        return permiso;
+    }
+    #endregion APlica Seguridad Pagina
+
+
+    #region Tomo tipo de Acceso
+
+    public string Acceso
+    {
+        get
+        {
+            return Session["acceso"] == null ? "" : (string)Session["acceso"];
+            //return (string)Session["acceso"];
+        }
+        set
+        {
+            Session["acceso"] = value;
+        }
+    }
+    #endregion
+
+    #region Load
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        mensaje.ClickSi += new Mensaje.Click_UsuarioSi(ClickearonSi);
+        mensaje.ClickNo += new Mensaje.Click_UsuarioNo(ClickearonNo);
+
+        
+
+        #region Set validacion fechas
+        rvtxtFechaDefC.MaximumValue = DateTime.Today.ToString("dd/MM/yyyy");
+        rvtxtFechaDefC.MinimumValue = DateTime.Today.AddYears(-70).ToString("dd/MM/yyyy");
+        rvtxtFechaNacC.MaximumValue = DateTime.Today.ToString("dd/MM/yyyy");
+        rvtxtFechaNacC.MinimumValue = DateTime.Today.AddYears(-100).ToString("dd/MM/yyyy");
+        rvtxtFechaNacB.MaximumValue = DateTime.Today.ToString("dd/MM/yyyy");
+        rvtxtFechaNacB.MinimumValue = DateTime.Today.AddYears(-100).ToString("dd/MM/yyyy");
+        #endregion Set validacion fechas
+
+        if (!IsPostBack)
+        {
+            //Check de Seguridad tanto para ingresar como modificar instrumento
+            #region Seguridad
+            if (!AplicarSeguridad())
+                Response.Redirect(ConfigurationManager.AppSettings["urlAccesoDenegado"].ToString());
+            #endregion Seguridad
+
+            InicializarDatosPagina("Datos del Solicitante", "> Gestión > Datos del Solicitante");
+
+            MError.MensajeError = string.Empty;
+            habilitaCuip(true);
+
+            CargarCombos();
+            Acceso = (string)Request.QueryString["acceso"];
+            blanquearPantalla();
+            string mensajeer = "";
+            if (Acceso.ToString().Equals("UPDATE"))
+            {
+                DatosPersona.Visible = true;
+                habilitaCuip(true);
+                HFidBeneficiario.Value = Request.QueryString["idBeneficiario"];
+                BeneficiarioActual = InvocaWsDao.TraerBeneficiario(Int64.Parse(HFidBeneficiario.Value), out mensajeer);
+                if (BeneficiarioActual != null)
+                {
+                    HFidBeneficiario.Value = BeneficiarioActual.IdBeneficio.ToString();
+                    CargarDatos(BeneficiarioActual);
+                    btnImprimir.Enabled = true;
+                    Session["_toPrint"] = (Beneficiario)BeneficiarioActual;
+                }
+                else
+                    MError.MensajeError = "No se pudieron obtener los datos del Solicitante.";
+            }
+            if (Acceso.ToString().Equals("INSERT"))
+            {
+                DatosPersona.Visible = false;
+                HFidBeneficiario.Value = null;
+                
+                /*Carga fila vacia para ingreso de documento*/
+                SetEmptyGridBen();
+                /*Carga fila vacia para ingreso de documento causante*/
+                SetEmptyGridCau();
+                
+            }
+        }
+    }
+
+    
+    #endregion Load
+
+    
+    #region Eventos Grilla Documento
+    
+
+
+
+    protected void gv_GrillaDoc_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.EmptyDataRow)
+        {
+            Label lb = (Label)e.Row.FindControl("lblShowEmpty");
+            if (lb != null)
+            { 
+                lb.Text ="Sin documentos ingresados";
+            }
+        }
+    }
+
+    protected void gv_GrillaDocC_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.EmptyDataRow)
+        {
+            Label lb = (Label)e.Row.FindControl("lblShowEmpty");
+            if (lb != null)
+            {
+                lb.Text = "Sin documentos ingresados";
+            }
+        }
+    }
+
+    private void DataBindGridCau()
+    {
+        //Ordenar();
+        gv_GrillaDocC.DataSource = ToDatatable.toDataTable(sesDocumentosC);
+        gv_GrillaDocC.DataBind();
+        UtilsPresentacionX5.EmptyGridFix(gv_GrillaDocC, sesDocumentosC, "Documento no ingresado");
+    }
+
+    private void DataBindGrid()
+    {
+        //Ordenar();
+        gv_GrillaDoc.DataSource = ToDatatable.toDataTable(sesDocumentosB);
+        gv_GrillaDoc.DataBind();
+        UtilsPresentacionX5.EmptyGridFix(gv_GrillaDoc, sesDocumentosB, "Documento no ingresado");
+    }
+    
+    protected void gv_Grilla_DataBound(object sender, EventArgs e)
+    {
+        try
+        {
+            BindDdl();
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+    protected void gv_GrillaCau_DataBound(object sender, EventArgs e)
+    {
+        try
+        {
+            BindDdlCau();
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+    #region Carga de DropDownList en la region footer
+
+    protected void BindDdl()
+    {
+        try
+        {
+            GridViewRow footrow = gv_GrillaDoc.FooterRow;
+            if (footrow != null)
+            {
+                DdlTipoDoc = (DropDownList)footrow.FindControl("Tdoc");
+                BindDdlTdoc(DdlTipoDoc);
+
+
+                DdlPaisDoc = (DropDownList)footrow.FindControl("PaisDoc");
+                BindDdlpais(DdlPaisDoc);
+
+            }
+        }
+        catch (Exception ex)
+        {
+            log.ErrorFormat("BinDdl devolvio el siguiente Error => {0} ", ex.Message);
+            throw ex;
+        }
+    }
+
+    protected void BindDdlCau()
+    {
+        try
+        {
+            GridViewRow footrow = gv_GrillaDocC.FooterRow;
+            if (footrow != null)
+            {
+                DdlTipoDoc = (DropDownList)footrow.FindControl("Tdoc");
+                BindDdlTdoc(DdlTipoDoc);
+
+
+                DdlPaisDoc = (DropDownList)footrow.FindControl("PaisDoc");
+                BindDdlpais(DdlPaisDoc);
+
+            }
+        }
+        catch (Exception ex)
+        {
+            log.ErrorFormat("BinDdl devolvio el siguiente Error => {0} ", ex.Message);
+            throw ex;
+        }
+    }
+
+    protected void BindDdlTdoc(DropDownList ddl)
+    {
+        ddl.DataSource = VariableSession.oTiposDocumentoAll;
+        ddl.DataValueField = "CodigoDocumento";
+        ddl.DataTextField = "Descripcion";
+        ddl.DataBind();
+    }
+
+    protected void BindDdlpais(DropDownList ddl)
+    {
+        ddl.DataSource = VariableSession.oPaisTodos;
+        ddl.DataValueField = "Pais_PK";
+        ddl.DataTextField = "Gentilicio";
+        ddl.DataBind();
+    }
+
+
+    #endregion Carga de DropDownList en la region footer
+
+    
+    protected void gv_Grilla_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName.Equals("Insert"))
+            {
+                TextBox txtNdoc = gv_GrillaDoc.FooterRow.FindControl("Ndoc") as TextBox;
+                DropDownList ddlTdoc = gv_GrillaDoc.FooterRow.FindControl("Tdoc") as DropDownList;
+                DropDownList ddlPaisDoc = gv_GrillaDoc.FooterRow.FindControl("PaisDoc") as DropDownList;
+                
+                //valida la existencia del documento
+                Boolean existe;
+                Int16? cPaisDoc;
+                
+                string abrevPais = ddlPaisDoc.SelectedValue.Equals("0") ? "":DdlPaisDoc.SelectedItem.Text;
+                if(ddlPaisDoc.SelectedValue.Equals("0"))
+                    cPaisDoc = null;
+                else
+                    cPaisDoc = Int16.Parse( ddlPaisDoc.SelectedValue);
+
+                existe = VerificarDocumentoExistente(txtNdoc.Text, Int16.Parse(ddlTdoc.SelectedValue));
+                if (!existe)
+                {
+                    SetSessionDoc(TiposEnumerados.TipoActor.Beneficiario
+                        , cPaisDoc
+                        , abrevPais
+                        ,Int16.Parse(ddlTdoc.SelectedValue)
+                        ,ddlTdoc.SelectedItem.Text
+                        ,txtNdoc.Text
+                        );
+                }
+                else
+                    MError.MensajeError = "Número de documento y tipo ya grabado con anterioridad.";
+                LlenaGrilla(string.Empty, string.Empty);
+                ddlPaisNacB.Focus();
+
+            }
+        }
+        catch (Exception err)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", err.Message);
+
+            throw err;
+        }
+    }
+
+
+
+    protected void gv_GrillaCau_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName.Equals("Insert"))
+            {
+                TextBox txtNdoc = gv_GrillaDocC.FooterRow.FindControl("Ndoc") as TextBox;
+                DropDownList ddlTdoc = gv_GrillaDocC.FooterRow.FindControl("Tdoc") as DropDownList;
+                DropDownList ddlPaisDoc = gv_GrillaDocC.FooterRow.FindControl("PaisDoc") as DropDownList;
+
+                Int16? cPaisDoc;
+
+                string abrevPais = ddlPaisDoc.SelectedValue.Equals("0") ? "" : DdlPaisDoc.SelectedItem.Text;
+                if (ddlPaisDoc.SelectedValue.Equals("0"))
+                    cPaisDoc = null;
+                else
+                    cPaisDoc = Int16.Parse(ddlPaisDoc.SelectedValue);
+
+                SetSessionDoc(TiposEnumerados.TipoActor.Causante
+                        , cPaisDoc
+                        , abrevPais
+                        , Int16.Parse(ddlTdoc.SelectedValue)
+                        , ddlTdoc.SelectedItem.Text
+                        , txtNdoc.Text
+                        );
+                LlenaGrillaCau(string.Empty, string.Empty);
+                ddlSexoC.Focus();
+            }
+        }
+        catch (Exception err)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", err.Message);
+
+            throw err;
+        }
+    }
+
+    private void LlenaGrilla(string campoFiltro, string contenidoFiltro)
+    {
+        try
+        {
+            gv_GrillaDoc.Visible = true;
+            DataBindGrid();
+        }
+        catch (Exception err)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", err.Message);
+
+            throw err;
+        }
+    }
+
+
+    private void LlenaGrillaCau(string campoFiltro, string contenidoFiltro)
+    {
+        try
+        {
+            gv_GrillaDocC.Visible = true;
+            DataBindGridCau();
+        }
+        catch (Exception err)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", err.Message);
+
+            throw err;
+        }
+    }
+
+    protected void gv_Grilla_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        try
+        {
+            IndexGrilla = Convert.ToInt32(e.RowIndex);
+            EliminarDoc();
+
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+    protected void gv_GrillaCau_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        try
+        {
+            IndexGrilla = Convert.ToInt32(e.RowIndex);
+            EliminarDocCau();
+
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+    private void EliminarDoc()
+    {
+        try
+        {
+            GridViewRow row = gv_GrillaDoc.Rows[IndexGrilla];
+            Label documento = row.FindControl("Ndoc") as Label;
+            Label Tdocumento = row.FindControl("Tdoc") as Label;
+
+            List<Documento_Beneficiario> LDocBenef = (List<Documento_Beneficiario>)sesDocumentosB;
+            List<Documento_Beneficiario> NewLDocBenef = new List<Documento_Beneficiario>();
+            foreach (Documento_Beneficiario db in LDocBenef)
+            {
+                Documento_Beneficiario newdb = new Documento_Beneficiario();
+                newdb.AbrevDocumento = db.AbrevDocumento;
+                newdb.CodAbrevPais = db.CodAbrevPais;
+                newdb.CodigoDocumento = db.CodigoDocumento;
+                newdb.DocADP = db.DocADP;
+                newdb.FechaAlta = db.FechaAlta;
+                newdb.Id_Beneficiario = db.Id_Beneficiario;
+                newdb.NumDoc = db.NumDoc;
+                newdb.Pais_PK = db.Pais_PK;
+                if (db.AbrevDocumento == Tdocumento.Text && db.NumDoc == documento.Text)
+                    newdb.FechaBaja = System.DateTime.Today;
+                else
+                    //newdb.FechaBaja = db.FechaBaja;
+                    newdb.FechaBaja = null;
+
+                NewLDocBenef.Add(newdb);
+            }
+            sesDocumentosB = NewLDocBenef;
+            
+            //var unGroup = from o in (List<Documento_Beneficiario>)sesDocumentosB
+            //              where o.NumDoc == documento.Text && o.AbrevDocumento == Tdocumento.Text
+            //              group o by o.CodAbrevPais into groupCL                         
+            //                     select groupCL.ToList();
+
+            //List<Documento_Beneficiario> unDocBenef = new List<Documento_Beneficiario>();
+
+            //unGroup.ToList().ForEach(delegate(List<Documento_Beneficiario> tc) { unDocBenef.Remove(tc.ToList()[0]); });
+
+            //        if (unDocBenef.Count() > 0)
+            //        {
+            //            sesDocumentosB = unDocBenef;
+            //        }
+
+
+            ////string msjError = "";
+            ////InvocaWsDao.BajaTipodeDocumentacion_Prestacion(LstDatosDocumentacionPrestacion[IndexGrilla].TDocumentacion.CodTipoDocumentacion, LstDatosDocumentacionPrestacion[IndexGrilla].Prestacion.Cod_Prestacion, out msjError);
+
+            LlenaGrilla(string.Empty, string.Empty);
+            //LlenaGrilla(busquedaGrilla.BusquedaSeleccionada(), busquedaGrilla.BusquedaIngresada());
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+
+    private void EliminarDocCau()
+    {
+        try
+        {
+            GridViewRow row = gv_GrillaDocC.Rows[IndexGrilla];
+            Label documento = row.FindControl("Ndoc") as Label;
+            Label Tdocumento = row.FindControl("Tdoc") as Label;
+
+            List<Documento_Causante> LDocCau = (List<Documento_Causante>)sesDocumentosC;
+            List<Documento_Causante> NewLDocCau = new List<Documento_Causante>();
+            foreach (Documento_Causante db in LDocCau)
+            {
+                Documento_Causante newdb = new Documento_Causante();
+                newdb.AbrevDocumento = db.AbrevDocumento;
+                newdb.CodAbrevPais = db.CodAbrevPais;
+                newdb.CodigoDocumento = db.CodigoDocumento;
+                newdb.DocADP = db.DocADP;
+                newdb.FechaAlta = db.FechaAlta;
+                newdb.Id_causante = db.Id_causante;
+                newdb.NumDoc = db.NumDoc;
+                newdb.Pais_PK = db.Pais_PK;
+                if (db.AbrevDocumento == Tdocumento.Text && db.NumDoc == documento.Text)
+                    newdb.FechaBaja = System.DateTime.Today;
+                else
+                    //newdb.FechaBaja = db.FechaBaja;
+                    newdb.FechaBaja = null;
+
+                NewLDocCau.Add(newdb);
+            }
+            sesDocumentosC = NewLDocCau;
+
+            LlenaGrillaCau(string.Empty, string.Empty);
+            
+        }
+        catch (Exception ex)
+        {
+            if (log.IsErrorEnabled)
+                log.ErrorFormat("Se generó una excepción : {0}", ex.Message);
+            throw ex;
+        }
+    }
+
+
+    #endregion Eventos Grilla Documento
+
+    #region Inicializa Datos Pagina
+    private void InicializarDatosPagina(string titulo, string txtBarraNav)
+    {
+        UtilsPresentacionX5.SetTextLabel(LblTituloPagina, titulo);
+        BNav.Text = txtBarraNav;
+        //UtilsPresentacionX5.SetPaginationProperties(gv_Grilla);
+        Page.Title = titulo;
+    }
+    #endregion Inicializa Datos Pagina
+
+    #region Habilitar CUIP
+    private void habilitaCuip(bool habilita)
+    {
+        txtCuilADP.Enabled = habilita;
+        iBtnBusqADPCuip.Enabled = habilita;
+    }
+
+    #endregion Habilitar CUIP
+    
+    #region Cargar datos del beneficiario
+    protected void CargarDatos(Beneficiario iBeneficiario)
+    {
+        try
+        {
+            #region datos del beneficiario
+            txtApeNomB.Text = iBeneficiario.ApeNom;
+            txtCodigoSiaciB.Text = iBeneficiario.ExpedienteExterno;
+            txtFechaNacB.Text = iBeneficiario.Fecha_nac.HasValue ? iBeneficiario.Fecha_nac.Value.ToShortDateString() : "";
+            txtCuilADP.Text = iBeneficiario.Cuip;
+
+            sesDocumentosB = iBeneficiario.LDocumentosBeneficiario.ToList();
+            LlenaGrilla(string.Empty, string.Empty);
+            
+            //cmb pais
+            if (iBeneficiario.Pais_Nacionalidad == null)
+                ddlPaisNacB.ClearSelection();
+            else
+            {
+                ddlPaisNacB.Items.FindByValue(iBeneficiario.Pais_Nacionalidad.Pais_PK.ToString()).Selected = true;
+            }
+
+            //direccion benef
+            txtDirCalleB.Text = iBeneficiario.DirCalle;
+            txtDirNumB.Text = iBeneficiario.DirNum;
+            txtDirPisoB.Text = iBeneficiario.Piso;
+            txtDirdeptoB.Text = iBeneficiario.Departamento;
+            txtCalle1DirB.Text = iBeneficiario.ECalle1;
+            txtCalle2DirB.Text = iBeneficiario.ECalle2;
+            txtcodPostalDirB.Text = iBeneficiario.CodPostal;
+            txtCiudadDirB.Text = iBeneficiario.Ciudad;
+            if (iBeneficiario.Ubicacion != null)
+            {
+                ddlProvinciaDirB.Items.FindByValue(iBeneficiario.Ubicacion.Cod_Provincia.ToString()).Selected = true;
+                ActualizaCMBLocalidades(ddlLocalidadDirB, iBeneficiario.Ubicacion.Cod_Provincia, iBeneficiario.Ubicacion.Cod_Localidad);
+            }
+
+            //direccion extranjera
+            if (iBeneficiario.OdirExtranjera != null)
+            {
+                txtCalleDomExtrB.Text = iBeneficiario.OdirExtranjera.Dircalle;
+                txtNumDomExtrB.Text = iBeneficiario.OdirExtranjera.Dirnum;
+                txtPisoDomExtrB.Text = iBeneficiario.OdirExtranjera.Piso;
+                txtDeptoDomExtrB.Text = iBeneficiario.OdirExtranjera.Depto;
+                txtEC1DomExtrB.Text = iBeneficiario.OdirExtranjera.Ecalle1;
+                txtEC2DomExtrB.Text = iBeneficiario.OdirExtranjera.Ecalle2;
+                txtCodPostalDomExtrB.Text = iBeneficiario.OdirExtranjera.CodPostal;
+                ddlPaisDomExtr.ClearSelection();
+                if (!iBeneficiario.OdirExtranjera.CountryCode.Equals(string.Empty))
+                {
+                    ddlPaisDomExtr.Items.FindByValue(iBeneficiario.OdirExtranjera.CountryCode).Selected = true;
+                    cargaDdlCiudadesExtranjeras(iBeneficiario.OdirExtranjera.CountryCode);
+                    ddlCiudadesExtr.ClearSelection();
+                    if (iBeneficiario.OdirExtranjera.IdCiudad.HasValue)
+                        ddlCiudadesExtr.Items.FindByValue(iBeneficiario.OdirExtranjera.IdCiudad.Value.ToString()).Selected = true;
+                }
+                else
+                    ddlCiudadesExtr.Visible = false;
+                
+                txtEstadoDomExtrB.Text = iBeneficiario.OdirExtranjera.Estado;
+                txtCiudadDomExtrB.Text = iBeneficiario.OdirExtranjera.Ciudad;
+                
+            }
+
+
+            #endregion
+
+            #region Datos Causante
+
+            if (iBeneficiario.Causante != null)
+            {
+                txtApeNomC.Text = iBeneficiario.Causante.ApeNom;
+                txtCuipC.Text = iBeneficiario.Causante.Cuip;
+                txtFechaDefC.Text = iBeneficiario.Causante.Fecha_Def.ToShortDateString();
+                txtFechaNacC.Text = iBeneficiario.Causante.Fecha_Nacimiento.HasValue ? iBeneficiario.Causante.Fecha_Nacimiento.Value.ToShortDateString() : "";
+
+
+                if (iBeneficiario.Causante.LDocCausante == null || iBeneficiario.Causante.LDocCausante.Length == 0)
+                    //gv_GrillaDocC.Visible = false;
+                    SetEmptyGridCau();
+                else
+                {
+                    sesDocumentosC = iBeneficiario.Causante.LDocCausante.ToList();
+                    LlenaGrillaCau(string.Empty, string.Empty);
+                }
+
+                ddlSexoC.ClearSelection();
+                if (iBeneficiario.Causante.Sexo.ToUpper().Equals("F"))
+                    ddlSexoC.Items.FindByValue("F").Selected = true;
+                if (iBeneficiario.Causante.Sexo.ToUpper().Equals("M"))
+                    ddlSexoC.Items.FindByValue("M").Selected = true;
+            }
+            else
+                LimpiaControlesCausante();
+
+
+
+
+            #endregion Datos Causante
+
+            #region Datos de Apoderados
+
+            //dvDatosSelApoderado.Visible = false;
+            if (iBeneficiario.LApoderado == null || iBeneficiario.LApoderado.Length == 0)
+            {
+                gridListadoApoderados.Visible = false;
+                dvNoApoderados.Visible = true;
+            }
+            else
+            {
+                dvNoApoderados.Visible = false;
+                gridListadoApoderados.DataSource = ToDatatable.toDataTable(iBeneficiario.LApoderado.ToList());
+                gridListadoApoderados.DataBind();
+                gridListadoApoderados.Visible = true;
+                sesApoderados = iBeneficiario.LApoderado.ToList();
+            }
+
+            #endregion Datos de Apoderados
+        }
+        catch
+        {
+            blanquearPantalla();
+            MError.MensajeError = "No se han podido obtener los datos del Solicitante";
+        }
+    }
+    #endregion
+
+    #region Combo Ciudades Extranjeras
+    private void cargaDdlCiudadesExtranjeras(string codPais3c)
+    {
+        ddlCiudadesExtr.DataSource = InvocaWsDao.TraeCiudadesExtXPais(codPais3c);
+        ddlCiudadesExtr.DataBind();
+        ddlCiudadesExtr.Items.Insert(0, new ListItem("Seleccione", "0"));
+        ddlCiudadesExtr.Visible = true;
+    }
+    #endregion Combo Ciudades Extranjeras
+
+    #region Setea valores combos
+
+    private void ActualizaCMBLocalidades(DropDownList combo, Int16 valorProvincia, Int32 valorSeleccionLocalidad)
+    {
+        combo.DataSource = InvocaWsDao.TraerLocalidadesXProvincia(valorProvincia);
+        combo.DataBind();
+        combo.Items.FindByValue(valorSeleccionLocalidad.ToString()).Selected = true;
+    }
+
+    #endregion Setea valores combos
+
+    #region RowCommand
+    protected void RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+        Beneficiario iBeneficiario = BeneficiarioActual;
+       
+        #region baja apoderado
+        if (e.CommandName == "BajaA")
+        {
+            // Se obtiene indice de la row seleccionada
+            int index = Convert.ToInt32(e.CommandArgument);
+            //obtengo el id del apoderado
+            HFtipoTxApod.Value = TiposEnumerados.TipoTx.Modificacion.ToString();
+            HFIdApoderado.Value = gridListadoApoderados.DataKeys[index].Values["numDoc"].ToString().Trim() + gridListadoApoderados.DataKeys[index].Values["codDocumento"].ToString().Trim();
+            if (sesApoderados != null)
+            {
+                mensaje.TipoMensaje = Mensaje.infoMensaje.Pregunta;
+                mensaje.DescripcionMensaje = "¿ Procede a dar de baja al apoderado ?";
+                mensaje.QuienLLama = "BajaA";
+                mensaje.Mostrar();
+            }
+
+        }
+
+        #endregion baja apoderado
+
+        #region Modifica apoderado
+        if (e.CommandName == "ModificarA")
+        {
+            CargarCombosApoderado();
+            // Se obtiene indice de la row seleccionada
+            int index = Convert.ToInt32(e.CommandArgument);
+            //obtengo el id del apoderado
+            HFtipoTxApod.Value = TiposEnumerados.TipoTx.Modificacion.ToString();
+            HFIdApoderado.Value = gridListadoApoderados.DataKeys[index].Values["numDoc"].ToString().Trim() + gridListadoApoderados.DataKeys[index].Values["codDocumento"].ToString().Trim();
+            if (sesApoderados != null)
+            {
+                List<Apoderado> listApo = (List<Apoderado>)sesApoderados;
+                foreach (Apoderado iApod in listApo)
+                {
+                    if (iApod.NumDoc.Trim() + iApod.CodigoDocumento.ToString().Trim() == HFIdApoderado.Value)
+                    {
+                        #region carga datos seleccion
+                        txtApeNomA.Text = iApod.ApeNom;
+                        
+                        txtTelefonoA.Text = iApod.Telefono;
+                        txtEmailA.Text = iApod.EMail;
+
+                        ddlTipoApoderadoA.ClearSelection();
+                        ddlTipoApoderadoA.Items.FindByValue(iApod.TipoApoderado.Id_TipodeApoderado.ToString()).Selected = true;
+
+                        ddlSubTipoApoderadoA.ClearSelection();
+                        ddlSubTipoApoderadoA.Items.FindByValue(iApod.StipoApoderado.Id_STipodeApoderado.ToString()).Selected = true;
+
+                        bool requiereBanco = RequiereBanco(); //establece el validador de banco en T o F de acuerdo al tipo de poder
+                        pnlBcoAge.Visible = requiereBanco;
+
+                        ddlBancoA.ClearSelection();
+                        ddlBancoA.Items.FindByValue(iApod.Banco == null ? "0" : iApod.Banco.Id_Banco.ToString()).Selected = true;
+
+                        txtComentariosA.Text = iApod.Comentario;
+
+                        txtDocA.Text = iApod.NumDoc;
+
+                        ddltDocA.ClearSelection();
+                        ddltDocA.Items.FindByValue(iApod.CodigoDocumento.ToString()).Selected = true;
+
+                        //Datos Direccion apoderado
+                        txtDirCalleA.Text = iApod.DirCalle;
+                        txtDirNumA.Text = iApod.DirNum;
+                        txtDirPisoA.Text = iApod.Piso;
+                        txtDirDeptoA.Text = iApod.Departamento;
+                        txtCalle1DirA.Text = iApod.EntreCalle1;
+                        txtCalle2DirA.Text = iApod.EntreCalle2;
+                        txtCiudadDirA.Text = iApod.Ciudad;
+                        txtCodPostalDirA.Text = iApod.Cod_postal;
+                        ddlProvinciaA.ClearSelection();
+                        ddlLocalidadA.ClearSelection();
+                        if (iApod.DirUbicacion != null)
+                        {
+                            ddlProvinciaA.Items.FindByValue(iApod.DirUbicacion.Cod_Provincia.ToString()).Selected = true;
+                            ActualizaCMBLocalidades(ddlLocalidadA, iApod.DirUbicacion.Cod_Provincia, iApod.DirUbicacion.Cod_Localidad);
+                        }
+                        //FIN Datos Direccion apoderado
+
+                        #endregion carga datos seleccion
+                        mpeApoderado.Show();
+                    }
+                }
+            }
+        }
+
+        #endregion Modifica apoderado
+    }
+    #endregion RowCommand
+
+    #region Carga Combos
+    private bool CargarCombos()
+    {
+        string mensajeCarga = string.Empty;
+
+        try
+        {
+            #region Combos tipos de documento
+            List<TipoDocumento> oTipoDocumentoFrecuente = VariableSession.oTiposDocumentoFrecuentes;
+
+            if (oTipoDocumentoFrecuente != null)
+            {
+                //de apoderado
+                ddltDocA.DataSource = oTipoDocumentoFrecuente;
+                ddltDocA.DataBind();
+                ddltDocA.Items.Insert(0, new ListItem("Sel", "0"));
+            }
+            else
+                mensajeCarga += "Tipos de documento" + "</br>";
+            #endregion 
+
+            #region  Combo Paises
+            //List<PaisWS.Pais> oPaisConvenios = VariableSession.oPaisConvenios;
+            List<PaisWS.Pais> oPaisTodos = VariableSession.oPaisTodos;
+
+            if (oPaisTodos != null)
+            {
+                //Nacionalidad Beneficiario
+                ddlPaisNacB.DataSource = oPaisTodos;
+                ddlPaisNacB.DataBind();
+                ddlPaisNacB.Items.Insert(0, new ListItem("Seleccione", "0"));
+                //pone por default a Argentina
+                ddlPaisNacB.Items.FindByValue("12").Selected = true;
+            }
+            #endregion 
+
+            #region  Combo Provincias dir beneficiario
+            List<AuxiliaresWS.Provincia> oProvincias = VariableSession.oProvincias;
+
+            if (oProvincias != null)
+            {
+                ddlProvinciaDirB.DataSource = oProvincias;
+                ddlProvinciaDirB.DataBind();
+                ddlProvinciaDirB.Items.Insert(0, new ListItem("Seleccione", "0"));
+            }
+            else
+                mensajeCarga += "Provincias" + "</br>";
+            #endregion
+
+            #region Combo Paises Dom Extr
+            List<AuxiliaresWS.Pais2> oPais2 = VariableSession.oPaisDomExtranjero;
+
+            if (oPais2 != null)
+            {
+                ddlPaisDomExtr.DataSource = oPais2;
+                ddlPaisDomExtr.DataBind();
+                ddlPaisDomExtr.Items.Insert(0, new ListItem("Seleccione", "0"));
+            }
+            else
+                mensajeCarga += "Pais DE" + "</br>";
+            #endregion
+
+            if (!mensajeCarga.Equals(string.Empty))
+            {
+                MError.MensajeError = "Las siguientes listas no pudieron cargarse:" + "</br>" + mensajeCarga;
+                return false;
+            }
+            return true;
+        }
+        catch (Exception ex)
+        {
+            log.Error("Ocurrió un error al intentar traer una o mas Listas. " + ex.Message);
+            MError.MensajeError = "Ocurrió un error al intentar traer una o mas Listas. Intente mas tarde.";
+            return false;
+        }
+    }
+    #endregion Carga Combos
+
+    #region SI
+    protected void ClickearonSi(object sender, string quienLlamo)
+    {
+        switch (quienLlamo.Trim())
+        {
+            case "BajaA":
+                List<Apoderado> listApo = (List<Apoderado>)sesApoderados;
+                foreach (Apoderado iApod in listApo)
+                {
+                    if (iApod.NumDoc.Trim() + iApod.CodigoDocumento.ToString().Trim() == HFIdApoderado.Value)
+                    {
+                        string mensaje = string.Empty;
+                        InvocaWsDao.BajaApoderado(iApod, Int64.Parse(HFidBeneficiario.Value), out mensaje);
+                        if (mensaje.Equals(string.Empty))
+                        {
+                            MError.MensajeError = "";
+                            List<Apoderado> iLapod = InvocaWsDao.TraeApoderadosXid_Beneficiario(Int64.Parse(HFidBeneficiario.Value), out mensaje);
+                            //dvDatosSelApoderado.Visible = false;
+                            if (iLapod == null || iLapod.Count == 0)
+                            {
+                                gridListadoApoderados.Visible = false;
+                                dvNoApoderados.Visible = true;
+                                sesApoderados = null;
+                            }
+                            else
+                            {
+                                dvNoApoderados.Visible = false;
+                                gridListadoApoderados.DataSource = ToDatatable.toDataTable(iLapod);
+                                gridListadoApoderados.DataBind();
+                                gridListadoApoderados.Visible = true;
+                                sesApoderados = iLapod.ToList();
+                            }
+                            mensaje2.DescripcionMensaje = "El apoderado fue dado de baja satisfactoriamente.";
+                            mensaje2.TipoMensaje = Mensaje.infoMensaje.Info;
+                            mensaje2.QuienLLama = "SoloMuestra";
+                            mensaje2.Mostrar();
+                        }
+                        else
+                            MError.MensajeError = "Ocurrió un error al intentar dar de baja el apoderado";
+                    }
+                }
+                break;
+
+            case "btnRegresar_Click":
+                if (Acceso.Equals("INSERT"))
+                    if (Session["__sesBeneficiarios"] != null)
+                        Response.Redirect("ListaBeneficiarios.aspx", false);
+                    else
+                        Response.Redirect("Main.aspx", false);
+                else
+                    if (HFidBeneficiario.Value.Equals(string.Empty))
+                        Response.Redirect("Main.aspx", false);
+                    else
+                        Response.Redirect("InformacionCompletaBeneficio.aspx?idBeneficiario=" + HFidBeneficiario.Value, false);
+
+                break;
+
+            case "btnAnular_Click":
+                blanquearPantalla();
+                setControlesPopUpDoc(false); //inhabilita todos los validadores de documento
+                EnableDisableValidators(true);
+                Acceso = "INSERT";
+                break;
+            case "AltaExitosa":
+
+                break;
+
+            case "btnGuardar_Click":
+                IrASolicitues();
+                break;
+
+            case "SoloMuestra":
+                break;
+        }
+        //Master.MensajeError = "";
+
+    }
+    #endregion SI
+
+    #region NO
+    protected void ClickearonNo(object sender, string quienLlamo)
+    {
+
+    }
+    #endregion NO
+
+    #region Guardar
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        string mensajeError = string.Empty;
+        bool estadoTx = false;
+        EnableDisableValidators(true);
+        if (sesDocumentosB == null) //usar luego para validar todo
+            MError.MensajeError = "Se debe ingresar al menos un documento";
+        else
+        {
+
+            try
+            {
+                //Vuelve a verificar que documento y tipo no esten grabados con anterioridad
+                bool existeDocumento = false;
+                foreach (Documento_Beneficiario db in sesDocumentosB)
+                    existeDocumento = VerificarDocumentoExistente(db.NumDoc, db.CodigoDocumento);
+                MError.MensajeError = existeDocumento ? "Número de documento y tipo ya grabado con anterioridad." : string.Empty;
+                
+
+                estadoTx = GrabarDatosBeneficiario(out mensajeError);
+
+                if (mensajeError.Equals(string.Empty) && estadoTx)
+                {
+                    mensaje.TipoMensaje = Mensaje.infoMensaje.Pregunta;
+                    mensaje.TextoBotonCancelar = "Continuar";
+                    mensaje.DescripcionMensaje = "Los datos del Solicitante fueron grabados" + "</br>" + "¿ Deséa ingresar una solicitud ?";
+                    mensaje.QuienLLama = "btnGuardar_Click";
+                    mensaje.Mostrar();
+                }
+
+                MError.MensajeError = mensajeError;
+            }
+            catch (Exception er)
+            {
+                log.Error(er.Message);
+                MError.MensajeError = er.Message;
+            }
+        }   
+    }
+    #endregion Guardar
+
+    #region Click consulta x CUIP
+
+    protected void btnIngDocCuip_Click(object sender, EventArgs e)
+    {
+
+        try
+        {
+            sesDocumentosB = null;
+            DatosdePersonaporCuip.RetornoDatosPersonaCuip oDatos = new DatosdePersonaporCuip.RetornoDatosPersonaCuip();
+            ObtenerRelacionesxCuil.ListaPw04 oDatosRealciones = new ObtenerRelacionesxCuil.ListaPw04();
+            oDatos = InvocaWsDao.TraerDatosPersonaADPXCuip(txtCuilADP.Text);
+
+            if (oDatos.error.cod_retorno == 0) //cuil hallado
+            {
+                if (oDatos.PersonaCuip.m_doc_robado.Equals(string.Empty) && oDatos.PersonaCuip.estado_cuip.Equals(string.Empty))
+                {
+                    //si lo encuentra y no es robado limpia la pantalla
+                    LimpiaControlesBeneficiario();
+                    LimpiaControlesCausante();
+                    #region Carga Datos del cuil
+
+                    //Si el documento y tipo ya existe aborta la carga de datos de ADP
+                    if (!VerificarDocumentoExistente(oDatos.PersonaCuip.doc_nro, oDatos.PersonaCuip.doc_c_tipo))
+                    {
+                        #region Relaciones del beneficiario
+                        //oDatosRealciones = InvocaWsDao.TraerRelacionesPersonaADPXCuip(txtCuilADP.Text);
+                        //if (oDatosRealciones.cod_retorno == 0)
+                        //    sesRelacionesCuilADP = oDatosRealciones.Lista;
+                        //else
+                        //{
+                        //    sesRelacionesCuilADP = null;
+                        //    iBtnBusqADPCuipCau.Enabled = false;
+                        //}
+                        #endregion Relaciones del beneficiario
+                        //datos beneficiario
+                        txtCuilADP.Text = oDatos.PersonaCuip.cuip;
+                        txtApeNomB.Text = oDatos.PersonaCuip.ape_nom;
+                        txtFechaNacB.Text = oDatos.PersonaCuip.f_naci.ToShortDateString();
+                        ddlPaisNacB.Items.FindByValue(oDatos.PersonaCuip.cod_nacion.ToString()).Selected = true;
+                        ddlSexoB.Items.FindByValue(oDatos.PersonaCuip.sexo).Selected = true;
+
+                        //carga documento
+                        Documento_Beneficiario bDoc = new Documento_Beneficiario();
+                        bDoc.AbrevDocumento = "";
+                        bDoc.CodigoDocumento = oDatos.PersonaCuip.doc_c_tipo;
+                        bDoc.DocADP = true;
+                        bDoc.FechaAlta = System.DateTime.Today;
+                        bDoc.FechaBaja = null;
+                        bDoc.NumDoc = oDatos.PersonaCuip.doc_nro;
+                        if (oDatos.PersonaCuip.cod_nacion.ToString().Equals(string.Empty))
+                            bDoc.Pais_PK = null;
+                        else
+                            bDoc.Pais_PK = oDatos.PersonaCuip.cod_nacion;
+                        bDoc.CodAbrevPais = "";
+                        if (sesDocumentosB == null)
+                            sesDocumentosB = new List<Documento_Beneficiario>();
+                        sesDocumentosB.Add(bDoc);
+                        LlenaGrilla(string.Empty, string.Empty);
+
+                        //findatos documento
+
+                        //datos domicilio
+                        #region datos domicilio
+                        if (oDatos.PersonaCuip.cod_tipo_dom == 1000) //tipo domicilio nacional
+                        {
+                            txtDirCalleB.Text = oDatos.PersonaCuip.domi_calle;
+                            txtDirNumB.Text = oDatos.PersonaCuip.domi_nro;
+                            txtDirPisoB.Text = oDatos.PersonaCuip.domi_piso;
+                            txtDirdeptoB.Text = oDatos.PersonaCuip.domi_dpto;
+                            ddlProvinciaDirB.ClearSelection();
+
+
+                            txtCalle1DirB.Text = "";
+                            txtCalle2DirB.Text = "";
+                            txtcodPostalDirB.Text = oDatos.PersonaCuip.domi_cod_postal.ToString();
+                            txtCiudadDirB.Text = oDatos.PersonaCuip.domi_localidad;
+
+                            if (!oDatos.PersonaCuip.domi_cod_pcia.ToString().Equals(string.Empty))
+                                ddlProvinciaDirB.Items.FindByValue(oDatos.PersonaCuip.domi_cod_pcia.ToString()).Selected = true;
+                            ddlLocalidadDirB.ClearSelection();
+                            if (!oDatos.PersonaCuip.domi_localidad.ToString().Equals(string.Empty) && !oDatos.PersonaCuip.domi_cod_pcia.ToString().Equals(string.Empty))
+                            {
+                                ddlLocalidadDirB.DataSource = InvocaWsDao.TraerLocalidadesXProvincia(oDatos.PersonaCuip.domi_cod_pcia);
+                                ddlLocalidadDirB.DataBind();
+                                //ddlLocalidadDirB.Items.FindByText(oDatos.PersonaCuip.domi_localidad.ToString()).Selected = true;
+                                ddlLocalidadDirB.Visible = true;
+                            }
+                            else
+                                ddlLocalidadDirB.Visible = false;
+                        }
+                        #endregion datos domicilio
+                        #region datos domicilio ext
+                        if (oDatos.PersonaCuip.cod_tipo_dom == 2000 || oDatos.PersonaCuip.cod_tipo_dom == 2001) //tipo domicilio extranjero
+                        {
+                            //datos domicilio extranjero
+                            txtCalleDomExtrB.Text = oDatos.PersonaCuip.domi_calle;
+                            txtNumDomExtrB.Text = oDatos.PersonaCuip.domi_nro;
+                            txtPisoDomExtrB.Text = oDatos.PersonaCuip.domi_piso;
+                            txtDeptoDomExtrB.Text = oDatos.PersonaCuip.domi_dpto;
+                            txtEC1DomExtrB.Text = "";
+                            txtEC2DomExtrB.Text = "";
+                            txtCodPostalDomExtrB.Text = oDatos.PersonaCuip.domi_cod_post_extr.ToString();
+                            ddlPaisDomExtr.ClearSelection();
+                            ddlCiudadesExtr.ClearSelection();
+                            txtEstadoDomExtrB.Text = oDatos.PersonaCuip.domi_localidad.ToString();
+                        }
+                        #endregion datos domicilio ext
+                        //fin datos domicilio
+                    }
+                    else
+                    {
+                        mensaje.DescripcionMensaje = "El documento y tipo del CUIL ingresado ya existe !!";
+                        mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                        mensaje.QuienLLama = "SoloMuestra";
+                        mensaje.Mostrar();
+                    }
+                    #endregion Carga Datos del cuil
+                }
+                else
+                {
+                    mensaje.DescripcionMensaje = "CUIL/T INHABILITADO. PRESENTARSE ANTE R.N.P.";
+                    mensaje.TipoMensaje = Mensaje.infoMensaje.Info;
+                    mensaje.QuienLLama = "SoloMuestra";
+                    mensaje.Mostrar();
+                }
+            }
+            else if (oDatos.error.cod_retorno == 1 && oDatos.error.cod_gravedad.ToUpper().Equals("W"))
+            {
+                mensaje.DescripcionMensaje = "El cuil/t ingresado es inexistente";
+                mensaje.TipoMensaje = Mensaje.infoMensaje.Info;
+                mensaje.QuienLLama = "SoloMuestra";
+                mensaje.Mostrar();
+ 
+            }
+            else
+            {
+                mensaje.DescripcionMensaje = "El cuil/t ingresado es incorrecto";
+                mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                mensaje.QuienLLama = "SoloMuestra";
+                mensaje.Mostrar();
+            }
+        }
+        catch(Exception er){}
+    }
+
+
+    protected void btnIngDocCuipCau_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (sesRelacionesCuilADP != null)
+            {
+                List<ObtenerRelacionesxCuil.DatosPw04> tempCuipsRel = sesRelacionesCuilADP.ToList();
+
+                ObtenerRelacionesxCuil.DatosPw04 relacionado = tempCuipsRel.Find(delegate(ObtenerRelacionesxCuil.DatosPw04 tCRel)
+                {
+                    return tCRel.cuil_rela == txtCuipC.Text;
+                }
+                    );
+                #region relacion al principal
+                if (relacionado != null) //si existe en los relacionados al principal
+                {
+                    DatosdePersonaporCuip.RetornoDatosPersonaCuip oDatos = new DatosdePersonaporCuip.RetornoDatosPersonaCuip();
+                    //trae datos del causante de adp
+                    oDatos = InvocaWsDao.TraerDatosPersonaADPXCuip(txtCuipC.Text);
+
+                    #region Cuil hallado
+                    if (oDatos.error.cod_retorno == 0) //cuil hallado
+                    {
+                        #region Vverifica cuil robado
+                        //verifica cuil robado
+                        if (oDatos.PersonaCuip.m_doc_robado.Equals(string.Empty) && oDatos.PersonaCuip.estado_cuip.Equals(string.Empty))
+                        {
+                            #region Verifica cuil fallecido
+                            //verifica cuil de fallecido
+                            if (oDatos.PersonaCuip.cod_falleci != 0)
+                            {
+                                //verifica que tenga relaciones el titular
+
+                                #region verifica que tenga relaciones el titular
+                                bool RelacionValida = false;
+                                RelacionValida = relacionado.c_relacion != 4 //GUARDA
+                                        && relacionado.c_relacion != 5 //TENENCIA
+                                        && relacionado.c_relacion != 6//TUTELA
+                                        && relacionado.c_relacion != 13//PERSONA A CARGO OOSS
+                                        && relacionado.c_relacion != 14//PERSONA A CARGO AAFF
+                                        && relacionado.c_relacion != 19//CURATELA A LAS PERSONAS
+                                        && relacionado.c_relacion != 21//CURATELA A LOS BIENES
+                                        && relacionado.c_relacion != 22//TUTELA LEGAL
+                                        && relacionado.c_relacion != 23//TENENCIA CON RENUNCIA
+                                        && relacionado.c_relacion != 25//CONVIVIENTE PREVISIONAL
+                                        && relacionado.c_relacion != 30;//A CARGO ASIG UNIVERSAL
+    
+                                if (RelacionValida)
+                                {
+                                    LimpiaControlesCausante();
+                                    #region Carga Datos Causante
+                                    txtCuipC.Text = oDatos.PersonaCuip.cuip;
+                                    txtApeNomC.Text = oDatos.PersonaCuip.ape_nom;
+                                    txtFechaNacC.Text = oDatos.PersonaCuip.f_naci.ToShortDateString();
+                                    txtFechaDefC.Text = oDatos.PersonaCuip.f_falle.ToShortDateString();
+                                    ddlSexoC.Items.FindByValue(oDatos.PersonaCuip.sexo).Selected = true;
+
+                                    //documento causante
+                                    Documento_Causante cDoc = new Documento_Causante();
+                                    cDoc.AbrevDocumento = "";
+                                    cDoc.CodigoDocumento = oDatos.PersonaCuip.doc_c_tipo;
+                                    cDoc.DocADP = true;
+                                    cDoc.FechaAlta = System.DateTime.Today;
+                                    cDoc.FechaBaja = null;
+                                    cDoc.NumDoc = oDatos.PersonaCuip.doc_nro;
+                                    if (oDatos.PersonaCuip.cod_nacion.ToString().Equals(string.Empty))
+                                        cDoc.Pais_PK = null;
+                                    else
+                                        cDoc.Pais_PK = oDatos.PersonaCuip.cod_nacion;
+                                    cDoc.CodAbrevPais = "";
+                                    //bDoc.Id_Beneficiario =
+                                    if (sesDocumentosC == null)
+                                        sesDocumentosC = new List<Documento_Causante>();
+                                    sesDocumentosC.Add(cDoc);
+                                    LlenaGrillaCau(string.Empty, string.Empty);
+                                    #endregion Carga Datos Causante
+                                }
+                                else
+                                {
+                                    mensaje.DescripcionMensaje = "El cuasante ingresado no se corresponde con una relación válida." + "</br>"
+                                        + "(CÓNYUGE - CONVIVIENTE - CONVIVIENTE PREVISIONAL - HIJO/A - TUTELA)";
+                                    mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                                    mensaje.QuienLLama = "SoloMuestra";
+                                    mensaje.Mostrar();
+                                    txtCuipC.Text = "";
+                                }
+                                #endregion verifica que tenga relaciones el titular
+                            }
+                            else
+                            {
+                                mensaje.DescripcionMensaje = "La persona no se encuentra fallecida.";
+                                mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                                mensaje.QuienLLama = "SoloMuestra";
+                                mensaje.Mostrar();
+                                txtCuipC.Text = "";
+                            }
+                            #endregion Verifica cuil fallecido
+                        }
+                        else
+                        {
+                            mensaje.DescripcionMensaje = "CUIL/T INHABILITADO. PRESENTARSE ANTE R.N.P.";
+                            mensaje.TipoMensaje = Mensaje.infoMensaje.Info;
+                            mensaje.QuienLLama = "SoloMuestra";
+                            mensaje.Mostrar();
+                            txtCuipC.Text = "";
+                        }
+                        #endregion Vverifica cuil robado
+                    }
+                    else if (oDatos.error.cod_retorno == 1 && oDatos.error.cod_gravedad.ToUpper().Equals("W"))
+                    {
+                        mensaje.DescripcionMensaje = "El cuil/t ingresado es inexistente";
+                        mensaje.TipoMensaje = Mensaje.infoMensaje.Info;
+                        mensaje.QuienLLama = "SoloMuestra";
+                        mensaje.Mostrar();
+                        txtCuipC.Text = "";
+                    }
+                    else
+                    {
+                        mensaje.DescripcionMensaje = "El cuil/t ingresado es incorrecto";
+                        mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                        mensaje.QuienLLama = "SoloMuestra";
+                        mensaje.Mostrar();
+                        txtCuipC.Text = "";
+                    }
+                    #endregion
+                }
+                else
+                {
+                    mensaje.DescripcionMensaje = "El cuil ingresado no esta relacionado al principal.";
+                    mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                    mensaje.QuienLLama = "SoloMuestra";
+                    mensaje.Mostrar();
+                    txtCuipC.Text = "";
+                }
+                #endregion relacion al principal
+            }
+            else
+            {
+                mensaje.DescripcionMensaje = "El titular no posee personas relacionadas en ADP.";
+                mensaje.TipoMensaje = Mensaje.infoMensaje.Error;
+                mensaje.QuienLLama = "SoloMuestra";
+                mensaje.Mostrar();
+                txtCuipC.Text = "";
+            }
+        }
+        catch (Exception er) {
+            LimpiaControlesCausante();
+        }
+    }
+
+    #endregion Click consulta x CUIP
+
+
+    #region Verifica existencia de carga de cuasante
+    private bool HayDatosCausante()
+    {
+        return (!txtApeNomC.Text.Equals(string.Empty) && !txtFechaDefC.Text.Equals(string.Empty));
+    }
+    #endregion
+
+    #region Session Documentos
+
+    private void SetSessionDoc(TiposEnumerados.TipoActor tipoActor, Int16? paisDoc, string abrevPais, Int16 tDoc, string abrevDoc, string numDoc)
+    {
+        Documento_Beneficiario _docb;
+        Documento_Causante _docc;
+        switch (tipoActor)
+        {
+            case TiposEnumerados.TipoActor.Beneficiario:
+                _docb = new Documento_Beneficiario();
+
+                if(paisDoc.HasValue)
+                    _docb.CodAbrevPais = abrevPais;
+                else
+                    _docb.CodAbrevPais = "";
+                _docb.Pais_PK = paisDoc;
+                    
+                _docb.CodigoDocumento = tDoc;
+                _docb.AbrevDocumento = abrevDoc;
+                _docb.FechaAlta = System.DateTime.Today;
+                _docb.FechaBaja = null;
+                _docb.NumDoc = numDoc;
+                _docb.DocADP = false;
+                _docb.Pais_PK = paisDoc;
+
+                List<Documento_Beneficiario> lb = sesDocumentosB == null ? new List<Documento_Beneficiario>() : (List<Documento_Beneficiario>)sesDocumentosB;
+                lb.Add(_docb);
+                sesDocumentosB = lb;
+                break;
+
+            case TiposEnumerados.TipoActor.Causante:
+                _docc = new Documento_Causante();
+
+                if(paisDoc.HasValue)
+                    _docc.CodAbrevPais = abrevPais;
+                else
+                    _docc.CodAbrevPais = "";
+                _docc.Pais_PK = paisDoc;
+                    
+                _docc.CodigoDocumento = tDoc;
+                _docc.AbrevDocumento = abrevDoc;
+                _docc.FechaAlta = System.DateTime.Today;
+                _docc.FechaBaja = null;
+                _docc.NumDoc = numDoc;
+                _docc.DocADP = false;
+                _docc.Pais_PK = paisDoc;
+
+                List<Documento_Causante> lc = sesDocumentosC == null ? new List<Documento_Causante>() : (List<Documento_Causante>)sesDocumentosC;
+                lc.Add(_docc);
+                sesDocumentosC = lc;
+                break;
+        }
+ 
+    }
+
+    #endregion
+
+    #region Boton nueva solicitud
+
+    protected void btnNewSol_Click(object sender, EventArgs e)
+    {
+        IrASolicitues();
+    }
+
+    private void IrASolicitues()
+    {
+        string encabezadoBeneficiario = "";
+        encabezadoBeneficiario += BeneficiarioActual.ApeNom;
+        encabezadoBeneficiario += BeneficiarioActual.Cuip.Equals("") ? "" : " - " + BeneficiarioActual.Cuip;
+        encabezadoBeneficiario += BeneficiarioActual.ExpedienteExterno.Equals("") ? "" : " - C. SIACI " + BeneficiarioActual.ExpedienteExterno;
+        String script = "<script type='text/javascript'>" + "hidden = open('AMSolicitud.aspx?codPrestacion=" + "" + "&idBeneficiario=" + HFidBeneficiario.Value + "&descPrestacion=" + "" + 
+            "&descApeNom=" + encabezadoBeneficiario + "&codPais=" + "" + "&descPais=" + "" + "&cuip=" + BeneficiarioActual.Cuip + "');" + "</script>";
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "xx", script, false);
+    }
+
+
+    #endregion Boton nueva solicitud
+
+    #region Regresar
+    protected void btnRegresar_Click(object sender, EventArgs e)
+    {
+        mensaje.DescripcionMensaje = "¿ Desea regresar a la pantalla principal ?";
+        mensaje.TipoMensaje = Mensaje.infoMensaje.Pregunta;
+        mensaje.TextoBotonCancelar = "Continuar";
+        mensaje.QuienLLama = "btnRegresar_Click";
+        mensaje.Mostrar();
+    }
+    #endregion Regresar
+
+    #region Blanqueo Pantall
+
+    private void blanquearPantalla()
+    {
+        txtCuilADP.Focus();
+
+        sesRelacionesCuilADP = null;
+        iBtnBusqADPCuipCau.Enabled = true;
+        btnNewSol.Enabled = false;
+        btnImprimir.Enabled = false;
+        Session["_toPrint"] = null;
+        //btnAMSolicitudes.Visible = false;
+        //anularCamposADP(true); //habilita los campos adp
+        dvNoApoderados.Visible = false;
+        
+        //activo validadores de solapa actual (beneficiario) y desactivo el resto
+        //pone los validadores para datos de beneficiario
+        EnableDisableValidators(true);
+
+        MError.MensajeError = string.Empty;
+        habilitaCuip(true);
+
+       
+        LimpiaControlesBeneficiario();
+        LimpiaControlesCausante();
+        LimpiaControlesApoderado();
+        setControlesPopUpDoc(false); //inhabilita todos los validadores de documento 
+
+        //sessiones
+        sesDocumentosB = null;
+        sesDocumentosC = null;
+        sesApoderados = null;
+        
+        //gridviews
+        gridListadoApoderados.Visible = false;
+        
+        //hidden
+        HFIdApoderado.Value = string.Empty;
+        HFtipoTxApod.Value = string.Empty;
+        HFidBeneficiario.Value = string.Empty;
+
+        btnGuardar.Enabled = true;
+    }
+
+    #endregion Blanqueo Pantall
+
+    #region Boton Anular
+    protected void btnAnular_Click(object sender, EventArgs e)
+    {
+        mensaje.DescripcionMensaje = "¿ Desea blanquear los datos de la pantalla ?";
+        mensaje.TipoMensaje = Mensaje.infoMensaje.Pregunta;
+        mensaje.QuienLLama = "btnAnular_Click";
+        mensaje.Mostrar();
+    }
+    #endregion Boton Anular
+
+    #region Verifica Existencia Doc
+
+    private bool VerificarDocumentoExistente(string documento, Int16 codDocumento)
+    {
+        bool existe = false;
+        string msjerror = "";
+        existe = InvocaWsDao.ExisteDocumento(documento, codDocumento, out msjerror);
+        MError.MensajeError = msjerror;
+
+        return existe;
+    }
+
+    #endregion Verifica Existencia Doc
+
+    #region Controles de Apoderado
+    protected void btnGuardarApoderado_Click(object sender, EventArgs e)
+    {
+        mensajeValidoApoderado.Text = ValidoDatosApoderado();
+
+        if (!mensajeValidoApoderado.Visible)
+        {
+            SetSessionApod();
+            if ((sesApoderados.Count > 0) || (sesApoderados != null))
+            {
+                gridListadoApoderados.DataSource = ToDatatable.toDataTable(sesApoderados.ToList());
+                gridListadoApoderados.DataBind();
+                gridListadoApoderados.Visible = true;
+                dvNoApoderados.Visible = false;
+            }
+            else
+            {
+                gridListadoApoderados.Visible = false;
+                dvNoApoderados.Visible = true;
+            }
+            LimpiaControlesApoderado();
+            HFIdApoderado.Value = "";
+            //retorna activando validadores de beneficiario
+            EnableDisableValidators(true);
+            mpeApoderado.Hide();
+            btnGuardar.Focus();
+        }
+        else
+            mpeApoderado.Show();
+    }
+
+
+    private String ValidoDatosApoderado()
+    {
+        string mensajeErr = string.Empty;
+
+        if (txtApeNomA.Text.Equals(string.Empty))
+            mensajeErr += "Apellido y Nombre de apoderado obligatorio" + "</br>";
+        if (txtDocA.Text.Equals(string.Empty))
+            mensajeErr += "Documento apoderado obligatorio" + "</br>";
+        else if (!Util.esNumerico(txtDocA.Text, 8))
+            mensajeErr += "Documento debe contener 8 dígitos" + "</br>";
+        if (ddltDocA.SelectedValue.Equals("0"))
+            mensajeErr += "Se debe seleccionar un tipo de documento" + "</br>";
+        if (ddlSubTipoApoderadoA.SelectedValue.Equals("0"))
+            mensajeErr += "Se debe seleccionar un tipo de apoderado" + "</br>";
+        if (ddlTipoApoderadoA.SelectedValue.Equals("0"))
+            mensajeErr += "Se debe seleccionar un tipo de apoderado" + "</br>";
+        //por el momento no se exigira el ingreso de banco asi el apoderado sea para percibir, sera opcional
+        //24/06/2014
+        //if (pnlBcoAge.Visible && ddlBancoA.SelectedValue.Equals("0"))
+        //    mensajeErr += "Se debe seleccionar un Banco" + "</br>";
+
+        return mensajeErr;
+
+    }
+
+    protected void btnCancelarApoderado_Click(object sender, EventArgs e)
+    {
+        mpeApoderado.Hide();
+        btnGuardar.Focus();
+    }
+
+    protected void btnIngresarApoderado_Click(object sender, EventArgs e)
+    {
+        MError.MensajeError = "";
+        HFtipoTxApod.Value = TiposEnumerados.TipoTx.Alta.ToString();
+        CargarCombosApoderado();
+        mpeApoderado.Show();
+    }
+
+    #endregion Controles de Apoderado
+
+    #region Combos Apoderado
+    private void CargarCombosApoderado()
+    {
+        string mensajeCarga = string.Empty;
+        ////Combo Tipos de apoderados
+        List<AuxiliaresWS.TipoApoderado> oTapoderado = VariableSession.oTiposApoderado;
+
+        //filtra por los apoderados ya existentes
+        if (oTapoderado != null)
+        {
+            ddlTipoApoderadoA.DataSource = oTapoderado;
+            ddlTipoApoderadoA.DataBind();
+            ddlTipoApoderadoA.Items.Insert(0, new ListItem("Seleccione", "0"));
+        }
+        else
+            mensajeCarga += "Tipos de Apoderado" + "</br>";
+
+        ////Combo sub Tipos de apoderados
+        List<AuxiliaresWS.SubTipoApoderado> osTapoderado = VariableSession.oSubTiposApoderado;
+
+        //filtra por los apoderados ya existentes
+        if (osTapoderado != null)
+        {
+            ddlSubTipoApoderadoA.DataSource = osTapoderado;
+            ddlSubTipoApoderadoA.DataBind();
+            ddlSubTipoApoderadoA.Items.Insert(0, new ListItem("Seleccione", "0"));
+        }
+        else
+            mensajeCarga += "Tipos de Apoderado" + "</br>";
+
+
+        ////Combo Provincias dir apoderado
+        List<AuxiliaresWS.Provincia> oProvincias = VariableSession.oProvincias;
+
+        if (oProvincias != null)
+        {
+            ddlProvinciaA.DataSource = oProvincias;
+            ddlProvinciaA.DataBind();
+            ddlProvinciaA.Items.Insert(0, new ListItem("Seleccione", "0"));
+        }
+        else
+            mensajeCarga += "Provincias" + "</br>";
+
+
+        ////Combo Bancos
+        List<BancoWS.Banco> oBanco = VariableSession.oBancoTodos;
+
+        if (oBanco != null)
+        {
+            ddlBancoA.DataSource = oBanco;
+            ddlBancoA.DataBind();
+            ddlBancoA.Items.Insert(0, new ListItem("Seleccione", "0"));
+        }
+        else
+            mensajeCarga += "Bancos" + "</br>";
+
+
+        if (!mensajeCarga.Equals(string.Empty))
+        {
+            MError.MensajeError = "Las siguientes listas no pudieron cargarse:" + "</br>" + mensajeCarga;
+        }
+
+
+    }
+
+    #endregion Combos Apoderado
+
+    #region EnableDisableValidators
+
+    private void EnableDisableValidators(bool ActivarBen)
+    {
+        rvtxtFechaDefC.Enabled = ActivarBen; //solo verifica que sea correcta, no si existe
+        rvtxtFechaNacC.Enabled = ActivarBen;
+    }
+
+    #endregion EnableDisableValidators
+
+    #region Session Apoderados
+    private void SetSessionApod()
+    {
+        Apoderado _apod = new Apoderado();
+
+        _apod.ApeNom = txtApeNomA.Text;
+
+        //banco cobro
+        if (ddlBancoA.SelectedValue == "0")
+            _apod.Banco = null;
+        else
+        {
+            ActoresWS.Banco _iBanco = new Banco();
+            _iBanco.Id_Banco = Int16.Parse(ddlBancoA.SelectedValue.ToString());
+            _iBanco.Descripcion = ddlBancoA.SelectedItem.Text;
+            _apod.Banco = _iBanco;
+        }
+        _apod.Comentario = txtComentariosA.Text;
+        _apod.EMail = txtEmailA.Text;
+        _apod.Fbaja = null;
+        _apod.NumDoc = txtDocA.Text;
+        _apod.CodigoDocumento = Int16.Parse(ddltDocA.SelectedItem.Value);
+
+        _apod.Sexo = "";
+        _apod.Telefono = txtTelefonoA.Text;
+
+        _apod.DirCalle = txtDirCalleA.Text;
+        _apod.DirNum = txtDirNumA.Text;
+        _apod.Ciudad = txtCiudadDirA.Text;
+        _apod.Piso = txtDirPisoA.Text;
+        _apod.Departamento = txtDirDeptoA.Text;
+        _apod.EntreCalle1 = txtCalle1DirA.Text;
+        _apod.EntreCalle2 = txtCalle2DirA.Text;
+        _apod.Cod_postal = txtCodPostalDirA.Text;
+
+        if (ddlLocalidadA.SelectedValue.Equals("0") || ddlLocalidadA.SelectedValue.Equals(""))
+            _apod.DirUbicacion = null;
+        else
+        {
+            ActoresWS.DirUbicacion _idirUbicacion = new DirUbicacion();
+            _idirUbicacion.Cod_Localidad = Int32.Parse(ddlLocalidadA.SelectedValue);
+            _idirUbicacion.DescripcionLocalidad = ddlLocalidadA.SelectedItem.Text;
+            _idirUbicacion.Cod_Provincia = Int16.Parse(ddlProvinciaA.SelectedValue);
+            _apod.DirUbicacion = _idirUbicacion;
+        }
+
+        ActoresWS.SubTipoApoderado _istipoApod = new ActoresWS.SubTipoApoderado();
+        _istipoApod.Id_STipodeApoderado = Byte.Parse(ddlSubTipoApoderadoA.SelectedValue.ToString());
+        _istipoApod.Descripcion = ddlSubTipoApoderadoA.SelectedItem.Text;
+        _apod.StipoApoderado = _istipoApod;
+
+        ActoresWS.TipoApoderado _itipoApod = new ActoresWS.TipoApoderado();
+        _itipoApod.Id_TipodeApoderado = Byte.Parse(ddlTipoApoderadoA.SelectedValue.ToString());
+        _itipoApod.Descripcion = ddlTipoApoderadoA.SelectedItem.Text;
+        _apod.TipoApoderado = _itipoApod;
+
+        List<Apoderado> la = new List<Apoderado>();
+        if (sesApoderados != null)
+            la = (List<Apoderado>)sesApoderados;
+
+        #region Actualiza la session
+        if (HFtipoTxApod.Value.ToString() != TiposEnumerados.TipoTx.Modificacion.ToString())
+            la.Add(_apod);
+        else
+        {
+            foreach (Apoderado ap in la)
+            {
+                if (ap.NumDoc + ap.CodigoDocumento.ToString() == HFIdApoderado.Value.ToString())
+                {
+                    la[la.IndexOf(ap)].ApeNom = _apod.ApeNom;
+                    la[la.IndexOf(ap)].Banco = _apod.Banco;
+                    la[la.IndexOf(ap)].Comentario = _apod.Comentario;
+                    la[la.IndexOf(ap)].EMail = _apod.EMail;
+                    la[la.IndexOf(ap)].Fbaja = _apod.Fbaja;
+                    la[la.IndexOf(ap)].CodigoDocumento = _apod.CodigoDocumento;
+                    la[la.IndexOf(ap)].NumDoc = _apod.NumDoc;
+                    la[la.IndexOf(ap)].DirCalle = _apod.DirCalle;
+                    la[la.IndexOf(ap)].DirNum = _apod.DirNum;
+                    //la[la.IndexOf(ap)].Nombre = _apod.Nombre;
+                    la[la.IndexOf(ap)].Sexo = _apod.Sexo;
+                    la[la.IndexOf(ap)].Telefono = _apod.Telefono;
+                    la[la.IndexOf(ap)].TipoApoderado = _apod.TipoApoderado;
+                    la[la.IndexOf(ap)].DirUbicacion = _apod.DirUbicacion;
+                    la[la.IndexOf(ap)].FAlta = System.DateTime.Today;
+                }
+            }
+        }
+        sesApoderados = la;
+        #endregion Actualiza la session
+
+    }
+
+
+    #endregion
+
+    #region Trae localidades X Provincia
+    protected void TraeLocalidadesXProvBen_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlProvinciaDirB.SelectedValue == "0")
+        {
+            ddlLocalidadDirB.Visible = false;
+            txtCalle1DirB.Focus();
+        }
+        else
+        {
+            ddlLocalidadDirB.DataSource = InvocaWsDao.TraerLocalidadesXProvincia(Int16.Parse(ddlProvinciaDirB.SelectedValue));
+            ddlLocalidadDirB.DataBind();
+            ddlLocalidadDirB.Items.Insert(0, new ListItem("Seleccione", "0"));
+            ddlLocalidadDirB.Visible = true;
+            ddlLocalidadDirB.Focus();
+        }
+    }
+
+    protected void TraerCiudatesExtrXPais2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlPaisDomExtr.SelectedValue == "0")
+        {
+            ddlCiudadesExtr.Visible = false;
+            txtEstadoDomExtrB.Focus();
+        }
+        else
+        {
+            cargaDdlCiudadesExtranjeras(ddlPaisDomExtr.SelectedValue);
+            ddlCiudadesExtr.Focus();
+        }
+    }
+
+    protected void TraeLocalidadesXProvApod_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlProvinciaA.SelectedValue == "0")
+            ddlLocalidadA.Visible = false;
+        else
+        {
+            ddlLocalidadA.DataSource = InvocaWsDao.TraerLocalidadesXProvincia(Int16.Parse(ddlProvinciaA.SelectedValue));
+            ddlLocalidadA.DataBind();
+            ddlLocalidadA.Items.Insert(0, new ListItem("Seleccione", "0"));
+            ddlLocalidadA.Visible = true;
+        }
+        //vuelvo a mostrar el modal de apoderado por el cierre del postback
+        mpeApoderado.Show();
+    }
+    #endregion Trae localidades X Provincia
+
+    #region Limpia controles
+
+    private void SetEmptyGridCau()
+    {
+        Documento_Causante odc = new Documento_Causante();
+        List<Documento_Causante> olc = new List<Documento_Causante>();
+        olc.Add(odc);
+
+        gv_GrillaDocC.DataSource = ToDatatable.toDataTable(olc);
+        gv_GrillaDocC.DataBind();
+        gv_GrillaDocC.Rows[0].Cells.Add(new TableCell());
+        gv_GrillaDocC.Rows[0].Visible = false;
+        gv_GrillaDocC.Rows[0].Controls.Clear();
+    }
+
+    private void SetEmptyGridBen()
+    {
+        Documento_Beneficiario od = new Documento_Beneficiario();
+        List<Documento_Beneficiario> ol = new List<Documento_Beneficiario>();
+        ol.Add(od);
+
+        gv_GrillaDoc.DataSource = ToDatatable.toDataTable(ol);
+        gv_GrillaDoc.DataBind();
+        gv_GrillaDoc.Rows[0].Cells.Add(new TableCell());
+        gv_GrillaDoc.Rows[0].Visible = false;
+        gv_GrillaDoc.Rows[0].Controls.Clear();
+
+    }
+
+    private void LimpiaControlesBeneficiario()
+    {
+        txtCuilADP.Text = string.Empty;
+        txtApeNomB.Text = string.Empty;
+        txtApellidoMatB.Text = string.Empty;
+        txtCodigoSiaciB.Text = string.Empty;
+        txtFechaNacB.Text = string.Empty;
+        ddlPaisNacB.ClearSelection();
+        ddlSexoB.ClearSelection();
+        //gridListadoDocBeneficiarios.Visible = false;
+        SetEmptyGridBen();
+        txtDirCalleB.Text = string.Empty;
+        txtDirNumB.Text = string.Empty;
+        txtDirPisoB.Text = string.Empty;
+        txtDirdeptoB.Text = string.Empty;
+        ddlProvinciaDirB.ClearSelection();
+        ddlLocalidadDirB.ClearSelection();
+        ddlLocalidadDirB.Visible = false;
+        txtCalle1DirB.Text = string.Empty;
+        txtCalle2DirB.Text = string.Empty;
+        txtcodPostalDirB.Text = string.Empty;
+        txtCiudadDirB.Text = string.Empty;
+
+        txtCalleDomExtrB.Text = string.Empty;
+        txtNumDomExtrB.Text = string.Empty;
+        txtPisoDomExtrB.Text = string.Empty;
+        txtDeptoDomExtrB.Text = string.Empty;
+        txtEC1DomExtrB.Text = string.Empty;
+        txtEC2DomExtrB.Text = string.Empty;
+        txtCodPostalDomExtrB.Text = string.Empty;
+        ddlPaisDomExtr.ClearSelection();
+        ddlCiudadesExtr.ClearSelection();
+        ddlCiudadesExtr.Visible = false;
+        txtEstadoDomExtrB.Text = string.Empty;
+        txtCiudadDomExtrB.Text = string.Empty;
+
+        //txtDocB.Text = string.Empty;
+        //ddltDocB.ClearSelection();
+
+        sesRelacionesCuilADP = null;
+    }
+
+    private void LimpiaControlesCausante()
+    {
+        txtApeNomC.Text = string.Empty;
+        txtCuipC.Text = string.Empty;
+        txtFechaNacC.Text = string.Empty;
+        txtFechaDefC.Text = string.Empty;
+        ddlSexoC.ClearSelection();
+        //gv_GrillaDocC.Visible = false;
+        SetEmptyGridCau();
+        iBtnBusqADPCuipCau.Enabled = false;
+
+        //txtDocC.Text = string.Empty;
+        //ddltDocC.ClearSelection();
+    }
+
+    private void LimpiaControlesApoderado()
+    {
+        txtApeNomA.Text = string.Empty;
+        txtTelefonoA.Text = string.Empty;
+        txtEmailA.Text = string.Empty;
+        txtDocA.Text = string.Empty;
+        ddltDocA.ClearSelection();
+        txtDirCalleA.Text = string.Empty;
+        txtDirNumA.Text = string.Empty;
+        txtDirPisoA.Text = string.Empty;
+        txtDirDeptoA.Text = string.Empty;
+        txtCalle1DirA.Text = string.Empty;
+        txtCalle2DirA.Text = string.Empty;
+        txtCodPostalDirA.Text = string.Empty;
+        txtCiudadDirA.Text = string.Empty;
+        
+        ddlProvinciaA.ClearSelection();
+        ddlLocalidadA.ClearSelection();
+        ddlLocalidadA.Visible = false;
+
+        txtComentariosA.Text = string.Empty;
+        
+        
+        ddlTipoApoderadoA.ClearSelection();
+        ddlSubTipoApoderadoA.ClearSelection();
+        ddlBancoA.ClearSelection();
+        //inhabilita combo de bancos por default (solo cuando se seleccion apoderado para tramitar)
+        pnlBcoAge.Visible = false;
+    }
+
+    #endregion Limpia controles
+
+    #region setControlesPopUpSSS
+    private void setControlesPopUpDoc(Boolean activo)
+    {
+        //activa - desactiva todos
+        setControlesPopUpDoc(activo, TiposEnumerados.TipoActor.Apoderado);
+        setControlesPopUpDoc(activo, TiposEnumerados.TipoActor.Beneficiario);
+        setControlesPopUpDoc(activo, TiposEnumerados.TipoActor.Causante);
+    }
+
+    private void setControlesPopUpDoc(Boolean activo, TiposEnumerados.TipoActor tActor)
+    {
+        switch (tActor)
+        {
+            case TiposEnumerados.TipoActor.Apoderado:
+                if (!activo)
+                {
+                    txtDocA.Text = string.Empty;
+                    ddltDocA.ClearSelection();
+                }
+                break;
+
+            case TiposEnumerados.TipoActor.Beneficiario:
+                //if (!activo)
+                //{
+                //    txtDocB.Text = string.Empty;
+                //    ddltDocB.ClearSelection();
+                //    ddlPaisDocumentoB.ClearSelection();
+                //    //ddlPaisDocumentoB.Enabled = false;
+                //    ddlPaisDocumentoB.Visible = false;
+                //}
+                //rfvtxtDocB.Enabled = activo;
+                //revtxtDocB.Enabled = activo;
+                //rfvddltDocB.Enabled = activo;
+                
+                break;
+
+            case TiposEnumerados.TipoActor.Causante:
+                //if (!activo)
+                //{
+                //    txtDocC.Text = string.Empty;
+                //    ddltDocC.ClearSelection();
+                //    ddlPaisDocumentoC.ClearSelection();
+                //    //ddlPaisDocumentoC.Enabled = false;
+                //    ddlPaisDocumentoC.Visible = false;
+                //}
+                //rfvtxtDocC.Enabled = activo;
+                //revtxtDocC.Enabled = activo;
+                //rfvddltDocC.Enabled = activo;
+                
+                break;
+        }
+    }
+        
+    #endregion setControlesPopUp
+
+    #region Graba Datos
+    private Boolean GrabarDatosBeneficiario(out string mensaje)
+    {
+        mensaje = string.Empty;
+        Beneficiario iBeneficiario = new Beneficiario();
+
+        #region Datos Beneficiario
+        if (Acceso.Equals("INSERT"))
+            iBeneficiario.IdBeneficio = null;
+        else if (Acceso.Equals("UPDATE") && (!HFidBeneficiario.Value.Equals(string.Empty)))
+            iBeneficiario.IdBeneficio = Int64.Parse(HFidBeneficiario.Value);
+
+        iBeneficiario.ApellMaterno = txtApellidoMatB.Text;
+        iBeneficiario.ApeNom = txtApeNomB.Text;
+        iBeneficiario.ExpedienteExterno = txtCodigoSiaciB.Text;
+        iBeneficiario.Cuip = txtCuilADP.Text;
+
+        //fecha nac
+        if (txtFechaNacB.Text.Equals(string.Empty))
+            iBeneficiario.Fecha_nac = null;
+        else
+            iBeneficiario.Fecha_nac = DateTime.Parse(txtFechaNacB.Text);
+
+        //docs
+        if (sesDocumentosB != null)
+            iBeneficiario.LDocumentosBeneficiario = sesDocumentosB.ToArray();
+        else
+            iBeneficiario.LDocumentosBeneficiario = null;
+
+        //pais nac
+        if (ddlPaisNacB.SelectedValue.Equals("0"))
+            iBeneficiario.Pais_Nacionalidad = null;
+        else
+        {
+            Pais iPais = new Pais();
+            iPais.Pais_PK = Int16.Parse(ddlPaisNacB.SelectedValue);
+            iBeneficiario.Pais_Nacionalidad = iPais;
+        }
+
+        iBeneficiario.Sexo = ddlSexoB.SelectedValue;
+        iBeneficiario.DirCalle = txtDirCalleB.Text;
+        iBeneficiario.DirNum = txtDirNumB.Text;
+        iBeneficiario.ECalle1 = txtCalle1DirB.Text;
+        iBeneficiario.ECalle2 = txtCalle2DirB.Text;
+        iBeneficiario.Piso = txtDirPisoB.Text;
+        iBeneficiario.Departamento = txtDirdeptoB.Text ;
+        iBeneficiario.CodPostal = txtcodPostalDirB.Text ;
+        iBeneficiario.Ciudad = txtCiudadDirB.Text;
+        
+        //ubicacion - pcia / loc
+        if (ddlLocalidadDirB.SelectedValue.Equals("0") || ddlLocalidadDirB.SelectedValue.Equals(""))
+            iBeneficiario.Ubicacion = null;
+        else
+        {
+            ActoresWS.DirUbicacion _idirUbicacion = new DirUbicacion();
+            _idirUbicacion.Cod_Localidad = Int32.Parse(ddlLocalidadDirB.SelectedValue);
+            _idirUbicacion.DescripcionLocalidad = ddlLocalidadDirB.SelectedItem.Text;
+            _idirUbicacion.Cod_Provincia = Int16.Parse(ddlProvinciaDirB.SelectedValue);
+            iBeneficiario.Ubicacion = _idirUbicacion;
+        }
+
+        //dir extranjera
+        oDireccionExtranjera oDE =  new oDireccionExtranjera();
+        oDE.Ciudad = txtCiudadDomExtrB.Text;
+        oDE.CodPostal = txtCodPostalDomExtrB.Text;
+
+        if(!ddlPaisDomExtr.SelectedValue.Equals("0"))
+        {
+            oDE.CountryCode = ddlPaisDomExtr.SelectedValue;
+            if(ddlCiudadesExtr.SelectedValue.Equals("0"))
+                oDE.IdCiudad =  null;
+            else
+                oDE.IdCiudad = Int32.Parse( ddlCiudadesExtr.SelectedItem.Value);
+        }
+        else
+            oDE.CountryCode = "";
+        oDE.Depto = txtDeptoDomExtrB.Text;
+        oDE.Dircalle = txtCalleDomExtrB.Text;
+        oDE.Dirnum = txtNumDomExtrB.Text;
+        oDE.Distrito = txtEstadoDomExtrB.Text;
+        oDE.Ecalle1 = txtEC1DomExtrB.Text;
+        oDE.Ecalle2 = txtEC2DomExtrB.Text;
+        oDE.Estado = txtEstadoDomExtrB.Text;
+        if (iBeneficiario.IdBeneficio.HasValue)
+            oDE.Id_Beneficiario = iBeneficiario.IdBeneficio.Value;
+        else
+            oDE.Id_Beneficiario = 0;
+        oDE.NomCiudad = txtCiudadDomExtrB.Text;
+        oDE.Piso = txtPisoDomExtrB.Text;
+
+        iBeneficiario.OdirExtranjera = oDE;
+        #endregion
+
+
+        iBeneficiario.LApoderado = sesApoderados == null ? null : sesApoderados.ToArray();
+        
+        iBeneficiario.Causante = HayDatosCausante() ? CargaCausante() : null;
+
+        //Grabo Beneficiario
+        iBeneficiario.IdBeneficio = InvocaWsDao.AMBeneficiario(iBeneficiario, out mensaje);
+
+        if (mensaje.Equals(string.Empty))
+        {
+            Acceso = "UPDATE"; //cambio tipo tx
+            BeneficiarioActual = iBeneficiario;
+            if (iBeneficiario.IdBeneficio.HasValue)
+            {
+                HFidBeneficiario.Value = iBeneficiario.IdBeneficio.Value.ToString();
+                btnNewSol.Enabled = true;
+                btnImprimir.Enabled = true;
+                Session["_toPrint"] = (Beneficiario)BeneficiarioActual;
+            }
+            else
+            {
+                HFidBeneficiario.Value = string.Empty;
+                btnNewSol.Enabled = false;
+                btnImprimir.Enabled = false;
+                Session["_toPrint"] = null;
+            }
+
+
+            return true;
+        }
+        else
+        {
+            btnNewSol.Enabled = false;
+            btnImprimir.Enabled = false;
+            Session["_toPrint"] = null;
+            return false;
+        }
+    }
+
+    private Causante CargaCausante()
+    {
+        DateTime fecha;
+        Causante iCausante = new Causante();
+
+        #region Datos Causante
+        iCausante.Id_causante = 0; //id provisorio
+        iCausante.ApeNom = txtApeNomC.Text;
+        iCausante.Cuip = txtCuipC.Text;
+        iCausante.Fecha_Nacimiento = null;
+        if (!txtFechaNacC.Text.Equals(string.Empty))
+        {
+            if (DateTime.TryParse(txtFechaNacC.Text, out fecha))
+            {
+                iCausante.Fecha_Nacimiento = Convert.ToDateTime(txtFechaNacC.Text);
+            }
+        }
+
+        if (!txtFechaDefC.Text.Equals(string.Empty))
+        {
+            if (DateTime.TryParse(txtFechaDefC.Text, out fecha))
+                iCausante.Fecha_Def = Convert.ToDateTime(txtFechaDefC.Text);
+        }
+
+        if (sesDocumentosC != null)
+            iCausante.LDocCausante = sesDocumentosC.ToArray();
+        else
+            iCausante.LDocCausante = null;
+
+        iCausante.Sexo = ddlSexoC.SelectedValue;
+
+        #endregion
+
+        return iCausante;
+    }
+
+    #endregion Graba Datos
+
+    #region Verifica Req. Banco
+    private bool RequiereBanco()
+    {
+        List<AuxiliaresWS.TipoApoderado> tempApoderados = VariableSession.oTiposApoderado;
+
+        //22/09/2014 se elimina la restriccion de habuilitar solo si percibe.
+        //se habilita el banco solamenmte para el tipo ""
+        ////Habilita banco si tipo de poder es para percibir
+        AuxiliaresWS.TipoApoderado ta = tempApoderados.Find(delegate(AuxiliaresWS.TipoApoderado tap)
+        {
+            return tap.Id_TipodeApoderado == Byte.Parse(ddlTipoApoderadoA.SelectedValue);
+        }
+            );
+        if (ta != null)
+        {
+            if (ta.PoderPercibir)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    #endregion Verifica Req. Banco
+    
+    #region Eventos DDL
+
+
+
+    protected void ddlTipoApoderadoA_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        bool requiereBanco = RequiereBanco(); //establece el validador de banco en T o F de acuerdo al tipo de poder
+        ddlBancoA.ClearSelection();
+        pnlBcoAge.Visible = requiereBanco;
+        
+        mpeApoderado.Show();
+    }
+
+    #region Tipos de Documento Select
+    /**
+     * Tipos documento son
+     * C.I. EXTRANJERA
+     * CERTIFICADO DE MIGRACION
+     * EXTRANJERO INDOCUMENTADO
+     * EXTRANJERO C/RESID.EN EXT
+     * CI.SUDAMERICANA-MERCOSUR
+     * DOC. EXTRANJERO BOLIVIANO
+     * DOCUMENTO EXTRANJERO
+     * 
+     * habilita o inhabilita pais
+     * */
+
+    protected void ddltDocB_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow footrow = gv_GrillaDoc.FooterRow;
+        if (footrow != null)
+        {
+            //tomo los ddl del footer para analizar estado
+            DdlTipoDoc = (DropDownList)footrow.FindControl("Tdoc");
+            DdlPaisDoc = (DropDownList)footrow.FindControl("PaisDoc");
+            ImageButton btnIns = (ImageButton)footrow.FindControl("IMGBInsert");
+
+            //verifica codigo que requiere pais
+            bool enable = DdlTipoDoc.SelectedValue.Equals("28") || DdlTipoDoc.SelectedValue.Equals("38") ||
+            DdlTipoDoc.SelectedValue.Equals("39") || DdlTipoDoc.SelectedValue.Equals("42") || DdlTipoDoc.SelectedValue.Equals("43") ||
+            DdlTipoDoc.SelectedValue.Equals("51");
+
+            DdlPaisDoc.Enabled = enable;
+            if (!enable)
+                DdlPaisDoc.ClearSelection();
+            //rfvddlPaisDocumentoB.Enabled = enable;
+            if (DdlPaisDoc.Visible)
+                DdlPaisDoc.Focus();
+            else
+                btnIns.Focus();
+            
+        }
+
+    }
+
+    protected void ddltDocC_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow footrow = gv_GrillaDocC.FooterRow;
+        if (footrow != null)
+        {
+            //tomo los ddl del footer para analizar estado
+            DdlTipoDoc = (DropDownList)footrow.FindControl("Tdoc");
+            DdlPaisDoc = (DropDownList)footrow.FindControl("PaisDoc");
+            ImageButton btnIns = (ImageButton)footrow.FindControl("IMGBInsert");
+
+            //verifica codigo que requiere pais
+            bool enable = DdlTipoDoc.SelectedValue.Equals("28") || DdlTipoDoc.SelectedValue.Equals("38") ||
+            DdlTipoDoc.SelectedValue.Equals("39") || DdlTipoDoc.SelectedValue.Equals("42") || DdlTipoDoc.SelectedValue.Equals("43") ||
+            DdlTipoDoc.SelectedValue.Equals("51");
+
+            DdlPaisDoc.Enabled = enable;
+            if (!enable)
+            {
+                DdlPaisDoc.ClearSelection();
+                btnIns.Focus();
+            }
+            else
+                DdlPaisDoc.Focus();
+             
+        }
+    }
+
+
+    
+
+    protected void ddlPaisNacB_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ddlSexoB.Focus();
+    }
+
+
+    protected void ddlSexoC_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        btnAgregarApoderado.Focus();
+    }
+
+    protected void ddlSexoB_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtDirCalleB.Focus();
+    }
+
+    protected void ddlCiudadesExtr_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtEstadoDomExtrB.Focus();
+    }
+
+
+    protected void ddlPaisDocumentoC_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //btnIngDocumentoC.Focus();
+    }
+
+
+
+    protected void ddlLocalidadDirB_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtCalle1DirB.Focus();
+    }
+
+
+    #endregion Tipos de Documento Select
+
+    #endregion Eventos DDL
+}

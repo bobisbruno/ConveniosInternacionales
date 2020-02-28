@@ -1,0 +1,23 @@
+2018-01-03 10:24:54,093 [ID (null)] [9] ERROR global_asax - ID Error       : 497904002
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConIndicadoresXSector.aspx.cs(314): error CS0103: El nombre 'dvDatosConsultaProgresion' no existe en el contexto actual
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2018-01-03 10:30:55,210 [ID (null)] [8] ERROR global_asax - ID Error       : 935155658
+Mensaje Error : Fallo al ingresar puntos del Gráfico
+Stack     :    en GraficaNat.ChartMultipleSerie(Chart Chart, DataSet dsDatos, String nomColX, String nomColY, Boolean toPrint, String Titulo, Int32 ancho, Int32 alto, TipoGrafico tGrafico) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\GraficaNat.cs:línea 220
+   en Paginas_ConIndicadoresXSector.SetGraficos(TipoGrafico tGafico) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConIndicadoresXSector.aspx.cs:línea 395
+   en Paginas_ConIndicadoresXSector.Consultar(String fecha) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConIndicadoresXSector.aspx.cs:línea 359
+   en Paginas_ConIndicadoresXSector.Page_Load(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConIndicadoresXSector.aspx.cs:línea 148
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

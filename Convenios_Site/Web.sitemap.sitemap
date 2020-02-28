@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode roles="*">
+    <siteMapNode url="#" title="Consultas" resourceKey="OpMenuGrupConsultas">
+      <siteMapNode url="ConsultaSolicitudes.aspx" title="Solicitudes" resourceKey="OpSolicitudes"/>
+      <!--<siteMapNode url="DevolucionesNotifFueraPlazo.aspx" title="Notificados fuera de plazo" resourceKey="OpDevolNotifFueraPlazo"/>-->
+      <siteMapNode url="ConNotas.aspx" title="Notas" resourceKey="OpConNotas"/>
+      <siteMapNode url="ConsultaTProvisorios.aspx" title="Trámites provisorios" resourceKey="OpConDatosProvisorios"/>
+    </siteMapNode>
+    <siteMapNode url="#" title="Gestión" resourceKey="OpMenuGrupGestion">
+      <siteMapNode url="AltaRapida.aspx" title="Ingreso de trámite con CUIL" resourceKey="OpAltaRapida" />
+      <siteMapNode url="AltaProvisoria.aspx" title="Ingreso de trámite provisorio SIN CUIL" resourceKey="OpAltaProvisoria" />
+      <siteMapNode url="AMBeneficiario.aspx?acceso=INSERT" title="Datos del solicitante" resourceKey="OpAMBeneficiario" />
+      <siteMapNode url="AMNotas.aspx" title="Notas" resourceKey="OpAMNotasBeneficiario"/>
+    </siteMapNode>
+    <siteMapNode url="#" title="Administración"  resourceKey="OpMenuGrupadminTablas">
+      <siteMapNode url="PaisesConvenio.aspx" title="Convenios - Países"  resourceKey="OpPaisesConvenio"/>
+      <siteMapNode url="TiposDocumentacion.aspx" title="Tipos de documentación"  resourceKey="OpTiposDocumentacion"/>
+      <siteMapNode url="AMDocumentacionXPrestacion.aspx" title="Relación documentación / prestación" resourceKey="OpAMDocumentacionXPrestacion" />
+      <siteMapNode url="AMBancos.aspx" title="Bancos" resourceKey="OpAMBancos" />
+    </siteMapNode>
+    <siteMapNode url="#" title="Indicadores" resourceKey="OpMenuGrupIndicadores">
+      <siteMapNode url="ConIndicadoresXSolPrestaciones.aspx" title="Prestacionales" resourceKey="OpConIndicadoresXSolPrestaciones" />
+      <siteMapNode url="ConIndicadoresXSolPais.aspx" title="País - Convenio" resourceKey="OpConIndicadoresXSolPais" />
+      <siteMapNode url="ConIndicadoresXEstado.aspx" title="Indicadores por Estados" resourceKey="OpConIndicadoresXEstado" />
+      <siteMapNode url="ConIndicadoresXSector.aspx" title="Indicadores por Sectores" resourceKey="OpConIndicadoresXSector" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

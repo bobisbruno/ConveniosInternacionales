@@ -1,0 +1,226 @@
+2017-11-30 08:36:57,408 [ID (null)] [6] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-30 08:36:58,776 [ID (null)] [6] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\2ef75cf6\b80525d7\App_WebReferences.mwqko8pr.6.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-30 08:36:58,788 [ID (null)] [6] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-30 08:37:32,094 [ID (null)] [8] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-30 08:37:32,185 [ID (null)] [8] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-30 08:37:32,218 [ID (null)] [8] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-30 09:45:32,365 [ID (null)] [36] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.3nqmvfhw.8.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-30 09:45:32,387 [ID (null)] [36] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-30 09:45:42,341 [ID (null)] [32] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-30 09:45:42,434 [ID (null)] [32] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-30 09:45:42,447 [ID (null)] [32] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-30 09:51:30,964 [ID (null)] [36] ERROR ComprobanteTramite - ActoresWS.Beneficiario TraerBeneficiario(Int64, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+2017-11-30 12:19:14,337 [ID (null)] [11] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.IndexOutOfRangeException: ApellidoMaterno
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 397
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 535
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 663
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 12:24:32,412 [ID (null)] [6] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.IndexOutOfRangeException: ApellidoMaterno
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 397
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 535
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 663
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 12:27:12,933 [ID (null)] [23] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.IndexOutOfRangeException: ApellidoMaterno
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 535
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 663
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 13:47:55,985 [ID (null)] [23] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+2017-11-30 14:46:30,492 [ID (null)] [36] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.ArgumentOutOfRangeException: El índice estaba fuera del intervalo. Debe ser un valor no negativo e inferior al tamaño de la colección.
+Nombre del parámetro: index
+   en System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   en System.Collections.Generic.List`1.get_Item(Int32 index)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 539
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 672
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 14:59:55,060 [ID (null)] [47] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.ArgumentOutOfRangeException: El índice estaba fuera del intervalo. Debe ser un valor no negativo e inferior al tamaño de la colección.
+Nombre del parámetro: index
+   en System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   en System.Collections.Generic.List`1.get_Item(Int32 index)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 540
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 673
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 15:01:41,692 [ID (null)] [55] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.ArgumentOutOfRangeException: El índice estaba fuera del intervalo. Debe ser un valor no negativo e inferior al tamaño de la colección.
+Nombre del parámetro: index
+   en System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   en System.Collections.Generic.List`1.get_Item(Int32 index)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 540
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 673
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 15:04:48,715 [ID (null)] [61] ERROR ComprobanteTramite - ActoresWS.LsBeneficiario TraerBeneficiarioSimple(Int64, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Actores.Datos Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.LsBeneficiario TraeBeneficiarioSimpleXID(Int64) ---> System.ArgumentOutOfRangeException: El índice estaba fuera del intervalo. Debe ser un valor no negativo e inferior al tamaño de la colección.
+Nombre del parámetro: index
+   en System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   en System.Collections.Generic.List`1.get_Item(Int32 index)
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActoresDatos.Fill(LsBeneficiario& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 540
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.ActorDatos.TraeBeneficiarioSimpleXID(Int64 id_Beneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Actores.Datos.cs:línea 673
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeBeneficiarioSimpleXId(Int64 idBeneficiario) en c:\Desarrollos\ConveniosInternacionales\Convenios_WS\App_Code\ActoresWS.cs:línea 249
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-11-30 15:24:35,071 [ID (null)] [19] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 150
+2017-11-30 15:24:35,142 [ID (null)] [19] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-30 15:24:35,143 [ID (null)] [19] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-30 15:26:36,714 [ID (null)] [60] ERROR global_asax - ID Error       : -383083718
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 197
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:48,993 [ID (null)] [57] ERROR global_asax - ID Error       : -1987643770
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:53,995 [ID (null)] [53] ERROR global_asax - ID Error       : -1538210276
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:54,610 [ID (null)] [17] ERROR global_asax - ID Error       : 1668466247
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:54,892 [ID (null)] [62] ERROR global_asax - ID Error       : 360433566
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:55,084 [ID (null)] [18] ERROR global_asax - ID Error       : 451201133
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:26:55,250 [ID (null)] [53] ERROR global_asax - ID Error       : -350505632
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 193
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:27:07,795 [ID (null)] [54] ERROR global_asax - ID Error       : 943697577
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 197
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:27:08,397 [ID (null)] [54] ERROR global_asax - ID Error       : 349529827
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 197
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:27:08,595 [ID (null)] [60] ERROR global_asax - ID Error       : -1718841712
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 197
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-11-30 15:27:08,818 [ID (null)] [54] ERROR global_asax - ID Error       : -255986233
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.LsBeneficiario] TraerBeneficiarios(ActoresWS.TipoConsultaBeneficioario, System.String, System.String, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraerBeneficiarios(TipoConsultaBeneficioario iTipoConsulta, String parametro, String codDoc, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1674
+   en Paginas_Main.btnBuscar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\Main.aspx.cs:línea 197
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

@@ -1,0 +1,460 @@
+﻿using System;
+using System.Web;
+using System.Collections;
+using System.Collections.Generic;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Security.Principal;
+using Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio;
+using Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos;
+using LoggingAnses.Servicio;
+using LoggingAnses.Servicio.Entidad;
+
+namespace Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios
+{
+    /// <summary>
+    /// Brinda servicios de Consulta
+    /// </summary>
+    [WebService(Namespace = "http://AnsesConveniosInternacionalesX5.anses.gov.ar")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+
+    public class SolicitudesWS : System.Web.Services.WebService
+    {
+
+        public SolicitudesWS()
+        {
+
+            //Uncomment the following line if using designed components 
+            //InitializeComponent(); 
+        }
+
+
+        [WebMethod(Description = "TraePrestacionesNoIngresadasXIdBeneficiario")]
+        public List<Prestacion> TraePrestacionesNoIngresadasXIdBeneficiario(Int64 idBeneficiario)
+        {
+            SolicitudesDatos objDao = new SolicitudesDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraePrestacionesNoIngresadasXIdBeneficiario(idBeneficiario);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae movimientos resumen por benef y prestacion")]
+        public List<IngDevMov> TraeMovimientosResumen(Int64 idBeneficiario, Int16 codPrestacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeMovimientosResumen(idBeneficiario, codPrestacion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae Movimiento de una solicitud por fecha de movimiento")]
+        public Movimiento_Solicitud TraeMovimientoXFechaMovimiento(Int64 idBeneficiario, Int16 codPrestacion, String FechaMovimiento)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeMovimientoXFechaMovimiento(idBeneficiario, codPrestacion, FechaMovimiento);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+        
+        [WebMethod(Description = "Trae Movimientos de una solicitud")]
+        public List<Movimiento_Solicitud> TraeMovimientosXSolicitud(Int64 idBeneficiario, Int16 codPrestacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeMovimientosXSolicitud(idBeneficiario, codPrestacion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae Solicitudes Denegadas X Solicitud")]
+        public List<SolicitudDenegada> TraeSolicitudesDenegadasXSolicitud(Int64 idBeneficiario, Int16 codPrestacion)
+        {
+            SolicitudesDatos objDao = new SolicitudesDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeSolicitudesDenegadasXSolicitud(idBeneficiario, codPrestacion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Efectua el alta de una devolucion sin notificar grabando la documentacion")]
+        public void AltaDevolucion(Int64 id_Beneficiario, Int16 codPrestacion, String destino, String observaciones, String certificado, List<TipoDocumentacion> iListTipoDocumentacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.AltaDevolucion( id_Beneficiario,  codPrestacion,  destino,  observaciones,  certificado, iListTipoDocumentacion);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString()+codPrestacion.ToString(),
+                //    Datos = destino + observaciones + certificado,
+                //    Tabla = "Devoluciones",
+                //    TipoAccion = TipoAction.AGREGAR
+                //});    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Efectua el alta de un ingreso de documentacion guardando la documentacion ingresada")]
+        public void AltaIngreso(Int64 id_Beneficiario, Int16 codPrestacion, String fIngreso , Byte? idTipoIngreso, List<TipoDocumentacion> iListTipoDocumentacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+            //List<String> lDocRepetida;
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.AltaIngreso( id_Beneficiario,  codPrestacion, fIngreso,  idTipoIngreso, iListTipoDocumentacion);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString() + codPrestacion.ToString(),
+                //    Datos = idTipoIngreso.HasValue ? idTipoIngreso.Value.ToString() : "",
+                //    Tabla = "Ingresos",
+                //    TipoAccion = TipoAction.AGREGAR
+                //});    
+                //return lDocRepetida;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Efectua el alta de una solicitud mas listado de expedientes y beneficios")]
+        public void AMAllDatosSolicitud(Int64 idBenef, Int16 codPrestacion, List<Solicitud> ilSolicitud, List<Expediente_Solicitud> ilExpediente, List<Beneficio_Solicitud> ilBeneficio, List<Ingresos> iLingresos, List<Devolucion> iLdevolucion, List<Movimiento_Solicitud> ilMovimientos)
+        {
+            SolicitudesDatos objDao = new SolicitudesDatos();
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.AMAllDatosSolicitud(idBenef, codPrestacion, ilSolicitud, ilExpediente, ilBeneficio, iLingresos, iLdevolucion, ilMovimientos);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString() + codPrestacion.ToString(),
+                //    Datos = codEstado.ToString() + codsector.ToString() + observaciones,
+                //    Tabla = "Movimientos_Solicitud",
+                //    TipoAccion = TipoAction.AGREGAR
+                //});    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Efectua el alta de un movimiento del tramite")]
+        public void AltaMovimiento(Int64 id_Beneficiario, Int16 codPrestacion, Int32 codEstado, Int32 codsector, String observaciones)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.AltaMovimiento( id_Beneficiario,  codPrestacion,  codEstado,  codsector,  observaciones);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString() + codPrestacion.ToString(),
+                //    Datos = codEstado.ToString() + codsector.ToString() + observaciones,
+                //    Tabla = "Movimientos_Solicitud",
+                //    TipoAccion = TipoAction.AGREGAR
+                //});    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Notifica una devolucion para establecer el control de plazo")]
+        public void NotificaDevolucion(Int64 id_Beneficiario, Int16 codPrestacion, String fechaMovimiento, String fechaNotificacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.NotificaDevolucion( id_Beneficiario,  codPrestacion,  fechaMovimiento,  fechaNotificacion);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString() + codPrestacion.ToString() + fechaMovimiento,
+                //    Datos = fechaNotificacion,
+                //    Tabla = "Devoluciones",
+                //    TipoAccion = TipoAction.ACTUALIZAR
+                //});    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae listado de tipo de Documentacion por prestacion")]
+        public List<TipoDocumentacion_Prestacion> TraeTipoDocumentacionXPrestacion(Int16 codPrestacion)
+        {
+            AuxiliaresDatos objdao = new AuxiliaresDatos();
+            return objdao.TraeTipoDocumentacionXPrestacion(codPrestacion);
+
+        }
+
+
+        [WebMethod(Description = "Establece fecha de entrega de Documentacion para una devolucion")]
+        public void ModificaDevolucion_SetFPresentacion(Int64 id_Beneficiario, Int16 codPrestacion, String fechaMovimiento, String fechaPresentacion)
+        {
+            MovimientosDatos objDao = new MovimientosDatos();
+            //LogAplicaciones logging = new LogAplicaciones();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                objDao.ModificaDevolucion_SetFPresentacion( id_Beneficiario,  codPrestacion,  fechaMovimiento,  fechaPresentacion);
+                //logging.Log(new OnlineLog
+                //{
+                //    ClavePrincipal = id_Beneficiario.ToString() + codPrestacion.ToString() + fechaMovimiento,
+                //    Datos = fechaPresentacion,
+                //    Tabla = "Devoluciones",
+                //    TipoAccion = TipoAction.ACTUALIZAR
+                //});    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae devolucion por fecha de devolucion")]
+        public Devolucion TraeDevolucionXMovimientoSolicitud(Int64 id_Beneficiario, Int16 codPrestacion, String fMovimiento)
+        {
+            DevolucionesDatos objDao = new DevolucionesDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeDevolucionXMovimientoSolicitud(id_Beneficiario, codPrestacion, fMovimiento);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae devoluciones X Solicitud")]
+        public List<Devolucion> TraeDevolucionesXSolicitud(Int64 id_Beneficiario, Int16 codPrestacion)
+        {
+            DevolucionesDatos objDao = new DevolucionesDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeDevolucionesXSolicitud(id_Beneficiario, codPrestacion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae ingreso por fecha de devolucion" )]
+        public Ingresos TraeIngresoXMovimientoSolicitud(Int64 id_Beneficiario, Int16 codPrestacion, String fMovimiento)
+        {
+            IngresosDatos objDao = new IngresosDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeIngresoXMovimientoSolicitud(id_Beneficiario, codPrestacion, fMovimiento);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+
+        }
+
+        [WebMethod(Description = "Trae Documentacion faltante por solicitud")]
+        public List<TipoDocumentacion_Prestacion> TraeTipoDocumentacionFaltanteXSolicitud(Int64 idBeneficiario, Int16 codPrestacion)
+        {
+            SolicitudesDatos objDao = new SolicitudesDatos();
+
+            try
+            {
+                // Creo un Objeto Windows Identity para enviarle al thread asyncronico
+                //(lo necesita para poder impersonar el thread nuevo)
+                WindowsIdentity mThreadIdentity = WindowsIdentity.GetCurrent();
+
+                return objDao.TraeTipoDocumentacionFaltanteXSolicitud(idBeneficiario, codPrestacion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDao.Dispose();
+            }
+        }
+    }
+}

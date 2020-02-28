@@ -1,0 +1,5 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Footer.ascx.cs" Inherits="comun_controles_Footer" %>
+<div id="footer">
+ <p>Términos de uso - Política de privacidad - Política de abuso
+ANSES - Administración Nacional de la Seguridad Social - 2011 - Todos los Derechos Reservados</p>
+</div>

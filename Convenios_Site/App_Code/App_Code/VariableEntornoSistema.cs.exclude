@@ -1,0 +1,307 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Web;
+using log4net;
+using Ar.Gov.Anses.Microinformatica;
+using System.Management;
+using System.Collections;
+
+/// <summary>
+/// Summary description for VariableSession
+/// </summary>
+public static class VariableEntornoSistema
+{
+    
+
+    private static System.Web.SessionState.HttpSessionState Session
+    {
+        get
+        {
+            return (System.Web.SessionState.HttpSessionState)HttpContext.Current.Session;
+        }
+    }
+    
+    ///*wmi*/
+    ///
+
+    //-----------------------------------------------------------------------------
+// Info del equipo usando WMI                                       (04/Ago/08)
+// Windows Management Instrumentation (WMI)
+//
+// ©Guillermo 'guille' Som, 2008
+//-----------------------------------------------------------------------------
+
+
+// Necesita una referencia a System.Management.dll
+/*using System.Management;
+
+
+
+// Incluir el siguiente código en el método Main
+
+ManagementObjectSearcher mos =
+    new ManagementObjectSearcher(
+        "root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
+
+foreach(ManagementObject mo in mos.Get())
+{
+    try
+    {
+        Console.WriteLine("Serial Number: " + 
+            mo.GetPropertyValue("SerialNumber").ToString());
+        Console.WriteLine("Manufacturer: " + 
+            mo.GetPropertyValue("Manufacturer").ToString());
+        Console.WriteLine("Product: " + 
+            mo.GetPropertyValue("Product").ToString());
+    }
+    catch
+    { }
+}
+    */
+
+    /*otro
+     * 
+    public void ObtenerDireccionesIP()
+{
+string query = "SELECT * FROM Win32_NetworkAdapterConfiguration" + "
+WHERE IPEnabled = 'TRUE'";
+ManagementObjectSearcher moSearch = new
+ManagementObjectSearcher(query);
+ManagementObjectCollection moCollection = moSearch.Get();
+
+foreach (ManagementObject mo in moCollection)
+{
+Console.WriteLine("Nombre Host = " + mo["DNSHostName"]);
+Console.WriteLine("Descripcion = " + mo["Description"]);
+
+//Direcciones IP, puede haber más de una
+string[] direcciones = (string[])mo["IPAddress"];
+foreach (string direccionIP in direcciones)
+{
+Console.WriteLine("Direccion IP = " + direccionIP);
+}
+
+//Subredes, puede haber más de una
+string[] subredes = (string[])mo["IPSubnet"];
+foreach (string subred in subredes)
+{
+Console.WriteLine("Subred = " + subred);
+}
+
+//Pasarela, puede haber más de una
+string[] pasarelas = (string[])mo["DefaultIPGateway"];
+foreach (string pasarela in pasarelas)
+{
+Console.WriteLine("Pasarela = " + pasarela);
+}
+}
+}
+*/
+
+
+    public static void traeVariables()
+    {
+        //SelectQuery query = new SelectQuery("Win32_Environment", "UserName=\"<SYSTEM>\"");
+        //SelectQuery query = new SelectQuery("Win32_LogonSession", "LogonType = 2");
+        //string _query = "SELECT * FROM Win32_NetworkAdapterConfiguration" + "WHERE IPEnabled = 'TRUE'";
+
+
+        //System.Management.ManagementException
+        SelectQuery query = new SelectQuery("Win32_LogonSession");
+        string result=string.Empty;
+        try
+        {
+            //Nombre de maquina
+            //ManagementObjectSearcher searcher =
+            //    new ManagementObjectSearcher("root\\CIMV2",
+            //    "SELECT * FROM Win32_NetworkAdapterConfiguration");
+
+            //foreach (ManagementObject queryObj in searcher.Get())
+            //{
+            //    if (queryObj["DNSHostName"] != null)
+            //        result += queryObj["DNSHostName"].ToString();
+            //}
+
+            ManagementObjectSearcher searcher0 = new ManagementObjectSearcher("root\\CIMV2","SELECT * FROM Win32_ComputerSystemProduct");
+
+            //Nombre comercial de la maquina cliente 
+            foreach (ManagementObject queryObj in searcher0.Get())
+            {
+                result+=" - "+queryObj["Name"].ToString();
+            }
+            //Modelo
+            ManagementObjectSearcher searcher1 =
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_ComputerSystemProduct");
+
+            foreach (ManagementObject queryObj in searcher1.Get())
+            {
+                  result+=" - "+ queryObj["Vendor"].ToString();
+            }
+
+            //variables de entorno, usuarios del host
+            //ManagementObjectSearcher searcher2 = 
+            //    new ManagementObjectSearcher("root\\CIMV2", 
+            //    "SELECT * FROM Win32_Environment WHERE UserName = 'GSYTSISGEI10\\ASPNET'"); 
+
+            //foreach (ManagementObject queryObj in searcher2.Get())
+            //{
+            //    result+=" - "+ queryObj["UserName"].ToString();
+            //}
+
+            //grupos locales
+            //ManagementObjectSearcher searcher3 =
+            //      new ManagementObjectSearcher("root\\CIMV2",
+            //      "SELECT * FROM Win32_Group");
+
+            //foreach (ManagementObject queryObj in searcher3.Get())
+            //{
+            //    result+=" - "+ queryObj["Caption"].ToString();
+            //}
+            //tabla de ruteos
+            //ManagementObjectSearcher searcher4 =
+            //        new ManagementObjectSearcher("root\\CIMV2",
+            //        "SELECT * FROM Win32_IP4RouteTable WHERE Caption = '169.254.0.0'");
+
+            //foreach (ManagementObject queryObj in searcher4.Get())
+            //{
+            //    result+=" - "+queryObj["Caption"].ToString();
+            //}
+        
+
+            //dominios locales
+            //ManagementObjectSearcher searcher5 =
+            //        new ManagementObjectSearcher("root\\CIMV2",
+            //        "SELECT * FROM Win32_NTDomain");
+
+            //foreach (ManagementObject queryObj in searcher5.Get())
+            //{
+            //    result+=" - "+ queryObj["DomainName"].ToString();
+            
+
+            //}
+
+
+            //sistema operativo
+            ManagementObjectSearcher searcher6 =
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_OperatingSystem");
+
+            foreach (ManagementObject queryObj in searcher6.Get())
+            {
+                result+=" - "+ queryObj["Caption"].ToString();
+            }
+
+            //nombre maquina 1 registro
+            ManagementObjectSearcher searcher7 =
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_OperatingSystem WHERE CSName = 'GSYTSISGEI10'");
+
+
+            foreach (ManagementObject queryObj in searcher7.Get())
+            {
+                result+=" - "+ queryObj["CSName"].ToString();
+            }
+            /*Java Script
+            strComputer = "." 
+Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2") 
+Set colItems = objWMIService.ExecQuery( _
+    "SELECT * FROM Win32_OperatingSystem",,48) 
+For Each objItem in colItems 
+   
+    Wscript.Echo "CSName: " & objItem.CSName
+Next*/
+
+            //usuario registrado (debe decir anses)
+            ManagementObjectSearcher searcher8=
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_OperatingSystem");
+
+            foreach (ManagementObject queryObj in searcher8.Get())
+            {
+                result+=" - "+ queryObj["RegisteredUser"].ToString();
+            }
+            //Manufacturer
+            ManagementObjectSearcher searcher9 =
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_OperatingSystem");
+
+            foreach (ManagementObject queryObj in searcher9.Get())
+            {
+                result+=" - "+ queryObj["Manufacturer"].ToString();
+            }
+
+
+            Session["resultado"] = result;
+            //Software instalado
+              
+            // ManagementObjectSearcher searcher = 
+            //        new ManagementObjectSearcher("root\\CIMV2", 
+            //        "SELECT * FROM Win32_DCOMApplication WHERE Description = 'Microsoft Excel Application'"); 
+
+            //    foreach (ManagementObject queryObj in searcher.Get())
+            //    {
+            //        Console.WriteLine("-----------------------------------");
+            //        Console.WriteLine("Win32_DCOMApplication instance");
+            //        Console.WriteLine("-----------------------------------");
+            //        Console.WriteLine("Name: {0}", queryObj["Name"]);
+            //    }
+            //}
+            //catch (ManagementException e)
+            //{
+            //    MessageBox.Show("An error occurred while querying for WMI data: " + e.Message);
+            //}
+            //----------------------------------------------------------------
+            //Con conexion remota
+
+
+            //ManagementScope scope =
+            //new ManagementScope(
+            //    "\\\\FullComputerName\\root\\cimv2");
+            //scope.Connect();
+
+            //// Use this code if you are connecting with a 
+            //// different user name and password:
+            ////
+            //// ManagementScope scope = 
+            ////    new ManagementScope(
+            ////        "\\\\FullComputerName\\root\\cimv2", options);
+            //// scope.Connect();
+
+            ////Query system for Operating System information
+            //ObjectQuery query = new ObjectQuery(
+            //    "SELECT * FROM Win32_OperatingSystem");
+            //ManagementObjectSearcher searcher =
+            //    new ManagementObjectSearcher(scope, query);
+
+            //ManagementObjectCollection queryCollection = searcher.Get();
+            //foreach (ManagementObject m in queryCollection)
+            //{
+            //    // Display the remote computer information
+            //    Console.WriteLine("Computer Name : {0}",
+            //        m["csname"]);
+            //    Console.WriteLine("Windows Directory : {0}",
+            //        m["WindowsDirectory"]);
+            //    Console.WriteLine("Operating System: {0}",
+            //        m["Caption"]);
+            //    Console.WriteLine("Version: {0}", m["Version"]);
+            //    Console.WriteLine("Manufacturer : {0}",
+            //        m["Manufacturer"]);
+            //}
+
+            
+
+
+        }
+        catch (ManagementException e)
+        {
+            throw e;
+        }
+
+        
+    }
+
+
+}
+

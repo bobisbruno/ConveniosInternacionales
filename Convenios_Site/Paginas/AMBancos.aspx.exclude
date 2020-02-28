@@ -1,0 +1,113 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="true" CodeFile="AMBancos.aspx.cs" Inherits="Paginas_AMBancos" Title="Alta - Modificacion Bancos"   Culture="Auto" UICulture="Auto"%>
+<%@ Register Src="~/Controles/Mensaje.ascx" TagName="Mensaje" TagPrefix="uc1" %>
+<%@ Register Src="../Controles/MensajeError2.ascx" TagName="MError2" TagPrefix="uc3" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Src="~/Controles/barraNav.ascx" TagName="BNav" TagPrefix="uc4" %>
+<%@ MasterType VirtualPath="~/MasterPage/MasterPage.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <meta http-equiv="Pragma" content="no-clase">
+    <meta http-equiv="Expires" content="-1">
+ </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <uc4:BNav id="BNav" runat="Server"/>
+        <uc3:MError2 ID="MError" runat="server" />
+        <div class="FondoBlanco">
+    <div style="margin: 10px">
+      <h1>
+        <asp:Label ID="LblTituloPagina" runat="server" Text="Titulo Pagina"></asp:Label>
+      </h1>
+        <div class="FondoClaro" style="text-align:center; width:98%; padding-top:5px; margin-top:10px; height:400px; padding-bottom:10px; padding-top:10px">
+            <table width="99%">
+                    <tr>
+                        <td style="width: 100%; vertical-align:top; text-align:center">
+                            <div style=" width:98%; text-align:left">
+                            <table width="98%" style=" height:30px; font-family:Arial, tahoma, helvetica; color:#ffffff;font-size: 8pt;font-weight:bold;background-color:#95B0DF;text-align:center">
+                            <tr>
+                                <td style=" width:10%">Modificar</td>
+                                <td style=" width:35%">Descripcion</td>
+                                <td style=" width:10%">Uso frecuente</td>
+                                <td style=" width:45%">WebSite</td>
+                            </tr>
+                            </table>
+                            </div>    
+                            <div id="divListado" style="overflow: auto; height: 340px; width:98%; text-align:left">
+                            <asp:GridView runat = "server" ID="gvBancos" OnRowDataBound="gvBancos_RowDataBound" DataKeyNames="Id_Banco, Descripcion, Frecuente, WebSite" GridLines="None" UseAccessibleHeader="true" ShowHeader="false" Height="50px"
+                            Width="98%" Visible="true"  AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="Id_Banco" Visible="false"/>
+                                <asp:TemplateField HeaderText="Modificar" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="btnModificar" runat="server" AlternateText = "Modificar valor" OnClick="btnModificar_Click" ImageUrl="~/App_Themes/Imagenes/Edicion.gif"/>
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                    </asp:TemplateField>
+                                <asp:BoundField DataField="Descripcion" HeaderText = "Banco" >
+                                    <ItemStyle HorizontalAlign="Left" Width="35%"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Frecuente" Visible="false"/>
+                                <asp:TemplateField HeaderText="Uso frecuente" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%">
+                                                        <ItemTemplate>
+                                                            <asp:Image ID="btnfrecuente" runat="server" ImageUrl="~/App_Themes/Imagenes/OK.png"/>
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                    </asp:TemplateField>
+                                <asp:BoundField DataField="WebSite" HeaderText = "WebSite" >
+                                    <ItemStyle HorizontalAlign="Left" Width="45%"></ItemStyle>
+                                </asp:BoundField>
+                             </Columns>
+                        </asp:GridView>
+                            </div>
+                        </td></tr></table></div>
+    
+    <div align="right" style="margin-top: 10px;padding-right:10px ">
+        <asp:Button   ID="btnRegresar" Text="Regresar" runat="server" CssClass="Botones" Width="130px" Height="21px" onclick="btnRegresar_Click"/>&nbsp;
+        <asp:Button   ID="btnNuevo" Text="Ingresar Banco" runat="server" CssClass="Botones" Width="150px" Height="21px"  OnClick="btnNuevo_Click"/>
+     </div>
+    <uc1:Mensaje ID="mensaje" runat="server" /> 
+    <cc1:ModalPopupExtender ID="mpeDescripcionBanco" runat="server" PopupDragHandleControlID="divDetalleTabla" DropShadow="true" BackgroundCssClass="modalBackground" TargetControlID="btnShowPopUpDetalle"
+                        PopupControlID="divDetalleMov" CancelControlID="imgCerrarDatos2">
+                    </cc1:ModalPopupExtender>
+                 <asp:Button  ID="btnShowPopUpDetalle" runat="server" Style="display: none" />
+                 <div style="position: fixed; top: 0px; left: 0px;">
+                            <div id="divDetalleMov" class="FondoOscuro" style="width: 760px; display:none" align="center">
+                                <div class="FondoOscuro" style="float: left; padding: 5px 5px 5px 5px; text-align: left;"title="titulo">
+                                    <span class="TextoBlancoBold" style="float: left; margin-left: 10px"><asp:Label ID="lbDetalleMov" runat="server"/>&nbsp;banco&nbsp;</span>
+                                    <asp:HiddenField ID="HFTipoTx" runat="server"  Value=""/>
+                                    <asp:HiddenField ID="HFIdBanco" runat="server"  Value=""/>
+                                    <img id="imgCerrarDatos2" alt="Cerrar ventana" src="../App_Themes/Imagenes/Error_chico.gif" style="cursor: hand; border: none; float: right; vertical-align: middle; margin-right: 10px" />
+                                    <br />
+                                    <div class="TextoBlanco" style=" overflow:auto; vertical-align:bottom; padding-top:5px; padding-bottom:5px; padding-left:10px; padding-right:20px; width:700px; height:100px" >
+                                    <div id="dvDetalleIngreso" runat="server">
+                                    <table width="98%">
+                                        <tr>
+                                        <td style=" width:30%"><font size="1">Banco:</font></td>
+                                        <td>
+                                        <asp:TextBox ID="txtDescripcionBanco" runat="server"   Width="90%" CssClass="CajaTexto" MaxLength="100" TabIndex="1"/>
+                                        <asp:RequiredFieldValidator ID="rfvtxtDescripcionBanco" Display="None" ValidationGroup="datosBanco" ErrorMessage="Debe ingresar un Banco" ControlToValidate="txtDescripcionBanco" runat="server"></asp:RequiredFieldValidator>
+                                        <cc1:ValidatorCalloutExtender ID="vcerfvtxtDescripcionBanco" runat="server" TargetControlID="rfvtxtDescripcionBanco"></cc1:ValidatorCalloutExtender>
+                                        <asp:RegularExpressionValidator ID="revtxtDescripcionBanco" runat="server" ControlToValidate="txtDescripcionBanco" Display="None" ValidationExpression="^[a-zA-Z0-9]{1,100}?$" ErrorMessage="Ingresar caracteres válidos" ValidationGroup="datosBanco"></asp:RegularExpressionValidator>
+                                        <cc1:ValidatorCalloutExtender ID="vcerevtxtDescripcionBanco" runat="server" TargetControlID="revtxtDescripcionBanco"></cc1:ValidatorCalloutExtender>
+                                        </td>
+                                        </tr>
+                                        <tr><td>
+                                        <font size="1">Uso frecuente:</font>
+                                        </td>
+                                        <td><asp:CheckBox ID="chkUsoFrecuente" runat="server" Checked="false" TabIndex="2" /> </td></tr>
+                                        <tr><td>
+                                        <font size="1">Web Site:</font></td>
+                                        <td><asp:TextBox ID="txtWebSite" runat="server" onkeyup="this.value=this.value.toUpperCase()"  Width="90%" CssClass="CajaTexto" MaxLength="100" TabIndex="3"/> </td></tr>
+                                        </table>
+                                    </div>
+                                    </div>
+                                    <div style=" text-align:right">
+                                    <asp:Button ID="btnGuardarPopUp" TabIndex="4" OnClick="btnGuardarPopUp_Click" Text="Guardar" ValidationGroup="datosBanco" runat="server" CssClass="Botones" Width="55px" Height="21px"  style="cursor: hand; vertical-align: middle; margin-right: 10px"/>&nbsp;
+                                    <asp:Button ID="btnCerrarPopUp" TabIndex="5" OnClick="btnCerrarPopup_Click" Text="Cerrar" runat="server" CssClass="Botones" Width="55px" Height="21px"  style="cursor: hand; vertical-align: middle; margin-right: 10px"/></div>
+                                </div>
+                            </div>
+                        </div></div></div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
+</asp:Content>
+

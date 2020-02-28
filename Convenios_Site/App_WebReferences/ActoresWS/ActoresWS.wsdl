@@ -1,0 +1,2497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar">
+      <s:element name="TraeBeneficiarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iTipoCons" type="tns:TipoConsultaBeneficioario" />
+            <s:element minOccurs="0" maxOccurs="1" name="parametro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codDoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="TipoConsultaBeneficioario">
+        <s:restriction base="s:string">
+          <s:enumeration value="NombreoApellidos" />
+          <s:enumeration value="Documento" />
+          <s:enumeration value="CodigoSIACI" />
+          <s:enumeration value="DocumentoYTipo" />
+          <s:enumeration value="Expediente" />
+          <s:enumeration value="Beneficio" />
+          <s:enumeration value="CUIP" />
+          <s:enumeration value="Tramite" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="TraeBeneficiariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiariosResult" type="tns:ArrayOfLsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLsBeneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LsBeneficiario" nillable="true" type="tns:LsBeneficiario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LsBeneficiario">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="apeNom" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ExpedienteExt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_nac" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Disposed" />
+      <s:element name="TraeBeneficiariosXExpteANSES">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_org" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_precu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_doccu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_digcu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_ctipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediente_sec" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXExpteANSESResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiariosXExpteANSESResult" type="tns:ArrayOfLsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiosXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiosXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiosXSolicitudResult" type="tns:ArrayOfBeneficio_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBeneficio_Solicitud">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Beneficio_Solicitud" nillable="true" type="tns:Beneficio_Solicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Beneficio_Solicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="FAltaBeneficio" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="BenExCaja" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BenTipo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BenNumero" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BenCopart" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BenDigVerif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observacion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TipoTrDerivado" nillable="true" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="DTipoTrDerivado" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeExpedientesXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeExpedientesXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeExpedientesXSolicitudResult" type="tns:ArrayOfExpediente_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfExpediente_Solicitud">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Expediente_Solicitud" nillable="true" type="tns:Expediente_Solicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Expediente_Solicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="FAltaexpediente" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_org" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_precu" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_doccu" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_digcu" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_ctipo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Expediente_sec" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Caratula" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observacion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeBeneficiariosXCUIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="preCUIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docCUIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="digCUIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXCUIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiariosXCUIPResult" type="tns:ArrayOfLsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXNroSolicitudProvisoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nro_SolicitudProvisoria" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXNroSolicitudProvisoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiariosXNroSolicitudProvisoriaResult" type="tns:ArrayOfLsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXNroBeneficioANSES">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BenExCaja" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BenTipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BenNumero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BenCopart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BenDigVerif" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiariosXNroBeneficioANSESResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiariosXNroBeneficioANSESResult" type="tns:ArrayOfLsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiarioXId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiarioXIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiarioXIdResult" type="tns:Beneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Beneficiario">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdBeneficio" nillable="true" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="ExpedienteExterno" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApeNom" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApellMaterno" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cuip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DirCalle" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DirNum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ECalle1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ECalle2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Piso" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CodPostal" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ubicacion" type="tns:DirUbicacion" />
+              <s:element minOccurs="0" maxOccurs="1" name="OdirExtranjera" type="tns:oDireccionExtranjera" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_nac" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Pais_Nacionalidad" type="tns:Pais" />
+              <s:element minOccurs="0" maxOccurs="1" name="Causante" type="tns:Causante" />
+              <s:element minOccurs="0" maxOccurs="1" name="LApoderado" type="tns:ArrayOfApoderado" />
+              <s:element minOccurs="0" maxOccurs="1" name="LDocumentosBeneficiario" type="tns:ArrayOfDocumento_Beneficiario" />
+              <s:element minOccurs="0" maxOccurs="1" name="LPrestacionBeneficiario" type="tns:ArrayOfPrestacionBeneficiario" />
+              <s:element minOccurs="0" maxOccurs="1" name="LSolicitudProvisoria" type="tns:ArrayOfBeneficiario_SolicitudProvisoria" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DirUbicacion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_Localidad" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionLocalidad" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_Provincia" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionProvincia" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="oDireccionExtranjera">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:iDireccionExtranjera">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NomPais" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Distrito" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NomCiudad" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="iDireccionExtranjera">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IdCiudad" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Dircalle" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Dirnum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ecalle1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ecalle2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Piso" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Depto" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CodPostal" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Pais">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Pais_PK" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Gentilicio" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ConConvenio" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Mercosur" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Causante">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_causante" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_Def" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_Nacimiento" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cuip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApeNom" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LDocCausante" type="tns:ArrayOfDocumento_Causante" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDocumento_Causante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Documento_Causante" nillable="true" type="tns:Documento_Causante" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Documento_Causante">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Documento">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_causante" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Documento">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NumDoc" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodigoDocumento" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="AbrevDocumento" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DocADP" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="CodAbrevPais" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Pais_PK" nillable="true" type="s:short" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaAlta" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaBaja" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Documento_Beneficiario">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Documento">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfApoderado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Apoderado" nillable="true" type="tns:Apoderado" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Apoderado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NumDoc" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodigoDocumento" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="AbrevDoc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescDoc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApeNom" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DirCalle" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DirNum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EntreCalle1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EntreCalle2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Piso" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodLocalidad" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cod_postal" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DirUbicacion" type="tns:DirUbicacion" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EMail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoApoderado" type="tns:TipoApoderado" />
+              <s:element minOccurs="0" maxOccurs="1" name="StipoApoderado" type="tns:SubTipoApoderado" />
+              <s:element minOccurs="0" maxOccurs="1" name="Comentario" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Banco" type="tns:Banco" />
+              <s:element minOccurs="1" maxOccurs="1" name="FAlta" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fbaja" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TipoApoderado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_TipodeApoderado" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PoderTramitar" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="PoderPercibir" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SubTipoApoderado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_STipodeApoderado" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Banco">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Banco" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Frecuente" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebSite" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDocumento_Beneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Documento_Beneficiario" nillable="true" type="tns:Documento_Beneficiario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPrestacionBeneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PrestacionBeneficiario" nillable="true" type="tns:PrestacionBeneficiario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrestacionBeneficiario">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodPrestacion" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionPrestacion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodigoPais" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="PaisDescCompleto" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Mercosur" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBeneficiario_SolicitudProvisoria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Beneficiario_SolicitudProvisoria" nillable="true" type="tns:Beneficiario_SolicitudProvisoria" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Beneficiario_SolicitudProvisoria">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="SolicitudProovisoria" type="tns:SolicitudProvisoria" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SolicitudProvisoria">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ApellildoynombreDeclarado" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentoDeclarado" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TipoDocumentoDeclarado" nillable="true" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="PrestacionSolicitada" type="tns:Prestacion" />
+              <s:element minOccurs="1" maxOccurs="1" name="FAltaProvisoria" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FBajaProvisoria" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Referencia_Provisoria" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nro_SolicitudProvisoria" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TIngresoProvisorio" type="tns:TipoIngresoProvisorio" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sectorderiva" type="tns:Sector" />
+              <s:element minOccurs="0" maxOccurs="1" name="LMovimientos" type="tns:ArrayOfSolicitudProvisoriaMovimiento" />
+              <s:element minOccurs="0" maxOccurs="1" name="PaisConvenio" type="tns:Pais" />
+              <s:element minOccurs="1" maxOccurs="1" name="DiasCaducidad" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Prestacion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_Prestacion" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="TipoIngresoProvisorio">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ingreso" />
+          <s:enumeration value="Devolucion" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Sector">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_sector" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSolicitudProvisoriaMovimiento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SolicitudProvisoriaMovimiento" nillable="true" type="tns:SolicitudProvisoriaMovimiento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SolicitudProvisoriaMovimiento">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Nro_SolicitudProvisoria" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoDocumentacion" type="tns:TipoDocumentacion" />
+              <s:element minOccurs="1" maxOccurs="1" name="Digitalizado" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="SecuenciaDocumento" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionBreve" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TipoDocumentacion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CodTipoDocumentacion" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeBeneficiarioSimpleXId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiarioSimpleXIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiarioSimpleXIdResult" type="tns:LsBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraePrestacionesXIdBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraePrestacionesXIdBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraePrestacionesXIdBeneficiarioResult" type="tns:ArrayOfPrestacionBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesXIdBenefPrestac">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesXIdBenefPrestacResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudesXIdBenefPrestacResult" type="tns:ArrayOfSolicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolicitud">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Solicitud" nillable="true" type="tns:Solicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Solicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PrestacionBeneficiario">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Referencia_exterior" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ubicacion_Fisica" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FAMSolicitud" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodMotivo" nillable="true" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionMotivo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeBeneficiario_Notas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeBeneficiario_NotasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeBeneficiario_NotasResult" type="tns:ArrayOfBeneficiarioNotas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBeneficiarioNotas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BeneficiarioNotas" nillable="true" type="tns:BeneficiarioNotas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BeneficiarioNotas">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="FRecepcion" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NroNota" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AMBeneficiario_Notas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iParam" type="tns:BeneficiarioNotas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMBeneficiario_NotasResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AMBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iBeneficiario" type="tns:Beneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AMBeneficiarioResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMCausante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iCausante" type="tns:Causante" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMCausanteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AMApoderado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iApoderado" type="tns:Apoderado" />
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AMApoderadoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BajaBeneficiario_Apoderado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iApoderado" type="tns:Apoderado" />
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaBeneficiario_ApoderadoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraeApoderadosXid_Beneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeApoderadosXid_BeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeApoderadosXid_BeneficiarioResult" type="tns:ArrayOfApoderado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraePrestacionesNoIngresadasXIdBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraePrestacionesNoIngresadasXIdBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraePrestacionesNoIngresadasXIdBeneficiarioResult" type="tns:ArrayOfPrestacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPrestacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Prestacion" nillable="true" type="tns:Prestacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TraeMovimientosResumen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeMovimientosResumenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeMovimientosResumenResult" type="tns:ArrayOfIngDevMov" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIngDevMov">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IngDevMov" nillable="true" type="tns:IngDevMov" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IngDevMov">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_Prestacion" type="s:short" />
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_Movimiento" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoMovimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoIngreso" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Destino" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sector" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeMovimientoXFechaMovimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaMovimiento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeMovimientoXFechaMovimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeMovimientoXFechaMovimientoResult" type="tns:Movimiento_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Movimiento_Solicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_Movimiento" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Estado" type="tns:Estado" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sector" type="tns:Sector" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Estado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_estado" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeMovimientosXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeMovimientosXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeMovimientosXSolicitudResult" type="tns:ArrayOfMovimiento_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMovimiento_Solicitud">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Movimiento_Solicitud" nillable="true" type="tns:Movimiento_Solicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TraeSolicitudesDenegadasXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesDenegadasXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudesDenegadasXSolicitudResult" type="tns:ArrayOfSolicitudDenegada" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolicitudDenegada">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SolicitudDenegada" nillable="true" type="tns:SolicitudDenegada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SolicitudDenegada">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_Prestacion" type="s:short" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaDenegatoria" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaBajaDenegatoria" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodMotivo" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescMotivo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AltaDevolucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="observaciones" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="certificado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iListTipoDocumentacion" type="tns:ArrayOfTipoDocumentacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTipoDocumentacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TipoDocumentacion" nillable="true" type="tns:TipoDocumentacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AltaDevolucionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AltaIngreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fIngreso" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idTipoIngreso" nillable="true" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="iListTipoDocumentacion" type="tns:ArrayOfTipoDocumentacion" />
+            <s:element minOccurs="0" maxOccurs="1" name="observacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaIngresoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AMAllDatosSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBenef" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPais" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="ilSolicitud" type="tns:ArrayOfSolicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="ilExpediente" type="tns:ArrayOfExpediente_Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="ilBeneficio" type="tns:ArrayOfBeneficio_Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="iLingresos" type="tns:ArrayOfIngresos" />
+            <s:element minOccurs="0" maxOccurs="1" name="iLdevolucion" type="tns:ArrayOfDevolucion" />
+            <s:element minOccurs="0" maxOccurs="1" name="ilMovimientos" type="tns:ArrayOfMovimiento_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIngresos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ingresos" nillable="true" type="tns:Ingresos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ingresos">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LTipoDocumentacion" type="tns:ArrayOfTipoDocumentacion" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoIngreso" type="tns:TipoIngreso" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observacion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TipoIngreso">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdTipoIngreso" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDevolucion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Devolucion" nillable="true" type="tns:Devolucion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Devolucion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="FechaMovimiento" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Destino" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Certificado" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaNotificacion" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaPresentacion" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="TipoDocumentacionFaltante" type="tns:FaltanteDevolucion" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FaltanteDevolucion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LTipoDocumentacionFaltante" type="tns:ArrayOfTipoDocumentacion" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AMAllDatosSolicitudResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BajaSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBenef" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaSolicitudResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AltaMovimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="codEstado" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="codsector" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="observaciones" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaMovimientoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="NotificaDevolucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaMovimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaNotificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NotificaDevolucionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraeTipoDocumentacionXPrestacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeTipoDocumentacionXPrestacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeTipoDocumentacionXPrestacionResult" type="tns:ArrayOfTipoDocumentacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificaDevolucion_SetFPresentacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaMovimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaPresentacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificaDevolucion_SetFPresentacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraeDevolucionXMovimientoSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fMovimiento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeDevolucionXMovimientoSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeDevolucionXMovimientoSolicitudResult" type="tns:Devolucion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeDevolucionesXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeDevolucionesXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeDevolucionesXSolicitudResult" type="tns:ArrayOfDevolucion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIngresosXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIngresosXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIngresosXSolicitudResult" type="tns:ArrayOfIngresos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIngresoXMovimientoSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_Beneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fMovimiento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIngresoXMovimientoSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIngresoXMovimientoSolicitudResult" type="tns:Ingresos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeTipoDocumentacionFaltanteXSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeTipoDocumentacionFaltanteXSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeTipoDocumentacionFaltanteXSolicitudResult" type="tns:ArrayOfTipoDocumentacion_Prestacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTipoDocumentacion_Prestacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TipoDocumentacion_Prestacion" nillable="true" type="tns:TipoDocumentacion_Prestacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoDocumentacion_Prestacion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Prestacion" type="tns:Prestacion" />
+              <s:element minOccurs="0" maxOccurs="1" name="TDocumentacion" type="tns:TipoDocumentacion" />
+              <s:element minOccurs="1" maxOccurs="1" name="RequeridoInicioTramite" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Comentario" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ExisteDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tdoc" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExisteDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExisteDocumentoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudProvisoria_Alta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSolicitudProvisoria" type="tns:SolicitudProvisoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudProvisoria_AltaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitudProvisoria_AltaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudesProvisoriaMovimiento_Alta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iMovimientosSolicitudProvisoria" type="tns:ArrayOfSolicitudProvisoriaMovimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudesProvisoriaMovimiento_AltaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SolicitudProvisoria_TraeXIdBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudProvisoria_TraeXIdBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitudProvisoria_TraeXIdBeneficiarioResult" type="tns:ArrayOfBeneficiario_SolicitudProvisoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudProvisoriaXNroSolicitudProvisoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NroSolicitudProvisoria" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudProvisoriaXNroSolicitudProvisoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudProvisoriaXNroSolicitudProvisoriaResult" type="tns:SolicitudProvisoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesProvisorias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPais" nillable="true" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" nillable="true" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="soloProvisorias" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="diasPlazoCaducidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesProvisoriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudesProvisoriasResult" type="tns:ArrayOfSolicitudProvisoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolicitudProvisoria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SolicitudProvisoria" nillable="true" type="tns:SolicitudProvisoria" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TraeSolicitudesProvisoriasAVencerEnPlazo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="diasPlazoCaducidad" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="plazoaDiasVencimiento" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesProvisoriasAVencerEnPlazoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudesProvisoriasAVencerEnPlazoResult" type="tns:ArrayOfSolicitudProvisoriaExtendida" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolicitudProvisoriaExtendida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SolicitudProvisoriaExtendida" nillable="true" type="tns:SolicitudProvisoriaExtendida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SolicitudProvisoriaExtendida">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SolicitudProvisoria" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TraeBeneficiariosSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiarios" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXExpteANSESSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXExpteANSES" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXExpteANSESSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXExpteANSESResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiosXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiosXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiosXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiosXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeExpedientesXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeExpedientesXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeExpedientesXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeExpedientesXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXCUIPSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXCUIP" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXCUIPSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXCUIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXNroSolicitudProvisoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXNroSolicitudProvisoria" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXNroSolicitudProvisoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXNroSolicitudProvisoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXNroBeneficioANSESSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXNroBeneficioANSES" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiariosXNroBeneficioANSESSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiariosXNroBeneficioANSESResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiarioXIdSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiarioXId" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiarioXIdSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiarioXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiarioSimpleXIdSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiarioSimpleXId" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiarioSimpleXIdSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiarioSimpleXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraePrestacionesXIdBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraePrestacionesXIdBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="TraePrestacionesXIdBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraePrestacionesXIdBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesXIdBenefPrestacSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesXIdBenefPrestac" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesXIdBenefPrestacSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesXIdBenefPrestacResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiario_NotasSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiario_Notas" />
+  </wsdl:message>
+  <wsdl:message name="TraeBeneficiario_NotasSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeBeneficiario_NotasResponse" />
+  </wsdl:message>
+  <wsdl:message name="AMBeneficiario_NotasSoapIn">
+    <wsdl:part name="parameters" element="tns:AMBeneficiario_Notas" />
+  </wsdl:message>
+  <wsdl:message name="AMBeneficiario_NotasSoapOut">
+    <wsdl:part name="parameters" element="tns:AMBeneficiario_NotasResponse" />
+  </wsdl:message>
+  <wsdl:message name="AMBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AMBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="AMBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AMBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="AMCausanteSoapIn">
+    <wsdl:part name="parameters" element="tns:AMCausante" />
+  </wsdl:message>
+  <wsdl:message name="AMCausanteSoapOut">
+    <wsdl:part name="parameters" element="tns:AMCausanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="AMApoderadoSoapIn">
+    <wsdl:part name="parameters" element="tns:AMApoderado" />
+  </wsdl:message>
+  <wsdl:message name="AMApoderadoSoapOut">
+    <wsdl:part name="parameters" element="tns:AMApoderadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaBeneficiario_ApoderadoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaBeneficiario_Apoderado" />
+  </wsdl:message>
+  <wsdl:message name="BajaBeneficiario_ApoderadoSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaBeneficiario_ApoderadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeApoderadosXid_BeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeApoderadosXid_Beneficiario" />
+  </wsdl:message>
+  <wsdl:message name="TraeApoderadosXid_BeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeApoderadosXid_BeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraePrestacionesNoIngresadasXIdBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraePrestacionesNoIngresadasXIdBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="TraePrestacionesNoIngresadasXIdBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraePrestacionesNoIngresadasXIdBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientosResumenSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeMovimientosResumen" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientosResumenSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeMovimientosResumenResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientoXFechaMovimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeMovimientoXFechaMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientoXFechaMovimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeMovimientoXFechaMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientosXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeMovimientosXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeMovimientosXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeMovimientosXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesDenegadasXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesDenegadasXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesDenegadasXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesDenegadasXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaDevolucionSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaDevolucion" />
+  </wsdl:message>
+  <wsdl:message name="AltaDevolucionSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaDevolucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaIngresoSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaIngreso" />
+  </wsdl:message>
+  <wsdl:message name="AltaIngresoSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaIngresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AMAllDatosSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:AMAllDatosSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="AMAllDatosSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:AMAllDatosSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="BajaSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaMovimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="AltaMovimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="NotificaDevolucionSoapIn">
+    <wsdl:part name="parameters" element="tns:NotificaDevolucion" />
+  </wsdl:message>
+  <wsdl:message name="NotificaDevolucionSoapOut">
+    <wsdl:part name="parameters" element="tns:NotificaDevolucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeTipoDocumentacionXPrestacionSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeTipoDocumentacionXPrestacion" />
+  </wsdl:message>
+  <wsdl:message name="TraeTipoDocumentacionXPrestacionSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeTipoDocumentacionXPrestacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificaDevolucion_SetFPresentacionSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificaDevolucion_SetFPresentacion" />
+  </wsdl:message>
+  <wsdl:message name="ModificaDevolucion_SetFPresentacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificaDevolucion_SetFPresentacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeDevolucionXMovimientoSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionXMovimientoSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeDevolucionXMovimientoSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionXMovimientoSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeDevolucionesXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionesXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeDevolucionesXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionesXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIngresosXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIngresosXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeIngresosXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIngresosXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIngresoXMovimientoSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIngresoXMovimientoSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeIngresoXMovimientoSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIngresoXMovimientoSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeTipoDocumentacionFaltanteXSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeTipoDocumentacionFaltanteXSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeTipoDocumentacionFaltanteXSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeTipoDocumentacionFaltanteXSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExisteDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ExisteDocumento" />
+  </wsdl:message>
+  <wsdl:message name="ExisteDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ExisteDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudProvisoria_AltaSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudProvisoria_Alta" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudProvisoria_AltaSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudProvisoria_AltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudesProvisoriaMovimiento_AltaSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudesProvisoriaMovimiento_Alta" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudesProvisoriaMovimiento_AltaSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudesProvisoriaMovimiento_AltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudProvisoria_TraeXIdBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudProvisoria_TraeXIdBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudProvisoria_TraeXIdBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudProvisoria_TraeXIdBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudProvisoriaXNroSolicitudProvisoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudProvisoriaXNroSolicitudProvisoria" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudProvisoriaXNroSolicitudProvisoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudProvisoriaXNroSolicitudProvisoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesProvisoriasSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesProvisorias" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesProvisoriasSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesProvisoriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesProvisoriasAVencerEnPlazoSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesProvisoriasAVencerEnPlazo" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesProvisoriasAVencerEnPlazoSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesProvisoriasAVencerEnPlazoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ActoresWSSoap">
+    <wsdl:operation name="TraeBeneficiarios">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de Beneficioarios por Nombre - Documento (Beneficiario o Causante) - ExpedienteExterno SIACI</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiariosSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXExpteANSES">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de Beneficioarios por Expediente ANSES</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiariosXExpteANSESSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiariosXExpteANSESSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiosXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Beneficios de una Peticion</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiosXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiosXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeExpedientesXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Expedientes de una Peticion</wsdl:documentation>
+      <wsdl:input message="tns:TraeExpedientesXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeExpedientesXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXCUIP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de Beneficiarios por cuip</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiariosXCUIPSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiariosXCUIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroSolicitudProvisoria">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae de Beneficiarios por solicitudprovisoria</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiariosXNroSolicitudProvisoriaSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiariosXNroSolicitudProvisoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroBeneficioANSES">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de Beneficioarios por Expediente ANSES</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiariosXNroBeneficioANSESSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiariosXNroBeneficioANSESSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioXId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae datos de un Beneficioario completos por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiarioXIdSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiarioXIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioSimpleXId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae datos de un Beneficioario por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiarioSimpleXIdSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiarioSimpleXIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesXIdBeneficiario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae las solicitudes de un Beneficioario por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraePrestacionesXIdBeneficiarioSoapIn" />
+      <wsdl:output message="tns:TraePrestacionesXIdBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesXIdBenefPrestac">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae las solicitudes de un Beneficioario por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudesXIdBenefPrestacSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudesXIdBenefPrestacSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiario_Notas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae notas ingresadas por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraeBeneficiario_NotasSoapIn" />
+      <wsdl:output message="tns:TraeBeneficiario_NotasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario_Notas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa una nota para un idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:AMBeneficiario_NotasSoapIn" />
+      <wsdl:output message="tns:AMBeneficiario_NotasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa o Modifica datos de un Beneficiario</wsdl:documentation>
+      <wsdl:input message="tns:AMBeneficiarioSoapIn" />
+      <wsdl:output message="tns:AMBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AMCausante">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa o Modifica datos de un Causante</wsdl:documentation>
+      <wsdl:input message="tns:AMCausanteSoapIn" />
+      <wsdl:output message="tns:AMCausanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AMApoderado">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa o Modifica datos de un Apoderado</wsdl:documentation>
+      <wsdl:input message="tns:AMApoderadoSoapIn" />
+      <wsdl:output message="tns:AMApoderadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaBeneficiario_Apoderado">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Establece la baja de un Apoderado</wsdl:documentation>
+      <wsdl:input message="tns:BajaBeneficiario_ApoderadoSoapIn" />
+      <wsdl:output message="tns:BajaBeneficiario_ApoderadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeApoderadosXid_Beneficiario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae apoderados por idBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraeApoderadosXid_BeneficiarioSoapIn" />
+      <wsdl:output message="tns:TraeApoderadosXid_BeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesNoIngresadasXIdBeneficiario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">TraePrestacionesNoIngresadasXIdBeneficiario</wsdl:documentation>
+      <wsdl:input message="tns:TraePrestacionesNoIngresadasXIdBeneficiarioSoapIn" />
+      <wsdl:output message="tns:TraePrestacionesNoIngresadasXIdBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosResumen">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae movimientos resumen por benef y prestacion</wsdl:documentation>
+      <wsdl:input message="tns:TraeMovimientosResumenSoapIn" />
+      <wsdl:output message="tns:TraeMovimientosResumenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientoXFechaMovimiento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Movimiento de una solicitud por fecha de movimiento</wsdl:documentation>
+      <wsdl:input message="tns:TraeMovimientoXFechaMovimientoSoapIn" />
+      <wsdl:output message="tns:TraeMovimientoXFechaMovimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Movimientos de una solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeMovimientosXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeMovimientosXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesDenegadasXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Solicitudes Denegadas X Solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudesDenegadasXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudesDenegadasXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaDevolucion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efectua el alta de una devolucion sin notificar grabando la documentacion</wsdl:documentation>
+      <wsdl:input message="tns:AltaDevolucionSoapIn" />
+      <wsdl:output message="tns:AltaDevolucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaIngreso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efectua el alta de un ingreso de documentacion guardando la documentacion ingresada</wsdl:documentation>
+      <wsdl:input message="tns:AltaIngresoSoapIn" />
+      <wsdl:output message="tns:AltaIngresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AMAllDatosSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efectua el alta de una solicitud mas listado de expedientes y beneficios</wsdl:documentation>
+      <wsdl:input message="tns:AMAllDatosSolicitudSoapIn" />
+      <wsdl:output message="tns:AMAllDatosSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efectua la baja logica de una solicitud, que posteriormente puede volver a seleccionarse</wsdl:documentation>
+      <wsdl:input message="tns:BajaSolicitudSoapIn" />
+      <wsdl:output message="tns:BajaSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaMovimiento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efectua el alta de un movimiento del tramite</wsdl:documentation>
+      <wsdl:input message="tns:AltaMovimientoSoapIn" />
+      <wsdl:output message="tns:AltaMovimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NotificaDevolucion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Notifica una devolucion para establecer el control de plazo</wsdl:documentation>
+      <wsdl:input message="tns:NotificaDevolucionSoapIn" />
+      <wsdl:output message="tns:NotificaDevolucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionXPrestacion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae listado de tipo de Documentacion por prestacion</wsdl:documentation>
+      <wsdl:input message="tns:TraeTipoDocumentacionXPrestacionSoapIn" />
+      <wsdl:output message="tns:TraeTipoDocumentacionXPrestacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificaDevolucion_SetFPresentacion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Establece fecha de entrega de Documentacion para una devolucion</wsdl:documentation>
+      <wsdl:input message="tns:ModificaDevolucion_SetFPresentacionSoapIn" />
+      <wsdl:output message="tns:ModificaDevolucion_SetFPresentacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionXMovimientoSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae devolucion por fecha de devolucion</wsdl:documentation>
+      <wsdl:input message="tns:TraeDevolucionXMovimientoSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeDevolucionXMovimientoSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionesXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae devoluciones X Solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeDevolucionesXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeDevolucionesXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresosXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae ingresos por solicitud con documentación recibida</wsdl:documentation>
+      <wsdl:input message="tns:TraeIngresosXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeIngresosXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresoXMovimientoSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae ingreso por fecha de devolucion</wsdl:documentation>
+      <wsdl:input message="tns:TraeIngresoXMovimientoSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeIngresoXMovimientoSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionFaltanteXSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Documentacion faltante por solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeTipoDocumentacionFaltanteXSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeTipoDocumentacionFaltanteXSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteDocumento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve true si existe el documento</wsdl:documentation>
+      <wsdl:input message="tns:ExisteDocumentoSoapIn" />
+      <wsdl:output message="tns:ExisteDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_Alta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa una solicitud provisoria para un beneficiario sin cuil, con los movimientos</wsdl:documentation>
+      <wsdl:input message="tns:SolicitudProvisoria_AltaSoapIn" />
+      <wsdl:output message="tns:SolicitudProvisoria_AltaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudesProvisoriaMovimiento_Alta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ingresa la lista de movimientos de una solicitud provisoria</wsdl:documentation>
+      <wsdl:input message="tns:SolicitudesProvisoriaMovimiento_AltaSoapIn" />
+      <wsdl:output message="tns:SolicitudesProvisoriaMovimiento_AltaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_TraeXIdBeneficiario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae solicitudes provisorias por beneficiario</wsdl:documentation>
+      <wsdl:input message="tns:SolicitudProvisoria_TraeXIdBeneficiarioSoapIn" />
+      <wsdl:output message="tns:SolicitudProvisoria_TraeXIdBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudProvisoriaXNroSolicitudProvisoria">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae solicitud provisoria x solicitud provisoria</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudProvisoriaXNroSolicitudProvisoriaSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudProvisoriaXNroSolicitudProvisoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisorias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae solicitudes provisorias x año y mes de ingreso</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudesProvisoriasSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudesProvisoriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisoriasAVencerEnPlazo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae solicitudes provisorias a vencerse en plazo</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudesProvisoriasAVencerEnPlazoSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudesProvisoriasAVencerEnPlazoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActoresWSSoap" type="tns:ActoresWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraeBeneficiarios">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXExpteANSES">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXExpteANSES" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiosXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeExpedientesXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeExpedientesXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXCUIP">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXCUIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroSolicitudProvisoria">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXNroSolicitudProvisoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroBeneficioANSES">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXNroBeneficioANSES" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioXId">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarioXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioSimpleXId">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarioSimpleXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesXIdBeneficiario">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePrestacionesXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesXIdBenefPrestac">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesXIdBenefPrestac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiario_Notas">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiario_Notas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario_Notas">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBeneficiario_Notas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMCausante">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMCausante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMApoderado">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMApoderado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaBeneficiario_Apoderado">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/BajaBeneficiario_Apoderado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeApoderadosXid_Beneficiario">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeApoderadosXid_Beneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesNoIngresadasXIdBeneficiario">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePrestacionesNoIngresadasXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosResumen">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientosResumen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientoXFechaMovimiento">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientoXFechaMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesDenegadasXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesDenegadasXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaDevolucion">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaDevolucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaIngreso">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaIngreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMAllDatosSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMAllDatosSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/BajaSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaMovimiento">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificaDevolucion">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/NotificaDevolucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionXPrestacion">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeTipoDocumentacionXPrestacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaDevolucion_SetFPresentacion">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ModificaDevolucion_SetFPresentacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionXMovimientoSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionXMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionesXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionesXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresosXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIngresosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresoXMovimientoSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIngresoXMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionFaltanteXSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeTipoDocumentacionFaltanteXSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteDocumento">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ExisteDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_Alta">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudProvisoria_Alta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudesProvisoriaMovimiento_Alta">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudesProvisoriaMovimiento_Alta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_TraeXIdBeneficiario">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudProvisoria_TraeXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudProvisoriaXNroSolicitudProvisoria">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudProvisoriaXNroSolicitudProvisoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisorias">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesProvisorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisoriasAVencerEnPlazo">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesProvisoriasAVencerEnPlazo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ActoresWSSoap12" type="tns:ActoresWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraeBeneficiarios">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXExpteANSES">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXExpteANSES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiosXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeExpedientesXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeExpedientesXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXCUIP">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXCUIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroSolicitudProvisoria">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXNroSolicitudProvisoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiariosXNroBeneficioANSES">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiariosXNroBeneficioANSES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioXId">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarioXId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiarioSimpleXId">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiarioSimpleXId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesXIdBeneficiario">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePrestacionesXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesXIdBenefPrestac">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesXIdBenefPrestac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeBeneficiario_Notas">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeBeneficiario_Notas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario_Notas">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBeneficiario_Notas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMBeneficiario">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMCausante">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMCausante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMApoderado">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMApoderado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaBeneficiario_Apoderado">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/BajaBeneficiario_Apoderado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeApoderadosXid_Beneficiario">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeApoderadosXid_Beneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraePrestacionesNoIngresadasXIdBeneficiario">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraePrestacionesNoIngresadasXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosResumen">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientosResumen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientoXFechaMovimiento">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientoXFechaMovimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeMovimientosXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeMovimientosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesDenegadasXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesDenegadasXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaDevolucion">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaDevolucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaIngreso">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaIngreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AMAllDatosSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AMAllDatosSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/BajaSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaMovimiento">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/AltaMovimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificaDevolucion">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/NotificaDevolucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionXPrestacion">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeTipoDocumentacionXPrestacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaDevolucion_SetFPresentacion">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ModificaDevolucion_SetFPresentacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionXMovimientoSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionXMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeDevolucionesXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionesXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresosXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIngresosXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIngresoXMovimientoSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIngresoXMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeTipoDocumentacionFaltanteXSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeTipoDocumentacionFaltanteXSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteDocumento">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/ExisteDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_Alta">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudProvisoria_Alta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudesProvisoriaMovimiento_Alta">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudesProvisoriaMovimiento_Alta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudProvisoria_TraeXIdBeneficiario">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/SolicitudProvisoria_TraeXIdBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudProvisoriaXNroSolicitudProvisoria">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudProvisoriaXNroSolicitudProvisoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisorias">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesProvisorias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesProvisoriasAVencerEnPlazo">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesProvisoriasAVencerEnPlazo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActoresWS">
+    <wsdl:port name="ActoresWSSoap" binding="tns:ActoresWSSoap">
+      <soap:address location="http://10.86.30.215/Convenios_WS/ActoresWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ActoresWSSoap12" binding="tns:ActoresWSSoap12">
+      <soap12:address location="http://10.86.30.215/Convenios_WS/ActoresWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

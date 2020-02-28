@@ -1,0 +1,50 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="true" CodeFile="textbox.aspx.cs" Inherits="textbox"   Culture="Auto" UICulture="Auto"%>
+<%@ Register Src="~/Controles/RtBoxCC.ascx" TagName="RtBox" TagPrefix="uc5" %>
+<%@ MasterType VirtualPath="~/MasterPage/MasterPage.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <meta http-equiv="Pragma" content="no-clase">
+    <meta http-equiv="Expires" content="-1">
+ </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <uc5:RtBox ID="txt" runat="server" Visible="true" />
+    <%--<script type="text/javascript">
+        tinymce.init({
+            statusbar: false,
+            nonbreaking_force_tab: true,
+            height: 300,
+            width: 600,
+            max_height: 600,
+            max_width: 600,
+            menu: { // this is the complete default configuration
+                edit: { title: 'Editar', items: 'undo redo | cut copy paste pastetext | selectall' },
+                format: { title: 'Formato', items: 'bold italic underline strikethrough superscript subscript | formats | removeformat' },
+                table: { title: 'Tabla', items: 'inserttable tableprops deletetable | cell row column' }
+
+            },
+            selector: "textarea",
+            mode: "textareas",
+            language: 'es',
+            language_url: 'tinymce/js/tinymce/langs/langs/es.js',
+            nowrap: true,
+
+            plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen hr textcolor ",
+        "insertdatetime media table contextmenu paste nonbreaking directionality "
+            ],
+            toolbar: ["undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ",
+                        "hr charmap | insertdatetime | nonbreaking | ltr rtl | forecolor backcolor"
+            ]
+        });
+</script>
+
+
+
+        <textarea id="txttextarea" name="mytextarea" rows="15" cols="80" style="width: 80%" runat="server"/>
+    <label id="lblResultado" style=" width:80%" runat="server"></label>
+    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+--%>
+
+</asp:Content>

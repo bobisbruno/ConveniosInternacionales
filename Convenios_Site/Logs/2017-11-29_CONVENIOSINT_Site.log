@@ -1,0 +1,246 @@
+2017-11-29 11:12:55,347 [ID (null)] [7] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:12:55,690 [ID (null)] [7] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:12:55,690 [ID (null)] [7] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:15:13,668 [ID (null)] [9] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:15:13,674 [ID (null)] [9] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:15:13,674 [ID (null)] [9] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:23:05,068 [ID (null)] [22] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:23:05,074 [ID (null)] [22] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:23:05,074 [ID (null)] [22] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:26:51,038 [ID (null)] [29] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:26:51,045 [ID (null)] [29] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:26:51,045 [ID (null)] [29] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:28:44,935 [ID (null)] [25] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:28:44,942 [ID (null)] [25] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:28:44,942 [ID (null)] [25] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:28:50,623 [ID (null)] [25] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:28:50,658 [ID (null)] [25] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:28:50,681 [ID (null)] [25] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-29 11:44:39,697 [ID (null)] [10] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:44:39,887 [ID (null)] [10] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:44:39,887 [ID (null)] [10] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:45:23,073 [ID (null)] [22] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:45:23,079 [ID (null)] [22] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:45:23,079 [ID (null)] [22] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:45:33,717 [ID (null)] [31] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:45:33,723 [ID (null)] [31] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:45:33,724 [ID (null)] [31] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:45:39,423 [ID (null)] [10] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:45:39,429 [ID (null)] [10] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:45:39,429 [ID (null)] [10] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:46:50,756 [ID (null)] [16] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:46:50,762 [ID (null)] [16] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:46:50,763 [ID (null)] [16] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:47:08,662 [ID (null)] [10] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:47:08,668 [ID (null)] [10] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:47:08,668 [ID (null)] [10] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:47:56,641 [ID (null)] [17] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:47:56,647 [ID (null)] [17] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:47:56,647 [ID (null)] [17] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:48:09,491 [ID (null)] [28] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:48:09,497 [ID (null)] [28] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 11:48:09,497 [ID (null)] [28] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:51:03,577 [ID (null)] [17] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 11:51:03,599 [ID (null)] [17] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 11:51:03,600 [ID (null)] [17] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-29 12:04:34,788 [ID (null)] [25] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 12:04:34,951 [ID (null)] [25] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 12:04:34,952 [ID (null)] [25] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 12:06:34,293 [ID (null)] [13] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 12:06:34,300 [ID (null)] [13] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 12:06:34,300 [ID (null)] [13] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 12:07:17,144 [ID (null)] [13] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 12:07:17,151 [ID (null)] [13] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.4arwaypg.3.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 12:07:17,151 [ID (null)] [13] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 12:10:32,969 [ID (null)] [10] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 12:10:32,987 [ID (null)] [10] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 12:10:32,988 [ID (null)] [10] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-29 12:28:39,990 [ID (null)] [17] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 12:28:40,026 [ID (null)] [17] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 12:28:40,027 [ID (null)] [17] ERROR Paginas_Main - Error al cargar la pagina Main.aspx error: Subproceso anulado.
+2017-11-29 14:54:43,279 [ID (null)] [9] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 151
+2017-11-29 14:54:43,824 [ID (null)] [9] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencialInterna()
+   en Anses.Director.Session.DirectorExtension.ProcessMessage(SoapMessage message)
+   en System.Web.Services.Protocols.SoapMessage.RunExtensions(SoapExtension[] extensions, Boolean throwOnException)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.BeforeSerialize(WebRequest request, String methodName, Object[] parameters)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.nvgafjcy.2.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-11-29 14:54:43,825 [ID (null)] [9] ERROR comun_controles_cabecera - Se generó una excepción : 7503-Error en sesión.No se puede obtener credenciales
+2017-11-29 14:56:02,272 [ID (null)] [12] ERROR AltaProvisoria - Referencia a objeto no establecida como instancia de un objeto.

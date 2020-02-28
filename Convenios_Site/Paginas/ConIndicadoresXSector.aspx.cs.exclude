@@ -1,0 +1,715 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.IO;
+using System.Threading;
+using ConsultasWS;
+using log4net;
+using System.Web.UI.DataVisualization.Charting;
+
+public partial class Paginas_ConIndicadoresXSector : System.Web.UI.Page
+{
+    #region Propiedades / Variables publicas
+
+
+    public DataTable dtPeriodosMostrar
+    {
+        get
+        {
+            return Session["_periodo"] == null ? null : (DataTable)Session["_periodo"];
+            //return (string)Session["acceso"];
+        }
+        set
+        {
+            Session["_periodo"] = value;
+        }
+    }
+
+
+    public Byte Mes
+    {
+        get
+        {
+            ViewState["_mes"] = Byte.Parse(lPeriodos[ddlTPeriodo.SelectedIndex].Month.ToString());
+            return (Byte)ViewState["_mes"];
+        }
+        set
+        {
+            ViewState["_mes"] = value;
+        }
+    }
+
+    public Int32 Anio
+    {
+        get
+        {
+            ViewState["_anio"] = lPeriodos[ddlTPeriodo.SelectedIndex].Year;
+            return (Int32)ViewState["_anio"];
+        }
+        set
+        {
+            ViewState["_anio"] = value;
+        }
+    }
+
+
+    public DateTime periodoBase
+    {
+        get
+        {
+            if (Session["_periodob"] == null)
+            {
+                Session["_periodob"] = (DateTime)lPeriodos[ddlTPeriodo.SelectedIndex];
+                return (DateTime)Session["_periodob"];
+            }
+            else
+                return (DateTime)Session["_periodob"];
+            //return (string)Session["acceso"];
+        }
+        set
+        {
+            Session["_periodob"] = value;
+        }
+    }
+
+    public List<DateTime> lPeriodos
+    {
+        get
+        {
+            if ((List<DateTime>)ViewState["lP"] == null)
+            {
+                ViewState["lP"] = ObtenerListaPeriodos();
+                return (List<DateTime>)ViewState["lP"];
+            }
+            else
+                return (List<DateTime>)ViewState["lP"];
+        }
+        set { ViewState["lP"] = value; }
+
+    }
+
+    private List<DateTime> ObtenerListaPeriodos()
+    {
+        lPeriodos = null;
+        lPeriodos = Invocar.TraerUltimosPeriodos();
+        return lPeriodos;
+    }
+
+
+    //public string fechaConsulta
+    //{
+    //    get
+    //    {
+    //        return (String)ViewState["fc"];
+    //    }
+    //    set
+    //    { ViewState["fc"] = value; }
+
+    //}
+
+    public string txtBarNav
+    {
+        get
+        {
+            return (String)ViewState["bn"];
+        }
+        set
+        { ViewState["bn"] = value; }
+
+    }
+
+    private static readonly ILog log = LogManager.GetLogger(typeof(Paginas_ConIndicadoresXSector).Name);
+
+    #endregion
+
+    #region Tomo seteo periodos de la consulta
+
+    public DataTable dtPeriodos
+    {
+        get
+        {
+            return Session["_periodo"] == null ? null : (DataTable)Session["_periodo"];
+            //return (string)Session["acceso"];
+        }
+        set
+        {
+            Session["_periodo"] = value;
+        }
+    }
+    #endregion
+
+    #region
+
+    public DataTable dtFinalToGrid
+    {
+        get
+        {
+            return Session["_dtFinalToGrid"] == null ? null : (DataTable)Session["_dtFinalToGrid"];
+            //return (string)Session["acceso"];
+        }
+        set
+        {
+            Session["_dtFinalToGrid"] = value;
+        }
+    }
+    #endregion
+
+
+    private bool TienePermiso(string Valor)
+    {
+        return DirectorManager.traerPermiso(Valor, Page.Request.FilePath.Substring(Page.Request.FilePath.LastIndexOf("/") + 1).ToLower()).Value.accion != null;
+    }
+
+
+    public List<IndicadorTotalesSector> sesToExporte
+    {
+        get { return (List<IndicadorTotalesSector>)Session["_solicToExport"]; }
+        set { Session["_solicToExport"] = value; }
+    }
+
+
+    public List<IndicadorVocero> sesToExporteComp
+    {
+        get { return (List<IndicadorTotalesSector>)Session["_solicToExport2"]; }
+        set { Session["_solicToExport2"] = value; }
+    }
+
+    #region APlica Seguridad
+
+    private bool AplicarSeguridadPagina()
+    {
+        bool permiso = false;
+        try
+        {
+            permiso = TienePermiso("accesoPagina");
+        }
+        catch (ThreadAbortException)
+        { }
+        return permiso;
+    }
+    #endregion APlica Seguridad Pagina
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //botonesGraficos.clColumna += new Comun_Controles_BotonesGraficos.Click_Columna(ClickearonBotonGrafico);
+        //botonesGraficos.clSegmento += new Comun_Controles_BotonesGraficos.Click_Segmento(ClickearonBotonGrafico);
+        //botonesGraficos.clTorta += new Comun_Controles_BotonesGraficos.Click_Torta(ClickearonBotonGrafico);
+        //botonesGraficos.clFunnel += new Comun_Controles_BotonesGraficos.Click_Funnel(ClickearonBotonGrafico);
+
+
+        ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnConsultar);
+        ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnImprimir);
+        ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnToExcell);
+        //ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(botonesGraficos);
+        //ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnEvolutivo);
+        ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnCloseEvolutivo);
+        ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(btnAgrupadoSN);
+        
+
+        if (!IsPostBack)
+        {
+            #region Seguridad
+            if (!AplicarSeguridadPagina())
+                Response.Redirect(ConfigurationManager.AppSettings["urlAccesoDenegado"]);
+            #endregion Seguridad
+            btnAgrupadoSN.AccessKey.Equals("D");
+            sesToExporte = null;
+            dvDatosConsulta.Visible = false;
+            dvNODatosConsulta.Visible = false;
+            txtBarNav = " > Indicadores > Sectores";
+            setBarraNav(txtBarNav + " > " + System.DateTime.Today.ToShortDateString());
+            InicializarDatosPagina("Indicadores por Sectores");
+            CargarDDLPeriodos();
+            //Consulta por default el periodo actual
+            ConsultarIndicadores(Convert.ToByte(System.DateTime.Today.Month), System.DateTime.Today.Year, "Periodo actual");
+            periodoBase = System.DateTime.Today;
+            ConsultarEvolutivo(periodoBase);
+        }
+
+    }
+
+
+    private void ConsultarIndicadores(byte mes, Int32 anio, string txtcaption)
+    {
+        sesToExporte = null;
+        sesToExporteComp = null;
+        string mensaje = string.Empty;
+        string caption = "Totales por voces emitidos en el período " + mes.ToString() + "-" + anio.ToString();
+        caption += " - " + txtcaption;
+
+
+
+        List<IndicadorTotalesSector> oList = InvocaWsDao.TraeIndicadorTotalesSector(peri);
+        //consulta mismo periodo año anterior
+        List<IndicadorTotalesSector> oListComp = InvocaWsDao.TraeIndicadorTotalesSector(mes, anio - 1);
+        MError.MensajeError = mensaje;
+        if ((oList == null) || (oList.Count == 0))
+        {
+            dvNODatosConsulta.Visible = true;
+            dvDatosConsulta.Visible = false;
+            btnImprimir.Enabled = false;
+            btnToExcell.Enabled = false;
+        }
+        else
+        {
+            sesToExporte = oList;
+            sesToExporteComp = oListComp;
+            btnImprimir.Enabled = true;
+            btnToExcell.Enabled = true;
+            long total;
+            dvDatosConsulta.Visible = true;
+            DataTable dt = toDataTable(oList, Int16.Parse(ConfigurationManager.AppSettings["MaxItemsShowAgrupados"]), out total);
+            DataTable dtComp = toDataTable(oListComp, Int16.Parse(ConfigurationManager.AppSettings["MaxItemsShowAgrupados"]), out total);
+            gridIndicadoes.DataSource = dt;
+            gridIndicadoes.DataBind();
+
+            lblTotal.Text = total.ToString();
+            hfcaption.Value = caption;
+
+            SetGraficos(dt, dtComp, TiposEnumerados.TipoGrafico.COLUMNA);
+
+            dvNODatosConsulta.Visible = false;
+        }
+    }
+
+
+
+    private void CargarDDLPeriodos()
+    {
+        ddlTPeriodo.Items.Clear();
+        bool primero = true;
+        foreach (DateTime dt in lPeriodos)
+        {
+            ListItem li = new ListItem();
+            li.Value = dt.ToShortDateString();
+
+            if (primero)
+            {
+                li.Selected = true;
+                li.Text = "Actual";
+                primero = false;
+            }
+            else
+                li.Text = dt.Month.ToString() + "-" + dt.Year.ToString();
+            ddlTPeriodo.Items.Add(li);
+
+        }
+        ddlTPeriodo.DataBind();
+    }
+
+
+
+    #region Click Boton Gráfico
+    protected void ClickearonBotonGrafico(object sender, TiposEnumerados.TipoGrafico iTipoGrafico)
+    {
+        SetGraficos(iTipoGrafico);
+    }
+    #endregion
+
+    private void setBarraNav(string txtBarraNav)
+    {
+        BNav.Text = txtBarraNav;
+    }
+
+    private void InicializarDatosPagina(string titulo)
+    {
+        UtilsPresentacionX5.SetTextLabel(LblTituloPagina, titulo);
+        Page.Title = titulo;
+    }
+
+
+    private void TraerGraficaMultiSerie(DataSet dsSeries)
+    {
+        if (dsSeries != null || dsSeries.Tables.Count == 0)
+        {
+            dvGraficoAgrupado.Visible = true;
+            dvGraficoDesagrupado.Visible = false;
+            GraficaNat.ChartMultipleSerie(CHARTEvolutivo, dsSeries, "periodo", "valor", false
+                , "Evolutivo - Ultimos " + ConfigurationManager.AppSettings["PeriodosConsultaSeries"] + " períodos"
+                , 1050, 350
+                , TiposEnumerados.TipoGrafico.LINEA);
+        }
+        else
+        {
+            dvGraficoAgrupado.Visible = false;
+            dvGraficoDesagrupado.Visible = true;
+        }
+
+    }
+
+    private void TraerGraficasSerie(DataSet dsSeries)
+    {
+        if (dsSeries != null || dsSeries.Tables.Count == 0)
+        {
+            GraficaNat.ChartMultipleSerieMultiAreas(chrtLinealPeriodos, dsSeries, "periodo", "valor", false
+                , "Evolutivo - Ultimos " + ConfigurationManager.AppSettings["PeriodosConsultaSeries"] + " períodos"
+                , 1050, 1900
+                , TiposEnumerados.TipoGrafico.LINEA
+                , 10
+                , 10);
+            dvGraficoDesagrupado.Visible = true;
+            dvGraficoAgrupado.Visible = false;
+        }
+        else
+        {
+            dvGraficoDesagrupado.Visible = false;
+            dvGraficoAgrupado.Visible = true;
+        }
+
+    }
+
+
+    private DataTable toDataTable(List<IndicadorTotalesSector> iParam, Int16 MaxItemsShow, out Int64 totalGral)
+    {
+        //calculo del total
+        totalGral = 0;
+        foreach (IndicadorTotalesSector i in iParam)
+            totalGral += long.Parse(i.TotalSector);
+
+        IComparer<IndicadorTotalesSector> comparer = new MiClaseOrdenada();
+        iParam.Sort(comparer); //se ordena de menor a mayor para totalizar los de inferior valor
+
+        DataTable _dt = new DataTable();
+        _dt.Columns.Add("Descripcion", typeof(String));
+        _dt.Columns.Add("Porcentual", typeof(String));
+        _dt.Columns.Add("Total", typeof(String));
+
+
+        Int16 contadorItems = 0;
+        Int32 totCatOtros = 0;
+        int aAgrupar = iParam.Count - MaxItemsShow;
+        bool agrupado = true;
+
+        foreach (IndicadorTotalesSector oSol in iParam)
+        {
+
+            if (aAgrupar > 1 && contadorItems < aAgrupar)
+            {
+                totCatOtros += Int32.Parse(oSol.TotalSector);
+                contadorItems++;
+                agrupado = false;
+            }
+            decimal porc = 0;
+            if (contadorItems >= aAgrupar && agrupado == false) //si hubo totalizacion de cat Otros
+            {
+                DataRow _drTemp;
+                _drTemp = _dt.NewRow();
+                porc = totCatOtros * 100 / totalGral;
+                _drTemp["Descripcion"] = "Otros";
+                _drTemp["Porcentual"] = porc.ToString() + " %";
+                _drTemp["Total"] = totCatOtros.ToString();
+
+                _dt.Rows.Add(_drTemp);
+
+                agrupado = true;
+            }
+            else if (agrupado)
+            {
+                DataRow _drTemp;
+                _drTemp = _dt.NewRow();
+                porc = Int32.Parse(oSol.TotalSector) * 100 / totalGral;
+                _drTemp["Descripcion"] = oSol.Dsector;
+                _drTemp["Porcentual"] = porc.ToString() + " %";
+                _drTemp["Total"] = oSol.TotalSector;
+                _dt.Rows.Add(_drTemp);
+            }
+        }
+        return _dt;
+    }
+
+    public class MiClaseOrdenada : IComparer<IndicadorTotalesSector>
+    {
+        public int Compare(IndicadorTotalesSector x, IndicadorTotalesSector y)
+        {
+            int compareTot = Int32.Parse(x.TotalSector).CompareTo(Int32.Parse(y.TotalSector));
+            if (compareTot == 0)
+            {
+                return Int32.Parse(x.TotalSector).CompareTo(Int32.Parse(y.TotalSector));
+            } return compareTot;
+        }
+    }
+    protected void btnToExcell_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string strBody = "";
+            Int64 tot;
+            strBody = Exportar.DataTable2ExcelString(toDataTable((List<IndicadorTotalesSector>)sesToExporte, Int16.Parse(ConfigurationManager.AppSettings["MaxItemsShowAgrupados"]), out tot));
+
+            Response.AppendHeader("Content-Type", "application/vnd.ms-excel");
+            Response.AppendHeader("Content-disposition", "attachment; filename=" + hfcaption.Value + "-" + tot.ToString() + "casos" + ".xls");
+            Response.Write(strBody);
+        }
+        catch (Exception er)
+        {
+            log.Error("Ocurrio un error al generar el listado de exportacion." + er.Message);
+            MError.MensajeError = "Ocurrio un error al generar el listado de exportacion.";
+        }
+    }
+
+    protected void btnRegresar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Main.aspx", false);
+    }
+
+    protected void btnCloseEvolutivo_Click(object sender, EventArgs e)
+    {
+        //dvDatosConsultaProgresion.Visible = false;
+        hfConEvolutivo.Value = "N";
+        
+    }
+
+    protected void btnEvolutivo_Click(object sender, EventArgs e)
+    {
+        #region Datos Serie Lineal
+
+        hfcaption2.Value = "Evolución de totales por sector en los ultimos " + ConfigurationManager.AppSettings["PeriodosConsultaSeries"].ToString() + " períodos a fecha " + fechaConsulta;
+        hfConEvolutivo.Value = "S";
+        lbTituloLineal.Text = hfcaption2.Value;
+
+        SettingDatosCons(fechaConsulta);
+        #endregion Datos Serie Lineal
+
+        TraerGridEvolucion();
+        //TraerGraficaMultiSerie();
+        
+    }
+
+
+    private void Consultar(string fecha)
+    {
+        sesToExporte = null;
+        string mensaje = string.Empty;
+        string caption = "Solicitudes por sector a la fecha " + fecha;
+        hffechaing.Value = fecha;
+
+        List<IndicadorTotalesSector> oList = InvocaWsDao.TraeIndicadorTotalesSector(fecha, out mensaje);
+        sesToExporte = oList;
+        MError.MensajeError = mensaje;
+        if ((oList == null) || (oList.Count == 0))
+        {
+            dvNODatosConsulta.Visible = true;
+            dvDatosConsulta.Visible = false;
+            btnImprimir.Enabled = false;
+            btnToExcell.Enabled = false;
+        }
+        else
+        {
+            btnImprimir.Enabled = true;
+            btnToExcell.Enabled = true;
+            
+            dvDatosConsulta.Visible = true;
+            //dvDatosConsultaProgresion.Visible = true;
+            long total = 0;
+            gridListadoSolicitudes.DataSource = toDataTable(oList, Int16.Parse(ConfigurationManager.AppSettings["MaxItemsShowAgrupados"]), out total);
+            gridListadoSolicitudes.DataBind();
+            lblTotal.Text = total.ToString();
+            hfcaption.Value = caption;
+            SetGraficos(TiposEnumerados.TipoGrafico.COLUMNA);
+            
+            dvNODatosConsulta.Visible = false; 
+        }
+    }
+
+
+    protected void btnAgrupadoSN_Click(object sender, EventArgs e)
+    {
+        if (btnAgrupadoSN.AccessKey.Equals("A"))
+        {
+            btnAgrupadoSN.AccessKey = "D";
+            btnAgrupadoSN.Text = "Agrupar";
+
+
+        }
+        else if (btnAgrupadoSN.AccessKey.Equals("D"))
+        {
+            btnAgrupadoSN.AccessKey = "A";
+            btnAgrupadoSN.Text = "Desagrupar";
+        }
+        //ConsultarEvolutivo((DateTime)lPeriodos[ddlTPeriodo.SelectedIndex]);
+        //ConsultarIndicadores(Mes, Anio, Mes.ToString() + "-" + Anio.ToString());
+    }
+
+    private void SetGraficos(TiposEnumerados.TipoGrafico tGafico)
+    {
+        Int64 tot;
+        DataTable dt = toDataTable(sesToExporte, Int16.Parse(ConfigurationManager.AppSettings["MaxItemsShowAgrupados"]), out tot);
+        hftgraf.Value = tGafico.ToString();
+        switch (tGafico)
+        {
+            case TiposEnumerados.TipoGrafico.COLUMNA:
+
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+                GraficaNat.ChartMultipleSerie(chrtPeriodoSel, ds, "Sector", "Total", false, "Solicitudes prestacionales por convenio", 850, 250, tGafico);
+            
+                break;
+
+            case TiposEnumerados.TipoGrafico.TORTA:
+        //        litGrafico.Text = Grafica.traerScriptGrafica(TiposEnumerados.TipoGrafico.TORTA,
+        //hfcaption.Value,
+        //"Estado", "Total",
+        //"EstadoTorta", dt, 0, 2, 600, 400, false);
+                break;
+
+            case TiposEnumerados.TipoGrafico.FUNEL:
+        //        litGrafico.Text = Grafica.traerScriptGrafica(TiposEnumerados.TipoGrafico.FUNEL,
+        //hfcaption.Value,
+        //"Estado", "Total",
+        //"EstadoF", dt, 0, 2, 600, 400, false);
+                break;
+
+            case TiposEnumerados.TipoGrafico.SEGMENTO:
+        //        litGrafico.Text = Grafica.traerScriptGrafica(TiposEnumerados.TipoGrafico.SEGMENTO,
+        //hfcaption.Value,
+        //"Estado", "Total",
+        //"EstadoCir", dt, 0, 2, 600, 400, false);
+                break;
+
+
+
+        }
+
+    }
+
+    protected void btnConsultar_Click(object sender, EventArgs e)
+    {
+        //dvDatosConsultaProgresion.Visible = false;
+        if (Page.IsValid)
+        {
+            txtBarNav = txtBarNav + " > " + ddlTPeriodo.SelectedItem.Text;
+            Consultar( ddlTPeriodo.SelectedValue);
+            setBarraNav(txtBarNav);
+            txtBarNav = " > Indicadores > Sectores";
+
+        }
+    }
+
+
+    private void SettingDatosCons(string fechaIng)
+    {
+        DataTable _dtPeriodos = new DataTable();
+        _dtPeriodos.Columns.Add("Periodo", typeof(String));
+
+        #region Settings
+        DateTime periodobase = System.DateTime.Parse(fechaIng).AddMonths(-10);
+        int cantperiodos = int.Parse(ConfigurationManager.AppSettings["PeriodosConsultaSeries"]);
+        gridEvolutivo.Columns.Clear();
+        BoundField columna1 = new BoundField();
+        columna1.HeaderText = "Sector";
+        columna1.DataField = "Dsector";
+        columna1.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        columna1.ItemStyle.HorizontalAlign = HorizontalAlign.Left;
+        gridEvolutivo.Columns.Add(columna1);
+
+        for (int i = 1; i < cantperiodos + 1; i++)
+        {
+            DateTime header = periodobase.AddMonths(i);
+
+            //Datatable de anios
+            DataRow _drTemp;
+            _drTemp = _dtPeriodos.NewRow();
+            _drTemp["Periodo"] = header.ToShortDateString();
+            _dtPeriodos.Rows.Add(_drTemp);
+            //Datatable de periodos
+
+
+            BoundField columna = new BoundField();
+            columna.HeaderText = header.ToShortDateString();
+            //columna.DataField = "TotalXTipoInstrumento";
+            columna.DataField = header.ToShortDateString();
+            columna.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            columna.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+            //columna.HeaderStyle.Width = 15;
+            //columna.HeaderStyle = 
+            gridEvolutivo.Columns.Add(columna);
+
+        }
+        gridEvolutivo.DataBind();
+        dtPeriodos = _dtPeriodos;
+        #endregion Settings
+    }
+
+    private DataTable creaDataTable()
+    {
+        DataTable _dt = new DataTable();
+        _dt.Columns.Add("Dsector", typeof(String));
+        foreach (DataRow dRowPeriodo in dtPeriodos.Rows)
+        {
+            _dt.Columns.Add(dRowPeriodo.ItemArray[0].ToString(), typeof(String));
+        }
+        return _dt;
+
+    }
+
+    private void TraerGridEvolucion()
+    {
+        //DataTable dtFinal = new DataTable();
+        dtFinalToGrid = creaDataTable();
+        //carga la primera columna
+        CargaSectores(VariableSession.oSectores);
+        foreach (DataRow dRowAnio in dtPeriodos.Rows)
+        {
+            string mensaje = "";
+            //traer datos del anio ingresado y carga las sucesivas columnas por anio
+            List<IndicadorTotalesSector> oList = InvocaWsDao.TraeIndicadorTotalesSector(dRowAnio.ItemArray[0].ToString().Trim(), out mensaje);
+            //dtFinal = toDataTable(oList);
+            CargaColumnas(oList, dtPeriodos.Rows.IndexOf(dRowAnio) + 1);
+        }
+
+        //gridEvolutivo.DataSource = (DataTable)CalcularFilaTotales(dtFinalToGrid);
+        gridEvolutivo.DataSource = dtFinalToGrid;
+        gridEvolutivo.DataBind();
+        //gridEvolutivo.Rows[gridEvolutivo.Rows.Count - 1].CssClass = "GrillaHeadPanel";
+        gridEvolutivo.Visible = true;
+    }
+
+    private void CargaSectores(List<AuxiliaresWS.Sector> iParam)
+    {
+        DataTable _dt = (DataTable)dtFinalToGrid;
+
+        foreach (AuxiliaresWS.Sector oCot in iParam)
+        {
+            DataRow _drTemp;
+            _drTemp = _dt.NewRow();
+            _drTemp["Dsector"] = oCot.Descripcion;
+            _dt.Rows.Add(_drTemp);
+        }
+
+        dtFinalToGrid = _dt;
+        //return _dt;
+    }
+
+    private void CargaColumnas(List<IndicadorTotalesSector> iParam, int columna)
+    {
+        //DataTable _dt = new DataTable();
+        DataTable _dtGrid = (DataTable)dtFinalToGrid;
+
+        foreach (DataRow dr in _dtGrid.Rows)
+        {
+            bool coincide = false;
+
+            foreach (IndicadorTotalesSector oCot in iParam)
+            {
+                if (dr.ItemArray[0].ToString().ToUpper().Equals(oCot.Dsector.ToUpper()))
+                {
+                    dr[columna] = oCot.TotalSector;
+                    coincide = true;
+                }
+            }
+            if (!coincide)
+                dr[columna] = "0";
+        }
+        dtFinalToGrid = _dtGrid;
+    }
+}

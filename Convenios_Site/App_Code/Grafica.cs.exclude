@@ -1,0 +1,710 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Text.RegularExpressions;
+using System.Net;
+using System.Collections.Generic;
+using log4net;
+using System.Data.SqlClient;
+using System.Text;
+
+/// <summary>
+/// Summary description for Grafica
+/// </summary>
+public class Grafica
+{
+    public Grafica()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+
+    #region Grafica
+
+    public static String traerScriptGraficaMultiSerieLinea(
+        String Caption,
+        String SubCaption,
+        String CriterioX,
+        String CriterioY,
+        String PrefijoNumero,
+        String idDiv,
+        DataTable dtGridFinal,
+        DataTable dtAnios,
+        int picX,
+        int picY, 
+        bool toPrint
+        )
+    {
+        string colorfondo = toPrint ? "ffffff" : "D9E6F4"; //el color del style "fondo claro"
+        StringBuilder myStringBuilder = new StringBuilder();
+        //StringBuilder stringDset1 = new StringBuilder();
+        //StringBuilder stringDset2 = new StringBuilder();
+
+        myStringBuilder.Append("<div id=\"chartdiv" + idDiv + "\" align=\"center\">No se pudo obtener el Grafico.</div>");
+        myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+        myStringBuilder.Append("<script type=\"text/javascript\">");
+
+        myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_MSLine.swf\", \"myChartId\", \"" + picX + "\", \"" + picY + "\");");
+        myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + " '  rotateNames='0' baseFontSize='10' xAxisName='" + CriterioX + " ' yAxisName='" + CriterioY + "'  formatNumber='1' formatNumberScale='2' showNames='1' decimalPrecision='0'  bgcolor= '" + colorfondo + "' thousandSeparator='.' showBarShadow='1' labelDisplay='Rotate' chartRightMargin='35' bgAngle='45' showBorder='0' shadowAlpha='40' hovercapbg='DEDEBE' hovercapborder='889E6D' numdivlines='9' divLineColor='CCCCCC' divLineAlpha='80' showAlternateHGridColor='1' AlternateHGridAlpha='30' AlternateHGridColor='CCCCCC'>");
+
+        //Categorias
+        myStringBuilder.Append("<categories font='Arial' fontSize='9' fontColor='000000'>");
+        foreach (DataRow drCat in dtAnios.Rows)
+        {
+            myStringBuilder.Append("<category name='" + drCat.ItemArray[0].ToString() + "'/>");
+        }
+        myStringBuilder.Append("</categories>");
+
+        foreach (DataRow drSerie in dtGridFinal.Rows)
+        {
+            //Setea cada serie
+            myStringBuilder.Append("<dataset seriesname='" + drSerie.ItemArray[0].ToString() + "' color='" + alternateColor(dtGridFinal.Rows.IndexOf(drSerie)) + "' anchorBgColor='" + alternateColor(dtGridFinal.Rows.IndexOf(drSerie)) + "' anchorBorderColor='" + alternateColor(dtGridFinal.Rows.IndexOf(drSerie)) + "' >");
+            for (int i = 1; i < dtGridFinal.Columns.Count; i++ )
+            {
+                myStringBuilder.Append("<set value='" + drSerie.ItemArray[i].ToString() + "'/>");
+            }
+
+            myStringBuilder.Append("</dataset>");
+        }
+        
+
+        myStringBuilder.Append("</graph>\");");
+        myStringBuilder.Append("myChart.render(\"chartdiv" + idDiv + "\");");
+        myStringBuilder.Append("</script>");
+        return myStringBuilder.ToString();
+    }
+
+
+
+    public static String traerScriptGraficaMultiSerie(
+        String Caption,
+        String CriterioX,
+        String CriterioY,
+        String NombreSerieA,
+        String NombreSerieB,
+        String PrefijoNumero,
+        String idDiv,
+        DataTable dt0,
+        DataTable dt1,
+        DataTable dt2,
+        int colName,
+        int colValue)
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+        StringBuilder stringDset1 = new StringBuilder();
+        StringBuilder stringDset2 = new StringBuilder();
+
+        myStringBuilder.Append("<div id=\"chartdiv" + idDiv + "\" align=\"center\">No se pudo obtener el Grafico.</div>");
+        myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+        myStringBuilder.Append("<script type=\"text/javascript\">");
+
+        myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_MSColumn3D.swf\", \"myChartId\", \"900\", \"250\");");
+        //yAxisMaxValue='100' 
+        myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + " '  rotateNames='0' baseFontSize='10' xAxisName='" + CriterioX + " ' yAxisName='" + CriterioY + "'  formatNumber='1' formatNumberScale='2' decimalPrecision='0' bgColor='f9fcf0' thousandSeparator='.' showNames='1' decimalPrecision='0'  showBarShadow='1' labelDisplay='Rotate' chartRightMargin='35' bgAngle='45' showBorder='0' shadowAlpha='40' hovercapbg='DEDEBE' hovercapborder='889E6D' numdivlines='9' divLineColor='CCCCCC' divLineAlpha='80' showAlternateHGridColor='1' AlternateHGridAlpha='30' AlternateHGridColor='CCCCCC'>");
+        
+        //myStringBuilder.Append("myChart.setDataXML(\"<graph caption=' ' baseFontSize='8' xAxisName='" + Criterio + " 'formatNumber='1' formatNumberScale='2' thousandSeparator='.' showNames='1' decimalPrecision='0'>");
+        //Categorias
+        myStringBuilder.Append("<categories font='Arial' fontSize='9' fontColor='000000'>");
+
+        stringDset1.Append("<dataset seriesname='" + NombreSerieA + "' color='FDC12E'>");
+        stringDset2.Append("<dataset seriesname='" + NombreSerieB + "' color='56B9F9'>");
+
+        foreach (DataRow gvr in dt0.Rows)
+        {
+            //Generate <set name='..' value='..' />		
+            myStringBuilder.Append("<category name='" + gvr.ItemArray[0].ToString() + "'/>");
+            //armo el builder del dataset1 con el orden correcto
+            
+            bool existeTipoTxValorA = false;
+            bool existeTipoTxValorB = false;
+            //arma el dataset 1
+            foreach (DataRow gvr2 in dt1.Rows)
+            {   
+                if (gvr.ItemArray[0].ToString().Equals(gvr2.ItemArray[colName].ToString()))
+                {
+                    stringDset1.Append("<set value='" + gvr2.ItemArray[colValue].ToString() + "'/>");
+                    existeTipoTxValorA = true;
+                }
+            }
+            if(! existeTipoTxValorA)
+                stringDset1.Append("<set value='0'/>");
+
+            //arma el dataset 2
+            foreach (DataRow gvr3 in dt2.Rows)
+            {
+                if (gvr.ItemArray[0].ToString().Equals(gvr3.ItemArray[colName].ToString()))
+                {
+                    stringDset2.Append("<set value='" + gvr3.ItemArray[colValue].ToString() + "'/>");
+                    existeTipoTxValorB = true;
+                }
+            }
+            if (!existeTipoTxValorB)
+                stringDset2.Append("<set value='0'/>");
+            
+
+        }
+        stringDset1.Append("</dataset>");
+        stringDset2.Append("</dataset>");
+        myStringBuilder.Append("</categories>");
+        myStringBuilder.Append(stringDset1);
+        myStringBuilder.Append(stringDset2);
+
+        ////Set de la serie A
+        //myStringBuilder.Append("<dataset seriesname='" + NombreSerieA + "' color='FDC12E'>");
+        //foreach (DataRow gvr in dt1.Rows)
+        //{
+        //    myStringBuilder.Append("<set value='" + gvr.ItemArray[colValue].ToString() + "'/>");
+        //}
+        //myStringBuilder.Append("</dataset>");
+
+        ////Set de la serie B
+        //myStringBuilder.Append("<dataset seriesname='" + NombreSerieB + "' color='56B9F9'>");
+        //foreach (DataRow gvr in dt2.Rows)
+        //{
+        //    myStringBuilder.Append("<set value='" + gvr.ItemArray[colValue].ToString() + "'/>");
+        //}
+        //myStringBuilder.Append("</dataset>");
+
+        myStringBuilder.Append("</graph>\");");
+        myStringBuilder.Append("myChart.render(\"chartdiv" + idDiv + "\");");
+        myStringBuilder.Append("</script>");
+        return myStringBuilder.ToString();
+    }
+
+
+    public static String traerScriptGrafica(TiposEnumerados.TipoGrafico tipoGrafico,
+        String Caption,
+        String CriterioX,
+        String CriterioY,
+        String idDiv,
+        DataTable dt,
+        int colName,
+        int colValue,
+        int pixX,
+        int pixY,
+        bool toPrint)
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+
+        myStringBuilder.Append("<div id=\"chartdiv" + idDiv + "\" align=\"center\">El gráfico aparecerá dentro de unos segundos. Este texto será reemplazado por el gráfico.</div>");
+
+        //string colorfondo = toPrint ? "ffffff" : "f9fcf0";
+        string colorfondo = toPrint ? "ffffff" : "D9E6F4"; //el color del style "fondo claro"
+        
+
+        switch (tipoGrafico)
+        {
+           
+
+            case TiposEnumerados.TipoGrafico.TORTA:
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/V3-1_Pie3D.swf\", \"myChartId\",  \"" + pixX + "\", \"" + pixY + "\");");
+                myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + "' showValues='0' bgcolor= '" + colorfondo + "' decimals='0' quality='high' formatNumber='1' formatNumberScale='2' labelDisplay='Rotate' slantLabels='1' baseFont='Arial' baseFontSize ='10' maxColWidth='55' >");
+                break;
+            case TiposEnumerados.TipoGrafico.COLUMNA:
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/V3-1_Column3D.swf\", \"myChartId\",  \"" + pixX + "\", \"" + pixY + "\");");
+                myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + "' yAxisName='" + CriterioY + "' shownames='1' showvalues='0' decimals='0' bgcolor= '" + colorfondo + "' maxColWidth='55' thousandSeparator='.' formatNumberScale='0'  labelDisplay='Rotate' slantLabels='1' >");
+                //myStringBuilder.Append("myChart.setDataXML(\"<graph showValues='0' bgcolor= '" + colorfondo + "' decimals='0' quality='high' formatNumber='1' formatNumberScale='2' labelDisplay='Rotate' slantLabels='1' baseFont='Arial' baseFontSize ='10' maxColWidth='35' >");
+                break;
+            case TiposEnumerados.TipoGrafico.BARRA:
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts_v32.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/StackedBar3D.swf\", \"myChartId\", \"" + pixX + "\", \"" + pixY + "\");");
+                //myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + " ' xAxisName='" + CriterioX + " ' yAxisName='" + CriterioY + "' showValues='0' bgcolor='f9fcf0' decimals='0' quality='high' formatNumber='1' formatNumberScale='2' labelDisplay='Rotate' slantLabels='1' baseFont='Arial' baseFontSize ='10' maxColWidth='55' >");
+                myStringBuilder.Append("myChart.setDataXML(\"<graph caption='' bgcolor= '" + colorfondo + "' baseFontSize='9' quality='high' formatNumber='1' formatNumberScale='2' thousandSeparator='.' showNames='1' decimalPrecision='0'>");
+                break;
+
+            case TiposEnumerados.TipoGrafico.FUNEL:
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_Funnel.swf\", \"myChartId\",  \"" + pixX + "\", \"" + pixY + "\");");
+                myStringBuilder.Append("myChart.setDataXML(\"<graph isSliced='1' slicingDistance='10' bgcolor= '" + colorfondo + "' decimalPrecision='0'>");
+                break;
+
+            case TiposEnumerados.TipoGrafico.SEGMENTO:
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_Doughnut2D.swf\", \"myChartId\",  \"" + pixX + "\", \"" + pixY + "\");");
+                myStringBuilder.Append("myChart.setDataXML(\"<graph caption='" + Caption + "' showNames='1' showValues='1' bgcolor= '" + colorfondo + "' isSmartLineSlanted='0' showLegend='1' showPercentageValues='1' >");
+                break;
+
+                
+        }
+
+        foreach (DataRow gvr in dt.Rows)
+        {
+            string color = toPrint ? alternateColorGrays(dt.Rows.IndexOf(gvr)) : alternateColorBlues(dt.Rows.IndexOf(gvr));
+            
+            if (tipoGrafico == TiposEnumerados.TipoGrafico.FUNEL)
+                myStringBuilder.Append("<set name='" + gvr.ItemArray[colName].ToString() + "' value='" + gvr.ItemArray[colValue].ToString() + "' color='" + color + "' alpha='85'/>");
+            if (tipoGrafico == TiposEnumerados.TipoGrafico.SEGMENTO)
+                myStringBuilder.Append("<set name='" + gvr.ItemArray[colName].ToString() + "' value='" + gvr.ItemArray[colValue].ToString() + "' color='" + color + "' alpha='60'/>");
+            if (tipoGrafico == TiposEnumerados.TipoGrafico.COLUMNA)
+                myStringBuilder.Append("<set name='" + gvr.ItemArray[colName].ToString() + "' value='" + gvr.ItemArray[colValue].ToString() + "' color='" + color + "'/>");
+            if (tipoGrafico == TiposEnumerados.TipoGrafico.TORTA)
+                myStringBuilder.Append("<set name='" + gvr.ItemArray[colName].ToString() + "' value='" + gvr.ItemArray[colValue].ToString() + "' color='" + color + "'/>");
+        }
+
+        myStringBuilder.Append("</graph>\");");
+        myStringBuilder.Append("myChart.render(\"chartdiv" + idDiv + "\");");
+        myStringBuilder.Append("</script>");
+        return myStringBuilder.ToString();
+
+    }
+
+
+   
+
+    #endregion Grafica
+
+
+    
+
+    public static string alternateColor(int indexitem)
+    {
+        DataTable dt = new DataTable();
+        dt.Columns.Add("codcolor");
+        dt.Rows.Add("F6BD0F");
+        dt.Rows.Add("8BBA00");
+        dt.Rows.Add("FF8E46");
+        dt.Rows.Add("008E8E");
+        dt.Rows.Add("D64646");
+        dt.Rows.Add("8E468E");
+        dt.Rows.Add("B3AA00");
+        dt.Rows.Add("008ED6");
+        dt.Rows.Add("9D080D");
+        dt.Rows.Add("A186BE");
+
+        int i;
+        if (indexitem > 9)
+            i = indexitem % 10;
+        else
+            i = indexitem;
+
+        return dt.Rows[i].ItemArray[0].ToString();
+    }
+
+    public static string alternateColorBlues(int indexitem)
+    {
+        DataTable dt = new DataTable();
+        dt.Columns.Add("codcolor");
+        dt.Rows.Add("007fff");
+        dt.Rows.Add("3f9eff");
+        dt.Rows.Add("005fbf");
+        dt.Rows.Add("1f7fdf");
+        dt.Rows.Add("1e90ff");
+        
+        int i;
+        if (indexitem > 4)
+            i = indexitem % 5;
+        else
+            i = indexitem;
+
+        return dt.Rows[i].ItemArray[0].ToString();
+    }
+    
+    public static string alternateColorGrays(int indexitem)
+    {
+        DataTable dt = new DataTable();
+        dt.Columns.Add("codcolor");
+        dt.Rows.Add("222222");
+        dt.Rows.Add("444444");
+        dt.Rows.Add("707070");
+        dt.Rows.Add("afafaf");
+        dt.Rows.Add("cccccc");
+
+        int i;
+        if (indexitem > 4)
+            i = indexitem % 5;
+        else
+            i = indexitem;
+
+        return dt.Rows[i].ItemArray[0].ToString();
+    }
+
+    #region Lineal
+    public static String traerScriptGraficaLineal(String Criterio, String idDiv, System.Web.UI.WebControls.DataGrid grid, int colName, int colValue)
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+        myStringBuilder.Append("<div id=\"chartdivLinea\" align=\"center\">No se puede mostrar Grafico.</div>");
+        myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/Fusioncharts.js\"></script>");
+        myStringBuilder.Append("<script type=\"text/javascript\">");
+        myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_MSLine.swf\", \"myChartId\", \"720\", \"350\");");
+
+        //myStringBuilder.Append("myChart.setDataXML(\"<graph caption=' ' baseFontSize='8' xAxisName='" + Criterio + " 'formatNumber='1' formatNumberScale='2' thousandSeparator='.' showNames='1' decimalPrecision='0'>");
+        myStringBuilder.Append("myChart.setDataXML(\"<chart showValues='0' formatNumberScale='0' anchorRadius='3' divLineAlpha='20' divLineColor='CC3300' divLineIsDashed='1' showAlternateHGridColor='1' alternateHGridAlpha='5' alternateHGridColor='CC3300'  labelDisplay='Rotate' numvdivlines='5' chartRightMargin='35' bgColor='f9fcf0' bgAngle='270' thousandSeparator='.' showBorder='0' shadowAlpha='40'>");
+        myStringBuilder.Append("<categories>");
+        foreach (System.Web.UI.WebControls.DataGridItem gvr in grid.Items)
+        {
+            myStringBuilder.Append("<category name='" + gvr.Cells[colName].Text + "'/>");
+            //myStringBuilder.Append("<set name='" + gvr.Cells[colName].Text + "' value='" + gvr.Cells[colValue].Text + "' hoverText='" + gvr.Cells[colName].Text + "'/>");
+            
+        }
+        myStringBuilder.Append("</categories>");
+
+        myStringBuilder.Append("<dataset seriesName='Llamados' color='AFD8F8' anchorBorderColor='AFD8F8' anchorBgColor='AFD8F8'>");
+        foreach (System.Web.UI.WebControls.DataGridItem gvr in grid.Items)
+        {
+            myStringBuilder.Append("<set value='" + gvr.Cells[colValue].Text + "' />");
+            //myStringBuilder.Append("<set name='" + gvr.Cells[colName].Text + "' value='" + gvr.Cells[colValue].Text + "' hoverText='" + gvr.Cells[colName].Text + "'/>");
+
+        }
+        myStringBuilder.Append("</dataset>");
+
+        myStringBuilder.Append("</chart>\");");
+        myStringBuilder.Append("myChart.render(\"chartdivLinea\");");
+        myStringBuilder.Append("</script>");
+        return myStringBuilder.ToString();
+
+        //////
+
+    }
+    #endregion Lineal 2
+
+    #region Lineal 2
+    public static String traerScriptGraficaLineal2()
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+        myStringBuilder.Append("<div id=\"chartdivLinea\" align=\"center\">ggggggggggggggggg.</div>");
+                myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionCharts.js\"></script>");
+                myStringBuilder.Append("<script type=\"text/javascript\">");
+                myStringBuilder.Append("var myChart = new FusionCharts(\"../charts/FCF_MSLine.swf\", \"myChartId\", \"720\", \"350\");");
+                //myStringBuilder.Append("myChart.setDataXML(\"<graph showNames='0' showValues='0' bgcolor='f9fcf0'>");
+                //myStringBuilder.Append("myChart.setDataXML(\"<chart lineThickness='1' showValues='0' formatNumberScale='0' anchorRadius='2' divLineAlpha='20' divLineColor='CC3300' divLineIsDashed='1' showAlternateHGridColor='1' alternateHGridAlpha='5' alternateHGridColor='CC3300' shadowAlpha='40' labelStep='2' numvdivlines='5' chartRightMargin='35' bgColor='f9fcf0' bgAngle='270' bgAlpha='10,10'>");  
+                myStringBuilder.Append("myChart.setDataXML(\"<chart showValues='0' formatNumberScale='0' anchorRadius='3' divLineAlpha='20' divLineColor='CC3300' divLineIsDashed='1' showAlternateHGridColor='1' alternateHGridAlpha='5' alternateHGridColor='CC3300'  labelDisplay='Rotate' numvdivlines='5' chartRightMargin='35' bgColor='f9fcf0' bgAngle='270' thousandSeparator='.' showBorder='0' shadowAlpha='40'>");
+ 
+                
+                #region convertir a segundos
+ 
+                //int hor = int.Parse(TPE.Substring(0, 2));
+                //int min = int.Parse(TPE.Substring(3, 2));
+                //int seg = int.Parse(TPE.Substring(6, 2));
+                //int totaltiempo = 0;
+ 
+                //if (hor > 0)
+                //{
+                //    int h = (hor * 60) * 60;
+                //    totaltiempo = totaltiempo + h;
+ 
+                //}
+                //if (min > 0)
+                //{
+                //    int m = min * 60;
+                //    totaltiempo = totaltiempo + m;
+                //}
+                //totaltiempo = totaltiempo + seg;
+ 
+                #endregion Fin de convertir en segundos
+                #region Carga Categorias
+ 
+                myStringBuilder.Append("<categories>");
+                //for (int i = 0; i < Ds.Tables[0].Rows.Count; i++)
+                //{
+                //    DateTime FechaCategoria = DateTime.Parse(Ds.Tables[0].Rows[i]["Fecha_Grafo"].ToString());
+                //    string FechaPegarCategoria = (string)FechaCategoria.ToShortDateString();
+ 
+                //    //categoria = Ds.Tables[0].Rows[i]["Fecha_Grafo"].ToString();
+                //    myStringBuilder.Append("<category name='" + FechaPegarCategoria + "'/>");
+                //}
+                myStringBuilder.Append("<category name='" + "año 1" + "'/>");
+                myStringBuilder.Append("<category name='" + "año 2" + "'/>");
+                myStringBuilder.Append("<category name='" + "año 3" + "'/>");
+                myStringBuilder.Append("</categories>");
+ 
+                #endregion FIN Carga Categorias
+                #region Serie
+ 
+                //myStringBuilder.Append("<dataset seriesName='Origen' color='F6BD0F' anchorBorderColor='F6BD0F' anchorBgColor='F6BD0F'>");
+                //for (int b = 0; b < Ds.Tables[0].Rows.Count; b++)
+                //{
+                //    //TPE = Ds.Tables[0].Rows[b]["TPExxxxx"].ToString();
+                //    //toolnombre = Ds.Tables[0].Rows[b]["Descripcion_Dependencia"].ToString();
+                //    //myStringBuilder.Append("<set value='" + totaltiempo + "' toolText='" + toolnombre + "{br}" + TPE + "' />");
+
+                myStringBuilder.Append("<set value='" + "15" + "' toolText='" + "xxxx" + "{br}" + "898" + "' />");
+                myStringBuilder.Append("<set value='" + "15" + "' toolText='" + "xxxx" + "{br}" + "898" + "' />");
+                myStringBuilder.Append("<set value='" + "15" + "' toolText='" + "xxxx" + "{br}" + "898" + "' />");
+                myStringBuilder.Append("<set value='" + "15" + "' toolText='" + "xxxx" + "{br}" + "898" + "' />");
+                myStringBuilder.Append("<set value='" + "15" + "' toolText='" + "xxxx" + "{br}" + "898" + "' />");
+                //    demanda = Ds.Tables[0].Rows[b]["Origen"].ToString();
+                //    myStringBuilder.Append("<set value='" + demanda + "' />");
+                //}
+                //myStringBuilder.Append("</dataset>");
+ 
+                myStringBuilder.Append("<dataset seriesName='Llamados' color='AFD8F8' anchorBorderColor='AFD8F8' anchorBgColor='AFD8F8'>");
+                //for (int b = 0; b < Ds.Tables[0].Rows.Count; b++)
+                //{
+                //    intentos = Ds.Tables[0].Rows[b]["Intentos"].ToString();
+                //    myStringBuilder.Append("<set value='" + intentos + "' />");
+                //}
+                myStringBuilder.Append("<set value='" + "1111" + "' />");
+                myStringBuilder.Append("<set value='" + "2222" + "' />");
+                myStringBuilder.Append("<set value='" + "3333" + "' />");
+                myStringBuilder.Append("</dataset>");
+                myStringBuilder.Append("<dataset seriesName='Llamados Contestados' color='8BBA00' anchorBorderColor='8BBA00' anchorBgColor='8BBA00'>");
+                //for (int b = 0; b < Ds.Tables[0].Rows.Count; b++)
+                //{
+                //    contestadas = Ds.Tables[0].Rows[b]["Contestadas"].ToString();
+                //    myStringBuilder.Append("<set value='" + contestadas + "' />");
+                //}
+                myStringBuilder.Append("<set value='" + "758" + "' />");
+                myStringBuilder.Append("<set value='" + "589" + "' />");
+                myStringBuilder.Append("<set value='" + "568" + "' />");
+                myStringBuilder.Append("</dataset>");
+ 
+                #endregion FIN Serie
+ 
+ 
+                myStringBuilder.Append("</chart>\");");
+                myStringBuilder.Append("myChart.render(\"chartdivLinea\");");
+                myStringBuilder.Append("</script>");
+                return myStringBuilder.ToString();
+    }
+    #endregion Lineal 2
+
+
+    #region Tabla Gráfica
+
+    public static string GeneraTablaDatos(DataTable dtDatos)
+    {
+        try
+        {
+            #region Variables de Uso
+
+            int ancho = (int.Parse(dtDatos.Columns.Count.ToString()) - 1) * 120;
+
+            if (ancho >= 720)
+            {
+                ancho = 710;
+
+            }
+
+            int alto = (int.Parse(dtDatos.Rows.Count.ToString())) * 19;
+
+            StringBuilder myStringBuilder = new StringBuilder();
+
+            //int cant_tablas = Ds.Tables.Count;
+            int cant_tablas = 1;
+
+            #endregion Variables de Uso
+            #region Titulo Principal
+
+            myStringBuilder.Append("<table cellspacing='0' cellpadding='2' rules='cols' border='0' style='font-size:8pt;font-family:Arial;color:Black;border-width:0px;border-style:None;border-color:#DEDFDE;background-color:White;border-collapse:collapse; width:" + ancho + "px;'>");
+            myStringBuilder.Append("<caption>");
+            myStringBuilder.Append("<div style='BACKGROUND:#f4f6e1; '>");
+
+            if (cant_tablas == 1)
+            {
+                myStringBuilder.Append("<b class='rtop negrogris'><b class='r1'></b><b class='r2'></b><b class='r3'></b><b class='r4'></b></b>");
+            }
+            if (cant_tablas == 2)
+            {
+                myStringBuilder.Append("<b class='rtop negro'><b class='r1'></b><b class='r2'></b><b class='r3'></b><b class='r4'></b></b>");
+            }
+
+            myStringBuilder.Append("</div>");
+            myStringBuilder.Append("</caption>");
+
+            if (cant_tablas == 2)
+            {
+                myStringBuilder.Append("<tr style='color:White;background-color:#5c5c5c;font-family:verdana;font-weight:bold; '>");
+                myStringBuilder.Append("<th scope='col' style='text-align:center; '>");
+                myStringBuilder.Append(dtDatos.Rows[0][0].ToString());
+                myStringBuilder.Append("</th>");
+                myStringBuilder.Append("</tr>");
+            }
+
+            myStringBuilder.Append("</table>");
+
+            #endregion
+            #region Genera la tabla
+
+            myStringBuilder.Append("<table cellspacing='0' cellpadding='0' rules='cols' border='0' id='Pais' style='font-size:8pt;font-family:Arial;color:Black;border-width:0px;border-style:None;border-color:#DEDFDE;background-color:White;border-collapse:collapse; width:" + ancho + "px; height:" + alto + "px; '>");
+            myStringBuilder.Append("<caption>");
+            myStringBuilder.Append("</caption>");
+
+            #endregion
+            #region Genera las Columnas - Estilo y Nombres
+
+            myStringBuilder.Append("<tr style='color:White;background-color:Gray;font-family:verdana;font-weight:bold;'>");
+
+            for (int i = 0; i < dtDatos.Rows.Count; i++)
+            {
+                if (dtDatos.Rows[i][0].ToString() == "-1")
+                {
+                    for (int c = 1; c < dtDatos.Columns.Count; c++)
+                    {
+                        //***************************************************************************************************************************
+                        //***************************************************************************************************************************
+                        //********************************                                                           ********************************                
+                        //********************************   NO TODAS LAS COLUMNAS SE TOMAN, FILTRAR LAS QUE SI VAN  ********************************
+                        //********************************                                                           ********************************
+                        //***************************************************************************************************************************
+                        //***************************************************************************************************************************
+
+                        string cheq = dtDatos.Rows[i][c].ToString();
+                        myStringBuilder.Append("<th scope='col' style='text-align:center; '>");
+                        myStringBuilder.Append(dtDatos.Rows[i][c].ToString());
+                        myStringBuilder.Append("</th>");
+                    }
+                }
+            }
+
+            myStringBuilder.Append("</tr>");
+
+            #endregion
+            #region Carga Valores
+
+            for (int i = 1; i < dtDatos.Rows.Count; i++)
+            {
+                #region Abre la fila con estilo
+
+                if (dtDatos.Rows[i][0].ToString() == "1000")
+                {
+                    // Color de la fila de TOTAL
+                    myStringBuilder.Append("<tr style='color:White;background-color:Gray;font-family:verdana;font-weight:bold;'>");
+                }
+                else
+                {
+                    //color de las filas Comunes
+                    if (i % 2 == 0)
+                    {
+                        myStringBuilder.Append("<tr style='background-color:#F7F7DE;'>");
+                    }
+                    else
+                    {
+                        myStringBuilder.Append("<tr style='background-color:buttonface; '>");
+                    }
+                }
+
+                #endregion
+                #region carga los valores de la celda
+
+                for (int c = 1; c < dtDatos.Columns.Count; c++)
+                {
+                    #region Carga los valores segun la columna
+
+                    switch (c)
+                    {
+                        case 1:
+                            #region celda con texto
+
+                            string cheq = dtDatos.Rows[i][c].ToString();
+                            myStringBuilder.Append("<td>");
+                            myStringBuilder.Append(dtDatos.Rows[i][c].ToString());
+                            myStringBuilder.Append("</td>");
+
+                            #endregion
+                            break;
+
+                        default:
+                            #region celda con numero
+
+                            cheq = dtDatos.Rows[i][c].ToString();
+                            myStringBuilder.Append("<td style='text-align: center'>");
+                            myStringBuilder.Append(String.Format("{0:#,0}", dtDatos.Rows[i][c].ToString()));
+                            myStringBuilder.Append("</td>");
+
+                            #endregion
+                            break;
+                    }
+
+                    #endregion
+                }
+
+                #endregion
+                #region Cierra la fila
+
+                myStringBuilder.Append("</tr>");
+
+                #endregion
+            }
+
+            #endregion
+            #region Cierra la tabla
+
+            myStringBuilder.Append("</table>");
+            myStringBuilder.Append("<table align='center' border='0' cellpadding='0' cellspacing='0' style=' '>");
+            myStringBuilder.Append("<tbody>");
+            myStringBuilder.Append("<tr align='center'>");
+            myStringBuilder.Append("<td style='height: 10px; ' valign='top' >");
+            myStringBuilder.Append("<div style='BACKGROUND: #f4f6e1; width:" + ancho.ToString() + "px;'>");
+            myStringBuilder.Append("<b class='rbottom negrogris'>");
+            myStringBuilder.Append("<b class='r4'></b>");
+            myStringBuilder.Append("<b class='r3'></b>");
+            myStringBuilder.Append("<b class='r2'></b>");
+            myStringBuilder.Append("<b class='r1'></b>");
+            myStringBuilder.Append("</b>");
+            myStringBuilder.Append("</div>");
+            myStringBuilder.Append("</td>");
+            myStringBuilder.Append("</tr>");
+            myStringBuilder.Append("</tbody>");
+            myStringBuilder.Append("</table>");
+
+            #endregion
+
+            return myStringBuilder.ToString();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        { }
+    }
+
+    #endregion
+
+    #region Mapa Arg
+    public static String traerScriptMapaArg()
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+
+            myStringBuilder.Append("<div id=\"mapdiv" + "1" + "\" align=\"center\">No se pudo obtener el Mapa.</div>");
+            myStringBuilder.Append("<script language=\"JavaScript\" src=\"../charts/FusionMaps.js\"></script>");
+        
+            myStringBuilder.Append("<script type=\"text/javascript\">");
+
+            myStringBuilder.Append("var myMap = new FusionMaps(\"../charts/FCMap_Argentina.swf\", \"myMapId\", \"500\", \"700\");");
+            myStringBuilder.Append("myMap.setDataXML(\"<map borderColor='FFFFFF' fillAlpha='80' showBevel='0' legendPosition='Bottom' >");
+            myStringBuilder.Append("<colorRange>");
+            myStringBuilder.Append( "<color minValue='0' maxValue='100000000' displayValue='Population : Below 100 M' color='CC0001' />");
+            myStringBuilder.Append( "<color minValue='100000000' maxValue='500000000' displayValue='Population :100 - 500 M' color='FFD33A' />");
+            myStringBuilder.Append( "<color minValue='500000000' maxValue='1000000000' displayValue='Population :500 - 1000 M' color='069F06' />");
+            myStringBuilder.Append( "<color minValue='1000000000' maxValue='5000000000' displayValue='Population : Above 1000 M' color='ABF456' />");
+            myStringBuilder.Append("</colorRange>");
+
+
+            myStringBuilder.Append("<data>");
+
+
+            myStringBuilder.Append("<entity id='" + "01" + "' value='" +"Chaco"+ "' />");
+            myStringBuilder.Append("<entity id='" + "02" + "' value='" + "Formosa" + "' />");
+            myStringBuilder.Append("<entity id='" + "03" + "' value='" + "Bs As" + "' />");
+            myStringBuilder.Append("<entity id='" + "04" + "' value='" + "Misiones" + "' />");
+            myStringBuilder.Append("<entity id='" + "05" + "' value='" + "eee" + "' />");
+            myStringBuilder.Append("<entity id='" + "06" + "' value='" + "dfgsdgds" + "' />");
+
+            myStringBuilder.Append("</data>");
+
+
+            myStringBuilder.Append("</map>");
+
+        
+            myStringBuilder.Append("myMap.render(\"mapdiv" + "1" + "\");");
+            myStringBuilder.Append("</script>");
+        
+
+        return myStringBuilder.ToString();
+        
+    }
+    #endregion mapa Arg
+}

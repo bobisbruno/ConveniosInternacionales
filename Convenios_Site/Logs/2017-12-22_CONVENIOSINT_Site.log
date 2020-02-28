@@ -1,0 +1,315 @@
+2017-12-22 13:53:06,061 [ID (null)] [17] ERROR global_asax - ID Error       : 325183728
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1649
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 915
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 927
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1617
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 867
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 13:53:10,748 [ID (null)] [18] ERROR global_asax - ID Error       : 1602754077
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1649
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 915
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 927
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1617
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 867
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 13:53:21,312 [ID (null)] [19] ERROR global_asax - ID Error       : -315379083
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1649
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 915
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 927
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1617
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 867
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:12:22,903 [ID (null)] [35] ERROR global_asax - ID Error       : 103861631
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx(46): error CS1061: 'ASP.paginas_consultatprovisorios_aspx' no contiene una definición de 'ddlPrestacionesS_SelectedIndexChanged' ni se encontró ningún método de extensión 'ddlPrestacionesS_SelectedIndexChanged' que acepte un primer argumento de tipo 'ASP.paginas_consultatprovisorios_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2017-12-22 14:12:42,095 [ID (null)] [16] ERROR global_asax - ID Error       : -182503421
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx(46): error CS1061: 'ASP.paginas_consultatprovisorios_aspx' no contiene una definición de 'ddlPrestacionesS_SelectedIndexChanged' ni se encontró ningún método de extensión 'ddlPrestacionesS_SelectedIndexChanged' que acepte un primer argumento de tipo 'ASP.paginas_consultatprovisorios_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2017-12-22 14:26:15,453 [ID (null)] [41] ERROR global_asax - ID Error       : 1856796677
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:18,306 [ID (null)] [51] ERROR global_asax - ID Error       : -1611399091
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:24,284 [ID (null)] [50] ERROR global_asax - ID Error       : -1714420663
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:25,148 [ID (null)] [45] ERROR global_asax - ID Error       : -409527465
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:25,681 [ID (null)] [51] ERROR global_asax - ID Error       : 1043373783
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:25,896 [ID (null)] [5] ERROR global_asax - ID Error       : 896258857
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:26:26,093 [ID (null)] [45] ERROR global_asax - ID Error       : -1898735159
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:29:11,909 [ID (null)] [51] ERROR global_asax - ID Error       : 1734184607
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:35:58,535 [ID (null)] [68] ERROR global_asax - ID Error       : 1040590527
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->System.Web.Services.Protocols.SoapException: El servidor no puede procesar la solicitud. ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean) ---> System.Exception: Error en Solicitudes.Datos System.Collections.Generic.List`1[Ar.Gov.Anses.Microinformatica.ConveniosX5.Negocio.SolicitudProvisoriaMovimiento] SolicitudProvisoriaMovimiento_TraeXMovimiento(System.String) ---> System.IndexOutOfRangeException: breveDescripcion
+   en System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   en System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   en NullableReaders.NullableDataReader.GetNullableString(String name) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\NullableDataReader.cs:línea 416
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoriaMovimiento& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1664
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 930
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.SolicitudProvisoriaMovimiento_TraeXMovimiento(String nroSolicitudProvisoria) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 942
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.Fill(SolicitudProvisoria& oObj, NullableDataReader dr) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 1632
+   en Ar.Gov.Anses.Microinformatica.ConveniosX5.Datos.SolicitudesDatos.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias) en c:\Desarrollos\ConveniosInternacionales\Convenios_Datos\Solicitudes.Datos.cs:línea 882
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.ActoresWS.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 14:38:02,723 [ID (null)] [76] ERROR global_asax - ID Error       : 429882382
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:System.Web.Services->Se excedió el tiempo de espera de la operación
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 15:06:08,157 [ID (null)] [7] ERROR global_asax - ID Error       : -1330878754
+Mensaje Error : System.Collections.Generic.List`1[ActoresWS.SolicitudProvisoria] TraeSolicitudesProvisorias(System.String, System.String, System.Nullable`1[System.Int16], System.Nullable`1[System.Int16], Boolean, System.String ByRef) - Error:Anses.Director.Session.lib->7503-Error en sesión.No se puede obtener credenciales
+Stack     :    en InvocaWsDao.TraeSolicitudesProvisorias(String anio, String mes, Nullable`1 codPais, Nullable`1 codPrestacion, Boolean soloProvisorias, String& mensaje) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 1863
+   en Paginas_ConsultaTProvisorios.btnConsultar_Click(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs:línea 291
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-22 16:06:16,694 [ID (null)] [7] ERROR MasterPage - 7503-Error en sesión.No se puede obtener credenciales
+Anses.Director.Session.DirSessionExepcion: 7503-Error en sesión.No se puede obtener credenciales
+   en Anses.Director.Session.Credencial.ObtenerCredencial()
+   en MasterPage.Page_Init(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master.cs:línea 138
+2017-12-22 16:06:17,036 [ID (null)] [7] ERROR DirectorManager - En consultarDirector 7503-Error en sesión.No se puede obtener credenciales

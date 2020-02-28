@@ -1,0 +1,407 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Text.RegularExpressions;
+using System.ComponentModel;
+
+public partial class controlFecha : System.Web.UI.UserControl
+{
+    private string _Text;
+    private bool _EsPeriodo = false;
+    private DateTime _Valor;
+    private string _Anio;
+    private bool _MostrarError;
+    private string _MensajeError;
+    private bool _Obligatorio;
+
+    #region Asignacion de fecha Por separado
+
+    public string Anio
+    {
+        get { return txtAnio.Text; }
+        set
+        {
+            _Anio = value;
+            txtAnio.Text = value;
+        }
+    }
+
+    public string Dia
+    {
+        set { txtDia.Text = value; }
+        get { return txtDia.Text; }
+    }
+
+    public string Mes
+    {
+        set { txtMes.Text = value; }
+        get { return txtMes.Text; }
+    }
+
+    public string AsignarFecha
+    {
+        set
+        {
+            AsignarValor(value);
+        }
+    }
+
+    #endregion
+
+    public string Text
+    {
+        get
+        {
+            if (EsPeriodo)
+                return txtMes.Text + txtAnio.Text;
+            else
+                return txtDia.Text + txtMes.Text + txtAnio.Text;
+        }
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                txtDia.Text = string.Empty;
+                txtMes.Text = string.Empty;
+                txtAnio.Text = string.Empty;
+            }
+            else
+            {
+                if (!EsPeriodo)
+                {
+                    if (value.Length == 8)
+                        value = value.Substring(0, 2) + "/" + value.Substring(2, 2) + "/" + value.Substring(4, 4);
+
+                    if (EsFecha(value))
+                        AsignarValor(value);
+                }
+                else
+                {
+                    if (value.Length == 6)
+                        value = value.Substring(0, 2) + "/" + value.Substring(3, 4);
+
+                    if (EsFecha(value))
+                        AsignarValor(value);
+                }
+            }
+        }
+    }
+
+    public bool EnabledAnio
+    {
+        set { txtAnio.Enabled = value; }
+    }
+
+    public bool Enabled
+    {
+        get
+        {
+            if (!txtAnio.Enabled && txtMes.Enabled ||
+                !txtAnio.Enabled && txtDia.Enabled ||
+                !txtMes.Enabled && txtDia.Enabled)
+            {
+                return true;
+            }
+            else
+            {
+                return txtMes.Enabled;
+            }
+        }
+        set
+        {
+            txtDia.Enabled = value;
+            txtMes.Enabled = value;
+            txtAnio.Enabled = value;
+        }
+    }
+
+    public DateTime Value
+    {
+        get { return Valor(); }
+    }
+
+    public string ValueConFormato
+    {
+        get
+        {
+            try
+            {
+                if (!EsPeriodo)
+                    return txtDia.Text + "/" + txtMes.Text + "/" + txtAnio.Text;
+                else
+                    return txtMes.Text + "/" + txtAnio.Text;
+
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+    }
+
+    public bool EsPeriodo
+    {
+        set
+        {
+            spanBar1.Visible = !value;
+            txtDia.Visible = !value;
+            _EsPeriodo = value;
+        }
+        get { return _EsPeriodo; }
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void AsignarValor(string value)
+    {
+
+        if (value.Length == 6)
+        {
+            txtDia.Text = "01";
+            txtMes.Text = value.Substring(0, 2);
+            txtAnio.Text = value.Substring(2, 4);
+        }
+        else if (value.Length == 7)
+        {
+            txtDia.Text = "01";
+            txtMes.Text = value.Substring(0, 2);
+            txtAnio.Text = value.Substring(3, 4);
+        }
+        else if (value.Length == 8)
+        {
+            txtDia.Text = value.Substring(0, 2);
+            txtMes.Text = value.Substring(2, 2);
+            txtAnio.Text = value.Substring(4, 4);
+        }
+        else if (value.Length == 10)
+        {
+            txtDia.Text = value.Substring(0, 2);
+            txtMes.Text = value.Substring(3, 2);
+            txtAnio.Text = value.Substring(6, 4);
+        }
+    }
+
+    /// <summary>
+    /// retorna una fecha en objeto Date
+    /// </summary>
+    private DateTime Valor()
+    {
+        try
+        {
+            return DateTime.Parse(txtDia.Text + "/" + txtMes.Text + "/" + txtAnio.Text);
+        }
+        catch (Exception err)
+        {
+            throw err;
+        }
+    }
+
+    /// <summary>
+    /// Nombre del control a validar que se mostrara en el detalle del error.
+    /// </summary>
+    public string ValidarFecha(string NombreControl)
+    {
+        string laFecha = string.Empty;
+        string Resultado = string.Empty;
+
+        if (!EsPeriodo)
+        {
+            laFecha = txtDia.Text + "/" + txtMes.Text + "/" + txtAnio.Text;
+
+            if (string.IsNullOrEmpty(txtDia.Text) && string.IsNullOrEmpty(txtMes.Text) && string.IsNullOrEmpty(txtAnio.Text))
+            {
+                Resultado += "Debe informar la " + NombreControl + ".<br/>";
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtDia.Text))
+                {
+                    Resultado += "Debe informar el día de la " + NombreControl + ".<br/>";
+                }
+                if (string.IsNullOrEmpty(txtMes.Text))
+                {
+                    Resultado += "Debe informar el mes de la " + NombreControl + ".<br/>";
+                }
+                if (string.IsNullOrEmpty(txtAnio.Text))
+                {
+                    Resultado += "Debe informar el año de la " + NombreControl + ".<br/>";
+                }
+            }
+            if (string.IsNullOrEmpty(Resultado))
+            {
+                if (!EsFecha(laFecha))
+                {
+                    Resultado = "La " + NombreControl + " no es válida.<br/>";
+                }
+                else
+                {
+                    txtDia.Text = DateTime.Parse(laFecha).ToString("dd");
+                    txtMes.Text = DateTime.Parse(laFecha).ToString("MM");
+                    txtAnio.Text = DateTime.Parse(laFecha).ToString("yyyy");
+                }
+            }
+        }
+        else
+        {
+            laFecha = txtMes.Text + "/" + txtAnio.Text;
+
+            if (string.IsNullOrEmpty(txtMes.Text) && string.IsNullOrEmpty(txtAnio.Text))
+            {
+                Resultado += "Debe informar un " + NombreControl + ".<br/>";
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtMes.Text))
+                {
+                    Resultado += "Debe informar el mes para el " + NombreControl + ".<br/>";
+                }
+                if (string.IsNullOrEmpty(txtAnio.Text))
+                {
+                    Resultado += "Debe informar el año para el " + NombreControl + ".<br/>";
+                }
+            }
+            if (string.IsNullOrEmpty(Resultado))
+            {
+                if (!EsFecha(laFecha))
+                {
+                    Resultado = "El " + NombreControl + " no es válido.<br/>";
+                }
+                else
+                {
+                    txtDia.Text = "01";
+                    txtMes.Text = DateTime.Parse(laFecha).ToString("MM");
+                    txtAnio.Text = DateTime.Parse(laFecha).ToString("yyyy");
+                }
+            }
+        }
+
+        return Resultado;
+    }
+
+    public bool EsFecha(string valor)
+    {
+        DateTime fecha = new DateTime();
+        if (!EsPeriodo)
+            return DateTime.TryParse(valor, out fecha);
+        else
+            return DateTime.TryParse("01/" + valor, out fecha);
+    }
+
+    public bool Obligatorio
+    {
+        set
+        {
+            _Obligatorio = value;
+            lbl_Obligatorio.Visible = value;
+        }
+        get
+        {
+            return _Obligatorio;
+        }
+    }
+
+    public string Mensaje_Error
+    {
+        set
+        {
+            _MensajeError = value;
+            lbl_ErrorFecha.Text = value;
+        }
+        get
+        {
+            return lbl_ErrorFecha.Text = _MensajeError;
+        }
+    }
+
+    public bool HayErrores
+    {
+        get
+        {
+            if (Obligatorio)
+            {
+                if (Text.Length == 8)
+                {
+                    string fechaFormato = txtDia.Text + "/" + txtMes.Text + "/" + txtAnio.Text;
+                    if (!EsFecha(fechaFormato))
+                    {
+                        _MensajeError = "Debe ingresar una fecha válida.";
+                        lbl_ErrorFecha.Visible = true;
+                        //lbl_ErrorFecha.Style.Value = "";
+                        return true;
+                    }
+                    //lbl_ErrorFecha.Style.Value = "display:none";
+                    lbl_ErrorFecha.Visible = false;
+                    return false;
+                }
+                else if (!string.IsNullOrEmpty(Text) ) 
+                {
+                    _MensajeError = "Campo Incompleto.";
+                    lbl_ErrorFecha.Visible = true;
+                    //lbl_ErrorFecha.Style.Value = "";
+                    return true;
+                }
+                else 
+                {
+                    lbl_ErrorFecha.Text = "Campo Obligatorio.";
+                    lbl_ErrorFecha.Visible = true;
+                    //lbl_ErrorFecha.Style.Value = "";
+                    return true;
+                }
+            }
+            else
+            {
+                //lbl_ErrorFecha.Style.Value = "display:none";
+                lbl_ErrorFecha.Visible = false;
+                return false;
+            }
+        }
+    }
+
+    public bool MostrarError
+    {
+        set
+        {
+            if (string.IsNullOrEmpty(_MensajeError))
+            {
+                lbl_ErrorFecha.Text = "Campo Obligatorio.";
+            }
+            else
+            {
+                lbl_ErrorFecha.Text = _MensajeError;
+            }
+
+            _MostrarError = value;
+            lbl_ErrorFecha.Visible = value;
+        }
+        get
+        {
+            lbl_ErrorFecha.Visible = _MostrarError;
+            return _MostrarError;
+        }
+    }
+
+    public bool EsFechaMinima()
+    {
+        bool resultado = false;
+
+        if (!string.IsNullOrEmpty(this.Text))
+        {
+            if (DateTime.Parse(this.Text) == DateTime.MinValue)
+            {
+                resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+}

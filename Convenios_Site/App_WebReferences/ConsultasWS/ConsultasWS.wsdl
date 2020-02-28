@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://AnsesConveniosInternacionalesX5.anses.gov.ar">
+      <s:element name="TraeDevolucionesNotificadasVencidasXPlazo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PageNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ordenPor" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="DiasPlazo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeDevolucionesNotificadasVencidasXPlazoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeDevolucionesNotificadasVencidasXPlazoResult" type="tns:ArrayOfNotificacionesVencidas" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalRowsNum" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNotificacionesVencidas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NotificacionesVencidas" nillable="true" type="tns:NotificacionesVencidas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NotificacionesVencidas">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="NomApe" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodPrestacion" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionPrestacion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaMovimiento" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Destino" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Certificado" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaNotificacion" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Disposed" />
+      <s:element name="TraeSolicitudesEFechasSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fechaDesde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaHasta" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" nillable="true" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPais" nillable="true" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="Mercosur" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="orderBy" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeSolicitudesEFechasSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeSolicitudesEFechasSolicitudResult" type="tns:ArrayOfSolicitudesEFechasSolicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolicitudesEFechasSolicitud">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SolicitudesEFechasSolicitud" nillable="true" type="tns:SolicitudesEFechasSolicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SolicitudesEFechasSolicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApeNomCompleto" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cuip" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodPrestacion" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DescripcionPrestacion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Pais_PK" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="PaisDescCompleto" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Mercosur" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Referencia_exterior" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ubicacion_Fisica" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FAMSolicitud" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeUltimoEstadoYSectorSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeUltimoEstadoYSectorSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TraeUltimoEstadoYSectorSolicitudResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="codEstado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeUltimoMovimientoSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBeneficiario" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPrestacion" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeUltimoMovimientoSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeUltimoMovimientoSolicitudResult" type="tns:Movimiento_Solicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Movimiento_Solicitud">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Fecha_Movimiento" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Estado" type="tns:Estado" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sector" type="tns:Sector" />
+              <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Estado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_estado" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Sector">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_sector" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeIndicadorPorSolicitudesPaisConvenio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="criteriotemporal" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="param_Temporal" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIndicadorPorSolicitudesPaisConvenioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIndicadorPorSolicitudesPaisConvenioResult" type="tns:ArrayOfIndicadorPorSolicitudesPaisConvenio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIndicadorPorSolicitudesPaisConvenio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndicadorPorSolicitudesPaisConvenio" nillable="true" type="tns:IndicadorPorSolicitudesPaisConvenio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndicadorPorSolicitudesPaisConvenio">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TotalPais" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PorcentualPais" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Pais_PK" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DPais" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeIndicadorPorSolicitudesPrestaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="criteriotemporal" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="param_Temporal" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIndicadorPorSolicitudesPrestacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIndicadorPorSolicitudesPrestacionesResult" type="tns:ArrayOfIndicadorPorSolicitudesPrestaciones" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIndicadorPorSolicitudesPrestaciones">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndicadorPorSolicitudesPrestaciones" nillable="true" type="tns:IndicadorPorSolicitudesPrestaciones" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndicadorPorSolicitudesPrestaciones">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TotalPrestacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PorcentualPrestacion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CodPrestacion" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="DPrestacion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeIndicadorTotalesEstadoAFechaX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIndicadorTotalesEstadoAFechaXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIndicadorTotalesEstadoAFechaXResult" type="tns:ArrayOfIndicadorTotalesEstado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIndicadorTotalesEstado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndicadorTotalesEstado" nillable="true" type="tns:IndicadorTotalesEstado" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndicadorTotalesEstado">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TotalEstado" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PorcentualEstado" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_estado" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Destado" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TraeIndicadorTotalesSectorAFechaX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraeIndicadorTotalesSectorAFechaXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraeIndicadorTotalesSectorAFechaXResult" type="tns:ArrayOfIndicadorTotalesSector" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIndicadorTotalesSector">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndicadorTotalesSector" nillable="true" type="tns:IndicadorTotalesSector" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndicadorTotalesSector">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Disposed">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TotalSector" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PorcentualSector" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Cod_sector" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Dsector" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TraeDevolucionesNotificadasVencidasXPlazoSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionesNotificadasVencidasXPlazo" />
+  </wsdl:message>
+  <wsdl:message name="TraeDevolucionesNotificadasVencidasXPlazoSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeDevolucionesNotificadasVencidasXPlazoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesEFechasSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesEFechasSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeSolicitudesEFechasSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeSolicitudesEFechasSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeUltimoEstadoYSectorSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeUltimoEstadoYSectorSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeUltimoEstadoYSectorSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeUltimoEstadoYSectorSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeUltimoMovimientoSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeUltimoMovimientoSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="TraeUltimoMovimientoSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeUltimoMovimientoSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorPorSolicitudesPaisConvenioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorPorSolicitudesPaisConvenio" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorPorSolicitudesPaisConvenioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorPorSolicitudesPaisConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorPorSolicitudesPrestacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorPorSolicitudesPrestaciones" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorPorSolicitudesPrestacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorPorSolicitudesPrestacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorTotalesEstadoAFechaXSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorTotalesEstadoAFechaX" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorTotalesEstadoAFechaXSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorTotalesEstadoAFechaXResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorTotalesSectorAFechaXSoapIn">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorTotalesSectorAFechaX" />
+  </wsdl:message>
+  <wsdl:message name="TraeIndicadorTotalesSectorAFechaXSoapOut">
+    <wsdl:part name="parameters" element="tns:TraeIndicadorTotalesSectorAFechaXResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ConsultasWSSoap">
+    <wsdl:operation name="TraeDevolucionesNotificadasVencidasXPlazo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae Devoluciones Notificadas Vencidas por Plazo</wsdl:documentation>
+      <wsdl:input message="tns:TraeDevolucionesNotificadasVencidasXPlazoSoapIn" />
+      <wsdl:output message="tns:TraeDevolucionesNotificadasVencidasXPlazoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesEFechasSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae solicitudes entre fechas de solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeSolicitudesEFechasSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeSolicitudesEFechasSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoEstadoYSectorSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae ultimos codigos de estado y Sector de una solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeUltimoEstadoYSectorSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeUltimoEstadoYSectorSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoMovimientoSolicitud">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae ultimo movimiento de solicitud</wsdl:documentation>
+      <wsdl:input message="tns:TraeUltimoMovimientoSolicitudSoapIn" />
+      <wsdl:output message="tns:TraeUltimoMovimientoSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPaisConvenio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae totales stock Indicador Por Solicitudes Pais - Convenio segun criterio temporal anual - semestral - trimestral o mensual para un anio</wsdl:documentation>
+      <wsdl:input message="tns:TraeIndicadorPorSolicitudesPaisConvenioSoapIn" />
+      <wsdl:output message="tns:TraeIndicadorPorSolicitudesPaisConvenioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPrestaciones">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae totales stock Indicador Por Solicitudes Prestaciones segun criterio temporal anual - semestral - trimestral o mensual para un anio</wsdl:documentation>
+      <wsdl:input message="tns:TraeIndicadorPorSolicitudesPrestacionesSoapIn" />
+      <wsdl:output message="tns:TraeIndicadorPorSolicitudesPrestacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesEstadoAFechaX">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae totales stock Indicador Por estado de solicitudes a una fecha</wsdl:documentation>
+      <wsdl:input message="tns:TraeIndicadorTotalesEstadoAFechaXSoapIn" />
+      <wsdl:output message="tns:TraeIndicadorTotalesEstadoAFechaXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesSectorAFechaX">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trae totales stock Indicador Por sectores a una fecha</wsdl:documentation>
+      <wsdl:input message="tns:TraeIndicadorTotalesSectorAFechaXSoapIn" />
+      <wsdl:output message="tns:TraeIndicadorTotalesSectorAFechaXSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultasWSSoap" type="tns:ConsultasWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraeDevolucionesNotificadasVencidasXPlazo">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionesNotificadasVencidasXPlazo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesEFechasSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesEFechasSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoEstadoYSectorSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeUltimoEstadoYSectorSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoMovimientoSolicitud">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeUltimoMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPaisConvenio">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorPorSolicitudesPaisConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPrestaciones">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorPorSolicitudesPrestaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesEstadoAFechaX">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorTotalesEstadoAFechaX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesSectorAFechaX">
+      <soap:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorTotalesSectorAFechaX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultasWSSoap12" type="tns:ConsultasWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraeDevolucionesNotificadasVencidasXPlazo">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeDevolucionesNotificadasVencidasXPlazo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeSolicitudesEFechasSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeSolicitudesEFechasSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoEstadoYSectorSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeUltimoEstadoYSectorSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeUltimoMovimientoSolicitud">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeUltimoMovimientoSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPaisConvenio">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorPorSolicitudesPaisConvenio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorPorSolicitudesPrestaciones">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorPorSolicitudesPrestaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesEstadoAFechaX">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorTotalesEstadoAFechaX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraeIndicadorTotalesSectorAFechaX">
+      <soap12:operation soapAction="http://AnsesConveniosInternacionalesX5.anses.gov.ar/TraeIndicadorTotalesSectorAFechaX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultasWS">
+    <wsdl:port name="ConsultasWSSoap" binding="tns:ConsultasWSSoap">
+      <soap:address location="http://10.86.30.215/Convenios_WS/ConsultasWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ConsultasWSSoap12" binding="tns:ConsultasWSSoap12">
+      <soap12:address location="http://10.86.30.215/Convenios_WS/ConsultasWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,954 @@
+2017-12-07 12:09:36,777 [ID (null)] [8] ERROR global_asax - ID Error       : 1029012152
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\ConsultaTProvisorios.aspx.cs(300): error CS0103: El nombre 'hfprovtodos' no existe en el contexto actual
+Stack     :    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2017-12-07 13:49:38,031 [ID (null)] [35] ERROR global_asax - ID Error       : -84066039
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master(60): error CS0433: El tipo 'ASP.controles_cabecera_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_psdb4cpj.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_qqmnf12b.dll'
+Stack     :    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   en System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   en System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)
+
+2017-12-07 13:49:42,091 [ID (null)] [20] ERROR global_asax - ID Error       : 1853343791
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master(60): error CS0433: El tipo 'ASP.controles_cabecera_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_psdb4cpj.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_qqmnf12b.dll'
+Stack     :    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   en System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   en System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)
+
+2017-12-07 13:49:44,365 [ID (null)] [21] ERROR global_asax - ID Error       : -170932829
+Mensaje Error : c:\Desarrollos\ConveniosInternacionales\Convenios_Site\MasterPage\MasterPage.master(60): error CS0433: El tipo 'ASP.controles_cabecera_ascx' existe tanto en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_psdb4cpj.dll' como en 'c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_Web_qqmnf12b.dll'
+Stack     :    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   en System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   en System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)
+
+2017-12-07 15:40:19,176 [ID (null)] [7] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => System.InvalidOperationException: El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.79smoh5i.2.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-12-07 15:40:19,257 [ID (null)] [7] ERROR comun_controles_cabecera - Se generó una excepción : El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+2017-12-07 15:40:28,307 [ID (null)] [7] ERROR Paginas_AMBancos - Se generó una excepción : El valor no puede ser nulo.
+Nombre del parámetro: source
+2017-12-07 15:40:28,307 [ID (null)] [7] ERROR Paginas_AMBancos - Se generó una excepción : El valor no puede ser nulo.
+Nombre del parámetro: source
+2017-12-07 15:40:29,311 [ID (null)] [7] ERROR global_asax - ID Error       : 128186724
+Mensaje Error : El valor no puede ser nulo.
+Nombre del parámetro: source
+Stack     :    en Paginas_AMBancos.Page_Load(Object sender, EventArgs e) en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\Paginas\AMBancos.aspx.cs:línea 141
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+2017-12-07 15:40:44,329 [ID (null)] [7] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => System.InvalidOperationException: El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.79smoh5i.2.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-12-07 15:40:44,329 [ID (null)] [7] ERROR comun_controles_cabecera - Se generó una excepción : El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+2017-12-07 15:41:08,993 [ID (null)] [12] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => System.InvalidOperationException: El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.79smoh5i.2.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-12-07 15:41:08,993 [ID (null)] [12] ERROR comun_controles_cabecera - Se generó una excepción : El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+2017-12-07 15:41:36,325 [ID (null)] [10] ERROR InvocaWsDao - en VersionSistema se produjo el siguiente error => System.InvalidOperationException: El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   en System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   en AuxiliaresWS.AuxiliaresWS.VersionSistema() en c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\convenios_site\6c96af76\9489b757\App_WebReferences.79smoh5i.2.cs:línea 142
+   en InvocaWsDao.VersionSistema() en c:\Desarrollos\ConveniosInternacionales\Convenios_Site\App_Code\InvocaWsDao.cs:línea 159
+2017-12-07 15:41:36,326 [ID (null)] [10] ERROR comun_controles_cabecera - Se generó una excepción : El cliente encontró el tipo de contenido de respuesta 'text/html; charset=utf-8', pero se esperaba 'text/xml'.
+Error de la solicitud con el mensaje de error:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Error detallado de IIS 7.5 - 500.19 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>Error del servidor</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>Resumen de error</legend> 
+  <h2>Error HTTP 500.19 - Internal Server Error</h2> 
+  <h3>No se puede obtener acceso a la página solicitada porque los datos de configuración relacionados de la página no son válidos.</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>Información de error detallada</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Módulo</th><td>IIS Web Core</td></tr> 
+    <tr><th>Notificación</th><td>BeginRequest</td></tr> 
+    <tr class="alt"><th>Controlador</th><td>No determinado aún</td></tr> 
+    <tr><th>Código de error</th><td>0x80070032</td></tr> 
+    <tr class="alt"><th>Error de configuración</th><td>La sección de configuración 'authentication' no se puede leer porque falta una declaración de sección
+</td></tr> 
+<tr><th>Archivo de configuración</th><td>\\?\C:\Desarrollos\ConveniosInternacionales\Convenios_WS\web.config</td></tr> 
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Dirección URL solicitada</th><td>http://10.86.30.215:80/Convenios_WS/AuxiliaresWS.asmx</td></tr> 
+    <tr><th>Ruta de acceso física</th><td>C:\Desarrollos\ConveniosInternacionales\Convenios_WS\AuxiliaresWS.asmx</td></tr> 
+    <tr class="alt"><th>Método de inicio de sesión</th><td>No determinado aún</td></tr> 
+    <tr><th>Usuario de inicio de sesión</th><td>No determinado aún</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+  <div class="config_source content-container"> 
+    <fieldset> 
+    <legend>Origen de configuración</legend> 
+    <pre><code>   34:   </system.web>
+<span class="highlight-code">   35:   <authentication mode="None"/></span>
+   36:   <identity impersonate="false"/>
+</code></pre> 
+    </fieldset> 
+  </div> 
+ 
+<div class="content-container"> 
+ <fieldset><legend>Vínculos y más información</legend> 
+  Se produce este error cuando surge algún problema al leer el archivo de configuración del servidor web o la aplicación web. En algunos casos, los registros de eventos pueden contener más información sobre el motivo de este error. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&IIS70Error=500,19,0x80070032,7601">Ver más información »</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+--.

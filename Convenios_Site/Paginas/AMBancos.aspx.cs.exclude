@@ -1,0 +1,183 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.IO;
+using log4net;
+using System.Threading;
+using BancoWS;
+
+public partial class Paginas_AMBancos : System.Web.UI.Page
+{
+    readonly ILog log = LogManager.GetLogger(typeof(Paginas_AMBancos));
+
+    private bool TienePermiso(string Valor)
+    {
+        return DirectorManager.traerPermiso(Valor, Page.Request.FilePath.Substring(Page.Request.FilePath.LastIndexOf("/") + 1).ToLower()).Value.accion != null;
+    }
+
+    #region APlica Seguridad Pagina
+    private bool AplicarSeguridad()
+    {
+        bool permiso = false;
+        try
+        {
+            permiso = TienePermiso("accesoPagina");
+
+        }
+        catch (ThreadAbortException)
+        { }
+        return permiso;
+    }
+    #endregion APlica Seguridad Pagina
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            //Check de Seguridad tanto para ingresar como modificar instrumento
+            #region Seguridad
+            if (!AplicarSeguridad())
+                Response.Redirect(ConfigurationManager.AppSettings["urlAccesoDenegado"].ToString());
+            #endregion Seguridad
+            InicializarDatosPagina("Bancos", "> Administración > Bancos");
+
+            MError.MensajeError = string.Empty;
+
+            CargarGridView();
+        }
+    }
+
+    private void InicializarDatosPagina(string titulo, string txtBarraNav)
+    {
+        UtilsPresentacionX5.SetTextLabel(LblTituloPagina, titulo);
+        BNav.Text = txtBarraNav;
+        //UtilsPresentacionX5.SetPaginationProperties(gv_Grilla);
+        Page.Title = titulo;
+    }
+
+    protected void btnNuevo_Click(Object sender, EventArgs args)
+    {
+        lbDetalleMov.Text = "Nuevo";
+        HFTipoTx.Value = "A";
+        txtDescripcionBanco.Text = string.Empty;
+        txtWebSite.Text = string.Empty;
+        chkUsoFrecuente.Checked = false;
+        mpeDescripcionBanco.Show();
+    }
+
+    protected void btnModificar_Click(Object sender, EventArgs args)
+    {
+        //AuxiliaresWS.TipoDocumentacion
+        ImageButton imgBtn = sender as ImageButton;
+        GridViewRow row = ((GridViewRow)((DataControlFieldCell)imgBtn.Parent).Parent);
+        Int32 id = int.Parse(gvBancos.DataKeys[row.RowIndex].Values["Id_Banco"].ToString());
+        String descripcion = gvBancos.DataKeys[row.RowIndex].Values["Descripcion"].ToString();
+        Boolean frecuente = Boolean.Parse( gvBancos.DataKeys[row.RowIndex].Values["Frecuente"].ToString());
+        String webSite = gvBancos.DataKeys[row.RowIndex].Values["WebSite"].ToString();
+
+
+        lbDetalleMov.Text = "Modificar";
+        HFTipoTx.Value = "M";
+        HFIdBanco.Value = id.ToString();
+        txtDescripcionBanco.Text = descripcion;
+        txtWebSite.Text = webSite;
+        chkUsoFrecuente.Checked = frecuente;
+        mpeDescripcionBanco.Show();
+
+    }
+
+    #region Databound
+
+    protected void gvBancos_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            DataRowView rowView = (DataRowView)e.Row.DataItem;
+            // Retrieve the state value for the current row. 
+            Image btn = (Image)e.Row.Cells[4].FindControl("btnfrecuente");
+            btn.Visible = (Boolean)rowView["Frecuente"];
+        }
+    }
+    #endregion
+
+    #region Carga GridViews
+    private void CargarGridView()
+    {
+        string mensajeCarga = string.Empty;
+
+        try
+        {
+            List<BancoWS.Banco> oBanco = InvocaWsDao.TraerBancosTodos();
+
+            if (oBanco != null)
+            {
+                gvBancos.DataSource = (DataTable)ToDatatable.toDataTable(oBanco.ToList());
+                gvBancos.DataBind();
+            }
+            else
+                mensajeCarga = "Ocurrio un error al traer listado de bancos.";
+
+            if (!mensajeCarga.Equals(string.Empty))
+                MError.MensajeError = mensajeCarga;
+        }
+        catch (Exception ex)
+        {
+            log.Error("Ocurrió un error al intentar traer una lista. " + ex.Message);
+            MError.MensajeError = "Ocurrió un error al traer los Bancos. Intente mas tarde.";
+        }
+
+    }
+    #endregion
+
+    protected void btnCerrarPopup_Click(object sender, EventArgs e)
+    {
+        mpeDescripcionBanco.Hide();
+
+    }
+    #region Regresar
+    protected void btnRegresar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Main.aspx", false);
+
+    }
+    #endregion Regresar
+
+    private void GrabarModificaciones()
+    {
+        string mensaje = "";
+        Int16? id;
+        if (HFTipoTx.Value.ToString().Equals("A"))
+            id = null;
+        else
+            id = Int16.Parse(HFIdBanco.Value.ToString());
+
+        InvocaWsDao.AMBanco(id, chkUsoFrecuente.Checked, txtDescripcionBanco.Text, txtWebSite.Text, out mensaje);
+        if (mensaje == "")
+        {
+            CargarGridView();
+            mpeDescripcionBanco.Hide();
+            HFIdBanco.Value = "";
+            HFTipoTx.Value = "";
+        }
+        else
+            MError.MensajeError = mensaje;
+    }
+
+    #region Boton Grabar
+    protected void btnGuardarPopUp_Click(object sender, EventArgs e)
+    {
+        MError.MensajeError = string.Empty;
+        GrabarModificaciones();
+    }
+    #endregion Boton
+}

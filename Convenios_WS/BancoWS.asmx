@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="~/App_Code/BancoWS.cs" Class="Ar.Gov.Anses.Microinformatica.AnsesConveniosInternacionalesX5.Servicios.BancoWS" %>
